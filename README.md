@@ -23,19 +23,26 @@
 
 ### 명명규칙
 
- - HTML, CSS  
-	  -스네이크 표기법 
+ - **HTML, CSS**  	
+  
+	- 스네이크 표기법		 	
+	  
 		  ex) submit_btn    
 
- - JavaScript, Node.js  
-		 - 카멜 표기법 
-		ex) submitBtn
+ - **JavaScript, Node.js** 
+  	
+	- 카멜 표기법	
+		 	 
+			ex) submitBtn
 <br>
 
 ## 📁파일 관련
 
 ### 파일 생성하기 
- .env file 생성하기     
+ - **.env file 생성하기** 
+     
 	-port값 생성해야
 ### 파일 설정 바꾸기 
- ./config/config.json에서  database설정 바꾸기
+ - **./config/config.json**		
+ 	 
+   	-database설정 바꾸기
