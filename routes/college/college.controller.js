@@ -1,0 +1,1 @@
+module.exports = {introduction, history, teachers, interior, location,};
