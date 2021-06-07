@@ -6,6 +6,8 @@ const router = require('./routes');
 const nunjucks = require('nunjucks');
 
 app.use(express.static('public'))
+app.use(express.static('image'))
+
 app.set('view engine','html');
 nunjucks.configure('views',{
     express:app,
