@@ -1,5 +1,5 @@
 let main = (req,res)=>{
-    res.send('hello,main_page');
+    res.render('./main/main.html');
 }
 
-exports.main = main;
+module.exports = {main};
