@@ -1,7 +1,7 @@
 {
   "name": "remodeling_kga_website",
   "version": "1.0.0",
-  "description": "",
+  "description": "기존 경일아카데미의 홈페이지의 디자인은 사용자에게 맞추어져 있는 것이 아닌 학원에 맞추어져 있어 불편함을 많이 느꼈다. 그래서 디자인을 바꾸어보기로 하였다.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
