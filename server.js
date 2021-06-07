@@ -5,14 +5,17 @@ const {port}= process.env || 3000;
 const router = require('./routes');
 const nunjucks = require('nunjucks');
 
-
+app.use(express.static('public'))
 app.set('view engine','html');
 nunjucks.configure('views',{
     express:app,
 })
 
+
+
 app.use('/',router);
 
-app.listen(port,()=>{
-    console.log(`server ${port} start`)
+
+app.listen(3000,()=>{
+    console.log(`server 3000 start`)
 })
