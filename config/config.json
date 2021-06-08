@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "kga",
+    "database": "teampro",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
