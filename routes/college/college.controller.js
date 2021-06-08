@@ -1,1 +1,1 @@
-module.exports = {introduction, history, teachers, interior, location,};
+// module.exports = {introductuon, history, teachers, interior, location,};
