@@ -73,5 +73,20 @@ let logout = (req,res)=>{
     res.clearCookie('AccessToken');
     res.redirect('/?msg=로그아웃되었습니다.');
 }
-ㄴ
-module.exports = {signAgree, signup, login, loginPost, onchnageUser, signupSuccess, logout};
+
+let idChk = async(req,res)=>{
+    let idFlag = false;
+    
+    let user_id = req.body.user_id;
+    let result = await user.findOne({
+        where:{user_id,}
+    });
+    if (!result) idFlag =true;
+    res.json({
+        check:idFlag,
+        user_id,
+    })
+}
+
+
+module.exports = {signAgree, signup, login, loginPost, onchnageUser, signupSuccess, logout, idChk,};

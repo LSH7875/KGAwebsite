@@ -14,7 +14,7 @@
                 <label for="user_id">아이디</label>
             </p>
             <input type="text" id = "user_id" name = "user_id" placeholder="아이디를 입력하세요." >
-            <p class= "hidden pw_msg"></p>
+            <p class= "hidden id_msg"></p>
             <p>
                 <label for="user_pw">비밀번호</label>
             </p>
@@ -42,18 +42,58 @@
                 <option value= "018">018</option>
                 <option value= "019">019</option>
             </select>-
-            <input type="text" class ="phone" name = "phone">-
-            <input type="text" class ="phone" name = "phone">
+            <input type="text" class ="phone2" name = "phone"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="4">-
+            <input type="text" class ="phone3" name = "phone"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="4">
             
         </div>
         <div class="signup_optional">
             <p>
                 <label for="birth">주민등록번호</label>
             </p>
-            <input type="text" id = "birth" class ="user_birth" name = "user_birth">-
-            <input type = "text" class = "user_sex" name = "user_sex">******
+            <input type="text" id = "birth" class ="user_birth" name = "user_birth"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="6">-
+            <input type = "text" class = "user_sex" name = "user_sex"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="1">******
         </div>
         <input type="submit" class = "submit_btn" value="회원가입">
     </form>
+    <script type ="text/javascript" src="/user/signup.js"></script>
+    <script>
+
+
+/////////////중복 id check///////////
+        let user_id = document.querySelector('#user_id');
+        user_id.addEventListener('focusout', async()=>{
+            let id_value = document.querySelector('#user_id').value;
+            let id_msg = document.querySelector('.id_msg');
+
+
+            let data = {
+                user_id:id_value
+            }
+
+
+            let rst = await fetch('http://localhost:3000/user/signup/idChk',{
+                method:'post',
+                headers:{"Content-Type": "application/json"},
+                body:JSON.stringify(data)
+                })
+                .then(res=>{
+                    return res.json();
+                })
+                .then(json=>{
+                    console.log(json);
+                    console.log('야호야호');
+                    console.log(json.check);
+                    if(json.check){
+                        console.log('없는거');
+                        id_msg.style.color="green";
+                        id_msg.innerHTML=`${id_value}는 사용할 수 있는 아이디입니다.`;
+                    }else{
+                        console.log('있는거');
+                        id_msg.style.color = "red";
+                        id_msg.innerHTML = `이미 사용중인 아이디입니다.`;
+                    }
+                })        
+    })
+    </script>
 </body>
 </html>
