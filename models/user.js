@@ -18,8 +18,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     user_phone: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.STRING(11),
+      allowNull: false,
+      defaultValue: ""
     },
     user_day: {
       type: DataTypes.DATE,
