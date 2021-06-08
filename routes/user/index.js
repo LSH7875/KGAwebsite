@@ -4,6 +4,7 @@ const userController = require('./user.controller');
 
 console.log('userindex');
 router.get('/signAgree', userController.signAgree);
+router.post('/signup/idChk',userController.idChk);
 router.get('/signup',userController.signup);
 router.post('/signup',userController.signupSuccess);
 router.post('/onchnageUser',userController.onchnageUser);
