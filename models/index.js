@@ -1,5 +1,5 @@
 'use strict';
-
+//npx sequelize-auto -o "./models" -d teampro -h localhost -u root -p 3306 -x root -e mysql
 
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';

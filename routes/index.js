@@ -4,7 +4,7 @@ const mainRouter = require('./main');
 const adminRouter = require('./admin');
 // const collegeRouter = require('./college');
 // const curriculumRouter = require('./curriculum');
-// const jobRouter = require('./job');
+// const brajobRouter = require('./job');
 // const communityRouter = require('./community');
 const userRouter= require('./user')
 
