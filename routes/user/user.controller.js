@@ -12,9 +12,6 @@ let signAgree=(req,res)=>{
     res.render('./user/signupAgree')
 }
 
-const REST_API = "c60cf11573ac60fd10341b9770620769";
-const secret_key = "p9HOwz9WPxIy0QGtNw13ovGZ5VsRo4VZ";
-const redirect_uri = "http://localhost:3000/user/auth/kakao/callback";
 
 let signup =async(req,res)=>{
     res.render('./user/signup',{
@@ -160,7 +157,7 @@ let naverLogin=  (req,res)=>{
     //res.end("<a href='"+ api_uri + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
     res.redirect(api_uri)
     //res.send('hello')
-    // api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + 'S3d4WQn63MrFK49uL6rI' + '&redirect_uri=' + 'http://localhost:3000/user/auth/naver/callback' + '&state=' + '111';
+    // api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' +  + '&redirect_uri=' + 'http://localhost:3000/user/auth/naver/callback' + '&state=' + '111';
     // res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
     // res.end("<a href='"+ api_url + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
 }
@@ -171,7 +168,7 @@ let naverCB=(req,res)=>{
     // code = req.query.code;
     // state = req.query.state;
     // api_url = 'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id='
-    //  + 'S3d4WQn63MrFK49uL6rI' + '&client_secret=' + 'P8Gwf4KUuj' + '&redirect_uri=' + 'http://localhost:3000/user/auth/naver/callback' + '&code=' + code + '&state=' + state;
+    //  +  + '&client_secret=' +  + '&redirect_uri=' + 'http://localhost:3000/user/auth/naver/callback' + '&code=' + code + '&state=' + state;
     // var request = require('request');
     // var options = {
     //     url: api_url,
