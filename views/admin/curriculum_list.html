@@ -32,33 +32,25 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="#">▶ 관리자리스트</a></li>
-            <li><a href="#">▶ 사이트 환경설정</a></li>
-            <li><a href="#">▶ 게시판 생성관리</a></li>
-            <li><a href="#">▶ 게시판 그룹관리</a></li>
-            <li><a href="#">▶ 팝업관리</a></li>
-            <li><a href="#">▶ 팝업관리</a></li>
-            <li><a href="#">▶ 메인동영상</a></li>
+            <li><a href="#">▶ 교육과정</a></li>
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="./관리자이미지.png"><div>관리자 리스트</div></div>
+        <div id="con_header"><img src="./관리자이미지.png"><div>교육과정 LIST</div></div>
         <div>
-            <div>
-
-            </div>
+            <button>선택삭제</button>
         </div>
         <div id="contents">
             <table>
                 <thead>
                     <tr>
                         <th><input type="checkbox" name="number"> 번호</th>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>닉네임</th>
-                        <th>Email</th>
-                        <th>가입일</th>
-                        <th></th>
+                        <th>이미지</th>
+                        <th>세부내용</th>
+                        <th>과정구분</th>
+                        <th>진행여부</th>
+                        <th>수정</th>
+                        <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,11 +60,12 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><button>수정</button></td>
+                        <td><button>삭제</button></td>
                     </tr>
                 </tbody>
             </table>
+            <button id="curriculum_make">새 과정 등록하기</button>
         </div>
     </div>
 </body>

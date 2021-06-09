@@ -9,6 +9,7 @@ ul li{
 #header{
     width: 100%;
     height:100px;
+    
     position: relative;
     border-bottom: 3px solid rgb(173, 173, 173);
     margin-top:10px;
@@ -120,8 +121,10 @@ ul li{
     left: 80px;
 }
 
-#board_make{
+#board_modify{
+    width: 1500px;
     margin-top:10px;
+    text-align: center;
 }
 
 #contents{
@@ -132,7 +135,7 @@ ul li{
     width: 700px;
 }
 
-#group{
+.group{
     width:700px;
 }
 
@@ -142,6 +145,7 @@ ul li{
 
 table {
     width:1500px;
+    margin-top: 10px;
     border-collapse: collapse;
     border: 2px solid rgb(200, 200, 200);
     letter-spacing: 1px;
@@ -152,7 +156,7 @@ th {
     width: 200px;
     height:20px;
     padding: 5px 10px;
-    background-color: rgba(73, 146, 255, 0.644);
+    background-color: rgb(173, 243, 255);
 }
 
 td {
@@ -160,6 +164,11 @@ td {
     height:20px;
     padding: 5px 10px;
     text-align: center;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+}
+.left{
+    text-align: left;
 }
 
 button{
