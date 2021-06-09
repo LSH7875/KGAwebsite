@@ -6,7 +6,8 @@ const router = require('./routes');
 const nunjucks = require('nunjucks');
 const {sequelize} = require('./models');
 const bodyParser = require('body-parser');
-
+const cookieParser= require('cookie-parser');
+app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.static('image'));
 
