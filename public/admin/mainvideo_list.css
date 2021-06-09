@@ -80,7 +80,8 @@ button{
 #submenu li a{
     width: 150px;
     display:inline-block;
-    margin: 12px 5px;
+    margin: 15px 5px;
+    color: black;
 }
 
 #submenu li a:hover{

@@ -37,42 +37,113 @@
             <li><a href="#">▶ 게시판 생성관리</a></li>
             <li><a href="#">▶ 게시판 그룹관리</a></li>
             <li><a href="#">▶ 팝업관리</a></li>
-            <li><a href="#">▶ 팝업관리</a></li>
             <li><a href="#">▶ 메인동영상</a></li>
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="./관리자이미지.png"><div>관리자 리스트</div></div>
-        <div>
-            <div>
-
-            </div>
-        </div>
-        <div id="contents">
+        <div id="con_header"><img src="./관리자이미지.png"><div>팝업관리 입력/수정</div></div>
+        <div id="board_modify">
+            <button>설정 저장하기</button>
+            <button>게시판생성관리목록</button>
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>닉네임</th>
-                        <th>Email</th>
-                        <th>가입일</th>
-                        <th></th>
+                        <th colspan="3">게시판 항목 생성하기(하나의 테이블을 이용합니다)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>보임설정</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="0">보임</option>
+                                <option value="1">숨김</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>팝업창 크기</td>
+                        <td class="left">가로 <input type="text"> x 세로 <input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>팝업창 위치</td>
+                        <td class="left">왼쪽에서 <input type="text">  위에서 <input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>스크롤바</td>
+                        <td class="left">
+                            <input type="radio" name="scroll"> 스크롤없음
+                            <input type="radio" name="scroll"> 스크롤있음
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>팝업형태</td>
+                        <td class="left">
+                            <input type="radio"> 팝업
+                            <input type="radio"> 레이어
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>타이틀</td>
+                        <td class="left">
+                            <input type="text" class="inputbox" placeholder=" 타이틀을 입력해주세요">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지파일</td>
+                        <td class="left">
+                            <input type="text"class="inputbox">
+                            <button>파일선택</button> 
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지와 텍스트</td>
+                        <td class="left">
+                            <input type="radio" name="image"> 이미지 아래 텍스트
+                            <input type="radio" name="image"> 텍스트 아래 이미지
+                            <input type="radio" name="image"> 이미지만
+                            <input type="radio" name="image"> 텍스트만
+                            <input type="radio" name="image"> 이미지 위 텍스트 겹치
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>바로가기링크</td>
+                        <td class="left">
+                            <input type="text" class="inputbox" placeholder=" 바로가기 링크 삽입">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>링크방법</td>
+                        <td class="left">
+                            <input type="radio" name="link"> 부모창 이동 후 창닫기
+                            <input type="radio" name="link"> 새창으로 띄움
+                            <input type="radio" name="link"> 팝업본창에서 이동
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>보지않음 설정</td>
+                        <td class="left">
+                            <input type="radio" name="term"> 하루동안 보지 않음
+                            <input type="radio" name="term"> 1주일 보지 않음
+                            <input type="radio" name="term"> 15일동안 보지 않음
+                            <input type="radio" name="term"> 한달동안 보지 않음
+                            <input type="radio" name="term"> 다시 보지 않음
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>내용</td>
+                        <td class="left">
+                            <input type="text" class="popup_contents" placeholder=" 팝업창에 입력할 내용을 입력해주세요">
+                        </td>
                     </tr>
                 </tbody>
+                
             </table>
+            
+        </div>
+        <div id="contents">
+            
         </div>
     </div>
 </body>

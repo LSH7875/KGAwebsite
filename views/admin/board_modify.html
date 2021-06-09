@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/board_modify.css">
+</head>
+<body>
+    <div id="header">
+        <img src="./경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="#">Administrator</a>
+            <a href="#">시설소개</a>
+            <a href="#">교육과정</a>
+            <a href="#">취업정보</a>
+            <a href="#">커뮤니티</a>
+            <a href="#">상담신청</a>
+            <a href="#">방문자분석</a>
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자
+                dddd
+                로그인시각
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="#">▶ 관리자리스트</a></li>
+            <li><a href="#">▶ 사이트 환경설정</a></li>
+            <li><a href="#">▶ 게시판 생성관리</a></li>
+            <li><a href="#">▶ 게시판 그룹관리</a></li>
+            <li><a href="#">▶ 팝업관리</a></li>
+            <li><a href="#">▶ 메인동영상</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div id="con_header"><img src="./관리자이미지.png"><div>게시판 생성관리</div></div>
+        <div id="board_modify">
+            <button>설정 저장하기</button>
+            <button>게시판생성관리목록</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3">게시판 항목 생성하기(하나의 테이블을 이용합니다)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>테이블명</td>
+                        <td class="left">
+                            <input type="text" class="board_title" placeholder=" 테이블명을 입력해주세요 ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>게시판 타이틀</td>
+                        <td class="left">
+                            <input type="text" class="board_title" placeholder=" 수정할 내용을 입력해주세요">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>게시판그룹지정</td>
+                        <td class="left">
+                            <select name="group" class="group">
+                                <option value="0">-------</option>
+                                <option value="1">학교소개</option>
+                                <option value="2">취업정보</option>
+                                <option value="3">커뮤니티</option>
+                                <option value="4">교육과정</option>
+                                <option value="5">상담신청</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>게시판형태선택</td>
+                        <td class="left">
+                            <select name="group" class="group">
+                                <option value="0">-------</option>
+                                <option value="1">학교소개</option>
+                                <option value="2">취업정보</option>
+                                <option value="3">커뮤니티</option>
+                                <option value="4">교육과정</option>
+                                <option value="5">상담신청</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>스킨</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="0">-------</option>
+                                <option value="1">학교소개</option>
+                                <option value="2">취업정보</option>
+                                <option value="3">커뮤니티</option>
+                                <option value="4">교육과정</option>
+                                <option value="5">상담신청</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>첨부파일갯수</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="0">-------</option>
+                                <option value="1">학교소개</option>
+                                <option value="2">취업정보</option>
+                                <option value="3">커뮤니티</option>
+                                <option value="4">교육과정</option>
+                                <option value="5">상담신청</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>첨부파일필수</td>
+                        <td class="left">
+                            <input type="radio" name="file"> 첨부파일 없어도 됨
+                            <input type="radio" name="file"> 첨부파일 반드시 하나 이상
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>본문에디터</td>
+                        <td class="left">
+                            <input type="radio" name="editor"> 사용함
+                            <input type="radio" name="editor"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>보임/숨김 기능</td>
+                        <td class="left">
+                            <input type="radio" name="hide"> 사용함
+                            <input type="radio" name="hide"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀글 기능</td>
+                        <td class="left">
+                            <input type="radio" name="secret"> 사용함
+                            <input type="radio" name="secret"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>동영상 사용(스트리밍)</td>
+                        <td class="left">
+                            <input type="radio" name="video"> 사용함
+                            <input type="radio" name="video"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>쓰기권한</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="-1">-1</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                            -1: 비사용, 0: 누구나, 1~9: 해당등급이상만 사용가능, 10: 관리자전용
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>읽기권한</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                             0: 누구나, 1~9: 해당등급이상만 사용가능, 10: 관리자전용
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>리플권한</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="-1">-1</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                            -1: 비사용, 0: 누구나, 1~9: 해당등급이상만 사용가능, 10: 관리자전용
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>댓글권한</td>
+                        <td class="left">
+                            <select name="group">
+                                <option value="-1">-1</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                            -1: 비사용, 0: 누구나, 1~9: 해당등급이상만 사용가능, 10: 관리자전용
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>입력날짜 사용</td>
+                        <td class="left">
+                            <input type="radio" name="date"> 사용함
+                            <input type="radio" name="date"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>카테고리 사용</td>
+                        <td class="left">
+                            <input type="radio" name="category"> 사용함
+                            <input type="radio" name="category"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>스팸방지키 사용</td>
+                        <td class="left">
+                            <input type="radio" name="spam"> 사용함
+                            <input type="radio" name="spam"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tag 사용</td>
+                        <td class="left">
+                            <input type="radio" name="tag"> 사용함
+                            <input type="radio" name="tag"> 사용안함
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="left">
+                            <input type="radio" name="sc"> 기본(fno desc, thread asc)<br>
+                            <input type="radio" name="sc"> 등록순 오름차순(idx asc)<br>
+                            <input type="radio" name="sc"> 등록순 내림차순(idx desc)<br>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            
+        </div>
+        <div id="contents">
+            
+        </div>
+    </div>
+</body>
+</html>
