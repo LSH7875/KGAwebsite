@@ -9,14 +9,14 @@
 </head>
 <body>
     <div id="header">
-        <img src="./경일직업능력개발원.PNG">
+        <img src="/경일직업능력개발원.PNG">
         <div id="navi">
-            <a href="#">Administrator</a>
-            <a href="#">시설소개</a>
-            <a href="#">교육과정</a>
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/academy_int">시설소개</a>
+            <a href="/admin/curriculum_list">교육과정</a>
             <a href="#">취업정보</a>
-            <a href="#">커뮤니티</a>
-            <a href="#">상담신청</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/consulting_list">상담신청</a>
             <a href="#">방문자분석</a>
         </div>
     </div>
@@ -32,47 +32,53 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="#">▶ 관리자리스트</a></li>
-            <li><a href="#">▶ 사이트 환경설정</a></li>
-            <li><a href="#">▶ 게시판 생성관리</a></li>
-            <li><a href="#">▶ 게시판 그룹관리</a></li>
-            <li><a href="#">▶ 팝업관리</a></li>
-            <li><a href="#">▶ 메인동영상</a></li>
+            <li><a href="#">▶ 시설소개</a></li>
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="./관리자이미지.png"><div>관리자 리스트</div></div>
+        <div id="con_header"><img src="/video.png"><div>시설소개 LIST</div></div>
         <div>
-            <div>
-
+            <button>선택삭제</button>
+            <div id="search">
+                검색조건
+                <select name="search_option" id="search_option">
+                    <option value="구분">구분</option>
+                    <option value="이름">이름</option>
+                    <option value="아이디">아이디</option>
+                    <option value="닉네임">닉네임</option>
+                    <option value="Email">E-mail</option>
+                </select>
+                <input type="text" placeholder=" 검색어를 입력해주세요 ">
+                <button>검색</button>
             </div>
         </div>
         <div id="contents">
-            <table>
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>닉네임</th>
-                        <th>Email</th>
-                        <th>가입일</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <ul>
+                <li>
+                    <input type="checkbox" name="number">1
+                    <button>EDIT</button>
+                    <button>DEL</button><br>
+                    <img src="#"><br>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" name="number">1
+                    <button>EDIT</button>
+                    <button>DEL</button><br>
+                    <img src="#"><br>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="checkbox" name="number">1
+                    <button>EDIT</button>
+                    <button>DEL</button><br>
+                    <img src="#"><br>
+                </li>
+            </ul>
         </div>
+        <button>글쓰기</button>
     </div>
 </body>
 </html>
