@@ -35,12 +35,12 @@ submit_btn.addEventListener('click',()=>{
     if(id_msg.style.color =="red" || id_msg.value =='' ){
         submit_btn.setAttribute('disabled','true');
         alert('아이디를 확인해주세요.')
-    }else if(pw_msg){
+    }else if(pw_msg.value){
         //비밀번호가 서로 다를 때
         submit_btn.setAttribute('disabled','true');
         user_pw.value = "";
         user_pw_chk.value ='';
-        alert('비밀번호를 확인해주세요.')
+        alert('비밀번호를 확인해주세요.');
     }
 })
 
