@@ -51,17 +51,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>테이블명</td>
-                        <td>
-                            <input type="text" class="board_title" placeholder=" 테이블명을 입력해주세요 ">
-                        </td>
-                        <td rowspan="3"><button id="make_table">테이블 만들기</button></td>
-                    </tr>
-                    <tr>
                         <td>게시판 타이틀</td>
                         <td>
                             <input type="text" class="board_title" placeholder=" 게시판 타이틀을 입력해주세요 ">
                         </td>
+                        <td rowspan="2"><button id="make_table">테이블 만들기</button></td>
                     </tr>
                     <tr>
                         <td>그룹명</td>
@@ -87,32 +81,29 @@
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>테이블명</th>
+                        <th>그룹</th>
                         <th>게시판이름</th>
-                        <th>형태</th>
                         <th>읽기권한</th>
                         <th>쓰기권한</th>
-                        <th>리플권한</th>
-                        <th>댓글권한</th>
                         <th>첨부파일</th>
-                        <th>스킨</th>
-                        <th>그룹</th>
-                        <th>환경설정</th>
+                        <th>수정</th>
                         <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td></td>
-                        <td></td>
-                        <td><input type="text" placeholder="게시판이름입력"></td>
                         <td>
-                            <select name="board_type">
-                                <option value="갤러리">갤러리</option>
-                                <option value="일반">일반</option>
-                                <option value="웹진">웹진</option>
+                            <select name="group">
+                                <option value="0">-------</option>
+                                <option value="1">학교소개</option>
+                                <option value="2">취업정보</option>
+                                <option value="3">커뮤니티</option>
+                                <option value="4">교육과정</option>
+                                <option value="5">상담신청</option>
                             </select>
                         </td>
+                        <td><input type="text" placeholder="게시판이름입력"></td>
                         <td>
                             <select name="read_authority">
                                 <option value="0">0</option>
@@ -143,36 +134,6 @@
                             </select>
                         </td>
                         <td>
-                            <select name="reply_authority">
-                                <option value="-1">-1</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="comment_authority">
-                                <option value="-1">-1</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                            </select>
-                        </td>
-                        <td>
                             <select name="file">
                                 <option value="0">0개</option>
                                 <option value="1">1개</option>
@@ -180,27 +141,8 @@
                                 <option value="3">3개</option>
                             </select>
                         </td>
-                        <td>
-                            <select name="skin">
-                                <option value="0">설정되지않음</option>
-                                <option value="1">ki</option>
-                                <option value="2">ki_recruit</option>
-                                <option value="3">ki_pw</option>
-                                <option value="4">ki_apply</option>
-                                <option value="5">ki_portfolio</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="group">
-                                <option value="0">-------</option>
-                                <option value="1">학교소개</option>
-                                <option value="2">취업정보</option>
-                                <option value="3">커뮤니티</option>
-                                <option value="4">교육과정</option>
-                                <option value="5">상담신청</option>
-                            </select>
-                        </td>
-                        <td><button onclick="location.href='/admin/board_modify'">설정</button></td>
+
+                        <td><button onclick="location.href='/admin/board_modify'">수정</button></td>
                         <td><button>삭제</button></td>
                     </tr>
                 </tbody>

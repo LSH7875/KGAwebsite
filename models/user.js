@@ -37,11 +37,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     user_birth: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(6),
       allowNull: true
     },
     ad_agree: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    nickname: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    social: {
+      type: DataTypes.STRING(50),
       allowNull: false
     }
   }, {
