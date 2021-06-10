@@ -6,6 +6,10 @@ ul li{
     list-style-type: none;
 }
 
+button{
+    margin-top:10px;
+}
+
 #header{
     width: 100%;
     height:100px;
@@ -62,7 +66,7 @@ ul li{
 
 #submenu{
     width: 210px;
-    height: 350px;
+    height: 70px;
     margin-top:20px;
     border:3px solid rgb(109, 109, 109);
     border-radius: 3px;
@@ -120,59 +124,30 @@ ul li{
     left: 80px;
 }
 
-#board_make{
-    margin-top:10px;
+#search{
+    width:1500px;
+    height:50px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border:1px solid rgb(109, 109, 109);
 }
 
 #contents{
+    width:1500px;
     margin: 10px 0;
 }
 
-.board_title{
-    width: 700px;
-}
-
-#group{
-    width:700px;
-}
-
-#make_table{
+#contents ul{
     display: inline-block;
 }
 
-table {
-    width:1500px;
-    border-collapse: collapse;
-    border: 2px solid rgb(200, 200, 200);
-    letter-spacing: 1px;
-    font-size: .8rem;
+#contents ul li{
+    width:700px;
+    height:500px;
+    border:1px solid rgb(109, 109, 109);
+    text-align:center;
 }
 
-th {
-    width: 200px;
-    height:20px;
-    padding: 5px 10px;
-    background-color: rgb(173, 243, 255);
-}
-
-td {
-    width: 200px;
-    height:20px;
-    padding: 5px 10px;
-    text-align: center;
-    border-bottom: 1px solid rgb(200, 200, 200);
-}
-
-.inputbox{
-    width: 600px;
-    height: 30px;
-}
-
-button{
-    margin-top: 10px;
-}
-
-#popup_make{
-    position: absolute;
-    right:-300px;
+#contents ul li button{
+    background-color:aliceblue;
 }

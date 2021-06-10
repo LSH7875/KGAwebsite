@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/admin/popup_list.css">
+    <link rel="stylesheet" href="/admin/consulting_list.css">
 </head>
 <body>
     <div id="header">
@@ -32,16 +32,13 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="/admin/admin_list">▶ 관리자리스트</a></li>
-            <li><a href="/admin/setting">▶ 사이트 환경설정</a></li>
-            <li><a href="/admin/board_manage">▶ 게시판 생성관리</a></li>
-            <li><a href="#">▶ 게시판 그룹관리</a></li>
-            <li><a href="/admin/popup_list">▶ 팝업관리</a></li>
-            <li><a href="/admin/mainvideo_list">▶ 메인동영상</a></li>
+            <li><a href="#">▶ 상담신청</a></li>
+            <li><a href="#">▶ 지원하기</a></li>
+            <li><a href="#">▶ 자주묻는질문</a></li>
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>팝업관리 리스트</div></div>
+        <div id="con_header"><img src="/관리자이미지.png"><div>지원자 LIST</div></div>
         <div>
             <button>선택삭제</button>
         </div>
@@ -50,11 +47,12 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" name="number"> 번호</th>
-                        <th>팝업타이틀</th>
-                        <th>창크기(가로*세로)</th>
-                        <th>창위치(좌측*상단)</th>
-                        <th>팝업형태</th>
+                        <th>제목</th>
                         <th>보임/숨김</th>
+                        <th>작성자</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
+                        <th>첨부파일</th>
                         <th>수정</th>
                         <th>삭제</th>
                     </tr>
@@ -67,12 +65,13 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td><button>수정</button></td>
                         <td><button>삭제</button></td>
                     </tr>
                 </tbody>
             </table>
-            <button id="popup_make">팝업창 작성</button>
+            <button id="curriculum_make">글쓰기</button>
         </div>
     </div>
 </body>
