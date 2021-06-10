@@ -2,16 +2,16 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('user', {
     user_id: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     user_pw: {
       type: DataTypes.STRING(200),
-      allowNull: false
+      allowNull: true
     },
     user_name: {
       type: DataTypes.STRING(20),
-      allowNull: false
+      allowNull: true
     },
     user_email: {
       type: DataTypes.STRING(50),
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     user_phone: {
       type: DataTypes.STRING(11),
-      allowNull: false,
+      allowNull: true,
       defaultValue: ""
     },
     user_day: {
@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     ad_agree: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     nickname: {
       type: DataTypes.STRING(50),
@@ -50,7 +50,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     social: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: false,
+      defaultValue: 'local'
     }
   }, {
     sequelize,

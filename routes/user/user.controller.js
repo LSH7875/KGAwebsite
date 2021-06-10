@@ -19,7 +19,7 @@ let signAgree=(req,res)=>{
 
 let signup =async(req,res)=>{
     res.render('./user/signup',{
-        ad_agree:req.body.ad_agree
+        ad_agree:req.query.chk[2]
     })
 }
 function cryptoPw(pw){
@@ -28,7 +28,7 @@ function cryptoPw(pw){
 
 let signupSuccess = async(req,res)=>{
     
-    let {user_id, user_pw, user_name, user_email, user_birth, user_sex,phone,ad_agree,} = req.body;
+    let {nickname,user_id, user_pw, user_name, user_email, user_birth, user_sex,phone,ad_agree,} = req.body;
     let user_phone=phone[0]+phone[1]+phone[2];
     console.log(req.body);
     console.log(phone); 
@@ -36,7 +36,7 @@ let signupSuccess = async(req,res)=>{
     console.log(user_pw);
     try{
         let rst = await user.create({
-            user_id, user_pw, user_name, user_email, user_birth, user_sex,user_phone,ad_agree
+            nickname, user_id, user_pw, user_name, user_email, user_birth, user_sex,user_phone,ad_agree
         })
         res.redirect('/');
     }catch(e){
@@ -110,6 +110,7 @@ const kakao = {
     redirectUri: process.env.kakao_RedirectURI
 }
 
+//카카오 계정으로 가입하는 페이지로 보내주기
 let kakaoLogin = (req,res)=>{
     
         const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code`;
@@ -121,49 +122,86 @@ let kakaoLogin = (req,res)=>{
 // }
 
 
-////토큰을 받기위한 몸부림....
+////가입 후 콜백
 let kakaoCB = async(req,res)=>{
-    // //되는 코드임122-161
-        //axios>>promise object
-        try{//access토큰을 받기 위한 코드
-        token = await axios({//token
-            method: 'POST',
-            url: 'https://kauth.kakao.com/oauth/token',
-            headers:{
-                'content-type':'application/x-www-form-urlencoded'
-            },
-            data:qs.stringify({
-                grant_type: 'authorization_code',//특정 스트링
-                client_id:kakao.clientID,
-                client_secret:kakao.clientSecret,
-                redirectUri:kakao.redirectUri,
-                code:req.query.code,//결과값을 반환했다. 안됐다.
-            })//객체를 string 으로 변환
+    try{//access토큰을 받기 위한 코드
+    kakaoToken = await axios({//token
+        method: 'POST',
+        url: 'https://kauth.kakao.com/oauth/token',
+        headers:{
+            'content-type':'application/x-www-form-urlencoded'
+        },
+        data:qs.stringify({
+            grant_type: 'authorization_code',//특정 스트링
+            client_id:kakao.clientID,
+            client_secret:kakao.clientSecret,
+            redirectUri:kakao.redirectUri,
+            code:req.query.code,
+            })
         })
     }catch(err){
         res.json(err.data);
     }
     //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
-        let user;
-        try{
-            console.log(token);//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
-            user = await axios({
-                method:'get',
-                url:'https://kapi.kakao.com/v2/user/me',
-                headers:{
-                    Authorization: `Bearer ${token.data.access_token}`
-                }//헤더에 내용을 보고 보내주겠다.
-            })
-        }catch(e){
-            res.json(e.data);
-        }
-        console.log(user);
+    let users;
+    try{
+        console.log(kakaoToken);//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
+        users = await axios({
+            method:'get',
+            url:'https://kapi.kakao.com/v2/user/me',
+            headers:{
+                Authorization: `Bearer ${kakaoToken.data.access_token}`
+            }//헤더에 내용을 보고 보내주겠다.
+        })
+        console.log('//////user/////////');
+        res.cookie('access_token',kakaoToken.data.access_token);
+        res.cookie('token_type',kakaoToken.data.token_type);
+        res.cookie('refresh_token',kakaoToken.data.refresh_token);
+        res.cookie('expires_in',kakaoToken.data.expires_in);
+        res.cookie('scope',kakaoToken.data.scope);
+        res.cookie('refresh_token_expires_in',kakaoToken.data.refresh_token_expires_in);
+
+        user_id = users.data.id;
+        nickname = users.data.kakao_account.profile.nickname;
+        user_email = users.data.kakao_account.email;
+
+    }catch(e){
+        console.log(e);
+    }
+
+    makemember(user_id,nickname,user_email);
+
+    async function makemember(a,b,c){
+        let mem = await fetch('http://localhost:3000/user/signup/idChk',{
+            method:'post',
+            headers:{"Content-Type": "application/json"},
+            body:JSON.stringify({user_id:a})
+        }).then(res=>{
+            return res.json()
+        }).then (async(json)=>{
+            console.log(json);
+            if(json.check){
+                console.log('회원정보없음');
+                signup2 = await user.create({
+                user_id:a ,user_email:c ,nickname:b, 
+                social:"kakao"
+                })
+                
+            }
+        })
+    }
+    // 
+    res.send('success');
+
+        
+        
+}
+        
      
-        console.log(user.data);
+        
         //req.session = {['kakao'] : user.data};
         
-        res.send('success');
-    }
+        
 
 
 // try{
@@ -277,17 +315,14 @@ let naverLogin=  (req,res)=>{
 
 
 let naverCB=async(req,res)=>{
-    console.log('db들어옴');
-    console.log('req.query.code');
-    console.log(req.query.code);
-    console.log(req.query.state);
+    //네이버 로그인 콜백 들어옴
     code= req.query.code;
     state = req.query.state;
     let YOUR_ACCESS_TOKEN;
 
     api_url = 'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id='
      + client_id + '&client_secret=' + client_secret + '&redirect_uri=' + redirectURI + '&code=' + code + '&state=' + state;
-
+//토큰 받기 과정
     try{
         let naverlog = await fetch(api_url,{
             method:"post",
@@ -321,7 +356,10 @@ let naverCB=async(req,res)=>{
     //     console.log('error = ' + response.statusCode);
     //   }
     // });
+
+    //받은 토큰으로 정보 요청
         try{
+            let user_id,user_name,user_email,phone;
             var token = YOUR_ACCESS_TOKEN;
             var header = "Bearer " + token; // Bearer 다음에 공백 추가
 
@@ -331,28 +369,33 @@ let naverCB=async(req,res)=>{
             }).then(res=>{
                 return res.json();
             }).then(json=>{
-                console.log(json.response.name);
-                //   id: 'jYkPXB0o8NJUVo9HBpOkiY5y-g4i-ipOy2WBdChc0kM',
-                //   email: 'nara7875@naver.com',
-                //   mobile: '010-4947-7875',
-                //   mobile_e164: '+821049477875',
-                //   name: '이승희'
-                //id같은거 있는지 확인하고 없으면 만들기....
-                //db에 만들어야함. 네이버로 가입했다고 남겨야함.
+                console.log(json.response);
+
+                user_id=json.response.id;
+                user_email = json.response.email;
+                user_phone=json.response.mobile.toString().replace('-','').replace('-','');
+                user_name = json.response.name;
+            })
+
+
+            let rst= await fetch('http://localhost:3000/user/signup/idChk',{
+                method:'post',
+                headers:{"Content-Type": "application/json"},
+                body:JSON.stringify({user_id:user_id})
+            }).then(res=>{
+                console.log
+                return res.json()
+            }).then (async(json)=>{
+                console.log(json);
+                if (json.check){
+                    console.log('회원정보없음');
+                    let signup1 = await user.create({
+                    user_name,user_id,user_email,nickname:user_name,user_phone,
+                    social:"naver"
+                })
+            }
 
             })
-            //    request.get(options, function (error, response, body) {
-            //      if (!error && response.statusCode == 200) {
-            //        res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-            //        res.end(body);
-            //      } else {
-            //        console.log('error');
-            //        if(response != null) {
-            //          res.status(response.statusCode).end();
-            //          console.log('error = ' + response.statusCode);
-            //        }
-            //      }
-            //    });
         }catch(e){
             console.log(e);
         }

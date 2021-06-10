@@ -9,7 +9,7 @@
 <body>
     <h1>회원 가입</h1>
 <h2>약관 동의</h2>
-<form action="/user/signup" class="sign_ckeck" method ="post">
+<form action="/user/signup" class="sign_ckeck" method ="get">
     <input type="checkbox" class="all_agree" name ="chk">
     <p>모든 항목에 동의합니다.<br></p>
     <div class="scroll_box">
@@ -510,8 +510,11 @@
     </div>
     <input type="checkbox" class = "agree_optional" name ="chk" value="1">
     <p class="signtext">위 항목의 내용에 동의합니다.<span class ="sign_opt_span">(선택))</span></p>
-    <input type="submit" vlaue="다음단계로" class = "submit_btn">
+    <input type="submit" value="다음단계로" class = "submit_btn">
 </form>
+
+<!-- script -->
+
     <script type = "text/javascript">
 const all_agree = document.querySelector('.all_agree');
 
@@ -540,20 +543,35 @@ let chk1=document.querySelector('.agree_essential')
 let chk2=document.querySelector('.agree_optional')
 
 chk1.addEventListener('click',()=>{
-    console.log('언체크1들어옴.');
     unchk_all();
 })
 
 chk2.addEventListener('click',()=>{
-    console.log('언체크2들어옴.');
     unchk_all();
 })
 
 function unchk_all(){
-    console.log('전체선택 언체크하는거 들어옴.');
     if(!this.checked)all_agree.checked=false;    
 }
 
+
+//제출 버튼 비활성화
+
+let submitBtn = document.querySelector('.submit_btn');
+
+window.onload=()=>{
+    submitBtn.setAttribute('disabled','true');
+}
+
+window.addEventListener('change',()=>{
+    let agree1= document.querySelector('.agree_essential');
+
+    if(agree1.checked){
+        submitBtn.removeAttribute('disabled');
+    }else if(!agree1.checked){
+        submitBtn.setAttribute('disabled','true');
+    }
+})
     </script>
 </body>
 </html>
