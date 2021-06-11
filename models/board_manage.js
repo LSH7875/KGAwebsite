@@ -25,10 +25,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(1),
       allowNull: false
     },
-    contents: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
     show_hide: {
       type: DataTypes.INTEGER(1),
       allowNull: false

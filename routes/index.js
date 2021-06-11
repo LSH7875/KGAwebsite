@@ -5,7 +5,7 @@ const adminRouter = require('./admin');
 // const collegeRouter = require('./college');
 // const curriculumRouter = require('./curriculum');
 // const brajobRouter = require('./job');
-// const communityRouter = require('./community');
+const communityRouter = require('./community');
 const userRouter= require('./user')
 
 
@@ -16,6 +16,6 @@ router.use('/admin',adminRouter);
 // router.use('/college',collegeRouter);
 // router.use('/curriculum',curriculumRouter);
 // router.use('/job',jobRouter);
-// router.use('/community',communityRouter);
+router.use('/community',communityRouter);
 
 module.exports = router;
