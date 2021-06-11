@@ -49,12 +49,12 @@ let onchnageUser=async(req,res)=>{
 }
 
 let login = (req,res)=>{
+
     res.render('./user/login');
     console.log('process.env.kakao.clientID');
     console.log(process.env.kakao_clientID);
     console.log('process.env.kakao_redirectUri');
     console.log(process.env.kakao_redirectUri);
-
 }
 
 let loginPost = async(req,res)=>{
