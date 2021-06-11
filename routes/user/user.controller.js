@@ -29,7 +29,7 @@ let onchnageUser=async(req,res)=>{
 }
 
 let login = (req,res)=>{
-    res.render('./user/login');
+    res.render('./user/login.html');
 }
 
 let loginPost = async(req,res)=>{
