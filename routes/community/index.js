@@ -8,7 +8,6 @@ router.post('/review/write', communityController.review_write_post);
 router.get('/review/modify', communityController.review_modify);
 router.post('/review/modify', communityController.review_modify_post);
 router.get('/review/', communityController.review_list);
-router.get('/review/deletealert', communityController.review_deletealert);
 router.post('/review/delete',communityController.review_delete)
 
 
