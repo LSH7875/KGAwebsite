@@ -1,0 +1,153 @@
+a{
+    text-decoration: none;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+button{
+    margin-top:10px;
+}
+
+#header{
+    width: 100%;
+    height:100px;
+    position: relative;
+    border-bottom: 3px solid rgb(173, 173, 173);
+    margin-top:10px;
+}
+
+#header img{
+    width:300px;
+}
+
+#navi{
+    display: inline;
+    position: absolute;
+    top:30px;
+    left:400px;
+
+}
+
+#navi a{
+    margin: 0 60px;
+}
+
+#navi a:hover{
+    font-weight: bold;
+    color:rgb(22, 0, 75);
+}
+
+/* --------------------------서브메뉴-------------------------------- */
+
+#sub_con{
+    width: 250px;
+    display: inline-block;
+    margin-top:10px;
+}
+
+#admin_info{
+    width:248px;
+    height: 150px;
+    border:3px solid rgb(109, 109, 109);
+    border-radius: 3px;
+    background-color: rgb(224, 223, 223);
+    text-align: center;
+}
+
+#admin_info div{
+    width:240px;
+    height: 100px;
+    margin: 10px auto;
+    padding: 5px 0;
+    background-color:rgb(255, 255, 255);
+}
+
+#submenu{
+    width: 210px;
+    height: 70px;
+    margin-top:20px;
+    border:3px solid rgb(109, 109, 109);
+    border-radius: 3px;
+    background-color: rgb(224, 223, 223);
+}
+
+#submenu b{
+    margin: 5px 50px;
+}
+
+#submenu li a{
+    width: 150px;
+    display:inline-block;
+    margin: 15px 5px;
+    color: black;
+}
+
+#submenu li a:hover{
+    font-weight: bold;
+    color:rgb(197, 36, 36);
+}
+
+
+
+/* ----------------------------메인콘텐츠--------------------------------- */
+
+#main_con{
+    width: 1200px;
+    height: 1000px;
+    display: inline-block;
+    position: absolute;
+    left:350px;
+    margin-top:10px;
+}
+
+#con_header{
+    width: 1500px;
+    height: 50px;
+    background-color: rgb(1, 64, 158);
+}
+
+#con_header img{
+    width:40px;
+    height:40px;
+    margin-top:5px;
+    margin-left: 10px;
+}
+
+#con_header div{
+    font-size: 20px;
+    display: inline-block;
+    position: absolute;
+    color:rgb(230, 230, 230);
+    top: 12px;
+    left: 80px;
+}
+
+#search{
+    width:1500px;
+    height:50px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border:1px solid rgb(109, 109, 109);
+}
+
+#contents{
+    width:1500px;
+    margin: 10px 0;
+}
+
+#contents ul{
+    display: inline-block;
+}
+
+#contents ul li{
+    width:700px;
+    height:500px;
+    border:1px solid rgb(109, 109, 109);
+    text-align:center;
+}
+
+#contents ul li button{
+    background-color:aliceblue;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/admin_list.css">
+</head>
+<body>
+    <div id="header">
+        <img src="/경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/academy_int">시설소개</a>
+            <a href="/admin/curriculum_list">교육과정</a>
+            <a href="#">취업정보</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/consulting_list">상담신청</a>
+            <a href="#">방문자분석</a>
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자
+                dddd
+                로그인시각
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="/admin/admin_list">▶ 관리자리스트</a></li>
+            <li><a href="/admin/setting">▶ 사이트 환경설정</a></li>
+            <li><a href="/admin/board_manage">▶ 게시판 생성관리</a></li>
+            <li><a href="#">▶ 게시판 그룹관리</a></li>
+            <li><a href="/admin/popup_list">▶ 팝업관리</a></li>
+            <li><a href="/admin/mainvideo_list">▶ 메인동영상</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
+        <div>
+            <div id="search">
+                검색조건
+                <select name="search_option" id="search_option">
+                    <option value="이름">이름</option>
+                    <option value="아이디">아이디</option>
+                    <option value="닉네임">닉네임</option>
+                    <option value="Email">E-mail</option>
+                </select>
+                <input type="text" placeholder=" 검색어를 입력해주세요 ">
+                <button>검색</button>
+            </div>
+            <button>선택항목삭제</button>
+        </div>
+        <div id="contents">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="number"> 번호</th>
+                        <th>아이디</th>
+                        <th>이름</th>
+                        <th>닉네임</th>
+                        <th>E-mail</th>
+                        <th>가입일</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button>수정</button><button>삭제</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
