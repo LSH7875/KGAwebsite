@@ -26,5 +26,7 @@ db.board_manage = models.board_manage;
 db.curriculum = models.curriculum;
 db.mainvideo = models.mainvideo;
 db.popup = models.popup;
+db.group = models.group; 
+db.form = models.form;
 
 module.exports = db;

@@ -1,0 +1,18 @@
+<div>
+    <div class = "popup">
+        정말로 삭제하시겠습니까?
+        <a href="/community/review/delete?id={{id}}">네</a>
+        <a href="/community/review/view?id={{id}}}">아니요</a>
+    </div>
+
+    <div class= "title"><h2>{{title}}</h2></div>
+    <div class="date">{{date}}</div>
+    <div class="hit">{{hit}}</div>
+    <div class="nickname">{{nickname}}</div>
+    <div class="content">{{contents}}</div>
+    <a href="/{{group}}}/{{uri}}">목록으로</a>
+    {% if authority=1 %}
+    <button>수정하기</button>
+    <button class="delete" value="0">삭제하기</button>
+    {% endif %}
+</div>

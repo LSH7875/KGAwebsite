@@ -1,0 +1,33 @@
+{% if modify ==1 %}
+<form action="/{{group}}/{{board_uri}}/modify" method = "post">
+{% else %}
+<form action="/{{group}}/{{board_uri}}/write" method = "post">
+{% endif %}
+    <table>
+        <tr>
+            <td>
+                제목
+            </td>
+            <td>
+                {% if modify == 1 %}
+                <input type="text" name = "title" id="title" value = "{{contents}}">
+                {% else %}
+                <input type="text" name = "title" id="title">
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                내용
+            </td>
+            <td>
+                <textarea name="contents" id="contents" cols="30" rows="10">
+                    {% if modify ==1 %}
+                    {{contents}}
+                    {% endif %}
+                </textarea>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="글쓰기">
+</form>

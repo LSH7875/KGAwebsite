@@ -7,8 +7,8 @@ router.get('/review/write', communityController.review_write);
 router.post('/review/write', communityController.review_write_post);
 router.get('/review/modify', communityController.review_modify);
 router.post('/review/modify', communityController.review_modify_post);
-router.get('/review/', communityController.review_list);
-router.post('/review/delete',communityController.review_delete)
+router.post('/review/delete',communityController.review_delete);
+router.get('/review', communityController.review_list);
 
 
 
