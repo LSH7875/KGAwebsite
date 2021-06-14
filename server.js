@@ -42,7 +42,6 @@ sequelize.sync({force:false})
 app.use('/',router);
 
 io.sockets.on('connection',(socket)=>{
-    console.log('접속완료')
     socket.on('chatting',(data)=>{
         const { name, msg } = data;
         io.emit("chatting",{
@@ -53,6 +52,6 @@ io.sockets.on('connection',(socket)=>{
     })
 })
 
-app.listen(3000,()=>{
+server.listen(3000,()=>{
     console.log(`server 3000 start`)
 })
