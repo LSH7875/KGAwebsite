@@ -9,6 +9,8 @@ router.get("/:group/:board/",mainController.list);
 router.get("/:group/:board/modify",mainController.modify);
 router.post("/:group/:board/modify",mainController.modify_post);
 router.get("/:group/:board/delete",mainController.delete_board);
+router.get("/:group/:board/view",mainController.viewer);
+
 router.get('/', mainController.main);
 
 module.exports = router;

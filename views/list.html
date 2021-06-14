@@ -7,15 +7,16 @@
         <th>조회수</th>
     </tr>
     {% for item in title %}
-    <tr><td>{{item.id}}</td>
-        <td><a href="./view?idx={{item.id}}">{{item.subject}}</a></td>
+    <tr>
+        <td>{{item.id}}</td>
+        <td><a href="/{{group}}/{{board}}/view?id={{item.id}}">{{item.title}}</a></td>
         <td>{{item.nickname}}</td>
         <td>{{item.date}}</td>
-        <td>{{item.hit}}</td>
+        <td>{{item.hits}}</td>
     </tr>
     {% endfor %}
 </table>
-<a href="/community/review/write">글쓰기</a>
+<a href="/{{group}}/{{board}}/write">글쓰기</a>
 
 <ul class="pagenation">
 <li>&lt</li>

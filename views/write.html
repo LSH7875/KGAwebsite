@@ -3,6 +3,7 @@
 
 {% if modify ==1 %}
 <form action="/{{group}}/{{board_uri}}/modify" method = "post">
+    <input type="text" name = "id" class = "id" value = "{{id}}">
 {% else %}
 <form action="/{{group}}/{{board_uri}}/write" method = "post">
 {% endif %}
