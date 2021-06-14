@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "popup">
+        정말로 삭제하시겠습니까?
+        <a href="/community/review/delete?id={{id}}">네</a>
+        <a href="/community/review/view?id={{id}}}">아니요</a>
+    </div>
+
+    <div>{{item.subject}}</div>
+    <div>{{item.nickname}}</div>
+    <div>{{item.contents}}</div>
+    <a href="/community/review">목록</a>
+    {% if user_id == cookie_user_id%}
+    <a href="/community/review/modify?id={{item.id}}">수정</a>
+    <p class="delete">삭제</p>
+    {% endif%}
+</body>
+</html>

@@ -2,10 +2,22 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('board', {
     user_id: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    board_number: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    title: {
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     nickname: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    nickname2: {
       type: DataTypes.STRING(50),
       allowNull: false
     },
@@ -15,20 +27,22 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: Sequelize.Sequelize.fn('current_timestamp')
     },
     contents: {
-      type: DataTypes.STRING(50),
-      allowNull: false
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
     main_image: {
       type: DataTypes.STRING(11),
-      allowNull: false,
+      allowNull: true,
     },
     hits: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:0,
     },
     show_hide: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:0,
     },
     file1: {
       type: DataTypes.STRING,

@@ -3,10 +3,23 @@ const router = express.Router();
 const communityController = require('./community.controller');
 
 //console.log('main.index');
-router.get('/notice', collegeController.notice);
-router.get('/review', collegeController.review);
-router.get('/kiStory', collegeController.kiStory);
-router.get('/kiReporter', collegeController.kiReporter);
-router.get('/kiProfessor', collegeController.kiProfessor);
+router.get('/review/write', communityController.review_write);
+router.post('/review/write', communityController.review_write_post);
+router.get('/review/modify', communityController.review_modify);
+router.post('/review/modify', communityController.review_modify_post);
+router.get('/review/', communityController.review_list);
+router.post('/review/delete',communityController.review_delete)
+
+
+
+// router.get('/notice', communityController.notice);
+// router.get('/review', communityController.review_list);
+
+// router.get('/review/modify', communityController.review_modify);
+// router.get('/review/modify', communityController.review_modify);
+// router.get('/kiStory', communityController.kiStory);
+// router.get('/kiReporter', communityController.kiReporter);
+// router.get('/kiProfessor', communityController.kiProfessor);
+
 
 module.exports = router;
