@@ -17,7 +17,6 @@ btn.addEventListener("click",()=>{
     socket.emit("chatting",param)
 })
 
-
 socket.on("chatting",(data)=>{ 
     console.log(data)
     const { name, msg, time } = data;
@@ -38,7 +37,7 @@ function li_model(name, msg, time){
             <span class="user">${this.name}</span>
             <img src="./경일이.png" alt="">
         </span>
-        <span class="message">${this.msg}</span              
+        <span class="message">${this.msg}</span>              
         <span class="time">${this.time}</span>`;
         li.innerHTML = dom;
         chatting_list.appendChild(li)
