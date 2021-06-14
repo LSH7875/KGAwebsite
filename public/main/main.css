@@ -786,3 +786,17 @@
     padding: 5px;
     box-sizing: border-box; 
 }
+
+#talk_btn > iframe{
+    cursor: pointer;
+    position: fixed;
+    bottom: 3vh;
+    right: 3vw;
+    width: 400px;
+    height: 600px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    float: right;
+    padding: 5px;
+    box-sizing: border-box; 
+}
