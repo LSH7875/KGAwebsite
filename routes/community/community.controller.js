@@ -138,4 +138,5 @@ async function postWrite(uid,boardnum,title,contents,name,mod,boardid){
             user_id:uid,board_number:boardnum,title,nickname,nickname2,contents})
     }  
 }
-module.exports = {review_write,review_write_post,review_modify,review_modify_post,review_list,review_delete,}//notice, review, kiStory, kiReporter, kiProfessor,};
+module.exports = {review_write,review_write_post,review_modify,review_modify_post,review_list,review_delete,}
+//notice, review, kiStory, kiReporter, kiProfessor,};

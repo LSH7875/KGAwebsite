@@ -16,7 +16,7 @@ function initModels(sequelize) {
   var mainvideo = _mainvideo(sequelize, DataTypes)
   var popup = _popup(sequelize, DataTypes)
   var group = _group(sequelize, DataTypes)
-  var form = form(sequelize, DataTypes)
+  var form = _form(sequelize, DataTypes)
 
   return {
     user,board,board_manage,curriculum,mainvideo,popup,group,form

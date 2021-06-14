@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(express.static('image'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.set('view engine','html');

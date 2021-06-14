@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
   }, {
     sequelize,
+    timestamps: true,
     tableName: 'group'
   });
 };

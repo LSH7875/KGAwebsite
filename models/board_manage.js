@@ -23,8 +23,8 @@ module.exports = function(sequelize, DataTypes) {
     read_authority: {
       type: DataTypes.INTEGER(1),
       allowNull: false,
-      DefaultValue:-1
-    },
+      DefaultValue:'-1'
+      },
     write_authority: {
       type: DataTypes.INTEGER(1),
       allowNull: false,
