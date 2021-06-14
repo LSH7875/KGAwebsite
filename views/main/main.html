@@ -10,6 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KGA</title>
     <link rel="stylesheet" href="/main/main.css">
+    <script type="text/javascript">
+        function do_chat(){
+            const chat = document.getElementById("chat");
+            if(chat.style.display == 'none'){
+                chat.style.display = 'block';
+            }      
+        }
+        function chat_close(){
+            const chat = document.getElementById("chat");
+            chat.style.display = 'none';
+            }
+        </script>
 </head>
 <body>
     <div id="wrap">
@@ -50,7 +62,6 @@
                     <li class="nav_join"><a href="/user/login">로그인</a></li>
                     <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
                 </ul>
-                
                 <!-- <video autoplay controls loop muted preload="auto">
                 지원되지 않는 브라우저입니다.
                 <source src="/main_vidieo_tester.mp4" type="video/mp4">
@@ -85,10 +96,6 @@
                      <a>머 어쩌구 저쩌구 귀여운 야옹이 야옹이 귀여워 루루루룰ㄹ</a></h2>
             </div>
         </div>
-
-        
-            
-        
         <div id="curriculum">
             <div id="class_game">
                 <div class="class_section1">
@@ -251,8 +258,8 @@
                 Copyright © 2016. Kyungil Technical College. All rights reserved.
             </div>
         </div>
-        <div id="talk_btn">
-            ^-^
-        </div>
+        <a href="javascript:do_chat();" id="talk_btn">
+            <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
+        </a>
 </body>
 </html>
