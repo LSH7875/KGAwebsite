@@ -11,8 +11,7 @@ const nunjucks = require('nunjucks');
 const {sequelize} = require('./models');
 const bodyParser = require('body-parser');
 const cookieParser= require('cookie-parser');
-const moment = require('moment')
-
+const moment = require('moment');
 
 app.use(cookieParser());
 
