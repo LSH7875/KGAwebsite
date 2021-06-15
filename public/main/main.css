@@ -753,9 +753,7 @@
     width: 80px;
     height: auto;
     display: inline-block;
-    float: left;
     margin: 10px 60px;
-    
 }
 
 #footer>ul>li{
@@ -782,7 +780,7 @@
     background: rgb(0,100,255);
     color: #ededed;
     float: right;
-    font-size: 30px;
+    font-size: 15px;
     padding: 5px;
     box-sizing: border-box; 
 }
