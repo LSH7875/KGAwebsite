@@ -5,6 +5,8 @@ var _board_manage = require("./board_manage")
 var _curriculum = require("./curriculum")
 var _mainvideo = require("./mainvideo")
 var _popup = require("./popup")
+var _group = require("./group")
+var _form = require("./form")
 
 function initModels(sequelize) {
   var user = _user(sequelize, DataTypes);
@@ -13,9 +15,11 @@ function initModels(sequelize) {
   var curriculum = _curriculum(sequelize, DataTypes)
   var mainvideo = _mainvideo(sequelize, DataTypes)
   var popup = _popup(sequelize, DataTypes)
+  var group = _group(sequelize, DataTypes)
+  var form = _form(sequelize, DataTypes)
 
   return {
-    user,board,board_manage,curriculum,mainvideo,popup
+    user,board,board_manage,curriculum,mainvideo,popup,group,form
   };
 }
 module.exports = initModels;
