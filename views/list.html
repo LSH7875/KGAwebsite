@@ -1,3 +1,6 @@
+<h1>{{group}}</h1>
+<h2>{{board}}</h2>
+
 <table>
     <tr>
         <th>번호</th>
@@ -17,18 +20,59 @@
     {% endfor %}
 </table>
 <a href="/{{group}}/{{board}}/write">글쓰기</a>
-
+<button class="down_page">&lt</button>
 <ul class="pagenation">
-<li>&lt</li>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-<li>4</li>
-<li>5</li>
-<li>6</li>
-<li>7</li>
-<li>8</li>
-<li>9</li>
-<li>10</li>
-<li>&gt</li>
+<li><a href="./{{board}}?page=1">1</a></li>
+<li><a href="./{{board}}?page=2">2</a></li>
+<li><a href="./{{board}}?page=3">3</a></li>
+<li><a href="./{{board}}?page=4">4</a></li>
+<li><a href="./{{board}}?page=5">5</a></li>
+<li><a href="./{{board}}?page=6">6</a></li>
+<li><a href="./{{board}}?page=7">7</a></li>
+<li><a href="./{{board}}?page=8">8</a></li>
+<li><a href="./{{board}}?page=9">9</a></li>
+<li><a href="./{{board}}?page=10">10</a></li>
 </ul>
+<button class="up_page">&gt</button>
+<script type ="text/javascript">
+let page_up = document.querySelector('.up_page');
+let page_down = document.querySelector('.down_page');
+let page = document.querySelectorAll('.pagenation>li');
+let page_flag=0;
+let page_num=1;
+
+
+page_down.addEventListener('click',()=>{
+
+    if(page_flag==0){return 0;}
+    else{
+        let h2 = document.querySelector('h2');
+        page_flag--;
+        let i=1;
+        page.forEach(e=>{
+            aa =parseInt(page_flag*10+i);+"</a>";
+            e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+            i++;
+        })
+    }
+})
+// window.addEventListener('DOMContenetLoaded',init);
+// function init(){
+//     for(i=1;i>=10;i++){
+//         page[i].innerHTML = "<a href=./"+h2.value+"?page="+i+">"+i+"</a>";
+//     }
+// }
+// init();
+page_up.addEventListener('click',()=>{
+    let h2 = document.querySelector('h2');
+    page_flag++;
+    let i=1;
+    page.forEach(e=>{
+        aa =parseInt(page_flag*10+i);+"</a>";
+        e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+        i++;
+    })
+})
+
+
+</script>

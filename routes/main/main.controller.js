@@ -1,5 +1,8 @@
 const { idChk } = require("../user/user.controller");
 const {board,user,board_manage} = require('../../models/index');
+//const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
+
+
 
 let bbb={board,user,board_manage}
 
@@ -63,6 +66,7 @@ let modify_post =async(req,res)=>{
 }
 
 let list = async(req,res)=>{
+    console.log(listfn);
     let {board,group} = req.params;
     let {page} = req.query || 1;
     await listfn(board,page)
