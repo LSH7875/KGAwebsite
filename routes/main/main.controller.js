@@ -1,10 +1,15 @@
 const { idChk } = require("../user/user.controller");
 const {board,user,board_manage} = require('../../models/index');
+const {Op} = require('sequelize');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
 
 
 
-let bbb={board,user,board_manage}
+//let bbb ={board,user,board_manage}
+// ccc = {user_id,contents,title,nickname};
+
+
+
 
 let main = (req,res)=>{
     res.render('./main/main.html');
@@ -66,16 +71,22 @@ let modify_post =async(req,res)=>{
 }
 
 let list = async(req,res)=>{
-    console.log(listfn);
+    
     let {board,group} = req.params;
     let {page} = req.query || 1;
-    await listfn(board,page)
+    let {keyfield,keystring}=req.query;
+
+    await listfn(board,page,keyfield,keystring)
     .then(async(aa) =>{
-        res.render('./list',{
-            title:aa,group,board,
+        console.log('then1');
+            res.render('./list',{
+        title:aa,group,board,
         })
-    });
+    })
 }
+
+    
+
 
 
 
@@ -127,25 +138,85 @@ async function postDelete(boardid){
     })
 }
 
-async function listfn(name,page){
+
+/////여기가 바로 리스트이다.///
+
+async function listfn(name,page,keyfield,keystring){
     let boardId;
     let num=page || 1;
-    console.log('nym,',typeof num);
-
     let result = await board_manage.findOne({
         where:{board_uri:name}
     })
-
+    let rst;
+    console.log('result값까지 구함...',result);
     console.log(result.id);
     boardId = result.id;
-
-    let rst= await board.findAll({
-        where:{board_number:boardId},
-        order:[['id','DESC']],
-        limit:10,
-        offset:10*(num-1)
-
-    })
+////토탈이 되어 있을 때....
+    if(keyfield=='total'){
+        console.log
+        rst = await board.findAll({
+            where:{board_number:boardId,
+                    [Op.or]:[
+                        {
+                        user_id:{[Op.like]:`%${keystring}%`}
+                        },{                        
+                        title:{[Op.like]:`%${keystring}%`}
+                        },{
+                        nickname:{[Op.like]:`%${keystring}%`}
+                        },{
+                        contents:{[Op.like]:`%${keystring}%`}
+                        }
+                        ]},
+            order:[['id','DESC']],
+            limit:10,
+            offset:10*(num-1)
+        })
+    }else{
+    //토탈이 안 되어 있을 때
+        if(keyfield=='user_id'){
+            rst = await board.findAll({
+                where:{board_number:boardId, user_id:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }
+        else if(keyfield=='title'){
+            rst = await board.findAll({
+                where:{board_number:boardId, title:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }
+        else if(keyfield=='nickname'){
+            rst = await board.findAll({
+                where:{board_number:boardId, nickname:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }
+        else if(keyfield=='contents'){
+            rst = await board.findAll({
+                where:{board_number:boardId, contents:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }else{
+            console.log('이거 찍혀야 한다구...')
+            rst = await board.findAll({
+                where:{board_number:boardId},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            }) 
+        }
+    }
+    console.log('이것이 rst이다');
+    console.log(rst);
+    console.log('어디로 가는가');
     return rst;
 }
 
