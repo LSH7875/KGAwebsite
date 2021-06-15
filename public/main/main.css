@@ -19,7 +19,7 @@
 
 
 /* =================================================================================== */
-/* =========================================================================================== */
+/* =================================================================================== */
 
 *{
     list-style: none;
@@ -244,12 +244,13 @@
     text-align: center;
     display: inline-block;
     margin-left: -160px;
+    height: 890px;
 }
 
 #class_game>ul{
     display: inline-block;
     width: 400px;
-    height: 600px;
+    height: 620px;
     border-radius: 30px;
     background: rgb(239, 245, 255);
     font-size: 24px;
@@ -257,7 +258,8 @@
     font-family: 'LotteMartDream';
     padding: 24px;
     box-sizing: border-box;
-    box-shadow: 5px 5px 5px -2px #ededed ;
+    box-shadow: 5px 5px 5px -2px rgb(0, 0, 0,.2) ;
+    /* box-shadow:1px 1px 8px rgba(0,0,0,.4); */
     margin-left: 160px;
     margin-top: 60px;
 }
@@ -337,7 +339,8 @@
     font-family: 'LotteMartDream';
     padding: 24px;
     box-sizing: border-box;
-    box-shadow: 5px 5px 5px -2px #ededed ;
+    /* box-shadow: 5px 5px 5px -2px #ededed ; */
+    box-shadow: 5px 5px 5px -2px rgb(0, 0, 0,.2) ;
     margin-left: 160px;
     
 }
