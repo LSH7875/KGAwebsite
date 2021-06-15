@@ -4,6 +4,8 @@ const adminController = require('./admin.controller');
 
 router.get('/academy_int',adminController.academy_int);
 router.get('/admin_list',adminController.admin_list);
+router.post('/admin_list',adminController.admin_list);
+router.get('/admin_list_modify',adminController.admin_list_modify);
 router.get('/admin_login',adminController.admin_login);
 router.get('/board_manage',adminController.board_manage);
 router.get('/board_modify',adminController.board_modify);

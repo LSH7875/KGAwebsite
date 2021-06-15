@@ -100,7 +100,7 @@ ul,li{
 
 }
 .sent .message{
-    background-color: rgb(191, 212, 243);
+    background-color: rgba(0, 153, 255, 0.356);
 }
 
 .received .message{
