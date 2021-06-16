@@ -77,13 +77,10 @@ let loginPost = async(req,res)=>{
             res.cookie('user_id',user_id)
             res.redirect(`/?${user_id}`);
         }
-
     }catch(e){
         console.log(e);
     }
 }
-
-
 let logout = (req,res)=>{
     res.clearCookie('AccessToken');
     res.redirect('/?msg=로그아웃되었습니다.');

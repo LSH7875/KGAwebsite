@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     popup_type: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER(1),
       allowNull: false,
     },
     title: {

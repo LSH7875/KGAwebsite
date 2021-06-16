@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/admin/admin_login.css">
 </head>
 <body>
-    <div id="background">
+    <form action="/admin/admin_login" method="post" id="background">
         <div id="login_box">
             <div id="login_info">
                 <img id="administrator" src="/Administrator.png">
@@ -17,10 +17,10 @@
                 안녕하세요, 관리자페이지입니다!<br>
                 로그인을 하시려면 아이디와 비밀번호를 입력하세요
             </div>
-            <input type="text" id="admin_id" placeholder="아이디를 입력해주세요">
-            <input type="password" id="admin_password" placeholder="비밀번호를 입력해주세요">
+            <input type="text" id="admin_id" name="admin_id" placeholder="아이디를 입력해주세요">
+            <input type="password" id="admin_password" name="admin_pw" placeholder="비밀번호를 입력해주세요">
             <button>Login</button>
         </div>
-    </div>
+    </form>
 </body>
 </html>
