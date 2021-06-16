@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>경일게임아카데미</title>
-    <link rel="stylesheet" href="/main/main.css">
-    {% block sytle %}
+    <link rel="stylesheet" href="/main/main_copy.css">
+    {% block style %}
     {% endblock %}
 </head>
 <body>
@@ -14,11 +14,11 @@
         <div id="main_nav">
             <a href="/"><img id="nav_logo" src="/KGA_LOGO_WHITE.png"></a>
             <ul id="nav_main_list">
-                {% for item in navi %}
-                <li class="nav_bar"><a href="#"> {{navi.group_name}} </a>
+                {% for item in navi %} 
+                <li class="nav_bar"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
                     <ul class="nav_sub_list intro_sub">
-                        {% for item in subnavi1 %}
-                        <li><a href="#">{{subnavi.board_name}}</a></li>
+                        {%for mmm in item.board %}
+                        <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -27,14 +27,9 @@
                 <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
             </ul>
         </div>
-    {% block sub%}
-    {% endblock %}
-    {% block pagename %}
-    {% endblock %} 
     {% block content %}
     {% endblock %}
 </div>
-    {% block script %}
-    {% endblock %}
+<script type = "text/javascript" src="/main/main.js"></script>
 </body>
 </html>

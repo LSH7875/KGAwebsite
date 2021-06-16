@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `board_manage` (
 -- 테이블 데이터 kga.board_manage:~17 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `board_manage` DISABLE KEYS */;
 INSERT INTO `board_manage` (`id`, `group`, `board_uri`, `board_title`, `preview`, `read_authority`, `write_authority`, `form`, `file`, `show_hide`) VALUES
-	(1, 1, 'introduction', 'introduction', 0, -1, 3, 2, 0, 1),
+	(1, 1, 'introduction', '학원소개', 0, -1, 3, 2, 0, 1),
 	(2, 1, 'history', '연혁', 0, -1, 3, 2, 0, 1),
 	(3, 1, 'teachers', '교직원소개', 0, -1, 3, 2, 0, 1),
 	(4, 1, 'interior', '시설소개', 0, -1, 3, 2, 0, 1),

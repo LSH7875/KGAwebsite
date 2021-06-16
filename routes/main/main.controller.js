@@ -71,7 +71,8 @@ let modify_post =async(req,res)=>{
 }
 
 let list = async(req,res)=>{
-    
+    console.log('템플릿값');
+    console.log(req.navi);
     let {board,group} = req.params;
     let {page} = req.query || 1;
     let {keyfield,keystring}=req.query;
@@ -94,6 +95,9 @@ let list = async(req,res)=>{
 
 
 let viewer = async(req,res)=>{
+    // console.log('templete');
+    // console.log(req.templete);
+    // console.log('templete end');
     let {group}=req.params;
     let board2= req.params.board;
     let id = req.query.id;
