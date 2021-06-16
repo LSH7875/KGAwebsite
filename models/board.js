@@ -1,9 +1,7 @@
 const Sequelize = require('sequelize');
 const { board } = require('.');
 module.exports = function(sequelize, DataTypes) {
-<<<<<<< HEAD
-  var board = sequelize.define('board', {
-=======
+
   return sequelize.define('board', {
     id: {
       autoIncrement: true,
@@ -11,7 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
->>>>>>> d00e59cde4b4e6bfd753d581a8d9eb6931bc3b59
     user_id: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -93,15 +90,5 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-<<<<<<< HEAD
-  board.associtate = function(models){
-    board.belongsTo(models.group,{
-      foreignKey:"group",
-      targetKey:'id'
-    })
-  }
-  return board;
+
 };
-=======
-};
->>>>>>> d00e59cde4b4e6bfd753d581a8d9eb6931bc3b59
