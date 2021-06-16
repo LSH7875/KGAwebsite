@@ -1,5 +1,5 @@
 const { idChk } = require("../user/user.controller");
-const {board,user,board_manage} = require('../../models/index');
+const {board,user,board_manage,popup} = require('../../models/index');
 const {Op} = require('sequelize');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
 
@@ -11,8 +11,14 @@ const {Op} = require('sequelize');
 
 
 
-let main = (req,res)=>{
-    res.render('./main/main.html');
+let main = async(req,res)=>{
+    let pop = await popup.findAll();
+    console.log(pop.popup);
+    res.render('./main/main.html',{
+        pop:pop
+    });
+    
+    
 }
 
 let write = async(req,res)=>{
