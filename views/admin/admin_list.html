@@ -42,20 +42,6 @@
     </div>
     <div id="main_con">
         <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
-        <div>
-            <div id="search">
-                검색조건
-                <select name="search_option" id="search_option">
-                    <option value="이름">이름</option>
-                    <option value="아이디">아이디</option>
-                    <option value="닉네임">닉네임</option>
-                    <option value="Email">E-mail</option>
-                </select>
-                <input type="text" placeholder=" 검색어를 입력해주세요 ">
-                <button>검색</button>
-            </div>
-            <button>선택항목삭제</button>
-        </div>
         <div id="contents">
             <table>
                 <thead>
@@ -65,20 +51,32 @@
                         <th>이름</th>
                         <th>닉네임</th>
                         <th>E-mail</th>
+                        <th>핸드폰번호</th>
+                        <th>성별</th>
+                        <th>생일</th>
+                        <th>회원등급</th>
                         <th>가입일</th>
+                        <th>가입경로</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for user in user %}
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{user.id}}</td>
+                        <td>{{user.user_id}}</td>
+                        <td>{{user.user_name}}</td>
+                        <td>{{user.nickname}}</td>
+                        <td>{{user.user_email}}</td>
+                        <td>{{user.user_phone}}</td>
+                        <td>{{user.user_sex}}</td>
+                        <td>{{user.user_birth}}</td>
+                        <td>{{user.user_grade}}</td>
+                        <td>{{user.user_day}}</td>
+                        <td>{{user.social}}</td>
                         <td><button onclick="location.href='/admin/admin_list_modify'">수정</button><button>삭제</button></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
