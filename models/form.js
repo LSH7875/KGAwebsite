@@ -13,10 +13,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-<<<<<<< HEAD
-    timestamps: false,
-    tableName: 'form'
-=======
     tableName: 'form',
     timestamps: false,
     indexes: [
