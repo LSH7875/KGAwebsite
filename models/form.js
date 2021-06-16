@@ -25,6 +25,5 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
     ]
->>>>>>> d00e59cde4b4e6bfd753d581a8d9eb6931bc3b59
   });
 };
