@@ -1,33 +1,40 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('popup', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
     show_hide: {
-      type: DataTypes.INTEGER(1),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     popup_width: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     popup_height: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     popup_left: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     popup_top: {
-      type: DataTypes.INTEGER(10),
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     popup_type: {
       type: DataTypes.INTEGER(1),
       allowNull: false,
+
     },
     title: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: false
     },
     image_file: {
       type: DataTypes.STRING(1000),
@@ -38,16 +45,26 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     link_type: {
-      type: DataTypes.INTEGER(1),
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     hide_term: {
-      type: DataTypes.INTEGER(1),
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
     tableName: 'popup',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
   });
 };
