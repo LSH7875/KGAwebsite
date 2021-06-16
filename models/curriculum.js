@@ -1,6 +1,12 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('curriculum', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
     cur_title: {
       type: DataTypes.STRING(50),
       allowNull: false
@@ -19,32 +25,41 @@ module.exports = function(sequelize, DataTypes) {
     },
     cur_start: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
     cur_end: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: false
     },
     cur_info: {
       type: DataTypes.TEXT,
-      allowNull: false,
-      defaultValue: 1
+      allowNull: false
     },
     file1: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: true
-      },
+    },
     file2: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: true
     },
     file3: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
     sequelize,
     tableName: 'curriculum',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
   });
 };
