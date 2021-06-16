@@ -1,9 +1,6 @@
 const Sequelize = require('sequelize');
 const { group } = require('.');
 module.exports = function(sequelize, DataTypes) {
-<<<<<<< HEAD
-  var group= sequelize.define('group', {
-=======
   return sequelize.define('group', {
     id: {
       autoIncrement: true,
@@ -11,7 +8,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
->>>>>>> d00e59cde4b4e6bfd753d581a8d9eb6931bc3b59
     group_name: {
       type: DataTypes.STRING(100),
       allowNull: false
