@@ -10,6 +10,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KGA</title>
     <link rel="stylesheet" href="/main/main.css">
+<!-------------------------------팝업용 css---------------------------------------->
+    <style>
+        .modal{
+            display:none;
+        }
+        .show_modal{
+            display:block;
+            -ms-overflow-style: none;
+        }
+        .show_modal::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<!-------------------------------채팅용 자바스크립트---------------------------------------->
     <script type="text/javascript">
         function do_chat(){
             const chat = document.getElementById("chat");
@@ -21,9 +35,15 @@
             const chat = document.getElementById("chat");
             chat.style.display = 'none';
             }
-        </script>
+    </script>
 </head>
 <body>
+    {% for popup in pop %}
+    <div class="modal" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px; position:absolute; z-index: 9999">
+        <button onclick=btn_() id="test" style="position:absolute; right:0;">X</button>
+        <a href="{{popup.URL}}" style="border:0;"><img src="/강아지1.jpg" alt="" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px;"></a>
+    </div>
+    {% endfor %}
     <div id="wrap">
         <div id="main_video">
             <div id="main_nav">
@@ -70,7 +90,6 @@
             <div class="dark"></div>
             <video src="./main_video.mp4" autoplay loop muted></video>
         </div>
-    
         <div id="PR_section">
             <div id="PR_intro"><h1> Kyungil Game Academy</h1></div>
             <div class="PR first">
@@ -94,6 +113,10 @@
                 <img id="PR_img" src="/홍보용4.jpeg">
                 <h2>경일 아카데미에 야옹이도 있었으면<br/>
                      <a>머 어쩌구 저쩌구 귀여운 야옹이 야옹이 귀여워 루루루룰ㄹ</a></h2>
+                        {% for popup in popup %}
+                        {{popup.popup_width}}
+                        {% endfor %}
+
             </div>
         </div>
         <div id="curriculum">
@@ -262,5 +285,31 @@
             문의하기
             <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
         </a>
+<!------------------팝업용 자바스크립트---------------------------------------->
+        <script>
+            var modalbtn = document.getElementById('test');
+            var modal = document.querySelector('.modal');
+    
+            function showmodal(){
+                modal.classList.remove("modal");
+                modal.classList.add("show_modal");
+            }
+    
+            function hidemodal(){
+                modal.classList.remove("show_modal");
+                modal.classList.add("modal");
+            }
+    
+            function btn_(){
+                console.log(modal.className)
+                if(modal.className == "show_modal"){
+                    hidemodal();
+                } else {
+                    showmodal();
+                }
+            }
+            // btn.addEventListener('click',btn_())
+            modalbtn.click();
+        </script>
 </body>
 </html>

@@ -23,6 +23,11 @@ let admin_list=async(req,res)=>{
             user_grade:4
         }
     });
+
+    // let admin_id = await user.findOne({
+    //     where:{user_id:admin_id}
+    // });
+
     console.log(aa);
     res.render('./admin/admin_list',{
         user:aa

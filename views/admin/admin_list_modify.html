@@ -25,7 +25,7 @@
             <b>[관리자모드]</b>
             <div>
                 최고관리자
-                dddd
+                ddd
                 로그인시각
                 <button>로그아웃</button>
             </div>
@@ -78,7 +78,7 @@
                     {% for user in user %}
                     <form action="/admin/admin_list_modify" id="contents" method="POST">
                     <tr>
-                        <td>{{user.id}}<span class="hidden"><input type="text" name = "id" value = "{{user.id}}"></span></td>
+                        <td>{{user.id}}<span style="display:none"><input type="text" name = "id" value = "{{user.id}}"></span></td>
                         <td>{{user.user_id}}</td>
                         <td>{{user.user_name}}</td>
                         <td>{{user.nickname}}</td>
