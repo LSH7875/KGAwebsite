@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
+const { group } = require('.');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('group', {
+  var group= sequelize.define('group', {
     group_name: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -11,7 +12,14 @@ module.exports = function(sequelize, DataTypes) {
     },
   }, {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     tableName: 'group'
   });
+  group.associate = function (models){
+    group.hasMany(models.board,{
+      foreignKey: 'group',
+      sourceKey:'id',
+    })
+  }
+  return group;
 };

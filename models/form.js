@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     tableName: 'form'
   });
 };

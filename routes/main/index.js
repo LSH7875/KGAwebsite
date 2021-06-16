@@ -3,7 +3,9 @@ const router = express.Router({mergeParams: true});
 const mainController = require('./main.controller');
 const readChk = require('../../middleware/readCheck');
 const writeChk = require('../../middleware/writeCheck');
+const practice = require('../../practice');
 
+router.get("/practice",practice);
 router.get("/:group/:board/view", readChk ,mainController.viewer);
 router.get("/:group/:board/write",writeChk,mainController.write);
 router.post("/:group/:board/write",mainController.write_post);
