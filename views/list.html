@@ -34,6 +34,18 @@
 <li><a href="./{{board}}?page=10">10</a></li>
 </ul>
 <button class="up_page">&gt</button>
+<form action="./" method="get">
+<select name = "keyfield" id = "keyfield">
+    <option value= "total">전체</option>
+    <option value= "title">제목</option>
+    <option value= "nickname">닉네임</option>
+    <option value= "user_id">아이디</option>
+    <option value= "contents">내용</option>
+</select>
+<input type="text" name = "keystring">
+
+<input type = "submit" value="검색">
+</form>
 <script type ="text/javascript">
 let page_up = document.querySelector('.up_page');
 let page_down = document.querySelector('.down_page');
