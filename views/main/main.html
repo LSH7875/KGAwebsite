@@ -38,12 +38,14 @@
     </script>
 </head>
 <body>
+<!--빨간줄 무시해주세요!!! html이 원래 쓰는 방식에서 벗어난거긴 한데 작동은 됨!!! 교수님이 빨간줄 무시하라고 하심!!!!!!!!!!!-->
     {% for popup in pop %}
     <div class="modal" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px; position:absolute; z-index: 9999">
         <button onclick=btn_() id="test" style="position:absolute; right:0;">X</button>
         <a href="{{popup.URL}}" style="border:0;"><img src="/강아지1.jpg" alt="" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px;"></a>
     </div>
     {% endfor %}
+<!--빨간줄 무시해주세요!!! html이 원래 쓰는 방식에서 벗어난거긴 한데 작동은 됨!!! 교수님이 빨간줄 무시하라고 하심!!!!!!!!!!!-->
     <div id="wrap">
         <div id="main_video">
             <div id="main_nav">

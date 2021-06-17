@@ -42,11 +42,12 @@
     <div id="main_con">
         <div id="con_header"><img src="/관리자이미지.png"><div>팝업관리 입력/수정</div></div>
         <button>게시판생성관리목록</button>
-        <form action="/admin/popup_make" method="POST" id="board_modify">
+        <form action="/admin/popup_modify" method="POST" id="board_modify">
             <table>
+                {% for popup in popup %}
                 <thead>
                     <tr>
-                        <th colspan="3">게시판 항목 생성하기(하나의 테이블을 이용합니다)</th>
+                        <th colspan="3">게시판 항목 생성하기(하나의 테이블을 이용합니다)</th> <input style="display: none; "type="text" name="id" value="{{popup.id}}">
                     </tr>
                 </thead>
                 <tbody>
@@ -61,11 +62,11 @@
                     </tr>
                     <tr>
                         <td>팝업창 크기</td>
-                        <td class="left">가로 <input type="text" name="width"> x 세로 <input type="text" name="height"></td>
+                        <td class="left">가로 <input type="text" name="width" value="{{popup.popup_width}}"> x 세로 <input type="text" name="height" value="{{popup.popup_height}}"></td>
                     </tr>
                     <tr>
                         <td>팝업창 위치</td>
-                        <td class="left">왼쪽에서 <input type="text" name="from_left">  위에서 <input type="text" name="from_top"></td>
+                        <td class="left">왼쪽에서 <input type="text" name="from_left" value="{{popup.popup_left}}">  위에서 <input type="text" name="from_top" value="{{popup.popup_top}}"></td>
                     </tr>
                     <tr>
                         <td>팝업형태</td>
@@ -77,13 +78,13 @@
                     <tr>
                         <td>타이틀</td>
                         <td class="left">
-                            <input type="text" class="inputbox" placeholder=" 타이틀을 입력해주세요" name="title">
+                            <input type="text" class="inputbox" placeholder=" 타이틀을 입력해주세요" name="title"  value="{{popup.title}}">
                         </td>
                     </tr>
                     <tr>
                         <td>이미지파일</td>
                         <td class="left">
-                            <input type="file" class="inputbox" id="img_file" accept=".jpg, .jpeg, .png" name="img">
+                            <input type="file" class="inputbox" id="img_file" accept=".jpg, .jpeg, .png" name="img" value="{{popup.image_file}}">
                             <p>Select an image from your machine to read the contents of the file without using a server</p>
                             <div id="holder"></div>
                         </td>
@@ -91,7 +92,7 @@
                     <tr>
                         <td>바로가기링크</td>
                         <td class="left">
-                            <input type="text" class="inputbox" name="url" placeholder=" 바로가기 링크 삽입">
+                            <input type="text" class="inputbox" name="url" placeholder=" 바로가기 링크 삽입"  value="{{popup.URL}}">
                             
                         </td>
                     </tr>
@@ -114,8 +115,9 @@
                         </td>
                     </tr>
                 </tbody>
+                {% endfor %}
             </table>
-            <button>설정 저장하기</button>
+            <button>수정하기</button>
         </form>
     </div>
     <script>
