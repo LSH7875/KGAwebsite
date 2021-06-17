@@ -24,10 +24,12 @@ module.exports = async(req,res,next)=>{
             console.log(bb);
             board_writegrade = bb.write_authority;
         })    
-        
-    if(user_grade >= board_writegrade) next();
-    else{
-        
+       
+    if(user_grade >= board_writegrade){
+        console.log('write체크끝남'); 
+        next();
+    }else{
+        res.send('등급 조절 필요');
         //res.status(401).send("unauthenticated");
     }
 }
