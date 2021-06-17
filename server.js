@@ -30,7 +30,7 @@ nunjucks.configure('views',{
     express:app,
 })
 
-sequelize.sync({force:true})
+sequelize.sync({force:false})
 .then(()=>{
     console.log('sequelize success');
 })

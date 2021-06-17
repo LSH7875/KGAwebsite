@@ -97,18 +97,35 @@ let popup_list=async(req,res)=>{
         popup:pop,
     })
     }
+
+let popup_delete=async(req,res)=>{
+    // await popup.destroy({
+    //     where : {}
+    // })
+    res.redirect('/admin/popup_list');
+}
 let popup_modify=async(req,res)=>{
-    let pop = await popup.findAll({
-        where: {
-            id:req.query.number
-        }
-    })
-    res.render('./admin/popup_modify',{
-        popup:pop,
-    })
+    if(req.query.btn == "modify"){
+        let pop = await popup.findAll({
+            where: {
+                id:req.query.number
+            }
+        })
+        res.render('./admin/popup_modify',{
+            popup:pop,
+        })
+    } else {
+        await popup.destroy({
+            where: {
+                id:req.query.number
+            }
+        })
+        res.redirect('/admin/popup_list');
+    }
 }
 let popup_modifyPost=async(req,res)=>{
     console.log(req.body.id)
+
     await popup.update({
         show_hide: req.body.group,
         popup_width: req.body.width,
@@ -182,4 +199,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost};
+module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,popup_delete};
