@@ -90,9 +90,42 @@ let mainvideo_upload=(req,res)=>{
     res.render('./admin/mainvideo_upload')
     }
 
-let popup_list=(req,res)=>{
-    res.render('./admin/popup_list')
+let popup_list=async(req,res)=>{
+
+    let pop = await popup.findAll();
+    res.render('./admin/popup_list',{
+        popup:pop,
+    })
     }
+let popup_modify=async(req,res)=>{
+    let pop = await popup.findAll({
+        where: {
+            id:req.query.number
+        }
+    })
+    res.render('./admin/popup_modify',{
+        popup:pop,
+    })
+}
+let popup_modifyPost=async(req,res)=>{
+    console.log(req.body.id)
+    await popup.update({
+        show_hide: req.body.group,
+        popup_width: req.body.width,
+        popup_height: req.body.height,
+        popup_left: req.body.from_left,
+        popup_top: req.body.from_top,
+        popup_type:req.body.popup_type,
+        title: req.body.title,
+        image_file: req.body.img,
+        URL: req.body.url,
+        link_type: req.body.link,
+        hide_term: req.body.term
+    },{
+        where: {id:req.body.id}
+    })
+    res.redirect('/admin/popup_list');
+}
 
 let popup_make=(req,res)=>{
     res.render('./admin/popup_make')
@@ -144,8 +177,9 @@ let admin_list_modify=async(req,res)=>{
 }
 
 let admin_list_modifyPost=async(req,res)=>{
+    console.log(req.body.id)
     await user.update({user_grade:req.body.group},{where: {id:req.body.id}})
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost};
+module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost};

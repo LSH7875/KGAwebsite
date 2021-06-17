@@ -12,7 +12,6 @@
         <img src="/경일직업능력개발원.PNG">
         <div id="navi">
             <a href="/admin/admin_list">Administrator</a>
-            <a href="/admin/academy_int">시설소개</a>
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="#">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
@@ -47,33 +46,36 @@
         </div>
         <div id="contents">
             <table>
+                
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
+                        <th>번호</th>
                         <th>팝업타이틀</th>
                         <th>창크기(가로*세로)</th>
                         <th>창위치(좌측*상단)</th>
                         <th>팝업형태</th>
                         <th>보임/숨김</th>
                         <th>수정</th>
-                        <th>삭제</th>
                     </tr>
                 </thead>
+                {% for popup in popup %}
                 <tbody>
+                    <form action="/admin/popup_modify" method="GET">
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" name="number" value="{{popup.id}}" style="display:none;">{{popup.id}}</td>
+                        <td>{{popup.title}}</td>
+                        <td>{{popup.popup_width}}*{{popup.popup_height}}</td>
+                        <td>{{popup.popup_left}}*{{popup.popup_top}}</td>
+                        <td>{{popup.popup_type}}</td>
+                        <td>{{popup.show_hide}}</td>
                         <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
                     </tr>
+                    </form>
                 </tbody>
+                {% endfor %}
             </table>
-            <button id="popup_make"  onclick="location.href='/admin/popup_make'">팝업창 작성</button>
         </div>
+        <button id="popup_make" onclick="location.href='/admin/popup_make'">팝업창 작성</button>
     </div>
 </body>
 </html>

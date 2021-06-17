@@ -9,15 +9,11 @@ const {Op} = require('sequelize');
 // ccc = {user_id,contents,title,nickname};
 
 
-
-
 let main = async(req,res)=>{
     let pop = await popup.findAll();
-    console.log(pop.popup);
     res.render('./main/main.html',{
         pop:pop
     });
-    
     
 }
 
