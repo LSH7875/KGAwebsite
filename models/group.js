@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const { group } = require('.');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('group', {
     id: {
@@ -15,10 +14,14 @@ module.exports = function(sequelize, DataTypes) {
     board_uri: {
       type: DataTypes.STRING(100),
       allowNull: false
+    },
+    show_hide: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
     }
   }, {
     sequelize,
-
     tableName: 'group',
     timestamps: false,
     indexes: [

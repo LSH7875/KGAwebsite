@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `board` (
   `contents` text NOT NULL,
   `main_image` varchar(11) DEFAULT NULL,
   `hits` int(11) NOT NULL DEFAULT 0,
-  `show_hide` int(11) NOT NULL DEFAULT 0,
+  `show_hide` int(1) NOT NULL DEFAULT 1,
   `file1` varchar(255) DEFAULT NULL,
   `file2` varchar(255) DEFAULT NULL,
   `file3` varchar(255) DEFAULT NULL,
@@ -111,16 +111,17 @@ CREATE TABLE IF NOT EXISTS `group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(100) NOT NULL,
   `board_uri` varchar(100) NOT NULL,
+  `show_hide` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 kga.group:~5 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `group` DISABLE KEYS */;
-INSERT INTO `group` (`id`, `group_name`, `board_uri`) VALUES
-	(2, '교육과정', 'curriculum'),
-	(3, '취업정보', 'job'),
-	(4, '커뮤니티', 'community'),
-	(5, '상담신청', 'consulting');
+INSERT INTO `group` (`id`, `group_name`, `board_uri`,`show_hide`) VALUES
+	(2, '교육과정', 'curriculum',1),
+	(3, '취업정보', 'job',1),
+	(4, '커뮤니티', 'community',1),
+	(5, '상담신청', 'consulting',1);
 /*!40000 ALTER TABLE `group` ENABLE KEYS */;
 
 -- 테이블 kga.mainvideo 구조 내보내기
@@ -128,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `mainvideo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `main_image` varchar(1000) NOT NULL,
   `video` varchar(1000) NOT NULL,
-  `show_hide` int(1) NOT NULL,
+  `show_hide` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -139,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `mainvideo` (
 -- 테이블 kga.popup 구조 내보내기
 CREATE TABLE IF NOT EXISTS `popup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `show_hide` int(1) NOT NULL,
+  `show_hide` int(1) NOT NULL DEFAULT 1,
   `popup_width` int(10) NOT NULL,
   `popup_height` int(10) NOT NULL,
   `popup_left` int(10) NOT NULL,

@@ -28,9 +28,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     popup_type: {
-      type: DataTypes.INTEGER(1),
-      allowNull: false,
-
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     title: {
       type: DataTypes.STRING(100),
