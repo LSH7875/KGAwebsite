@@ -17,6 +17,7 @@ router.get('/interview_manage',adminController.interview_manage);
 router.get('/mainvideo_list',adminController.mainvideo_list);
 router.get('/mainvideo_upload',adminController.academy_int);
 router.get('/popup_list',adminController.popup_list);
+router.post('/popup_list',adminController.popup_delete);
 router.get('/popup_modify',adminController.popup_modify);
 router.post('/popup_modify',adminController.popup_modifyPost);
 router.get('/popup_make',adminController.popup_make);
