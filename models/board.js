@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
-const { board } = require('.');
 module.exports = function(sequelize, DataTypes) {
-
   return sequelize.define('board', {
     id: {
       autoIncrement: true,
@@ -90,5 +88,4 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-
 };

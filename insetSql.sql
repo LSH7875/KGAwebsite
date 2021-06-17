@@ -141,12 +141,12 @@ CREATE TABLE IF NOT EXISTS `group` (
 
 -- 테이블 데이터 kga.group:~5 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `group` DISABLE KEYS */;
-INSERT INTO `group` (`id`, `group_name`, `board_uri`) VALUES
-	(1, '학교소개', 'college'),
-	(2, '교육과정', 'curriculum'),
-	(3, '취업정보', 'job'),
-	(4, '커뮤니티', 'community'),
-	(5, '상담신청', 'consulting');
+INSERT INTO `group` (`id`, `group_name`, `board_uri`,`show_hide`) VALUES
+	(1, '학교소개', 'college',1),
+	(2, '교육과정', 'curriculum',1),
+	(3, '취업정보', 'job',1),
+	(4, '커뮤니티', 'community',1),
+	(5, '상담신청', 'consulting',1);
 /*!40000 ALTER TABLE `group` ENABLE KEYS */;
 
 -- 테이블 kga.mainvideo 구조 내보내기

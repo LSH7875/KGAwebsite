@@ -68,7 +68,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "group",
+        name: "board_manage_ibfk_1",
         using: "BTREE",
         fields: [
           { name: "group" },
