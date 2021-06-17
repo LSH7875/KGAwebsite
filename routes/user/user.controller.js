@@ -71,10 +71,12 @@ let loginPost = async(req,res)=>{
             console.log('login fail');
             res.redirect('/user/login?flag=0');
         }else{
+
             console.log('로그인성공');
             let ctoken = token(user_id);
             res.cookie('AccessToken',ctoken,{httponly:true, secure:true,})
-            res.cookie('user_id',user_id)
+            res.cookie('user_id',user_id);
+            res.cookie('nickname',result.nickname);
             res.redirect(`/?${user_id}`);
         }
     }catch(e){
@@ -159,8 +161,9 @@ let kakaoCB = async(req,res)=>{
         res.cookie('scope',kakaoToken.data.scope);
         res.cookie('refresh_token_expires_in',kakaoToken.data.refresh_token_expires_in);
         user_id = users.data.id;
-        res.cookie('user_id',user_id);
         nickname = users.data.kakao_account.profile.nickname;
+        res.cookie('user_id',user_id);
+        res.cookie('nickname',nickname);        
         user_email = users.data.kakao_account.email;
 
     }catch(e){
@@ -374,6 +377,9 @@ let naverCB=async(req,res)=>{
                 user_email = json.response.email;
                 user_phone=json.response.mobile.toString().replace('-','').replace('-','');
                 user_name = json.response.name;
+                console.log('user_name은',user_name);
+                res.cookie('nickname',user_name);
+                //네이버는 이름을 던져준다.
             })
 
 

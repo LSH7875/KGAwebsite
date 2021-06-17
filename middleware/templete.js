@@ -2,8 +2,12 @@ const {board,board_manage,group}=require('../models/index');
 
 module.exports = async(req,res,next)=>{
     let sss=[];
-    let boardvalue=await board_manage.findAll();
-    let groupvalue = await group.findAll();
+    let boardvalue=await board_manage.findAll({
+        where:{'show_hide':1}
+    });
+    let groupvalue = await group.findAll({
+        where:{'show_hide':1}
+    });
     let newarr3=[];
     for(i=0;i<5;i++){
         sss[i]=groupvalue[i].dataValues;
@@ -19,6 +23,8 @@ module.exports = async(req,res,next)=>{
     }
     console.log('sss');
     console.log(sss);
+    if (req.cookies.user_id){req.login=1;}
+    else{req.login=0;}
     req.navi=sss;
     return next();
 }

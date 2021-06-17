@@ -3,7 +3,8 @@ const {board,user,board_manage,popup} = require('../../models/index');
 const {Op} = require('sequelize');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
 
-
+//let {navi}=req;
+//안한 곳:modify_post
 
 //let bbb ={board,user,board_manage}
 // ccc = {user_id,contents,title,nickname};
@@ -18,15 +19,21 @@ let main = async(req,res)=>{
 }
 
 let write = async(req,res)=>{
-    console.log('write들어옴...')
+    console.log('write들어옴...');
+    console.log(req.cookies.user_id)
+    let {navi,login}=req;
+    let {nickname}=req.cookies
     let sss= req.params.board;
     // let ccc= bbb[sss];  
     let ddd= await board_manage.findOne({
                                 where:{board_uri:sss}
                             })
     console.log(ddd);
+    console.log('navi');
+    console.log(req.navi);
+    console.log('-------navi---------')
     res.render('./write',
-    {
+    {   nickname,navi,login,
         modify:0,
         group:req.params.group,
         board_uri:req.params.board,
@@ -44,17 +51,19 @@ let write_post = async(req,res)=>{
     let {user_id} = req.cookies;
     // console.log('writepost_nickname',nickname)//여기까진 성공
     postWrite(user_id,ddd.id,title,contents);
-    res.redirect('/community/review');
+    res.redirect('/community/review/');
 }
 ////여기까지 성공
 let modify = async(req,res)=>{
+    let {navi,login}=req;
+    let {nickname}=req.cookies
     let modnum = req.query.id;
     let {group,board} = req.params;
     await getModify(modnum)
     .then(aaa=>{
         console.log('res');
         console.log(aaa.title);
-        res.render('./write',{id:modnum,modify:1,title:aaa.title,contents:aaa.contents,group,board_uri:board
+        res.render('./write',{nickname,login,navi,id:modnum,modify:1,title:aaa.title,contents:aaa.contents,group,board_uri:board
     })
     }
     )
@@ -74,6 +83,10 @@ let modify_post =async(req,res)=>{
 }
 
 let list = async(req,res)=>{
+    console.log('쿠키값')
+    console.log(req.login)
+    let {navi,login}=req;
+    let {nickname}=req.cookies
     console.log('템플릿값');
     console.log(req.navi);
     let {board,group} = req.params;
@@ -84,7 +97,7 @@ let list = async(req,res)=>{
     .then(async(aa) =>{
         console.log('then1');
             res.render('./list',{
-        title:aa,group,board,
+        nickname,login,navi,title:aa,group,board,
         })
     })
 }
@@ -101,7 +114,9 @@ let viewer = async(req,res)=>{
     // console.log('templete');
     // console.log(req.templete);
     // console.log('templete end');
+    let {navi,login}=req;
     let {group}=req.params;
+    let {nickname}=req.cookies
     let board2= req.params.board;
     let id = req.query.id;
     let userid=req.cookies.user_id;
@@ -120,7 +135,7 @@ let viewer = async(req,res)=>{
     await board.update({hits,},{where:{id,}});
 
     res.render('./view',{
-        id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,
+        nickname,login,navi,id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,
     })
 
     
