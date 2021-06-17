@@ -1,4 +1,4 @@
-const {user,popup}=require('../../models/index') ;
+const {user,popup,mainvideo}=require('../../models/index') ;
 let express=require('express');
 let app = express();
 require('dotenv').config();
@@ -82,12 +82,25 @@ let interview_manage=(req,res)=>{
     res.render('./admin/interview_manage')
     }
 
-let mainvideo_list=(req,res)=>{
-    res.render('./admin/mainvideo_list')
+let mainvideo_list=async(req,res)=>{
+    let video = await mainvideo.findAll();
+    res.render('./admin/mainvideo_list',{
+        mainvideo: video,
+    })
     }
 
 let mainvideo_upload=(req,res)=>{
     res.render('./admin/mainvideo_upload')
+    }
+
+
+let mainvideo_uploadPost=async(req,res)=>{
+    await mainvideo.create({
+        main_image: req.body.img,
+        video: req.body.video,
+        show_hide: req.body.show_hide,
+    })
+    res.redirect('/admin/mainvideo_list');
     }
 
 let popup_list=async(req,res)=>{
@@ -199,4 +212,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,popup_delete};
+module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,popup_delete,mainvideo_uploadPost};
