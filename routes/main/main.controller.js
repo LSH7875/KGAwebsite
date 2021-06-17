@@ -18,6 +18,7 @@ let main = async(req,res)=>{
 }
 
 let write = async(req,res)=>{
+    console.log('write들어옴...')
     let sss= req.params.board;
     // let ccc= bbb[sss];  
     let ddd= await board_manage.findOne({

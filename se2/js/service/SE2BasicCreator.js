@@ -29,9 +29,10 @@ window.createSEditor2 = function(elIRField, htParams, elSeAppContainer){
 	var oTextArea = jindo.$$.getSingle("TEXTAREA.se2_input_text", elEditingArea);
 	
 	if(!htParams){ 
-		htParams = {}; 
+		htParams = array();
+		//htParams = {};
 		htParams.fOnBeforeUnload = null;
-	}
+	 }
 	htParams.elAppContainer = elAppContainer;												// 에디터 UI 최상위 element 셋팅 
 	htParams.oNavigator = jindo.$Agent().navigator();										// navigator 객체 셋팅
 	htParams.I18N_LOCALE = htParams.I18N_LOCALE || "ko_KR";

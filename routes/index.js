@@ -10,7 +10,6 @@ const userRouter= require('./user')
 
 
 
-
 router.use('/user',userRouter);
 router.use('/admin',adminRouter);
 // router.use('/college',collegeRouter);
