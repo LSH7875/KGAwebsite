@@ -56,20 +56,23 @@
                 <button>검색</button>
             </div>
         </div>
+        
         <div id="contents">
             {% for mainvideo in mainvideo %}
+            <form action="/admin/mainvideo_modify" method="GET">
             <ul>
                 <li>
-                    {{mainvideo.id}}
+                    <input type="text" style="display:none;" name="id" value="{{mainvideo.id}}">
                     <button name="btn" value="modify">EDIT</button>
                     <button name="btn" value="delete">DEL</button><br>
                     <img src="#"><br>
                 </li>
-                
             </ul>
+            </form>
             {% endfor %}
         </div>
-        <button  onclick="location.href='/admin/mainvideo_upload'">글쓰기</button>
+        
+        <button onclick="location.href='/admin/mainvideo_upload'">글쓰기</button>
     </div>
 </body>
 </html>
