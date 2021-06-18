@@ -15,14 +15,11 @@ module.exports = async(req,res,next)=>{
         let newarr=[];
         for(j=0;j<boardvalue.length;j++){
             if(boardvalue[j].dataValues.group ==(i+1)){
-            console.log(boardvalue[j].dataValues);
             newarr.push(boardvalue[j].dataValues)
             }    
         }
         sss[i].board=newarr;
     }
-    console.log('sss');
-    console.log(sss);
     if (req.cookies.user_id){req.login=1;}
     else{req.login=0;}
     req.navi=sss;

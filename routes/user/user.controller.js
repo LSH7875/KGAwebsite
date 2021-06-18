@@ -49,8 +49,16 @@ let onchnageUser=async(req,res)=>{
 }
 
 let login = (req,res)=>{
-
-    res.render('./user/login');
+    let msg;
+    let alert;
+    if(req.query.flag==0){
+        msg="아이디,비밀번호를 확인해주세요."
+    }else{
+        msg=0;
+    }
+    console.log('여기서 오류난거 아님');
+    res.render('./user/login',{msg,});
+    console.log('msg값 몬넘겨줌....')
     console.log('process.env.kakao.clientID');
     console.log(process.env.kakao_clientID);
     console.log('process.env.kakao_redirectUri');
@@ -83,9 +91,26 @@ let loginPost = async(req,res)=>{
         console.log(e);
     }
 }
+
+
 let logout = (req,res)=>{
-    res.clearCookie('AccessToken');
-    res.redirect('/?msg=로그아웃되었습니다.');
+    let backURL = req.header;
+    console.log('백유알아이----------')
+    console.log(backURL);
+    length1=res.cookies;
+    console.log('이건쿠키------------')
+    console.log(req.cookies);
+    console.log(typeof req.cookies);
+    bbb=Object.keys(req.cookies);
+
+    
+    for(i=0;i<bbb.length;i++){
+        res.clearCookie(bbb[i]);
+    }
+    
+    // res.clearCookie('AccessToken');
+    // res.redirect(`/${link}/?msg=로그아웃되었습니다.`);
+    res.redirect('back');
 }
 
 let idChk = async(req,res)=>{
@@ -192,7 +217,7 @@ let kakaoCB = async(req,res)=>{
         })
     }
     // 
-    res.send('success');
+    res.redirect('/');
 
         
         
