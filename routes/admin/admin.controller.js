@@ -103,6 +103,40 @@ let mainvideo_uploadPost=async(req,res)=>{
     res.redirect('/admin/mainvideo_list');
     }
 
+let mainvideo_modify=async(req,res)=>{
+    console.log(req.query.btn)
+    if( req.query.btn == "modify"){
+        let video = await mainvideo.findAll({
+            where: {
+                id: req.query.id
+            }
+        })
+        res.render('./admin/mainvideo_modify',{
+            mainvideo: video,
+        })
+    } else {
+        await mainvideo.destroy({
+            where: {
+                id: req.query.id
+            }
+        })
+        res.redirect('/admin/mainvideo_list')
+    }
+    
+    }
+
+let mainvideo_modifyPost=async(req,res)=>{
+    await mainvideo.update({
+        main_image: req.body.img,
+        video: req.body.video,
+        show_hide: req.body.show_hide,
+    },{
+        where: {
+            id: req.body.id
+        }
+    })
+    res.redirect('/admin/mainvideo_list');
+    }
 let popup_list=async(req,res)=>{
 
     let pop = await popup.findAll();
@@ -117,6 +151,7 @@ let popup_delete=async(req,res)=>{
     // })
     res.redirect('/admin/popup_list');
 }
+
 let popup_modify=async(req,res)=>{
     if(req.query.btn == "modify"){
         let pop = await popup.findAll({
@@ -136,6 +171,7 @@ let popup_modify=async(req,res)=>{
         res.redirect('/admin/popup_list');
     }
 }
+
 let popup_modifyPost=async(req,res)=>{
     console.log(req.body.id)
 
@@ -212,4 +248,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,popup_delete,mainvideo_uploadPost};
+module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,popup_delete,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost};
