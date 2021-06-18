@@ -83,22 +83,34 @@ let modify_post =async(req,res)=>{
 }
 
 let list = async(req,res)=>{
-    console.log('쿠키값')
-    console.log(req.login)
+    console.log('list들어옴')
     let {navi,login}=req;
     let {nickname}=req.cookies
-    console.log('템플릿값');
-    console.log(req.navi);
     let {board,group} = req.params;
     let {page} = req.query || 1;
     let {keyfield,keystring}=req.query;
-
+    
     await listfn(board,page,keyfield,keystring)
     .then(async(aa) =>{
-        console.log('then1');
-            res.render('./list',{
-        nickname,login,navi,title:aa,group,board,
+        console.log('page',page);
+        let msg=0;
+        if(aa.length==0){
+            console.log('aaif문 들어옴')
+            msg="페이지가 없습니다.";
+            console.log('리다이렉트 먹나?')
+            res.redirect(`/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
+        }else{
+        if(req.query.msg){
+            console.log('msg값 바꿈');
+            msg=req.query.msg;
+        }
+        // console.log(aa.length);
+        
+        console.log('렌더한다');
+        res.render('./list',{
+            msg,nickname,login,navi,title:aa,group,board,
         })
+    }
     })
 }
 
@@ -170,8 +182,8 @@ async function listfn(name,page,keyfield,keystring){
         where:{board_uri:name}
     })
     let rst;
-    console.log('result값까지 구함...',result);
-    console.log(result.id);
+    // console.log('result값까지 구함...',result);
+    // console.log(result.id);
     boardId = result.id;
 ////토탈이 되어 있을 때....
     if(keyfield=='total'){
@@ -236,9 +248,9 @@ async function listfn(name,page,keyfield,keystring){
             }) 
         }
     }
-    console.log('이것이 rst이다');
-    console.log(rst);
-    console.log('어디로 가는가');
+    // console.log('이것이 rst이다');
+    // console.log(rst);
+    // console.log('어디로 가는가');
     return rst;
 }
 
