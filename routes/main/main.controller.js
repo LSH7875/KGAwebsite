@@ -1,24 +1,39 @@
 const { idChk } = require("../user/user.controller");
-const {board,user,board_manage} = require('../../models/index');
+const {board,user,board_manage,popup} = require('../../models/index');
+const {Op} = require('sequelize');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
 
+//let {navi}=req;
+//안한 곳:modify_post
+
+//let bbb ={board,user,board_manage}
+// ccc = {user_id,contents,title,nickname};
 
 
-let bbb={board,user,board_manage}
-
-let main = (req,res)=>{
-    res.render('./main/main.html');
+let main = async(req,res)=>{
+    let pop = await popup.findAll();
+    res.render('./main/main.html',{
+        pop:pop
+    });
+    
 }
 
 let write = async(req,res)=>{
+    console.log('write들어옴...');
+    console.log(req.cookies.user_id)
+    let {navi,login}=req;
+    let {nickname}=req.cookies
     let sss= req.params.board;
     // let ccc= bbb[sss];  
     let ddd= await board_manage.findOne({
                                 where:{board_uri:sss}
                             })
     console.log(ddd);
+    console.log('navi');
+    console.log(req.navi);
+    console.log('-------navi---------')
     res.render('./write',
-    {
+    {   nickname,navi,login,
         modify:0,
         group:req.params.group,
         board_uri:req.params.board,
@@ -36,17 +51,19 @@ let write_post = async(req,res)=>{
     let {user_id} = req.cookies;
     // console.log('writepost_nickname',nickname)//여기까진 성공
     postWrite(user_id,ddd.id,title,contents);
-    res.redirect('/community/review');
+    res.redirect('/community/review/');
 }
 ////여기까지 성공
 let modify = async(req,res)=>{
+    let {navi,login}=req;
+    let {nickname}=req.cookies
     let modnum = req.query.id;
     let {group,board} = req.params;
     await getModify(modnum)
     .then(aaa=>{
         console.log('res');
         console.log(aaa.title);
-        res.render('./write',{id:modnum,modify:1,title:aaa.title,contents:aaa.contents,group,board_uri:board
+        res.render('./write',{nickname,login,navi,id:modnum,modify:1,title:aaa.title,contents:aaa.contents,group,board_uri:board
     })
     }
     )
@@ -66,16 +83,39 @@ let modify_post =async(req,res)=>{
 }
 
 let list = async(req,res)=>{
-    console.log(listfn);
+    console.log('list들어옴')
+    let {navi,login}=req;
+    let {nickname}=req.cookies
     let {board,group} = req.params;
     let {page} = req.query || 1;
-    await listfn(board,page)
+    let {keyfield,keystring}=req.query;
+    
+    await listfn(board,page,keyfield,keystring)
     .then(async(aa) =>{
+        console.log('page',page);
+        let msg=0;
+        if(aa.length==0){
+            console.log('aaif문 들어옴')
+            msg="페이지가 없습니다.";
+            console.log('리다이렉트 먹나?')
+            res.redirect(`/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
+        }else{
+        if(req.query.msg){
+            console.log('msg값 바꿈');
+            msg=req.query.msg;
+        }
+        // console.log(aa.length);
+        
+        console.log('렌더한다');
         res.render('./list',{
-            title:aa,group,board,
+            msg,nickname,login,navi,title:aa,group,board,
         })
-    });
+    }
+    })
 }
+
+    
+
 
 
 
@@ -83,7 +123,12 @@ let list = async(req,res)=>{
 
 
 let viewer = async(req,res)=>{
+    // console.log('templete');
+    // console.log(req.templete);
+    // console.log('templete end');
+    let {navi,login}=req;
     let {group}=req.params;
+    let {nickname}=req.cookies
     let board2= req.params.board;
     let id = req.query.id;
     let userid=req.cookies.user_id;
@@ -102,7 +147,7 @@ let viewer = async(req,res)=>{
     await board.update({hits,},{where:{id,}});
 
     res.render('./view',{
-        id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,
+        nickname,login,navi,id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,
     })
 
     
@@ -127,25 +172,85 @@ async function postDelete(boardid){
     })
 }
 
-async function listfn(name,page){
+
+/////여기가 바로 리스트이다.///
+
+async function listfn(name,page,keyfield,keystring){
     let boardId;
     let num=page || 1;
-    console.log('nym,',typeof num);
-
     let result = await board_manage.findOne({
         where:{board_uri:name}
     })
-
-    console.log(result.id);
+    let rst;
+    // console.log('result값까지 구함...',result);
+    // console.log(result.id);
     boardId = result.id;
-
-    let rst= await board.findAll({
-        where:{board_number:boardId},
-        order:[['id','DESC']],
-        limit:10,
-        offset:10*(num-1)
-
-    })
+////토탈이 되어 있을 때....
+    if(keyfield=='total'){
+        console.log
+        rst = await board.findAll({
+            where:{board_number:boardId,
+                    [Op.or]:[
+                        {
+                        user_id:{[Op.like]:`%${keystring}%`}
+                        },{                        
+                        title:{[Op.like]:`%${keystring}%`}
+                        },{
+                        nickname:{[Op.like]:`%${keystring}%`}
+                        },{
+                        contents:{[Op.like]:`%${keystring}%`}
+                        }
+                        ]},
+            order:[['id','DESC']],
+            limit:10,
+            offset:10*(num-1)
+        })
+    }else{
+    //토탈이 안 되어 있을 때
+        if(keyfield=='user_id'){
+            rst = await board.findAll({
+                where:{board_number:boardId, user_id:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }
+        else if(keyfield=='title'){
+            rst = await board.findAll({
+                where:{board_number:boardId, title:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }
+        else if(keyfield=='nickname'){
+            rst = await board.findAll({
+                where:{board_number:boardId, nickname:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }
+        else if(keyfield=='contents'){
+            rst = await board.findAll({
+                where:{board_number:boardId, contents:`%${keystring}%`},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            })
+        }else{
+            console.log('이거 찍혀야 한다구...')
+            rst = await board.findAll({
+                where:{board_number:boardId},
+                order:[['id','DESC']],
+                limit:10,
+                offset:10*(num-1)
+            }) 
+        }
+    }
+    // console.log('이것이 rst이다');
+    // console.log(rst);
+    // console.log('어디로 가는가');
     return rst;
 }
 

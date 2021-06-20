@@ -1,0 +1,10 @@
+<ul>
+{% for item in group %} 
+   <li> {{item.group_name}}</li>
+   <ul>
+      {%for mmm in item.board %}
+      <li><a href="{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+      {% endfor %}
+   </ul>
+{% endfor %}
+</ul>

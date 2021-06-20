@@ -12,7 +12,6 @@
         <img src="/경일직업능력개발원.PNG">
         <div id="navi">
             <a href="/admin/admin_list">Administrator</a>
-            <a href="/admin/academy_int">시설소개</a>
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="#">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
@@ -57,33 +56,23 @@
                 <button>검색</button>
             </div>
         </div>
+        
         <div id="contents">
+            {% for mainvideo in mainvideo %}
+            <form action="/admin/mainvideo_modify" method="GET">
             <ul>
                 <li>
-                    <input type="checkbox" name="number">1
-                    <button>EDIT</button>
-                    <button>DEL</button><br>
+                    <input type="text" style="display:none;" name="id" value="{{mainvideo.id}}">
+                    <button name="btn" value="modify">EDIT</button>
+                    <button name="btn" value="delete">DEL</button><br>
                     <img src="#"><br>
                 </li>
             </ul>
-            <ul>
-                <li>
-                    <input type="checkbox" name="number">1
-                    <button>EDIT</button>
-                    <button>DEL</button><br>
-                    <img src="#"><br>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <input type="checkbox" name="number">1
-                    <button>EDIT</button>
-                    <button>DEL</button><br>
-                    <img src="#"><br>
-                </li>
-            </ul>
+            </form>
+            {% endfor %}
         </div>
-        <button>글쓰기</button>
+        
+        <button onclick="location.href='/admin/mainvideo_upload'">글쓰기</button>
     </div>
 </body>
 </html>

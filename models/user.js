@@ -1,6 +1,12 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('user', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
     user_id: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -37,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     user_birth: {
-      type: DataTypes.INTEGER(6),
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     ad_agree: {
@@ -51,11 +57,21 @@ module.exports = function(sequelize, DataTypes) {
     social: {
       type: DataTypes.STRING(50),
       allowNull: false,
-      defaultValue: 'local'
+      defaultValue: "local"
     }
   }, {
     sequelize,
     tableName: 'user',
-    timestamps: false
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
   });
 };

@@ -1,4 +1,8 @@
-
+{% if msg !=0 %}
+<script type = "text/javascript">
+window.alert("{{msg}}");
+</script>
+{% endif %}
 <form action="/user/login" method="post" >
     <p><label for="user_id">id</label></p>
     <input type="text" name = "user_id" id="user_id" placeholder="아이디를 입력하세요">

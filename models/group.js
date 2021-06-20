@@ -1,6 +1,12 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('group', {
+    id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
     group_name: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -9,9 +15,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: false
     },
+    show_hide: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    }
   }, {
     sequelize,
-    timestamps: true,
-    tableName: 'group'
+    tableName: 'group',
+    timestamps: false,
+    indexes: [
+      {
+        name: "PRIMARY",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "id" },
+        ]
+      },
+    ]
   });
 };

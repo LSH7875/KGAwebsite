@@ -5,14 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/admin/mainbanner_upload.css">
+    <link rel="stylesheet" href="/admin/mainvideo_upload.css">
 </head>
 <body>
     <div id="header">
         <img src="/경일직업능력개발원.PNG">
         <div id="navi">
             <a href="/admin/admin_list">Administrator</a>
-            <a href="/admin/academy_int">시설소개</a>
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="#">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
@@ -41,38 +40,45 @@
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
-        <div>
-            <div>
-
-            </div>
-        </div>
-        <div id="contents">
+        <div id="con_header"><img src="/관리자이미지.png"><div>메인비디오 업로드</div></div>
+        <button onclick="location.href='/admin/mainvideo_list'">게시판생성관리목록</button>
+        <form action="/admin/mainvideo_upload" method="POST" id="board_modify">
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>닉네임</th>
-                        <th>Email</th>
-                        <th>가입일</th>
-                        <th></th>
+                        <th colspan="3">메인비디오 생성하기</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>보임설정</td>
+                        <td class="left">
+                            <select name="show_hide">
+                                <option value="none">숨김</option>
+                                <option value="block">보임</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지파일</td>
+                        <td class="left">
+                            <input type="file" class="inputbox" id="img_file" accept=".jpg, .jpeg, .png" name="img">
+                            <p>Select an image from your machine to read the contents of the file without using a server</p>
+                            <div id="holder"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>메인비디오파일</td>
+                        <td class="left">
+                            <input type="file" class="inputbox" id="video_file" accept="video/mp4,video/mkv,video/x-m4v,video/*" name="video">
+                            <p>Select an video from your machine to read the contents of the file without using a server</p>
+                            <div id="holder"></div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+            <button>설정 저장하기</button>
+        </form>
     </div>
 </body>
 </html>

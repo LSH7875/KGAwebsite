@@ -49,8 +49,16 @@ let onchnageUser=async(req,res)=>{
 }
 
 let login = (req,res)=>{
-
-    res.render('./user/login');
+    let msg;
+    let alert;
+    if(req.query.flag==0){
+        msg="아이디,비밀번호를 확인해주세요."
+    }else{
+        msg=0;
+    }
+    console.log('여기서 오류난거 아님');
+    res.render('./user/login',{msg,});
+    console.log('msg값 몬넘겨줌....')
     console.log('process.env.kakao.clientID');
     console.log(process.env.kakao_clientID);
     console.log('process.env.kakao_redirectUri');
@@ -71,13 +79,14 @@ let loginPost = async(req,res)=>{
             console.log('login fail');
             res.redirect('/user/login?flag=0');
         }else{
+
             console.log('로그인성공');
             let ctoken = token(user_id);
             res.cookie('AccessToken',ctoken,{httponly:true, secure:true,})
-            res.cookie('user_id',user_id)
+            res.cookie('user_id',user_id);
+            res.cookie('nickname',result.nickname);
             res.redirect(`/?${user_id}`);
         }
-
     }catch(e){
         console.log(e);
     }
@@ -85,8 +94,23 @@ let loginPost = async(req,res)=>{
 
 
 let logout = (req,res)=>{
-    res.clearCookie('AccessToken');
-    res.redirect('/?msg=로그아웃되었습니다.');
+    let backURL = req.header;
+    console.log('백유알아이----------')
+    console.log(backURL);
+    length1=res.cookies;
+    console.log('이건쿠키------------')
+    console.log(req.cookies);
+    console.log(typeof req.cookies);
+    bbb=Object.keys(req.cookies);
+
+    
+    for(i=0;i<bbb.length;i++){
+        res.clearCookie(bbb[i]);
+    }
+    
+    // res.clearCookie('AccessToken');
+    // res.redirect(`/${link}/?msg=로그아웃되었습니다.`);
+    res.redirect('back');
 }
 
 let idChk = async(req,res)=>{
@@ -162,8 +186,9 @@ let kakaoCB = async(req,res)=>{
         res.cookie('scope',kakaoToken.data.scope);
         res.cookie('refresh_token_expires_in',kakaoToken.data.refresh_token_expires_in);
         user_id = users.data.id;
-        res.cookie('user_id',user_id);
         nickname = users.data.kakao_account.profile.nickname;
+        res.cookie('user_id',user_id);
+        res.cookie('nickname',nickname);        
         user_email = users.data.kakao_account.email;
 
     }catch(e){
@@ -192,7 +217,7 @@ let kakaoCB = async(req,res)=>{
         })
     }
     // 
-    res.send('success');
+    res.redirect('/');
 
         
         
@@ -377,6 +402,9 @@ let naverCB=async(req,res)=>{
                 user_email = json.response.email;
                 user_phone=json.response.mobile.toString().replace('-','').replace('-','');
                 user_name = json.response.name;
+                console.log('user_name은',user_name);
+                res.cookie('nickname',user_name);
+                //네이버는 이름을 던져준다.
             })
 
 

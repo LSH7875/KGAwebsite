@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/mainvideo_modify.css">
+</head>
+<body>
+    <div id="header">
+        <img src="/경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/curriculum_list">교육과정</a>
+            <a href="#">취업정보</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/consulting_list">상담신청</a>
+            <a href="#">방문자분석</a>
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자
+                dddd
+                로그인시각
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="/admin/admin_list">▶ 관리자리스트</a></li>
+            <li><a href="/admin/setting">▶ 사이트 환경설정</a></li>
+            <li><a href="/admin/board_manage">▶ 게시판 생성관리</a></li>
+            <li><a href="#">▶ 게시판 그룹관리</a></li>
+            <li><a href="/admin/popup_list">▶ 팝업관리</a></li>
+            <li><a href="/admin/mainvideo_list">▶ 메인동영상</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div id="con_header"><img src="/관리자이미지.png"><div>메인비디오 업로드</div></div>
+        <button onclick="location.href='/admin/mainvideo_list'">게시판생성관리목록</button>
+        <form action="/admin/mainvideo_modify" method="POST" id="board_modify">
+            <table>
+                {% for mainvideo in mainvideo %}
+                <thead>
+                    <tr>
+                        <th colspan="3">메인비디오 수정하기</th><input style="display: none; "type="text" name="id" value="{{mainvideo.id}}">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>보임설정</td>
+                        <td class="left">
+                            <select name="show_hide">
+                                <option value="none">숨김</option>
+                                <option value="block">보임</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지파일</td>
+                        <td class="left">
+                            <input type="file" class="inputbox" id="img_file" accept=".jpg, .jpeg, .png" name="img">
+                            <p>Select an image from your machine to read the contents of the file without using a server</p>
+                            <div id="holder"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>메인비디오파일</td>
+                        <td class="left">
+                            <input type="file" class="inputbox" id="video_file" accept="video/mp4,video/mkv,video/x-m4v,video/*" name="video">
+                            <p>Select an video from your machine to read the contents of the file without using a server</p>
+                            <div id="holder"></div>
+                        </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            <button>수정하기</button>
+        </form>
+    </div>
+</body>
+</html>

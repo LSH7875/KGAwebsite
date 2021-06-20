@@ -11,15 +11,18 @@ const nunjucks = require('nunjucks');
 const {sequelize} = require('./models');
 const bodyParser = require('body-parser');
 const cookieParser= require('cookie-parser');
-const moment = require('moment')
-
+const moment = require('moment');
 
 app.use(cookieParser());
-
+//express.static은 파일경로를 주소로 만들겠다는 의미임.
+//그래서 완전탐색이 들어감.
+//그래서 라우터는 맨 끝에 써줘야 함.
+//그래서 지금 이 구조는 
 app.use(express.static('./node_modules/socket.io/client-dist'))
 app.use(express.static('public'));
 app.use(express.static('image'));
 app.use(express.static('views'));
+app.use('/se2',express.static('se2'));
 
 
 app.use(bodyParser.json());

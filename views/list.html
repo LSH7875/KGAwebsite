@@ -1,6 +1,15 @@
-<h1>{{group}}</h1>
-<h2>{{board}}</h2>
+{% extends 'layout1.html' %}
 
+{% block content %}
+{% if msg !=0 %}
+<script type = "text/javascript">
+console.log('msg');
+console.log("{{msg}}");
+window.alert("페이지가 없습니다");
+</script>
+
+<h1>{{msg}}</h1>
+{% endif %}
 <table>
     <tr>
         <th>번호</th>
@@ -22,25 +31,36 @@
 <a href="/{{group}}/{{board}}/write">글쓰기</a>
 <button class="down_page">&lt</button>
 <ul class="pagenation">
-<li><a href="./{{board}}?page=1">1</a></li>
-<li><a href="./{{board}}?page=2">2</a></li>
-<li><a href="./{{board}}?page=3">3</a></li>
-<li><a href="./{{board}}?page=4">4</a></li>
-<li><a href="./{{board}}?page=5">5</a></li>
-<li><a href="./{{board}}?page=6">6</a></li>
-<li><a href="./{{board}}?page=7">7</a></li>
-<li><a href="./{{board}}?page=8">8</a></li>
-<li><a href="./{{board}}?page=9">9</a></li>
-<li><a href="./{{board}}?page=10">10</a></li>
+<li><a href="/{{group}}/{{board}}?page=1">1</a></li>
+<li><a href="/{{group}}/{{board}}?page=2">2</a></li>
+<li><a href="/{{group}}/{{board}}?page=3">3</a></li>
+<li><a href="/{{group}}/{{board}}?page=4">4</a></li>
+<li><a href="/{{group}}/{{board}}?page=5">5</a></li>
+<li><a href="/{{group}}/{{board}}?page=6">6</a></li>
+<li><a href="/{{group}}/{{board}}?page=7">7</a></li>
+<li><a href="/{{group}}/{{board}}?page=8">8</a></li>
+<li><a href="/{{group}}/{{board}}?page=9">9</a></li>
+<li><a href="/{{group}}/{{board}}?page=10">10</a></li>
 </ul>
 <button class="up_page">&gt</button>
+<form action="./" method="get">
+<select name = "keyfield" id = "keyfield">
+    <option value= "total">전체</option>
+    <option value= "title">제목</option>
+    <option value= "nickname">닉네임</option>
+    <option value= "user_id">아이디</option>
+    <option value= "contents">내용</option>
+</select>
+<input type="text" name = "keystring">
+
+<input type = "submit" value="검색">
+</form>
 <script type ="text/javascript">
 let page_up = document.querySelector('.up_page');
 let page_down = document.querySelector('.down_page');
 let page = document.querySelectorAll('.pagenation>li');
 let page_flag=0;
 let page_num=1;
-
 
 page_down.addEventListener('click',()=>{
 
@@ -64,7 +84,6 @@ page_down.addEventListener('click',()=>{
 // }
 // init();
 page_up.addEventListener('click',()=>{
-    let h2 = document.querySelector('h2');
     page_flag++;
     let i=1;
     page.forEach(e=>{
@@ -76,3 +95,5 @@ page_up.addEventListener('click',()=>{
 
 
 </script>
+
+{% endblock %}
