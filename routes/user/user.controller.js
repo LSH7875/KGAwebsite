@@ -74,6 +74,7 @@ let loginPost = async(req,res)=>{
             console.log('로그인성공');
             let ctoken = token(user_id);
             res.cookie('AccessToken',ctoken,{httponly:true, secure:true,})
+            res.cookie('user_id',user_id)
             res.redirect(`/?${user_id}`);
         }
 
@@ -160,8 +161,8 @@ let kakaoCB = async(req,res)=>{
         res.cookie('expires_in',kakaoToken.data.expires_in);
         res.cookie('scope',kakaoToken.data.scope);
         res.cookie('refresh_token_expires_in',kakaoToken.data.refresh_token_expires_in);
-
         user_id = users.data.id;
+        res.cookie('user_id',user_id);
         nickname = users.data.kakao_account.profile.nickname;
         user_email = users.data.kakao_account.email;
 
@@ -372,6 +373,7 @@ let naverCB=async(req,res)=>{
                 console.log(json.response);
 
                 user_id=json.response.id;
+                res.cookie('user_id',user_id);
                 user_email = json.response.email;
                 user_phone=json.response.mobile.toString().replace('-','').replace('-','');
                 user_name = json.response.name;

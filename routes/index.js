@@ -10,12 +10,12 @@ const userRouter= require('./user')
 
 
 
-router.use('/',mainRouter);
+
 router.use('/user',userRouter);
 router.use('/admin',adminRouter);
 // router.use('/college',collegeRouter);
 // router.use('/curriculum',curriculumRouter);
 // router.use('/job',jobRouter);
 // router.use('/community',communityRouter);
-
+router.use('/',mainRouter);
 module.exports = router;

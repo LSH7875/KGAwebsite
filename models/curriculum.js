@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     cur_info: {
-      type: DataTypes.STRING(1000),
+      type: DataTypes.TEXT,
       allowNull: false,
       defaultValue: 1
     },

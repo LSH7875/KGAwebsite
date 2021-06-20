@@ -66,5 +66,4 @@ let portfolio=(req,res)=>{
     res.render('./admin/portfolio')
     }
 
-
 module.exports = {academy_int,admin_list,admin_login,board_manage,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_manage,setting,apply_list,consulting_list,notice,portfolio,};
