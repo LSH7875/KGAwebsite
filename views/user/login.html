@@ -1,3 +1,6 @@
+{% extends './layout1.html' %}
+
+{% block content %}
 {% if msg !=0 %}
 <script type = "text/javascript">
 window.alert("{{msg}}");
@@ -13,3 +16,5 @@ window.alert("{{msg}}");
 <a href="/user/signAgree">회원가입</a>
 <a href="/user/auth/kakao">카카오 로그인</a>
 <a href="/user/auth/naver">네이버 로그인</a>
+
+{% endblock %}

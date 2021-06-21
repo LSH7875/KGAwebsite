@@ -1,5 +1,5 @@
 const { idChk } = require("../user/user.controller");
-const {board,user,board_manage,popup} = require('../../models/index');
+const {board,user,board_manage,popup,group} = require('../../models/index');
 const {Op} = require('sequelize');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
 
@@ -8,7 +8,23 @@ const {Op} = require('sequelize');
 
 //let bbb ={board,user,board_manage}
 // ccc = {user_id,contents,title,nickname};
-
+let onlygroup = async(req,res)=>{
+    console.log('onlygroup들어옴')
+    let groupName =req.params.group;
+    let aa=await group.findOne({
+        where:{board_uri:groupName}
+    });
+    console.log('aa구함');
+    let bb = await board_manage.findAll({
+        where:{'group':aa.id}
+    })
+    let cc = bb[0].board_uri;
+    console.log(cc);
+    console.log('res주소');
+    console.log(`/${groupName}/${cc}`);
+    res.redirect(`/${groupName}/${cc}`);
+    // res.send(bb.datavalues.board_uri)};
+}
 
 let main = async(req,res)=>{
     console.log('main들어옴')
@@ -349,4 +365,4 @@ async function postWrite(uid,boardnum,title,contents,mod,boardid){
 }
 
 //list,modify,delete
-module.exports = {main,viewer, write, write_post, modify_post, list, modify, delete_board, }
+module.exports = {main,viewer, write, write_post, modify_post, list, modify, delete_board, onlygroup,}

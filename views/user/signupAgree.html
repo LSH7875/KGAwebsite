@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>회원 가입</h1>
+{% extends './layout1.html' %}
+
+{% block content %}
+
+<h1>회원 가입</h1>
 <h2>약관 동의</h2>
 <form action="/user/signup" class="sign_ckeck" method ="get">
     <input type="checkbox" class="all_agree" name ="chk">
@@ -573,5 +568,4 @@ window.addEventListener('change',()=>{
     }
 })
     </script>
-</body>
-</html>
+{% endblock %}
