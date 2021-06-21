@@ -13,13 +13,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 let signAgree=(req,res)=>{
-    res.render('./user/signupAgree')
+    let {login,navi}=req;
+    let {nickname}=req.cookies;
+    res.render('./user/signupAgree',{login,navi,nickname,})
 }
 
 
 let signup =async(req,res)=>{
+    let {login,navi}=req;
+    let {nickname}=req.cookies;
     res.render('./user/signup',{
-        ad_agree:req.query.chk[2]
+        ad_agree:req.query.chk[2],login,navi,nickname,
     })
 }
 function cryptoPw(pw){
@@ -49,6 +53,8 @@ let onchnageUser=async(req,res)=>{
 }
 
 let login = (req,res)=>{
+    let {login,navi}=req;
+    let {nickname}=req.cookies;
     let msg;
     let alert;
     if(req.query.flag==0){
@@ -57,7 +63,7 @@ let login = (req,res)=>{
         msg=0;
     }
     console.log('여기서 오류난거 아님');
-    res.render('./user/login',{msg,});
+    res.render('./user/login',{msg,login,navi,nickname,});
     console.log('msg값 몬넘겨줌....')
     console.log('process.env.kakao.clientID');
     console.log(process.env.kakao_clientID);
