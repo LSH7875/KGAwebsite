@@ -35,6 +35,7 @@
             const chat = document.getElementById("chat");
             chat.style.display = 'none';
             }
+
     </script>
 </head>
 <body>
@@ -284,11 +285,18 @@
                 Copyright © 2016. Kyungil Technical College. All rights reserved.
             </div>
         </div>
-        <a href="javascript:do_chat();" id="talk_btn">
+        <ul id="talk_btn">
+            <li id="floating_btn" class="on2"><a id="a" href="javascript:fold_btn();">+</a></li>
+            <li id="btn_question" class="on2"><a href="javascript:do_chat();">문의하기</a></li>
+            <li id="btn_apply" class="on2"><a href="#">지원하기</a></li>
+            <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
+        </ul>
+
+        <!-- <a href="javascript:do_chat();" id="talk_btn">
             문의하기
             <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
-        </a>
-<!------------------팝업용 자바스크립트---------------------------------------->
+        </a> -->
+<!---------------------------팝업용 자바스크립트---------------------------------------->
         <script>
             var modalbtn = document.getElementById('test');
             var modal = document.querySelector('.modal');
@@ -312,7 +320,29 @@
                 }
             }
             // btn.addEventListener('click',btn_())
-            modalbtn.click();
+            // modalbtn.click();
+
+//상담 및 문의하기 버튼 자바스크립트
+        const f_btn = document.getElementById('floating_btn');
+        const q_btn = document.getElementById('btn_question');
+        const a_btn = document.getElementById('btn_apply');
+
+        function fold_btn(){
+            if(f_btn.className == "on2" && q_btn.className == "on2" && a_btn.className == "on2" ){
+                f_btn.classList.remove("on2")
+                q_btn.classList.remove("on2")
+                a_btn.classList.remove("on2")
+                f_btn.classList.add("on3")
+                q_btn.classList.add("on1")
+                a_btn.classList.add("on1")
+            } else{
+                f_btn.classList.remove("on3")
+                q_btn.classList.remove("on1")
+                a_btn.classList.remove("on1")
+                f_btn.classList.add("on2")
+                q_btn.classList.add("on2")
+                a_btn.classList.add("on2")
+            }}
         </script>
 </body>
 </html>
