@@ -11,9 +11,12 @@ const {Op} = require('sequelize');
 
 
 let main = async(req,res)=>{
+    console.log('main들어옴')
     let pop = await popup.findAll();
+    let {login,navi}=req;
+    let {nickname}=req.cookies;
     res.render('./main/main.html',{
-        pop:pop
+        pop:pop,navi,login,nickname,
     });
     
 }
@@ -99,11 +102,14 @@ let list = async(req,res)=>{
             msg="페이지가 없습니다.";
             console.log('리다이렉트 먹나?')
             res.redirect(`/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
+            
         }else{
         if(req.query.msg){
             console.log('msg값 바꿈');
             msg=req.query.msg;
         }
+        console.log('date타입')
+        console.log(typeof aa.date);
         // console.log(aa.length);
         
         console.log('렌더한다');
@@ -202,8 +208,8 @@ async function listfn(name,page,keyfield,keystring){
                         }
                         ]},
             order:[['id','DESC']],
-            limit:10,
-            offset:10*(num-1)
+            limit:12,
+            offset:12*(num-1)
         })
     }else{
     //토탈이 안 되어 있을 때
@@ -251,6 +257,18 @@ async function listfn(name,page,keyfield,keystring){
     // console.log('이것이 rst이다');
     // console.log(rst);
     // console.log('어디로 가는가');
+
+    rst.forEach((e)=>{
+        let cc=e.dataValues.date;
+        let year = cc.getFullYear();
+        let month = cc.getMonth()+1;
+        if(month<10)month ='0'+month;
+        let date = cc.getDate();
+        if(date<10)date = '0'+date;
+        cc = `${year}-${month}-${date}`
+        console.log(cc);
+        e.dataValues.date=cc;
+    })
     return rst;
 }
 

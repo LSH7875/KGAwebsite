@@ -1,0 +1,34 @@
+#mypage_btn{
+    display:flex;
+    justify-content: space-between;
+}
+
+.pw_check{
+    display:none;
+    position:absolute;
+    top:55%;
+    left:50%;
+    height:33%;
+    z-index:3;
+    background:red;
+}
+
+#mypage_btn>li{
+    box-sizing: border-box;
+    padding:18px;
+    width:30%;
+    height:80px;
+    background:rgb(0,100,255);
+    overflow-y: hidden;
+}
+#mypage_btn>li:nth-child(2){
+    margin-left:3%;
+    margin-right:3%;
+}
+#mypage_con{
+    margin-top:25px;
+    width:100%;
+
+    height:800px;
+    background-color:aquamarine;
+}

@@ -13,24 +13,23 @@ function cryptoPw(pw){
     return crypto.createHmac('sha256',Buffer.from(toString(process.env.salt))).update(pw).digest('base64').replace('==','').replace('=',''); 
 }
 
-let academy_int=(req,res)=>{
-    res.render('./admin/academy_int')
-    }
-
 let admin_list=async(req,res)=>{
+    let {user_id} = req.cookies
     let aa = await user.findAll({
         where: {
             user_grade:4
         }
     });
-
+    console.log(user_id)
+    // let aaa = await user.findOne({
+    //     where: {user_id}
+    // })
     // let admin_id = await user.findOne({
     //     where:{user_id:admin_id}
     // });
 
-    console.log(aa);
     res.render('./admin/admin_list',{
-        user:aa
+        user:aa,user_id
     })
 }
 
@@ -49,7 +48,7 @@ let admin_loginPost = async(req,res)=>{
         });
         if (!result){
             console.log('login fail');
-            res.redirect('/admin/admin_list?flag=0');
+            res.redirect('/admin/admin_login');
         }else{
             console.log('로그인성공');
             let ctoken = token(admin_id);
@@ -63,34 +62,53 @@ let admin_loginPost = async(req,res)=>{
 }
 
 let board_manager=(req,res)=>{
-    res.render('./admin/board_manage')
+    let {user_id} = req.cookies
+    res.render('./admin/board_manage',{
+        user_id
+    })
 }
 
 let board_modify=(req,res)=>{
-    res.render('./admin/board_modify')
+    let {user_id} = req.cookies
+    res.render('./admin/board_modify',{
+        user_id
+    })
 }
 
 let community=(req,res)=>{
-    res.render('./admin/community')
+    let {user_id} = req.cookies
+    res.render('./admin/community',{
+        user_id
+    })
     }
     
 let curriculum_list=(req,res)=>{
-    res.render('./admin/curriculum_list')
+    let {user_id} = req.cookies
+    res.render('./admin/curriculum_list',{
+        user_id
+    })
     }
 
 let interview_manage=(req,res)=>{
-    res.render('./admin/interview_manage')
+    let {user_id} = req.cookies
+    res.render('./admin/interview_manage',{
+        user_id
+    })
     }
 
 let mainvideo_list=async(req,res)=>{
+    let {user_id} = req.cookies
     let video = await mainvideo.findAll();
     res.render('./admin/mainvideo_list',{
-        mainvideo: video,
+        mainvideo: video,user_id
     })
     }
 
 let mainvideo_upload=(req,res)=>{
-    res.render('./admin/mainvideo_upload')
+    let {user_id} = req.cookies
+    res.render('./admin/mainvideo_upload',{
+        user_id
+    })
     }
 
 
@@ -104,6 +122,7 @@ let mainvideo_uploadPost=async(req,res)=>{
     }
 
 let mainvideo_modify=async(req,res)=>{
+    let {user_id} = req.cookies
     console.log(req.query.btn)
     if( req.query.btn == "modify"){
         let video = await mainvideo.findAll({
@@ -112,7 +131,7 @@ let mainvideo_modify=async(req,res)=>{
             }
         })
         res.render('./admin/mainvideo_modify',{
-            mainvideo: video,
+            mainvideo: video,user_id
         })
     } else {
         await mainvideo.destroy({
@@ -138,21 +157,15 @@ let mainvideo_modifyPost=async(req,res)=>{
     res.redirect('/admin/mainvideo_list');
     }
 let popup_list=async(req,res)=>{
-
+    let {user_id} = req.cookies
     let pop = await popup.findAll();
     res.render('./admin/popup_list',{
-        popup:pop,
+        popup:pop,user_id
     })
     }
 
-let popup_delete=async(req,res)=>{
-    // await popup.destroy({
-    //     where : {}
-    // })
-    res.redirect('/admin/popup_list');
-}
-
 let popup_modify=async(req,res)=>{
+    let {user_id} = req.cookies
     if(req.query.btn == "modify"){
         let pop = await popup.findAll({
             where: {
@@ -160,7 +173,7 @@ let popup_modify=async(req,res)=>{
             }
         })
         res.render('./admin/popup_modify',{
-            popup:pop,
+            popup:pop,user_id
         })
     } else {
         await popup.destroy({
@@ -194,7 +207,10 @@ let popup_modifyPost=async(req,res)=>{
 }
 
 let popup_make=(req,res)=>{
-    res.render('./admin/popup_make')
+    let {user_id} = req.cookies
+    res.render('./admin/popup_make',{
+        user_id
+    })
     }
 
 let popup_makePost=async(req,res)=>{
@@ -215,30 +231,46 @@ let popup_makePost=async(req,res)=>{
     }
 
 let setting=(req,res)=>{
-    res.render('./admin/setting')
+    let {user_id} = req.cookies
+    res.render('./admin/setting',{
+        user_id
+    })
     }
 
 let apply_list=(req,res)=>{
-    res.render('./admin/apply_list')
+    let {user_id} = req.cookies
+    res.render('./admin/apply_list',{
+        user_id
+    })
     }
 
 let consulting_list=(req,res)=>{
-    res.render('./admin/consulting_list')
+    let {user_id} = req.cookies
+    res.render('./admin/consulting_list',{
+        user_id
+    })
     }
 
 let notice=(req,res)=>{
-    res.render('./admin/notice')
+    let {user_id} = req.cookies
+    res.render('./admin/notice',{
+        user_id
+    })
     }
 
 let portfolio=(req,res)=>{
-    res.render('./admin/portfolio')
+    let {user_id} = req.cookies
+    res.render('./admin/portfolio',{
+        user_id
+    })
     }
 
 let admin_list_modify=async(req,res)=>{
+    let {user_id} = req.cookies
     let aa = await user.findAll();
     console.log(aa);
     res.render('./admin/admin_list_modify',{
-        user:aa,
+        user:aa,user_id
     })
 }
 
@@ -248,4 +280,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {academy_int,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,popup_delete,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost};
+module.exports = {admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost};

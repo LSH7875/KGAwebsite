@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('./admin.controller');
 
-router.get('/academy_int',adminController.academy_int);
 router.get('/admin_list',adminController.admin_list);
 router.post('/admin_list',adminController.admin_list);
 router.get('/admin_list_modify',adminController.admin_list_modify);
@@ -23,7 +22,6 @@ router.get('/mainvideo_modify',adminController.mainvideo_modify);
 router.post('/mainvideo_modify',adminController.mainvideo_modifyPost);
 
 router.get('/popup_list',adminController.popup_list);
-router.post('/popup_list',adminController.popup_delete);
 router.get('/popup_modify',adminController.popup_modify);
 router.post('/popup_modify',adminController.popup_modifyPost);
 router.get('/popup_make',adminController.popup_make);
