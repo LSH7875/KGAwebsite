@@ -162,3 +162,35 @@ SHOW CREATE TABLE `kga`.`curriculum`;
 SELECT * FROM `information_schema`.`CHECK_CONSTRAINTS` WHERE CONSTRAINT_SCHEMA='kga' AND TABLE_NAME='curriculum';
 SHOW CREATE TABLE `kga`.`board_manage`;
 SELECT * FROM `kga`.`board_manage` LIMIT 1000;
+
+-- 커리큘럼 SQL문 만들기..
+-- CREATE TABLE `kga_curriculum` (
+-- 	`title` VARCHAR(100) NULL DEFAULT NULL,
+-- 	`start_date` DATE NULL,
+-- 	`end_date` DATE NULL,
+-- 	`recruit` DATETIME NULL,
+-- 	`location` TEXT NULL,
+-- 	`fee` INT NULL DEFAULT NULL
+-- )
+-- COMMENT='커리큘럼데이터\r\n'
+-- COLLATE='utf8_general_ci'
+-- ;
+-- SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='kga';
+-- SHOW TABLE STATUS FROM `kga`;
+-- SHOW FUNCTION STATUS WHERE `Db`='kga';
+-- SHOW PROCEDURE STATUS WHERE `Db`='kga';
+-- SHOW TRIGGERS FROM `kga`;
+-- SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='kga';
+-- SELECT * FROM `information_schema`.`COLUMNS` WHERE TABLE_SCHEMA='kga' AND TABLE_NAME='kga_curriculum' ORDER BY ORDINAL_POSITION;
+-- SHOW INDEXES FROM `kga_curriculum` FROM `kga`;
+-- SELECT * FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE   CONSTRAINT_SCHEMA='kga'   AND TABLE_NAME='kga_curriculum'   AND REFERENCED_TABLE_NAME IS NOT NULL;
+-- SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE   TABLE_SCHEMA='kga'   AND TABLE_NAME='kga_curriculum'   AND REFERENCED_TABLE_NAME IS NOT NULL;
+-- /* "Unnamed-1" 세션 시작 */
+-- SHOW CREATE TABLE `kga`.`kga_curriculum`;
+-- SELECT CONSTRAINT_NAME, CHECK_CLAUSE FROM `information_schema`.`CHECK_CONSTRAINTS` WHERE CONSTRAINT_SCHEMA='kga' AND TABLE_NAME='kga_curriculum';
+-- SHOW CHARSET;
+-- SELECT 'kga' AS `Database`, 'kga_curriculum' AS `Table`, 0 AS `Rows`, 0 AS `Duration`;
+-- /*!40101 SET @OLD_LOCAL_SQL_MODE=@@SQL_MODE, SQL_MODE='' */;
+-- SHOW CREATE TABLE `kga`.`kga_curriculum`;
+-- SELECT * FROM `kga`.`kga_curriculum` LIMIT 104857600;
+-- /*!40101 SET SQL_MODE=IFNULL(@OLD_LOCAL_SQL_MODE, '') */;

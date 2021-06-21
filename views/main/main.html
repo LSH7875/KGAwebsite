@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KGA</title>
     <link rel="stylesheet" href="/main/main.css">
+    <!-- <script type="text/javascript" src="/main/main.js"></script> -->
 <!-------------------------------팝업용 css---------------------------------------->
     <style>
         .modal{
@@ -35,6 +36,23 @@
             const chat = document.getElementById("chat");
             chat.style.display = 'none';
             }
+    </script>
+    <!-- =======================네비바 자바스크립트====================================== -->
+    <script type="text/javascript">
+    window.addEventListener('scroll',scroll_check);
+    function scroll_check(){
+        let scroll = document.documentElement.scrollTop;
+        // console.log(scroll);
+        //영상 끝지점 scoll = 520
+        let mainNav = document.querySelector('#main_nav');
+        let navList = document.querySelector('#nav_main_list');
+        if(520<scroll){
+            mainNav.style.background = 'rgb(0,100,255)';
+        }else{
+            mainNav.style.background = '';
+        }
+    }
+    
     </script>
 </head>
 <body>
@@ -85,10 +103,7 @@
                     <li class="nav_join"><a href="/user/login">로그인</a></li>
                     <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
                 </ul>
-                <!-- <video autoplay controls loop muted preload="auto">
-                지원되지 않는 브라우저입니다.
-                <source src="/main_vidieo_tester.mp4" type="video/mp4">
-                </video> -->
+
             </div>
             <div class="dark"></div>
             <video src="./main_video.mp4" autoplay loop muted>지원되지 않는 브라우저입니다</video>
@@ -114,8 +129,8 @@
             </div>
             <div class="PR fourth">
                 <img id="PR_img" src="/홍보용4.jpeg">
-                <h2>경일 아카데미에 야옹이도 있었으면<br/>
-                     <a>머 어쩌구 저쩌구 귀여운 야옹이 야옹이 귀여워 루루루룰ㄹ</a></h2>
+                <h2>국비 지원 100%<br/>
+                     <a>최대 </a></h2>
                         {% for popup in popup %}
                         {{popup.popup_width}}
                         {% endfor %}
