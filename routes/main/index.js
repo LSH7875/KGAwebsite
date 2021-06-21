@@ -15,7 +15,7 @@ router.get("/:group/:board/",templete,mainController.list);
 router.get("/:group/:board/modify",templete,mainController.modify);
 router.post("/:group/:board/modify",mainController.modify_post);
 router.get("/:group/:board/delete",templete,mainController.delete_board);
-
+router.get("/:group",mainController.onlygroup)
 router.get('/',templete,mainController.main);
 
 module.exports = router;
