@@ -53,39 +53,26 @@
             <div id="main_nav">
                 <a href="/"><img id="nav_logo" src="/KGA_LOGO_WHITE.png"></a>
                 <ul id="nav_main_list">
-                    <li class="nav_bar intro_main"><a href="#"> 학교소개 </a>
+                    {% for item in navi %} 
+                    <li class="nav_bar intro_main"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
                         <ul class="nav_sub_list intro_sub">
-                            <li><a href="#">인삿말</a></li>
-                            <li><a href="#">연혁</a></li>
-                            <li><a href="#">교직원 소개</a></li>
-                            <li><a href="#">시설 소개</a></li>
-                            <li><a href="#">오시는 길</a></li>
+                            {%for mmm in item.board %}
+                            <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+                            {% endfor %}
                         </ul>
                     </li>
-                    <li class="nav_bar curriculum_main"><a href="#"> 교육과정 </a>
-                        <ul class="nav_sub_list curriculum_sub">
-                            <li><a href="#">과정 안내</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav_bar job_info_main"><a href="#">취업정보</a>
-                        <ul class="nav_sub_list job_info_sub">
-                            <li><a href="#">취업자 인터뷰</a></li>
-                            <li><a href="#">취업 현황</a></li>
-                            <li><a href="#">포트폴리오</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav_bar community_main"><a href="#">커뮤니티</a>
-                        <ul class="nav_sub_list community_sub">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">수강후기</a></li>
-                            <li><a href="#">KI이야기</a></li>
-                            <li><a href="#">KI기자단</a></li>
-                            <li><a href="#">교수칼럼</a></li>
-                        </ul>
-                    </li>
+                    {% endfor %}
+                    {% if login==1%}
+                    <span>{{nickname}}님환영해요</span>
+                    <li class="nav_join"><a href="/mypage">마이페이지</a></li>
+                    <li class="nav_join"><a href="/user/logout">로그아웃</a></li>
+                    {% else %}
                     <li class="nav_join"><a href="/user/login">로그인</a></li>
                     <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
+                    {% endif %}
                 </ul>
+            </div>
+                    
                 <!-- <video autoplay controls loop muted preload="auto">
                 지원되지 않는 브라우저입니다.
                 <source src="/main_vidieo_tester.mp4" type="video/mp4">

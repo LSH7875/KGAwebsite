@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mypageController = require('./mypage.controller');
-const templete=require('../../middleware/templete')
+const templete=require('../../middleware/templete');
+
 
 
 router.get('/qna',mypageController.qna)
