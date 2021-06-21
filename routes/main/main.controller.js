@@ -11,9 +11,12 @@ const {Op} = require('sequelize');
 
 
 let main = async(req,res)=>{
+    console.log('main들어옴')
     let pop = await popup.findAll();
+    let {login,navi}=req;
+    let {nickname}=req.cookies;
     res.render('./main/main.html',{
-        pop:pop
+        pop:pop,navi,login,nickname,
     });
     
 }

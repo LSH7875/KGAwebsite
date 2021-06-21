@@ -4,12 +4,13 @@ require('dotenv').config();
 
 let index = (req,res)=>{
     let section="";
-    let {navi}=req;
+    let {nickname}=req.cookies;
+    let {navi,login}=req;
     if(req.query.section){
         console.log('section 파트 들어옴')
         let section = req.query.section;
         console.log(section);
-        res.render('./mypage/index',{navi,section})
+        res.render('./mypage/index',{navi,section,login,nickname,})
     }else{
         console.log('section 안들어감')
         res.render('./mypage/index',{navi});
