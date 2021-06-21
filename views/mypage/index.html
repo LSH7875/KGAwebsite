@@ -1,0 +1,64 @@
+{% extends './layout2.html' %}
+
+{% if section == 1 %}
+<script type ="text/javascript">
+console.log('섹션1찍음')
+window.alert("비밀번호를 성공적으로 변경했습니다.")
+</script>
+{% endif %}
+{% if section == 2 %}
+<script type ="text/javascript">
+    console.log('이거떠야함');
+    window.alert("회원정보를 성공적으로 수정했습니다.")
+</script>
+{% endif %}
+
+{% block css %}
+<link rel = "stylesheet" href="/mypage/index.css">
+{% endblock %}
+
+
+{% block content %}
+{% if section == 1 %}
+<script type ="text/javascript">
+console.log('섹션1찍음')
+window.alert("비밀번호를 성공적으로 변경했습니다.")
+</script>
+{% endif %}
+{% if section == 2 %}
+<script type ="text/javascript">
+    console.log('이거떠야함');
+    window.alert("회원정보를 성공적으로 수정했습니다.")
+</script>
+{% endif %}
+
+<div class="pw_check">
+    <h3>비밀번호를 입력해주세요</h3>
+    <input type = "password" class= "chk_pw">
+    <button class="chk_pw_btn">확인</button>
+</div>
+<ul id ="mypage_btn">
+    <h1 >{{user_id}}</h1>
+    <li>
+        <h1>내정보수정</h1>
+    </li>
+    <li>
+        <h1>비밀번호 변경</h1>
+        
+    </li>
+    <li>
+        <h1>문의하기</h1>
+    </li>
+</ul>
+
+
+<div id="mypage_con">
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type = "text/javascript" src="/mypage/index.js"></script>
+{% endblock %}
+

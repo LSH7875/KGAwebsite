@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mainRouter = require('./main');
 const adminRouter = require('./admin');
+const mypageRouter= require('./mypage');
 // const collegeRouter = require('./college');
 // const curriculumRouter = require('./curriculum');
 // const brajobRouter = require('./job');
@@ -9,7 +10,7 @@ const adminRouter = require('./admin');
 const userRouter= require('./user')
 
 
-
+router.use('/mypage',mypageRouter);
 router.use('/user',userRouter);
 router.use('/admin',adminRouter);
 // router.use('/college',collegeRouter);

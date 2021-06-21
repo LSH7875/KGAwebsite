@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>경일게임아카데미</title>
     <link rel="stylesheet" href="/main/main_copy.css">
+    {% block css %}
+    {% endblock %}
+
 </head>
 <body>
     <div id="wrap">
@@ -24,7 +27,7 @@
                 {% endfor %}
                 {% if login==1%}
                 <span>{{nickname}}님환영해요</span>
-                <li class="nav_join"><a href="/mypage">마이페이지</a></li>
+                <li class="nav_join"><a href="/user/mypage">마이페이지</a></li>
                 <li class="nav_join"><a href="/user/logout">로그아웃</a></li>
                 {% else %}
                 <li class="nav_join"><a href="/user/login">로그인</a></li>
@@ -39,5 +42,8 @@
     </div>
 </div>
 <script type = "text/javascript" src="/main/main_copy.js"></script>
+{% block script %}
+{% endblock %}
+
 </body>
 </html>
