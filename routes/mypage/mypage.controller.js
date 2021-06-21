@@ -76,7 +76,7 @@ let modiPwPost=async(req,res)=>{
     await user.update({user_pw,},{
         where:{user_id,user_pw,}}
     ).then(aa=>{
-        res.render("./mypage/success",{section:1})
+        res.render("./mypage/index",{section:1})
     })
 }
 
