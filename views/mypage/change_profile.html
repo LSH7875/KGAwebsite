@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action = "mypage/modify_profile" method="post" class="modi_profile" enctype = "multipart/form-data">
+        <h1>프로필수정</h1>
+        현재 이미지
+        <div id = "my_profile" style="background:url('http://localhost:3000/{{profile}}')"></div>
+        이미지 변경하기
+        <input type = "file" name = "img">
+        <input type="submit" id = "profile_submit" value="변경하기">
+    </form>
+</body>
+</html>
