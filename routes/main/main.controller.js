@@ -51,8 +51,11 @@ let write_post = async(req,res)=>{
                             })
     let {title,contents} =req.body;
     let {user_id} = req.cookies;
+    let userimage = req.file == undefined ? '' : req.file.path;
+    
+    
     // console.log('writepost_nickname',nickname)//여기까진 성공
-    postWrite(user_id,ddd.id,title,contents);
+    postWrite(user_id,ddd.id,title,contents,userimage);
     res.redirect('/community/review/');
 }
 ////여기까지 성공
@@ -326,7 +329,7 @@ async function getModify(boardid){
     console.log('findBoardCon',findBoardCon);
     return {title,contents,nickname}=findBoardCon; 
 }
-async function postWrite(uid,boardnum,title,contents,mod,boardid){
+async function postWrite(uid,boardnum,title,contents,mod,boardid,userimage){
     let userId;
     if(mod)
     {   
@@ -342,7 +345,7 @@ async function postWrite(uid,boardnum,title,contents,mod,boardid){
             console.log('postWriteNickname',nickname2)
             let nickname = JSON.stringify(nickname2).replace("\"",'').replace("\"",'');
             let boardCreate = await board.create({
-                user_id:uid,board_number:boardnum,title,nickname,nickname2,contents})
+                user_id:uid,board_number:boardnum,title,nickname,nickname2,contents,file1:userimage})
         })        }
         console.log('닉네임 가져오냐');
 }
@@ -350,10 +353,13 @@ async function postWrite(uid,boardnum,title,contents,mod,boardid){
 let onlygroup = async(req,res)=>{
     console.log('onlygroup들어옴')
     let groupName =req.params.group;
+    console.log('req.params');
+    console.log(req.params);
     let aa=await group.findOne({
         where:{board_uri:groupName}
     });
     console.log('aa구함');
+    console.log(aa);
     let bb = await board_manage.findAll({
         where:{'group':aa.id}
     })
