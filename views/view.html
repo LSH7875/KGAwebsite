@@ -14,6 +14,9 @@
     <div class="hit">{{hit}}</div>
     <div class="nickname">{{nickname}}</div>
     <div class="content">{{contents}}</div>
+    {% if file1 %}
+    <div class="content"><img src="http://localhost:3000/{{file1}}"></div>
+    {% endif %}
     <a href="/{{group}}}/{{board}}">목록으로</a>
     {% if authority==1 %}
     <button>수정하기</button>

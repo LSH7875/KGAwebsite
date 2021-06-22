@@ -20,6 +20,7 @@ app.use(cookieParser());
 //그래서 지금 이 구조는 
 app.use(express.static('./node_modules/socket.io/client-dist'))
 app.use(express.static('public'));
+app.use(express.static('uploads'));
 app.use(express.static('image'));// 이상생기지 말기를...
 app.use('/se2',express.static('se2'));
 
