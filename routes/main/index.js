@@ -18,6 +18,7 @@ const upload = multer({
         }
     }),
 })
+
 router.get("/practice",templete,practice);
 router.get("/:group/:board/view",templete, readChk ,mainController.viewer);
 router.get("/:group/:board/write",templete,writeChk,mainController.write);
@@ -26,7 +27,7 @@ router.get("/:group/:board/",templete,mainController.list);
 router.get("/:group/:board/modify",templete,mainController.modify);
 router.post("/:group/:board/modify",templete,upload.single('img'),mainController.modify_post);
 router.get("/:group/:board/delete",templete,mainController.delete_board);
-router.get("/:group",mainController.onlygroup)
+router.get("/:group",mainController.onlygroup);
 router.get('/',templete,mainController.main);
 
 module.exports = router;
