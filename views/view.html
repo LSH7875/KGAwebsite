@@ -13,9 +13,17 @@
     <div class="date">{{date}}</div>
     <div class="hit">{{hit}}</div>
     <div class="nickname">{{nickname}}</div>
-    <div class="content">{{contents}}</div>
+    <div class="text11"></div>
+    <script type = "text/javascript">
+    const context = document.querySelector('.text11');   
+    a='{{contents}}';
+    a=a.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ");
+    console.log(a);
+    context.innerHTML=a;
+    console.log(context);
+    </script>
     {% if file1 %}
-    <div class="content"><img src="http://localhost:3000/{{file1}}"></div>
+    <div class="contents"><img src="http://localhost:3000/{{file1}}"></div>
     {% endif %}
     <a href="/{{group}}}/{{board}}">목록으로</a>
     {% if authority==1 %}

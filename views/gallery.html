@@ -1,0 +1,90 @@
+{% extends 'layout1.html' %}
+{% block css %}
+<style>
+
+    .gallery_table>li{
+        box-sizing: border-box;
+        width:33%;
+        height:300px;
+        background:purple;
+        display:inline-block;
+    }
+
+    .gallery_img{
+        width:80%;
+        height:200px;
+    }
+</style>
+
+
+{% endblock %}
+{% block content %}
+<ul class="gallery_table">
+    {% for item in title %}
+    
+    <li>
+        <a href="/{{group}}/{{board}}/view?id={{item.id}}">
+            <div class="gallery_img" style=" margin: 0 auto; margin-top: 20px; box-sizing: border-box; background-image:url('http://localhost:3000/{{item.file1}}')"></div>
+            <div class="subject"><p>{{item.title}}</p></div>
+        </a>
+    </li>
+    
+    {% endfor %}
+</ul>
+<div class="page">
+    <button class="down_page">&lt</button>
+        <ul class="pagenation">
+        <li><a href="/{{group}}/{{board}}?page=1">1</a></li>
+        <li><a href="/{{group}}/{{board}}?page=2">2</a></li>
+        <li><a href="/{{group}}/{{board}}?page=3">3</a></li>
+        <li><a href="/{{group}}/{{board}}?page=4">4</a></li>
+        <li><a href="/{{group}}/{{board}}?page=5">5</a></li>
+        <li><a href="/{{group}}/{{board}}?page=6">6</a></li>
+        <li><a href="/{{group}}/{{board}}?page=7">7</a></li>
+        <li><a href="/{{group}}/{{board}}?page=8">8</a></li>
+        <li><a href="/{{group}}/{{board}}?page=9">9</a></li>
+        <li><a href="/{{group}}/{{board}}?page=10">10</a></li>
+    </ul>
+    <button class="up_page">&gt</button>
+</div>
+<script type ="text/javascript">
+let page_up = document.querySelector('.up_page');
+let page_down = document.querySelector('.down_page');
+let page = document.querySelectorAll('.pagenation>li');
+let page_flag=0;
+let page_num=1;
+
+page_down.addEventListener('click',()=>{
+
+    if(page_flag==0){return 0;}
+    else{
+        let h2 = document.querySelector('h2');
+        page_flag--;
+        let i=1;
+        page.forEach(e=>{
+            aa =parseInt(page_flag*10+i);+"</a>";
+            e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+            i++;
+        })
+    }
+})
+// window.addEventListener('DOMContenetLoaded',init);
+// function init(){
+//     for(i=1;i>=10;i++){
+//         page[i].innerHTML = "<a href=./"+h2.value+"?page="+i+">"+i+"</a>";
+//     }
+// }
+// init();
+page_up.addEventListener('click',()=>{
+    page_flag++;
+    let i=1;
+    page.forEach(e=>{
+        aa =parseInt(page_flag*10+i);+"</a>";
+        e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+        i++;
+    })
+})
+
+
+</script>
+{% endblock %}
