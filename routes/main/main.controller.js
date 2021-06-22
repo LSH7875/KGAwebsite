@@ -1,6 +1,7 @@
 const { idChk } = require("../user/user.controller");
 const {board,user,board_manage,popup,group} = require('../../models/index');
 const {Op} = require('sequelize');
+const path = require('path');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
 
 //let {navi}=req;
@@ -42,7 +43,7 @@ let write = async(req,res)=>{
         board_name:ddd.board_title
     });
 }
-
+//멀터실험
 let write_post = async(req,res)=>{
     let sss= req.params.board;
     // let ccc= bbb[sss];  
@@ -51,8 +52,9 @@ let write_post = async(req,res)=>{
                             })
     let {title,contents} =req.body;
     let {user_id} = req.cookies;
-    let userimage = req.file == undefined ? '' : req.file.path;
-    
+    let userimage = req.file == undefined ? '' :req.file.path;
+    console.log('userimage');
+    console.log(userimage);
     
     // console.log('writepost_nickname',nickname)//여기까진 성공
     postWrite(user_id,ddd.id,title,contents,userimage);
@@ -80,10 +82,11 @@ let modify_post =async(req,res)=>{
     console.log(id);//req.body.id는 총데이터의 글번호=board.id
     let {user_id} = req.cookies;
     let {board,group} = req.params;
+    let userimage = req.file == undefined ? '' :req.file.path;
     let ddd= await board_manage.findOne({
         where:{board_uri:board}
     })
-    postWrite(user_id,ddd.id,title,contents,'modify',id)
+    postWrite(user_id,ddd.id,title,contents,userimage,'modify',id)
     res.redirect(`/${group}/${board}`);
 }
 
@@ -329,12 +332,14 @@ async function getModify(boardid){
     console.log('findBoardCon',findBoardCon);
     return {title,contents,nickname}=findBoardCon; 
 }
-async function postWrite(uid,boardnum,title,contents,mod,boardid,userimage){
+async function postWrite(uid,boardnum,title,contents,userimage,mod,boardid,){
     let userId;
+    console.log('///////////////함수의 userimage');
+    console.log(userimage);
     if(mod)
     {   
         console.log('mod실행됨');
-        await board.update( {contents,title,},{where:{id:boardid} })
+        await board.update( {contents,title,file1:userimage},{where:{id:boardid} })
         console.log('mod실행되나요')
     } 
     else{
