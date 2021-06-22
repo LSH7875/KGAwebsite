@@ -1,4 +1,4 @@
-const {user,popup,mainvideo,board,board_manage}=require('../../models/index') ;
+const {user,popup,mainvideo,board,board_manage,employment_status}=require('../../models/index') ;
 let express=require('express');
 let app = express();
 require('dotenv').config();
@@ -31,6 +31,27 @@ let admin_list=async(req,res)=>{
     res.render('./admin/admin_list',{
         user:aa,user_id
     })
+}
+
+let employment_status_write=(req,res)=>{
+    res.render('./admin/employment_status_write')
+}
+
+let employment_statuses=async(req,res)=>{
+    let es = await employment_status.findAll();
+    res.render('./admin/employment_status',{
+        employ:es
+    })
+}
+let employment_statusPost=async(req,res)=>{
+    await employment_status.create({
+        employedDate:employed_date,
+        major:major,
+        number:number,
+        name: nickname,
+        companyName:company
+    })
+    res.render('./admin/employment_status')
 }
 
 let admin_login=(req,res)=>{
@@ -310,4 +331,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost};
+module.exports = {admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

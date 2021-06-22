@@ -35,37 +35,49 @@
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
-        <div>
-            <div>
-
-            </div>
-        </div>
-        <div id="contents">
+        <div id="con_header"><img src="/관리자이미지.png"><div>취업현황 글쓰기</div></div>
+        <form action="/admin/employment_status" method="POST" id="board_modify">
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
-                        <th>제목</th>
-                        <th>닉네임</th>
-                        <th>내용</th>
-                        <th>수정</th>
-                        <th>삭제</th>
+                        <th colspan="3">취업현황 글쓰기</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
+                        <td>취업날짜</td>
+                        <td class="left">
+                            <input type="date" name="employed_date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>전공</td>
+                        <td class="left">
+                            <input type="text" name="major">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>기수</td>
+                        <td class="left">
+                            <input type="text" name="number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td class="left">
+                            <input type="text" name="nickname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>회사이름</td>
+                        <td class="left">
+                            <input type="text" name="company">
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <button onclick="location.href='/admin/interview_manage_write'">글쓰기</button>
-        </div>
+            <button>저장하기</button>
+        </form>
     </div>
 </body>
 </html>
