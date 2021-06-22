@@ -1,3 +1,4 @@
+const { default: fetch } = require("node-fetch");
 
 mypage_button = document.querySelectorAll('#mypage_btn>li');
 console.log(mypage_button[1]);
@@ -119,5 +120,21 @@ chk_pw_btn.addEventListener('click',async()=>{
             chk_pw.value='';
             window.alert("비밀번호를 다시 입력해주세요")
         }
+    })
+})
+
+
+mypage_button[2].addEventListener('click',async()=>{
+    popup_flag=false;
+    pw_check.style.display="none";
+    await fetch('http://localhost:3000/mypage/modi_profile')
+    .then(aa=>{
+        return aa.text();
+    })
+    .then(text=>{
+        mypage_con.innerHTML=`<br><br><br>${text}`;
+        var newScript =document.createElement("script");
+        newScript.src= "http://localhost:3000/mypage/profile.js"
+        mypage_con.appendChild(newScript);
     })
 })

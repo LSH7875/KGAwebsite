@@ -58,6 +58,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: "local"
+    },
+    profile: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      defaultValue: "basic_profile.jpg"
     }
   }, {
     sequelize,
