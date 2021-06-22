@@ -52,7 +52,7 @@ let write_post = async(req,res)=>{
                             })
     let {title,contents} =req.body;
     let {user_id} = req.cookies;
-    let userimage = req.file == undefined ? '' :req.file.path;
+    let userimage = req.file == undefined ? '' :req.file.filename;
     console.log('userimage');
     console.log(userimage);
     
@@ -148,7 +148,7 @@ let viewer = async(req,res)=>{
         where:{id,}
     })
 
-    let {user_id,title,date,contents,nickname2,hits}=viewRst;
+    let {user_id,title,date,contents,nickname2,hits,file1}=viewRst;
     
     if(userid == user_id ){
         authority=1;
@@ -156,9 +156,10 @@ let viewer = async(req,res)=>{
     hits++;
 
     await board.update({hits,},{where:{id,}});
-
+    console.log('viewer의 file1');
+    console.log(file1);
     res.render('./view',{
-        nickname,login,navi,id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,
+        nickname,login,navi,id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,file1,
     })
 
     
