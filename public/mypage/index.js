@@ -31,6 +31,8 @@ mypage_button[1].addEventListener('click',()=>{
 
 
 mypage_btn.addEventListener('click',async()=>{
+    popup_flag=false;
+    pw_check.style.display="none";
     let aa = await fetch('http://localhost:3000/mypage/modify_info')
     .then(aa=>{
         console.log('aa')
