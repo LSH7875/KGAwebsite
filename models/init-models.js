@@ -3,32 +3,31 @@ var _answer = require("./answer");
 var _board = require("./board");
 var _board_manage = require("./board_manage");
 var _curriculum = require("./curriculum");
+var _employment_status = require("./employment_status");
 var _faq = require("./faq");
 var _faq_curriculum = require("./faq_curriculum");
 var _form = require("./form");
 var _group = require("./group");
+var _interview = require("./interview");
 var _mainvideo = require("./mainvideo");
 var _popup = require("./popup");
 var _recuruit = require("./recuruit");
 var _user = require("./user");
-var _employment_status = require("./employment_status")
-var _interview = require("./interview")
 
 function initModels(sequelize) {
   var answer = _answer(sequelize, DataTypes);
   var board = _board(sequelize, DataTypes);
   var board_manage = _board_manage(sequelize, DataTypes);
   var curriculum = _curriculum(sequelize, DataTypes);
+  var employment_status = _employment_status(sequelize, DataTypes);
   var faq = _faq(sequelize, DataTypes);
   var faq_curriculum = _faq_curriculum(sequelize, DataTypes);
   var form = _form(sequelize, DataTypes);
   var group = _group(sequelize, DataTypes);
+  var interview = _interview(sequelize, DataTypes);
   var mainvideo = _mainvideo(sequelize, DataTypes);
   var popup = _popup(sequelize, DataTypes);
   var recuruit = _recuruit(sequelize, DataTypes);
-  var user = _user(sequelize, DataTypes);
-  var employment_status = _employment_status(sequelize, DataTypes);
-  var interview = _interview(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
 
   board.belongsTo(board_manage, { as: "board_number_board_manage", foreignKey: "board_number"});
@@ -45,16 +44,16 @@ function initModels(sequelize) {
     board,
     board_manage,
     curriculum,
+    employment_status,
     faq,
     faq_curriculum,
     form,
     group,
+    interview,
     mainvideo,
     popup,
     recuruit,
     user,
-    employment_status,
-    interview
   };
 }
 module.exports = initModels;

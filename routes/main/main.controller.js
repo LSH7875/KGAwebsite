@@ -95,14 +95,19 @@ let list = async(req,res)=>{
     let {navi,login}=req;
     let {nickname}=req.cookies
     let {board,group} = req.params;
-    let {page} = req.query || 1;
+    let page = req.query.page || 1;
     let {keyfield,keystring}=req.query;
     
     await listfn(board,page,keyfield,keystring)
     .then(async(aa) =>{
         console.log('page',page);
         let msg=0;
-        if(aa.length==0){
+        if(page==1){
+            console.log('리스트에서 페이지 1인거 들어옴')
+            res.render('./list',{
+                msg,nickname,login,navi,title:aa,group,board,
+            })
+        }else if(aa.length==0){
             console.log('aaif문 들어옴')
             msg="페이지가 없습니다.";
             console.log('리다이렉트 먹나?')
@@ -251,7 +256,7 @@ async function listfn(name,page,keyfield,keystring){
                 offset:10*(num-1)
             })
         }else{
-            console.log('이거 찍혀야 한다구...')
+            console.log('아무것도 선택 안되었을때 보통 처음임')
             rst = await board.findAll({
                 where:{board_number:boardId},
                 order:[['id','DESC']],
