@@ -45,6 +45,7 @@ let write = async(req,res)=>{
 }
 //멀터실험
 let write_post = async(req,res)=>{
+    let {group,board}=req.params;
     let sss= req.params.board;
     // let ccc= bbb[sss];  
     let ddd= await board_manage.findOne({
@@ -58,7 +59,7 @@ let write_post = async(req,res)=>{
     
     // console.log('writepost_nickname',nickname)//여기까진 성공
     postWrite(user_id,ddd.id,title,contents,userimage);
-    res.redirect('/community/review/');
+    res.redirect(`/${group}/${board}/`);
 }
 ////여기까지 성공
 let modify = async(req,res)=>{
@@ -82,7 +83,7 @@ let modify_post =async(req,res)=>{
     console.log(id);//req.body.id는 총데이터의 글번호=board.id
     let {user_id} = req.cookies;
     let {board,group} = req.params;
-    let userimage = req.file == undefined ? '' :req.file.path;
+    let userimage = req.file == undefined ? '' :req.file.filename;
     let ddd= await board_manage.findOne({
         where:{board_uri:board}
     })
@@ -97,22 +98,33 @@ let list = async(req,res)=>{
     let {board,group} = req.params;
     let page = req.query.page || 1;
     let {keyfield,keystring}=req.query;
+    let result2=await board_manage.findOne({
+        where:{board_uri:board}
+    })
+
+    console.log('result2');
+    console.log(result2);
     
     await listfn(board,page,keyfield,keystring)
     .then(async(aa) =>{
         console.log('page',page);
         let msg=0;
         if(page==1){
-            console.log('리스트에서 페이지 1인거 들어옴')
+            console.log('리스트에서 페이지 1인거 들어옴 aa의 폼은?')
+            console.log(result2.form);
+            if(result2.form==1){
             res.render('./list',{
                 msg,nickname,login,navi,title:aa,group,board,
-            })
+            })}else if(result2.form==3){
+                res.render('./gallery',{
+                    msg,nickname,login,navi,title:aa,group,board,
+                })
+            }
         }else if(aa.length==0){
             console.log('aaif문 들어옴')
             msg="페이지가 없습니다.";
             console.log('리다이렉트 먹나?')
             res.redirect(`/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
-            
         }else{
         if(req.query.msg){
             console.log('msg값 바꿈');
@@ -121,12 +133,16 @@ let list = async(req,res)=>{
         console.log('date타입')
         console.log(typeof aa.date);
         // console.log(aa.length);
-        
         console.log('렌더한다');
-        res.render('./list',{
-            msg,nickname,login,navi,title:aa,group,board,
-        })
-    }
+        if(result2.form==1){
+            res.render('./list',{
+                msg,nickname,login,navi,title:aa,group,board,
+        })} else if(result2.form==3){
+                res.render('./gallery',{
+                    msg,nickname,login,navi,title:aa,group,board,
+                })
+            }
+        }
     })
 }
 
@@ -152,7 +168,7 @@ let viewer = async(req,res)=>{
     let viewRst = await board.findOne({
         where:{id,}
     })
-
+    changeDate(viewRst);
     let {user_id,title,date,contents,nickname2,hits,file1}=viewRst;
     
     if(userid == user_id ){
@@ -228,49 +244,65 @@ async function listfn(name,page,keyfield,keystring){
             rst = await board.findAll({
                 where:{board_number:boardId, user_id:`%${keystring}%`},
                 order:[['id','DESC']],
-                limit:10,
-                offset:10*(num-1)
+                limit:12,
+                offset:12*(num-1)
             })
         }
         else if(keyfield=='title'){
             rst = await board.findAll({
                 where:{board_number:boardId, title:`%${keystring}%`},
                 order:[['id','DESC']],
-                limit:10,
-                offset:10*(num-1)
+                limit:12,
+                offset:12*(num-1)
             })
         }
         else if(keyfield=='nickname'){
             rst = await board.findAll({
                 where:{board_number:boardId, nickname:`%${keystring}%`},
                 order:[['id','DESC']],
-                limit:10,
-                offset:10*(num-1)
+                limit:12,
+                offset:12*(num-1)
             })
         }
         else if(keyfield=='contents'){
             rst = await board.findAll({
                 where:{board_number:boardId, contents:`%${keystring}%`},
                 order:[['id','DESC']],
-                limit:10,
-                offset:10*(num-1)
+                limit:12,
+                offset:12*(num-1)
             })
         }else{
             console.log('아무것도 선택 안되었을때 보통 처음임')
             rst = await board.findAll({
                 where:{board_number:boardId},
                 order:[['id','DESC']],
-                limit:10,
-                offset:10*(num-1)
+                limit:12,
+                offset:12*(num-1)
             }) 
         }
     }
     // console.log('이것이 rst이다');
     // console.log(rst);
     // console.log('어디로 가는가');
+    rst.forEach(e=>{
+        changeDate(e);
+    })
+    // rst.forEach((e)=>{
+    //     let cc=e.dataValues.date;
+    //     let year = cc.getFullYear();
+    //     let month = cc.getMonth()+1;
+    //     if(month<10)month ='0'+month;
+    //     let date = cc.getDate();
+    //     if(date<10)date = '0'+date;
+    //     cc = `${year}-${month}-${date}`
+    //     console.log(cc);
+    //     e.dataValues.date=cc;
+    // })
+    return rst;
+}
 
-    rst.forEach((e)=>{
-        let cc=e.dataValues.date;
+function changeDate(e){
+    let cc=e.dataValues.date;
         let year = cc.getFullYear();
         let month = cc.getMonth()+1;
         if(month<10)month ='0'+month;
@@ -279,8 +311,6 @@ async function listfn(name,page,keyfield,keystring){
         cc = `${year}-${month}-${date}`
         console.log(cc);
         e.dataValues.date=cc;
-    })
-    return rst;
 }
 
 async function userFindUsingid(user_id){///promise 객체임니다...
@@ -340,6 +370,7 @@ async function getModify(boardid){
 }
 async function postWrite(uid,boardnum,title,contents,userimage,mod,boardid,){
     let userId;
+    
     console.log('///////////////함수의 userimage');
     console.log(userimage);
     if(mod)
@@ -359,6 +390,7 @@ async function postWrite(uid,boardnum,title,contents,userimage,mod,boardid,){
                 user_id:uid,board_number:boardnum,title,nickname,nickname2,contents,file1:userimage})
         })        }
         console.log('닉네임 가져오냐');
+        // res.redirect(`/${group}/${board}`);
 }
 
 let onlygroup = async(req,res)=>{
