@@ -18,19 +18,19 @@ module.exports = function(sequelize, DataTypes) {
     hits: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue:0
+      defaultValue: 0
     },
     contents: {
-        type: DataTypes.STRING(1000),
-        allowNull: false
+      type: DataTypes.STRING(1000),
+      allowNull: false
     },
     image: {
-        type: DataTypes.STRING(1000),
-        allowNull: true
+      type: DataTypes.STRING(1000),
+      allowNull: true
     },
-    file :{
-        type: DataTypes.STRING(1000),
-        allowNull: true
+    file: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
     }
   }, {
     sequelize,

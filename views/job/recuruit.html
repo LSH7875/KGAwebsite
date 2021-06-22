@@ -1,0 +1,24 @@
+{% extends '../college/layout1.html' %}
+{% block css %}
+<link rel="stylesheet" href="./job/recuruit.css">
+{% endblock %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>취업일자</th>
+        <th>학과</th>
+        <th>기수</th>
+        <th>이름</th>
+        <th>회사명</th>
+    </tr>
+    {% for item in job %} 
+    <tr>
+        <td>{{item.job_date}}</td>
+        <td>{{item.major}}</td>
+        <td>{{item.cardinal}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.company}}</td>
+    </tr>
+</table>
+{% endblock %}

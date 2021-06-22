@@ -20,12 +20,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     name: {
-        type: DataTypes.STRING(1000),
-        allowNull: false
+      type: DataTypes.STRING(1000),
+      allowNull: false
     },
     companyName: {
-        type: DataTypes.STRING(1000),
-        allowNull: false
+      type: DataTypes.STRING(1000),
+      allowNull: false
     }
   }, {
     sequelize,

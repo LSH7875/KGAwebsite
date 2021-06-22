@@ -7,24 +7,24 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    '취업일자': {
+    job_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('curdate')
     },
-    '학과': {
+    major: {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    '기수': {
+    cardinal: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    '이름': {
+    name: {
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    '회사명': {
+    company: {
       type: DataTypes.STRING(100),
       allowNull: false
     }
