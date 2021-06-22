@@ -11,6 +11,8 @@ var _mainvideo = require("./mainvideo");
 var _popup = require("./popup");
 var _recuruit = require("./recuruit");
 var _user = require("./user");
+var _employment_status = require("./employment_status")
+var _interview = require("./interview")
 
 function initModels(sequelize) {
   var answer = _answer(sequelize, DataTypes);
@@ -24,6 +26,9 @@ function initModels(sequelize) {
   var mainvideo = _mainvideo(sequelize, DataTypes);
   var popup = _popup(sequelize, DataTypes);
   var recuruit = _recuruit(sequelize, DataTypes);
+  var user = _user(sequelize, DataTypes);
+  var employment_status = _employment_status(sequelize, DataTypes);
+  var interview = _interview(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
 
   board.belongsTo(board_manage, { as: "board_number_board_manage", foreignKey: "board_number"});
@@ -48,6 +53,8 @@ function initModels(sequelize) {
     popup,
     recuruit,
     user,
+    employment_status,
+    interview
   };
 }
 module.exports = initModels;

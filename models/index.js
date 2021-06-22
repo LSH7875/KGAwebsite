@@ -28,5 +28,7 @@ db.mainvideo = models.mainvideo;
 db.popup = models.popup;
 db.group = models.group; 
 db.form = models.form;
+db.employment_status = models.employment_status;
+db.interview = models.interview;
 
 module.exports = db;
