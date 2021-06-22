@@ -10,6 +10,7 @@ router.get('/admin_login',adminController.admin_login);
 router.post('/admin_login',adminController.admin_loginPost);
 
 router.get('/board_manage',adminController.board_manager);
+router.post('/board_manage',adminController.board_managePost);
 router.get('/board_modify',adminController.board_modify);
 router.get('/community',adminController.community);
 router.get('/curriculum_list',adminController.curriculum_list);

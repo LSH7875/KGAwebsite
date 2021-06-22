@@ -55,3 +55,5 @@ INSERT INTO `user` (`id`, `user_id`, `user_pw`, `user_name`, `user_email`, `user
 	(1, 'jYkPXB0o8NJUVo9HBpOkiY5y-g4i-ipOy2WBdChc0kM', NULL, '이승희', 'nara7875@naver.com', '01049477875', '2021-06-14 04:56:50', 1, NULL, NULL, NULL, '이승희', 'naver'),
 	(2, 'ddd', 'lmrP3E6lOdwnVsLQ1wxbOX4GC8nGjvorBV2z7aOk/fU', 'SSS', 'dddd@naver.com', '01011111111', '2021-06-14 08:11:40', 1, 1, 111111, 1, 'DDD', 'local'),
 	(3, 'AAA', 'dE1ubhgHmGKibi8NOAQrCYWqfycaNvKI1a5/2jVmdeg', 'AAA', 'AAA@NAVER.COM', '0101111111', '2021-06-14 08:12:18', 1, 1, 111111, 1, 'AAA', 'local');
+
+INSERT INTO 

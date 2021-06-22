@@ -1,4 +1,4 @@
-const {user,popup,mainvideo}=require('../../models/index') ;
+const {user,popup,mainvideo,board,board_manage}=require('../../models/index') ;
 let express=require('express');
 let app = express();
 require('dotenv').config();
@@ -61,14 +61,39 @@ let admin_loginPost = async(req,res)=>{
     }
 }
 
-let board_manager=(req,res)=>{
+let board_manager=async(req,res)=>{
+    let bm = await board_manage.findAll();
     let {user_id} = req.cookies
     res.render('./admin/board_manage',{
-        user_id
+        user_id, board_manage:bm
     })
 }
 
-let board_modify=(req,res)=>{
+let board_managePost=async(req,res)=>{
+    if( req.body.btn == "modify"){
+        let bm = await board_manage.findAll({
+            where: {
+                id: req.body.id
+            }
+        })
+        res.render('./admin/board_manage',{
+            board_manage: bm,user_id
+        })
+    } else {
+        await board_manage.destroy({
+            where: {
+                id: req.body.id
+            }
+        })
+        res.redirect('/admin/board_manage')
+    }
+    let {user_id} = req.cookies
+    res.render('./admin/board_manage',{
+        user_id, board_manage:bm
+    })
+}
+
+let board_modify=async(req,res)=>{
     let {user_id} = req.cookies
     res.render('./admin/board_modify',{
         user_id
@@ -251,10 +276,15 @@ let consulting_list=(req,res)=>{
     })
     }
 
-let notice=(req,res)=>{
+let notice=async(req,res)=>{
+    let notice_admin = await board.findAll({
+        where:{
+            board_number:10
+        }
+    });
     let {user_id} = req.cookies
     res.render('./admin/notice',{
-        user_id
+        user_id, notice:notice_admin
     })
     }
 
@@ -280,4 +310,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost};
+module.exports = {admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost};

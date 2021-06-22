@@ -83,16 +83,19 @@
                         <th>읽기권한</th>
                         <th>쓰기권한</th>
                         <th>첨부파일</th>
+                        <th>보임/숨김</th>
                         <th>수정</th>
                         <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for bm in board_manage %}
+                    <form action="/admin/board_manage" method="POST" >
                     <tr>
-                        <td></td>
+                        <td>{{bm.id}}</td>
                         <td>
                             <select name="group">
-                                <option value="0">-------</option>
+                                <option value>{{bm.group}}</option>
                                 <option value="1">학교소개</option>
                                 <option value="2">취업정보</option>
                                 <option value="3">커뮤니티</option>
@@ -100,7 +103,7 @@
                                 <option value="5">상담신청</option>
                             </select>
                         </td>
-                        <td><input type="text" placeholder="게시판이름입력"></td>
+                        <td><input type="text" placeholder="{{bm.board_title}}"></td>
                         <td>
                             <select name="read_authority">
                                 <option value="0">0</option>
@@ -108,11 +111,6 @@
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
                             </select>
                         </td>
                         <td>
@@ -123,11 +121,6 @@
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
                             </select>
                         </td>
                         <td>
@@ -138,10 +131,17 @@
                                 <option value="3">3개</option>
                             </select>
                         </td>
-
-                        <td><button onclick="location.href='/admin/board_modify'">수정</button></td>
-                        <td><button>삭제</button></td>
+                        <td>
+                            <select name="show_hide">
+                                <option value="none">숨김</option>
+                                <option value="block">보임</option>
+                            </select>
+                        </td>
+                        <td><button name="btn" value="modify">설정</button></td>
+                        <td><button name="btn" value="delete">삭제</button></td>
                     </tr>
+                    </form>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
