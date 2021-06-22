@@ -46,6 +46,10 @@ module.exports = function(sequelize, DataTypes) {
     file3: {
       type: DataTypes.STRING(255),
       allowNull: true
+    },
+    faq: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
