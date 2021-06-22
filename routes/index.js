@@ -5,7 +5,7 @@ const adminRouter = require('./admin');
 const mypageRouter= require('./mypage');
 const collegeRouter = require('./college');
 const curriculumRouter = require('./curriculum');
-// const brajobRouter = require('./job');
+const jobRouter = require('./job');
 // const communityRouter = require('./community');
 const userRouter= require('./user')
 
@@ -15,7 +15,7 @@ router.use('/user',userRouter);
 router.use('/admin',adminRouter);
 router.use('/college',collegeRouter);
 router.use('/curriculum',curriculumRouter);
-// router.use('/job',jobRouter);
+router.use('/job',jobRouter);
 // router.use('/community',communityRouter);
 router.use('/',mainRouter);
 

@@ -30,5 +30,7 @@ db.group = models.group;
 db.form = models.form;
 db.employment_status = models.employment_status;
 db.interview = models.interview;
+db.recuruit = models.recuruit;
+
 
 module.exports = db;

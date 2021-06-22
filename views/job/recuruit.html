@@ -16,9 +16,60 @@
     <tr>
         <td>{{item.job_date}}</td>
         <td>{{item.major}}</td>
-        <td>{{item.cardinal}}</td>
+        <td>{{item.cardinal}}기</td>
         <td>{{item.name}}</td>
         <td>{{item.company}}</td>
     </tr>
+    {% endfor %}
 </table>
+<div class="page">
+    <button class="down_page">&lt</button>
+        <ul class="pagenation">
+        <li><a href="/job/recuruit?page=1">1</a></li>
+        <li><a href="/job/recuruit?page=2">2</a></li>
+        <li><a href="/job/recuruit?page=3">3</a></li>
+        <li><a href="/job/recuruit?page=4">4</a></li>
+        <li><a href="/job/recuruit?page=5">5</a></li>
+        <li><a href="/job/recuruit?page=6">6</a></li>
+        <li><a href="/job/recuruit?page=7">7</a></li>
+        <li><a href="/job/recuruit?page=8">8</a></li>
+        <li><a href="/job/recuruit?page=9">9</a></li>
+        <li><a href="/job/recuruit?page=10">10</a></li>
+    </ul>
+    <button class="up_page">&gt</button>
+</div>
+
+<script type ="text/javascript">
+    let page_up = document.querySelector('.up_page');
+    let page_down = document.querySelector('.down_page');
+    let page = document.querySelectorAll('.pagenation>li');
+    let page_flag=0;
+    let page_num=1;
+    
+    page_down.addEventListener('click',()=>{
+    
+        if(page_flag==0){return 0;}
+        else{
+            let h2 = document.querySelector('h2');
+            page_flag--;
+            let i=1;
+            page.forEach(e=>{
+                aa =parseInt(page_flag*10+i);+"</a>";
+                e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+                i++;
+            })
+        }
+    })
+
+    page_up.addEventListener('click',()=>{
+        page_flag++;
+        let i=1;
+        page.forEach(e=>{
+            aa =parseInt(page_flag*10+i);+"</a>";
+            e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+            i++;
+        })
+    })
+    
+    </script>
 {% endblock %}
