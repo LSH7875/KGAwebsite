@@ -8,23 +8,6 @@ const {Op} = require('sequelize');
 
 //let bbb ={board,user,board_manage}
 // ccc = {user_id,contents,title,nickname};
-let onlygroup = async(req,res)=>{
-    console.log('onlygroup들어옴')
-    let groupName =req.params.group;
-    let aa=await group.findOne({
-        where:{board_uri:groupName}
-    });
-    console.log('aa구함');
-    let bb = await board_manage.findAll({
-        where:{'group':aa.id}
-    })
-    let cc = bb[0].board_uri;
-    console.log(cc);
-    console.log('res주소');
-    console.log(`/${groupName}/${cc}`);
-    res.redirect(`/${groupName}/${cc}`);
-    // res.send(bb.datavalues.board_uri)};
-}
 
 let main = async(req,res)=>{
     console.log('main들어옴')
@@ -362,6 +345,24 @@ async function postWrite(uid,boardnum,title,contents,mod,boardid){
                 user_id:uid,board_number:boardnum,title,nickname,nickname2,contents})
         })        }
         console.log('닉네임 가져오냐');
+}
+
+let onlygroup = async(req,res)=>{
+    console.log('onlygroup들어옴')
+    let groupName =req.params.group;
+    let aa=await group.findOne({
+        where:{board_uri:groupName}
+    });
+    console.log('aa구함');
+    let bb = await board_manage.findAll({
+        where:{'group':aa.id}
+    })
+    let cc = bb[0].board_uri;
+    console.log(cc);
+    console.log('res주소');
+    console.log(`/${groupName}/${cc}`);
+    res.redirect(`/${groupName}/${cc}`);
+    // res.send(bb.datavalues.board_uri)};
 }
 
 //list,modify,delete
