@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KGA</title>
     <link rel="stylesheet" href="/main/main.css">
+    <!-- <link rel="stylesheet" href="../../public/main/main.css"> -->
     <!-- <script type="text/javascript" src="/main/main.js"></script> -->
 <!-------------------------------팝업용 css---------------------------------------->
     <style>
@@ -102,9 +103,9 @@
             </div>
             <div class="PR second">
                 <img id="PR_img" src="/홍보용2.jpg">
-                <h2> K-digital사업 혁신 교육기관<br/>
-                    <a>고용노동부 주관 디지털 신기술 분야 실무 인재 양성 지원 사업으로서 정부로부터 인증 받은 기관입니다.
-                        고용노동부에서 인증받은 5년 연속 우수 훈련기관입니다.
+                <h2> 인증된 훈련기관<br/>
+                    <a>경일 아카데미는 고용노동부 주관<br/> 디지털 신기술 분야 실무 인재 양성 지원 사업으로서<br/> 정부로부터 인증 받은 기관이며,
+                        <br/>고용노동부에서 지정한<br/> 5년 연속 우수 훈련기관입니다.
                     </a></h2>
             </div>
             <div class="PR third">
@@ -113,9 +114,13 @@
                     <a>경일 아카데미는 여러 기업과 협업하여 실무에서 할 수 있는 경험들을 제공합니다.</a></h2>
             </div>
             <div class="PR fourth">
-                <img id="PR_img" src="/홍보용4.jpeg">
-                <h2>국비 지원 100%<br/>
-                     <a>최대 </a></h2>
+                <img id="PR_img" src="/fffff.png">
+                <h2>K-digital사업 혁신 교육기관<br/>
+                    <a>실질적인 문제를 해결하는것에 초점을 맞춘<br/> 프로젝트 기반의 직무 중심 교육.<br/>
+                        경일 아카데미에서는 교육 비용 전액 정부 지원,<br/>
+                        최대 300만원 훈련 장려금을 지급합니다.
+
+                    </a></h2>
                         {% for popup in popup %}
                         {{popup.popup_width}}
                         {% endfor %}
@@ -290,7 +295,7 @@
             <li id="btn_apply" class="on2"><a href="#">지원하기</a></li>
             <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
         </ul>
-
+        <script type="text/javascript" src="/main/main.js"></script>
         <!-- <a href="javascript:do_chat();" id="talk_btn">
             문의하기
             <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
