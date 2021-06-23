@@ -1,0 +1,198 @@
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+  }
+/* ============================================================ */
+
+
+#cover{
+    width: 700px;
+    height: 700px;
+    margin-left: -100px;
+    position:relative;
+}
+
+#hexagon{
+    width: 100%;
+    height: 200px;
+}
+
+#hexagon>img{
+    width: 640px;
+    height: auto;
+    position: relative;
+    left: 50%;
+    top: 100%;
+    transition: .5s ease-in-out ;
+    z-index: 2;
+}
+.class{
+    width: 160px;
+    height: 23px;
+    cursor: pointer;
+    z-index: 3;
+    /* background: rgb(0,100,255); */
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    font-family: 'LotteMartDream';
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 24px;
+    transition: .15s ease-in-out;
+}
+.class:hover{
+    
+    color: rgb(0,100,255);
+    
+}
+
+.A{
+    position: relative;
+    left: 122%;
+    /* background: violet; */
+    
+}
+
+.B{
+    position: relative;
+    left: 144%;
+    top: 34%;
+}
+.C{
+    position: relative;
+    left: 122%;
+    top: 70%;
+}
+.D{
+    position: relative;
+    left: 48%;
+    top: -11%;
+}
+.E{
+    position: relative;
+    left: 25%;
+    top: 24%;
+}
+.F{
+    position: relative;
+    left: 46%;
+    top: 60%;
+}
+
+.hide{
+    position: absolute;
+    left: 210px;
+    top: 100px;
+    display: inline-block;
+    width:800px;
+    height: 800px;
+    background: white;
+    z-index: 1;
+}
+
+
+
+/* ==============claass 설명 박스====================================== */
+
+
+.curr_content{
+    display: inline-block;
+    /* background: black; */
+    width: 500px;
+    height: 600px;
+    color: black;
+    transform: translateX(210%) translateY(-86%);
+    text-align: center;
+    /* display: none; */
+    position: relative;
+    left: -30%;
+    z-index: 0;
+}
+
+.curriculum_A{
+    width: 500px;
+}
+
+.curri{
+    position: relative;
+}
+/**/.curriculum_A, .curriculum_B , .curriculum_C , .curriculum_D, .curriculum_E,.curriculum_F{
+    display: none;
+}
+
+/* =================================================================== */
+
+.back{
+    display: inline-block;
+    float: right;
+    font-size: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.curriculum_A>button{
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.apply{
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background: black;
+    color: white;
+}
+
+.detail{
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/*--------------- 설명 animation -------------------*/
+
+
+@keyframes slidein {
+    from{
+        left: -30%;
+    }
+    to{
+        left: 0%;
+    }
+}
+
+@keyframes slideout{
+    from{
+        left: 0%;
+    }
+    to{
+        left: -30%;
+    }
+}
+
+
+
+.on{
+    animation-name: slidein;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.off{
+    animation-name: slideout;
+    animation-duration: 1.5s;
+}
+
+/* =========================================================== */
+
