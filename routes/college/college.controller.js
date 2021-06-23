@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let introduction=(req,res)=>{
     let {navi,login}=req;
     let {nickname}=req.cookies
@@ -32,10 +34,11 @@ let interior=(req,res)=>{
 }
 
 let location = (req,res)=>{
+    const map_key = process.env.kakao_js_key
     let {navi,login}=req;
     let {nickname}=req.cookies
     res.render('./college/location.html',{
-        navi,login,nickname,
+        navi,login,nickname,map_key:map_key
     })
 }
 module.exports = {introduction, history, teachers, interior, location,};
