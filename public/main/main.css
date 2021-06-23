@@ -83,6 +83,8 @@
     width: 1200px;
     float: right;
     text-align: center;
+    display: flex;
+    /* background: violet; */
 }
 
 #nav_main_list>li{
@@ -91,6 +93,7 @@
     float: left;    
     margin: 0px 12px;
     text-align: center;
+    background: violet;
 }
 
  #nav_main_list>li>a{
@@ -100,6 +103,7 @@
     border-right: 1px solid white; 
     font-size: 22px;
     font-family: "LotteMartDream";
+    /* background: violet; */
 }
 
 .nav_sub_list{
@@ -110,6 +114,7 @@
 .nav_sub_list>li>a{
     color: white;
 }
+
 
 .nav_join>a{
     background: none;
