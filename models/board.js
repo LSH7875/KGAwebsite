@@ -40,10 +40,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    main_image: {
-      type: DataTypes.STRING(11),
-      allowNull: true
-    },
     hits: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -58,9 +54,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    file2: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+    cur_num: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     },
     file3: {
       type: DataTypes.STRING(255),

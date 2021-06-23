@@ -30,10 +30,13 @@
     height: auto;
     position: relative;
     left: 50%;
+    transform: translateX(-50%);
     top: 100%;
     transition: .5s ease-in-out ;
-    z-index: 2;
+    z-index: 4;
+    overflow-y: hidden;
 }
+
 .class{
     width: 160px;
     height: 23px;
@@ -49,6 +52,7 @@
     line-height: 24px;
     transition: .15s ease-in-out;
 }
+
 .class:hover{
     
     color: rgb(0,100,255);
@@ -90,8 +94,11 @@
 
 .hide{
     position: absolute;
-    left: 210px;
-    top: 100px;
+    left:50%;
+    top:300px;
+    transform: translateX(-50%);
+    /* left: 210px;
+    top: 100px; */
     display: inline-block;
     width:800px;
     height: 800px;

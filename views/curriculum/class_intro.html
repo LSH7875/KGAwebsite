@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Document </title>
-    <link rel="stylesheet" href="/sub/class_intro.css">
-</head>
-<body>
-    
+{% extends '../layout1.html' %}
 
+{% block css %}
+    <link rel="stylesheet" href="/sub/class_intro.css">
+{% endblock %}
+
+{% block content %}
     <div class="hide"></div>
     <div id="cover">
         <div id="hexagon">
-            <img src="/육각2.png">
+            <img src="http://localhost:3000/육각2.png">
         </div>
 
         <div class="class A" onclick="slideOn()">Game Artwork</div>
@@ -85,5 +80,4 @@
         
     <script type="text/javascript" src="/sub/class_intro.js"></script>
     <!-- <script type="text/javascript" src="/육각형 만들기.js"></script> -->
-</body>
-</html>
+{% endblock %}
