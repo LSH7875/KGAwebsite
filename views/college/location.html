@@ -6,8 +6,8 @@
 
 {% block content %}
 
-<div id="map" width="1000px" height="800px"></div>
-<script type = "text/javascript" src ='//dapi.kakao.com/v2/maps/sdk.js?appkey="bd76b6e4833c839e7986e4393ba78db2"'></script>
+<div id="map" style="width:1000px;height:800px;"></div>
+<script type = "text/javascript" src ='//dapi.kakao.com/v2/maps/sdk.js?appkey={{map_key}}'></script>
 <script>
     var container = document.getElementById('map');
     var options = {
