@@ -1,5 +1,3 @@
-const { default: fetch } = require("node-fetch");
-
 mypage_button = document.querySelectorAll('#mypage_btn>li');
 console.log(mypage_button[1]);
 mypage_btn=document.querySelector('#mypage_btn>li');
@@ -32,6 +30,7 @@ mypage_button[1].addEventListener('click',()=>{
 
 
 mypage_btn.addEventListener('click',async()=>{
+    console.log('첫번째 버튼 눌림');
     popup_flag=false;
     pw_check.style.display="none";
     let aa = await fetch('http://localhost:3000/mypage/modify_info')
@@ -125,9 +124,10 @@ chk_pw_btn.addEventListener('click',async()=>{
 
 
 mypage_button[2].addEventListener('click',async()=>{
+    console.log('세번째 버튼 눌림');
     popup_flag=false;
     pw_check.style.display="none";
-    await fetch('http://localhost:3000/mypage/modi_profile')
+    await fetch('http://localhost:3000/mypage/modify_profile')
     .then(aa=>{
         return aa.text();
     })

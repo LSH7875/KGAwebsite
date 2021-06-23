@@ -112,12 +112,28 @@ let modiPwChk=(req,res)=>{
     } 
 }
 
-let qna =(req,res)=>{
+let modiProfile =async(req,res)=>{
+    let {user_id}=req.cookies;
+    let cc=await user.findOne({
+        where:{user_id,}
+    })
+    let {profile}=cc;
+    res.render('./mypage/change_profile',{
+        profile,
+    })
+}
 
+let modiProfilePost = async(req,res)=>{
+    let{user_id}=req.cookies;
+    let profile=req.file.filename;
+    await user.update({profile,},{
+        where:{user_id,}
+    })
+    res.render('./mypage/index',{section:3})
 }
 
 function cryptoPw(pw){
     console.log('함수들어옴')
     return crypto.createHmac('sha256',Buffer.from(toString(process.env.salt))).update(pw).digest('base64').replace('==','').replace('=',''); 
 }
-module.exports={modiPwPost,index,modiInfo,modiInfoPost,modiPw,modiPwChk,qna,modiPwChkPost,}
+module.exports={modiProfile,modiProfilePost,modiPwPost,index,modiInfo,modiInfoPost,modiPw,modiPwChk,modiPwChkPost,}

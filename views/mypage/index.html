@@ -1,17 +1,5 @@
 {% extends './layout2.html' %}
 
-{% if section == 1 %}
-<script type ="text/javascript">
-console.log('섹션1찍음')
-window.alert("비밀번호를 성공적으로 변경했습니다.")
-</script>
-{% endif %}
-{% if section == 2 %}
-<script type ="text/javascript">
-    console.log('이거떠야함');
-    window.alert("회원정보를 성공적으로 수정했습니다.")
-</script>
-{% endif %}
 
 {% block css %}
 <link rel = "stylesheet" href="/mypage/index.css">
@@ -29,6 +17,12 @@ window.alert("비밀번호를 성공적으로 변경했습니다.")
 <script type ="text/javascript">
     console.log('이거떠야함');
     window.alert("회원정보를 성공적으로 수정했습니다.")
+</script>
+{% endif %}
+{% if section == 3 %}
+<script type ="text/javascript">
+    console.log('이거떠야함');
+    window.alert("프로필을 성공적으로 수정했습니다.")
 </script>
 {% endif %}
 
