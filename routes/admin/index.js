@@ -29,6 +29,8 @@ router.get('/popup_make',adminController.popup_make);
 router.post('/popup_make',adminController.popup_makePost);
 
 router.get('/employment_status',adminController.employment_statuses);
+router.get('/employment_status_modify',adminController.employment_status_modify);
+router.post('/employment_status_modify',adminController.employment_status_modifyPost);
 router.get('/employment_status_write',adminController.employment_status_write);
 router.post('/employment_status_write',adminController.employment_statusPost);
 router.get('/setting',adminController.setting);
