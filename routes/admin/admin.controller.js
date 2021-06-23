@@ -43,13 +43,50 @@ let employment_statuses=async(req,res)=>{
         employ:es
     })
 }
+let employment_status_modify=async(req,res)=>{
+    let {user_id} = req.cookies
+    if(req.query.btn == "modify"){
+        console.log(req.query.number);
+        let es = await employment_status.findAll({
+            where: {
+                id:req.query.number
+            }
+        })
+        res.render('./admin/employment_status_modify',{
+            employ:es, user_id
+        })
+    } else {
+        await employment_status.destroy({
+            where: {
+                id:req.query.number
+            }
+        })
+        res.redirect('/admin/employment_status');
+    }
+}
+
+let employment_status_modifyPost=async(req,res)=>{
+    console.log(req.body.id)
+
+    await employment_status.update({
+        employedDate:req.body.employed_date,
+        major:req.body.major,
+        number:req.body.number,
+        name: req.body.nickname,
+        companyName:req.body.company
+    },{
+        where: {id:req.body.id}
+    })
+    res.redirect('/admin/employment_status_list');
+}
+
 let employment_statusPost=async(req,res)=>{
     await employment_status.create({
-        employedDate:employed_date,
-        major:major,
-        number:number,
-        name: nickname,
-        companyName:company
+        employedDate:req.body.employed_date,
+        major:req.body.major,
+        number:req.body.number,
+        name: req.body.nickname,
+        companyName:req.body.company
     })
     res.render('./admin/employment_status')
 }
@@ -331,4 +368,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
