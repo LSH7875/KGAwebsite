@@ -1,51 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./sub/curriculum.css">
-    <link rel="stylesheet" href="./sub/sub_layout.css">
-</head>
-<body>
-    <div id="main_nav">
-        <a href="/"><img id="nav_logo" src="../../image/KGA_LOGO_WHITE.png"></a>
-        <ul id="nav_main_list">
-            <li class="nav_bar intro_main"><a href="#"> 학교소개 </a>
-                <ul class="nav_sub_list intro_sub">
-                    <li><a href="#">인삿말</a></li>
-                    <li><a href="#">연혁</a></li>
-                    <li><a href="#">교직원 소개</a></li>
-                    <li><a href="#">시설 소개</a></li>
-                    <li><a href="#">오시는 길</a></li>
-                </ul>
-            </li>
-            <li class="nav_bar curriculum_main"><a href="#"> 교육과정 </a>
-                <ul class="nav_sub_list curriculum_sub">
-                    <li><a href="#">과정 안내</a></li>
-                </ul>
-            </li>
-            <li class="nav_bar job_info_main"><a href="#">취업정보</a>
-                <ul class="nav_sub_list job_info_sub">
-                    <li><a href="#">취업자 인터뷰</a></li>
-                    <li><a href="#">취업 현황</a></li>
-                    <li><a href="#">포트폴리오</a></li>
-                </ul>
-            </li>
-            <li class="nav_bar community_main"><a href="#">커뮤니티</a>
-                <ul class="nav_sub_list community_sub">
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">수강후기</a></li>
-                    <li><a href="#">KI이야기</a></li>
-                    <li><a href="#">KI기자단</a></li>
-                    <li><a href="#">교수칼럼</a></li>
-                </ul>
-            </li>
-            <li class="nav_join"><a href="/login">로그인</a></li>
-            <li class="nav_join"><a href="/join">회원가입</a></li>
-        </ul>
-    </div>
+{% extends '../layout1.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/sub/curriculum.css">
+    <link rel="stylesheet" href="/sub/sub_layout.css">
+{% endblock %}
+
+{% block content %}
     <div id="sub_curriculum">
         <div class="hex">
             <div class="hex-inner">
@@ -56,6 +16,4 @@
         </div>
         <div id="shadow"></div>
     </div>
-    
-</body>
-</html>
+{% endblock %}

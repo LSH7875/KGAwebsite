@@ -7,6 +7,10 @@ let curriculum=(req,res)=>{
 }
 
 let curriculum2 = (req,res)=>{
-    res.render('./curriculum/curriculum2')
+    let {nickname}=req.cookies;
+    let {navi,login}=req;
+    res.render('./curriculum/curriculum2',{
+        nickname,navi,login,
+    })
 }
 module.exports = {curriculum,curriculum2,};

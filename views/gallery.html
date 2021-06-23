@@ -15,10 +15,17 @@
         height:200px;
     }
 </style>
-
-
 {% endblock %}
+
+
 {% block content %}
+{% if msg !=0 %}
+<script type = "text/javascript">
+console.log('msg');
+console.log("{{msg}}");
+window.alert("{{msg}}");
+</script>
+{% endif %}
 <ul class="gallery_table">
     {% for item in title %}
     

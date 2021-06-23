@@ -112,10 +112,13 @@ let list = async(req,res)=>{
         if(page==1){
             console.log('리스트에서 페이지 1인거 들어옴 aa의 폼은?')
             console.log(result2.form);
+            console.log('page1일때 msg')
+            console.log(msg);
             if(result2.form==1){
-            res.render('./list',{
-                msg,nickname,login,navi,title:aa,group,board,
-            })}else if(result2.form==3){
+                res.render('./list',{
+                    msg,nickname,login,navi,title:aa,group,board,
+            })}
+            else if(result2.form==3){
                 res.render('./gallery',{
                     msg,nickname,login,navi,title:aa,group,board,
                 })
@@ -127,21 +130,22 @@ let list = async(req,res)=>{
             res.redirect(`/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
         }else{
         if(req.query.msg){
-            console.log('msg값 바꿈');
+            console.log('msg값 바꾸는 과정');
             msg=req.query.msg;
         }
-        console.log('date타입')
-        console.log(typeof aa.date);
         // console.log(aa.length);
         console.log('렌더한다');
+        console.log('이제 띄울 시간이다. sg어떠냐')
+        console.log(msg);
         if(result2.form==1){
             res.render('./list',{
                 msg,nickname,login,navi,title:aa,group,board,
-        })} else if(result2.form==3){
-                res.render('./gallery',{
-                    msg,nickname,login,navi,title:aa,group,board,
-                })
-            }
+        })}else if(result2.form==3){
+            console.log('/////////갤러러의 msg/////////');
+            console.log(msg)
+            res.render('./gallery',{
+                msg,nickname,login,navi,title:aa,group,board,
+        })}
         }
     })
 }

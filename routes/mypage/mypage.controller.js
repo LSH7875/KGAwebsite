@@ -13,7 +13,7 @@ let index = (req,res)=>{
         res.render('./mypage/index',{navi,section,login,nickname,})
     }else{
         console.log('section 안들어감')
-        res.render('./mypage/index',{navi});
+        res.render('./mypage/index',{navi,section,login,nickname,});
     }
 }
 
