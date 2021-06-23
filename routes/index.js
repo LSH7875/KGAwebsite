@@ -9,6 +9,13 @@ const jobRouter = require('./job');
 // const communityRouter = require('./community');
 const userRouter= require('./user')
 
+
+router.get('/favicon.ico',(req,res,next)=>{
+  res.params=null;
+  next();
+})
+
+
 router.use(ignoreFavicon);
 router.use('/mypage',mypageRouter);
 router.use('/user',userRouter);
@@ -18,6 +25,7 @@ router.use('/curriculum',curriculumRouter);
 router.use('/job',jobRouter);
 // router.use('/community',communityRouter);
 router.use('/',mainRouter);
+
 
 
 function ignoreFavicon(req, res, next) {

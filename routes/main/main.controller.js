@@ -394,6 +394,11 @@ async function postWrite(uid,boardnum,title,contents,userimage,mod,boardid,){
 }
 
 let onlygroup = async(req,res)=>{
+    if(req.params.group=='favicon.ico'){
+        res.statusCode = 404;
+        res.setHeader('Content-Type', 'text/plain');
+        res.send('Cannot ' + req.method + ' ' + req.url);
+    }
     console.log('onlygroup들어옴')
     let groupName =req.params.group;
     console.log('req.params');

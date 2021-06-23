@@ -12,7 +12,11 @@ const {sequelize} = require('./models');
 const bodyParser = require('body-parser');
 const cookieParser= require('cookie-parser');
 const moment = require('moment');
+const favicon = require('serve-favicon')
+const path = require('path');
 
+
+app.use(favicon(path.join(__dirname,'public/images','favicon.ico')))
 app.use(cookieParser());
 //express.static은 파일경로를 주소로 만들겠다는 의미임.
 //그래서 완전탐색이 들어감.
