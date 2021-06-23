@@ -13,10 +13,9 @@
         <div id="navi">
             <a href="/admin/admin_list">Administrator</a>
             <a href="/admin/curriculum_list">교육과정</a>
-            <a href="#">취업정보</a>
+            <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
             <a href="/admin/consulting_list">상담신청</a>
-            <a href="#">방문자분석</a>
         </div>
     </div>
     <div id="sub_con">
@@ -57,16 +56,18 @@
                 </thead>
                 <tbody>
                     {% for es in employ %}
+                    <form action="/admin/employment_status_modify" method="GET">
                     <tr>
-                        <td>{{es.id}}</td>
+                        <td><input type="text" name="number" value="{{es.id}}" style="display:none;"></span>{{es.id}}</td>
                         <td>{{es.employedDate}}</td>
                         <td>{{es.major}}</td>
                         <td>{{es.number}}</td>
                         <td>{{es.name}}</td>
                         <td>{{es.companyName}}</td>
-                        <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
+                        <td><button name="btn" value="modify">수정</button></td>
+                        <td><button name="btn" value="delete">삭제</button></td>
                     </tr>
+                    </form>
                     {% endfor %}
                 </tbody>
             </table>

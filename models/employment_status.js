@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     employedDate: {
-      type: DataTypes.STRING(1000),
+      type: DataTypes.DATE,
       allowNull: false
     },
     major: {
