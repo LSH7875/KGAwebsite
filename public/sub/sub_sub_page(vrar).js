@@ -36,7 +36,7 @@ function addScroll(){
         five.style.display="none";
         sub.style.display = "none";
         one.style.display = "none";    
-    }else if(scroll<6400){
+    }else if(scroll<6100){
         four.style.display="none";
         five.style.display="block";
         six.style.display = "none";
@@ -62,29 +62,3 @@ function move_curriculum(q){
     hi.scrollIntoView(true);
     hi.scrollIntoView({behavior: "smooth"});
 }
-
-
-//==========================스크롤 시간에 따라 애니메이션================================
-const scrollAnimation = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.intersectionRatio>0){
-            entry.target.classList.add('scroll_animation')
-        }
-        else{
-            entry.target.classList.remove('scroll_animation');
-        }
-    })
-})
-
-// let scroll_animation = document.querySelectorAll('.scroll_animation');
-
-// scroll_animation.forEach(ele=>{
-//     scrollAnimation.observe(ele);
-// })
-
-// const scroll_animation = new IntersectionObserver(entries=>{
-//     entries.forEach(entry=>{
-//         console.log(entry.intersectionRatio)
-//     })
-// })
-

@@ -137,18 +137,22 @@
 #nav_main_list > .intro_main:hover .intro_sub{
     opacity: 1;
     visibility: visible;
+    z-index: 10;
 }
 #nav_main_list > .curriculum_main:hover .curriculum_sub{
     opacity: 1;
     visibility: visible;
+    z-index: 10;
 }
 #nav_main_list > .job_info_main:hover .job_info_sub{
     opacity: 1;
     visibility: visible;
+    z-index: 10;
 }
 #nav_main_list > .community_main:hover .community_sub{
     opacity: 1;
     visibility: visible;
+    z-index: 10;
 }
 /* ---------------홍보 PR----------------- */
 
