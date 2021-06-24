@@ -1,6 +1,6 @@
 window.addEventListener('scroll',scroll_check);
 
-
+// 네비바 동영상 밑으로 벗어나면 파란 배경에 fix 되는 코드
 function scroll_check(){
     let scrollNav = document.documentElement.scrollTop;
     let mainNav = document.querySelector('#main_nav');
@@ -33,6 +33,7 @@ function scroll_check(){
     }
 }
 
+
 let navA = document.querySelectorAll(".nav_bar");
 let mainNav = document.querySelector('#main_nav');
 let navUl = document.querySelector('#nav_main_list');
@@ -42,6 +43,7 @@ let sub = document.querySelectorAll(".nav_sub_list");
 navA.forEach(e=>{e.addEventListener('mouseover', scroll_on);
 });
 
+// 네비바 서브 메뉴들 파란 배경에 내려오게 하는 코드
 function scroll_on(){
     console.log(navA);
     navA.forEach(e=>{e.style.height = "250px"})
@@ -50,3 +52,10 @@ function scroll_on(){
     navUl.style.height = "250px";
     sub.style.height = "250px";
 }
+
+//네비바 파란 배경 fix일 때 마우스 떼면 다시 접히게
+mainNav.addEventListener('mouseleave', ReturnBg)
+    function ReturnBg(){
+        mainNav.style.height = "80px"
+        mainNav.style.transition = ".25s ease-in-out"
+    }

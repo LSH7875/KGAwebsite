@@ -148,7 +148,7 @@
     opacity: 1;
     visibility: visible;
     z-index: 10;
-    transition: .25s ease-in-out;
+    /* transition: .25s ease-in-out; */
     font-family: "LotteMartDream";
 
     overflow: visible !important;
@@ -157,21 +157,21 @@
     opacity: 1;
     visibility: visible;
     z-index: 10;
-    transition: .25s ease-in-out;
+    /* transition: .25s ease-in-out; */
     overflow: visible !important;
 }
 #nav_main_list > .job_info_main:hover .job_info_sub{
     opacity: 1;
     visibility: visible;
     z-index: 10;
-    transition: .25s ease-in-out;
+    /* transition: .25s ease-in-out; */
     overflow: visible !important;
 }
 #nav_main_list > .community_main:hover .community_sub{
     opacity: 1;
     visibility: visible;
     z-index: 10;
-    transition: .25s ease-in-out;
+    /* transition: .25s ease-in-out; */
     overflow: visible !important;
 }
 /* ---------------홍보 PR----------------- */
@@ -775,7 +775,7 @@
 
 #footer{
     background: rgb(0,100,255);
-    height: 160px;
+    height: 230px;
     color: white;
 }
 #footer>img{
