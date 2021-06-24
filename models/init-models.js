@@ -9,6 +9,7 @@ var _faq = require("./faq");
 var _faq_curriculum = require("./faq_curriculum");
 var _form = require("./form");
 var _group = require("./group");
+var _apply = require("./apply");
 var _mainvideo = require("./mainvideo");
 var _popup = require("./popup");
 var _recuruit = require("./recuruit");
@@ -25,6 +26,7 @@ function initModels(sequelize) {
   var faq_curriculum = _faq_curriculum(sequelize, DataTypes);
   var form = _form(sequelize, DataTypes);
   var group = _group(sequelize, DataTypes);
+  var apply = _apply(sequelize, DataTypes);
   var mainvideo = _mainvideo(sequelize, DataTypes);
   var popup = _popup(sequelize, DataTypes);
   var recuruit = _recuruit(sequelize, DataTypes);
@@ -60,6 +62,7 @@ function initModels(sequelize) {
     faq_curriculum,
     form,
     group,
+    apply,
     mainvideo,
     popup,
     recuruit,

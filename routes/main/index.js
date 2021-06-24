@@ -24,14 +24,14 @@ router.get('/favicon.ico',(req,res,next)=>{
   })
 router.use(ignoreFavicon);
 router.get("/practice",templete,practice);
-router.get("/:group/:board/view",templete, readChk ,mainController.viewer);
-router.get("/:group/:board/write",templete,writeChk,mainController.write);
-router.post("/:group/:board/write",templete,upload.single('img'),mainController.write_post);
-router.get("/:group/:board/modify",templete,mainController.modify);
-router.post("/:group/:board/modify",templete,upload.single('img'),mainController.modify_post);
-router.get("/:group/:board/delete",templete,mainController.delete_board);
-router.get("/:group/:board/",templete,mainController.list);
-router.get("/:group",mainController.onlygroup);
+router.get("/router/:group/:board/view",templete, readChk ,mainController.viewer);
+router.get("/router/:group/:board/write",templete,writeChk,mainController.write);
+router.post("/router/:group/:board/write",templete,upload.single('img'),mainController.write_post);
+router.get("/router/:group/:board/modify",templete,mainController.modify);
+router.post("/router/:group/:board/modify",templete,upload.single('img'),mainController.modify_post);
+router.get("/router/:group/:board/delete",templete,mainController.delete_board);
+router.get("/router/:group/:board/",templete,mainController.list);
+router.get("/router/:group",mainController.onlygroup);
 router.get('/',templete,mainController.main);
 
 // function ignoerFavicon(req,res,next){

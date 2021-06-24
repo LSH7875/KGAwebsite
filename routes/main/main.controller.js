@@ -424,4 +424,6 @@ let onlygroup = async(req,res)=>{
 }
 
 //list,modify,delete
-module.exports = {main,viewer, write, write_post, modify_post, list, modify, delete_board, onlygroup,}
+
+
+module.exports = {main,viewer, write, write_post, modify_post, list, modify, delete_board,onlygroup}

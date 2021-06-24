@@ -23,6 +23,9 @@ router.use('/admin',adminRouter);
 router.use('/college',collegeRouter);
 router.use('/curriculum',curriculumRouter);
 router.use('/job',jobRouter);
+router.get('/chatting',(rew,res)=>{
+  res.render('chatting/chatting')
+})
 // router.use('/community',communityRouter);
 router.use('/',mainRouter);
 
