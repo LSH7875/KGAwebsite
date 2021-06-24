@@ -44,6 +44,8 @@ router.get('/interview_manage',adminController.interview_manage);
 router.get('/interview_manage_write',adminController.interview_manage_write);
 router.post('/interview_manage_write',adminController.interview_manage_writePost);
 
+router.get('/admin_chatting',adminController.admin_chatting)
+
 router.get('/employment_status',adminController.employment_statuses);
 router.get('/employment_status_modify',adminController.employment_status_modify);
 router.post('/employment_status_modify',adminController.employment_status_modifyPost);

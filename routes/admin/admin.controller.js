@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 function cryptoPw(pw){
     return crypto.createHmac('sha256',Buffer.from(toString(process.env.salt))).update(pw).digest('base64').replace('==','').replace('=',''); 
 }
+let admin_chatting=(req,res)=>{
+    res.render('./admin/admin_chatting')    
+}
 
 let admin_list=async(req,res)=>{
     let {user_id} = req.cookies
@@ -106,7 +109,7 @@ let admin_loginPost = async(req,res)=>{
         });
         if (!result){
             console.log('login fail');
-            res.redirect('/admin/admin_login');
+            res.send("<script>alert('관리자등급이 아닙니다.');location.href='/admin/admin_login';</script>");
         }else{
             console.log('로그인성공');
             let ctoken = token(admin_id);
@@ -400,4 +403,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

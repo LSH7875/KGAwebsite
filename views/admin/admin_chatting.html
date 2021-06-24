@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/admin_chatting.css">
+    <link rel="stylesheet" href="/admin/consulting_list.css">
+</head>
+<body>
+    <div id="header">
+        <img src="/경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/curriculum_list">교육과정</a>
+            <a href="/admin/interview_manage">취업정보</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/apply">상담신청</a>
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자: {{user_id}}<br/>
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="/admin/admin_chatting">▶ 실시간 상담</a></li>
+            <li><a href="/admin/apply">▶ 지원하기</a></li>
+            <li><a href="#">▶ 자주묻는질문</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div class="wrapper">
+                <div id="chat_head">
+                코딩은 KGA
+                <p><input type="text" id="nickname" value="경일이" style="display:none;"></p>
+                
+                <!-- <br/>전화번호: <input type="text" id="tel"> -->
+            </div>
+            <a onclick="parent.chat_close()" id="chat_close"><img src="/닫기버튼.png" alt="" class="x_btn"></a>
+            <div class="content"> 
+                <ul class="chatting_list">
+                </ul>
+            </div>
+            <div id="chat_box">
+                <input type="text" id="msg" placeholder="채팅을 입력해주세요">
+                <input type="button" id="btn" value="전송">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/socket.io.js"></script>
+    <script type="text/javascript" src="/admin/admin_chatting.js"></script>
+</body>
+</html>
