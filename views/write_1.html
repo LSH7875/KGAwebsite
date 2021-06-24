@@ -12,10 +12,10 @@
 <h2>{{board_name}}</h2>
 
 {% if modify ==1 %}
-<form action="/{{group}}/{{board_uri}}/modify" method = "post">
+<form action="/router/{{group}}/{{board_uri}}/modify" method = "post">
     <input type="text" name = "id" class = "id" value = "{{id}}">
 {% else %}
-<form action="/{{group}}/{{board_uri}}/write" method = "post">
+<form action="/router/{{group}}/{{board_uri}}/write" method = "post">
 {% endif %}
     <table>
         <tr>
