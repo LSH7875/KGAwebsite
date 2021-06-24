@@ -56,6 +56,6 @@ function scroll_on(){
 //네비바 파란 배경 fix일 때 마우스 떼면 다시 접히게
 mainNav.addEventListener('mouseleave', ReturnBg)
     function ReturnBg(){
-        mainNav.style.height = "80px"
+        mainNav.style.height = "70px"
         mainNav.style.transition = ".25s ease-in-out"
     }
