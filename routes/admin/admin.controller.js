@@ -102,7 +102,7 @@ let admin_loginPost = async(req,res)=>{
 
     try{
         let result = await user.findOne({
-            where:{user_id:admin_id,user_pw}
+            where:{user_id:admin_id,user_pw,user_grade:4}
         });
         if (!result){
             console.log('login fail');

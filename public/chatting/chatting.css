@@ -9,10 +9,10 @@ ul,li{
 .wrapper{
     width: 350px;
     height: 600px;
-    border: 1px solid #333;
-    border-radius: 5px;
+    border: 1px solid rgb(148, 147, 147);
+    border-radius: 20px;
     position: relative;
-    background-color: #fff;
+    background:#fff;
 }
 .x_btn{
     cursor: pointer;
@@ -42,14 +42,21 @@ ul,li{
     color: white;
     border-radius: 5px;
 }
+#chat_head{
+    margin-top:10px;
+    margin-left:10px;
+    background: rgb(0,100,255)
+}
 .content{
     margin-top:10px;
+    padding:10px;
+    box-sizing:border-box;
     width: 350px;
     height: 500px;
     overflow: hidden;
     overflow-y:scroll;
     -ms-overflow-style: none;
-    background-color: aliceblue;
+
 }
 .content::-webkit-scrollbar { 
     display: none;
@@ -81,6 +88,8 @@ ul,li{
     display: flex;
     flex:1;  
     font-size: 8px;
+    color: black;
+    font-weight: bold;
 }
 
 .message {
