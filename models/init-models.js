@@ -1,7 +1,7 @@
 var DataTypes = require("sequelize").DataTypes;
-var _answer = require("./answer");
 var _board = require("./board");
 var _board_manage = require("./board_manage");
+var _consultant = require("./consultant");
 var _curriculum = require("./curriculum");
 var _employment_status = require("./employment_status");
 var _faq = require("./faq");
@@ -15,9 +15,9 @@ var _recuruit = require("./recuruit");
 var _user = require("./user");
 
 function initModels(sequelize) {
-  var answer = _answer(sequelize, DataTypes);
   var board = _board(sequelize, DataTypes);
   var board_manage = _board_manage(sequelize, DataTypes);
+  var consultant = _consultant(sequelize, DataTypes);
   var curriculum = _curriculum(sequelize, DataTypes);
   var employment_status = _employment_status(sequelize, DataTypes);
   var faq = _faq(sequelize, DataTypes);
@@ -40,9 +40,9 @@ function initModels(sequelize) {
   group.hasMany(board_manage, { as: "board_manages", foreignKey: "group"});
 
   return {
-    answer,
     board,
     board_manage,
+    consultant,
     curriculum,
     employment_status,
     faq,

@@ -35,20 +35,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    file1: {
-      type: DataTypes.STRING(255),
+    character: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    file2: {
-      type: DataTypes.STRING(255),
+    consultant: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
-    file3: {
+    syllabus: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
     faq: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    cur_intro: {
+      type: DataTypes.TEXT,
       allowNull: false
     }
   }, {
