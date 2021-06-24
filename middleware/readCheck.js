@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 
 
-
 //id로 user에서 체크해서 읽기 등급 알아온다. 없으면 -1부여
 //board_num으로 체크해서 읽기 등급 알아온다.
 //그래서 id의 읽기등급이 boardnum의 읽기 등급보다 높으면

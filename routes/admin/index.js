@@ -1,6 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('./admin.controller');
+const path = require('path');
+const multer = require('multer');
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function(req, file, callback){
+            callback(null,'uploads/')
+        },
+        filename:function(req, file, callback){
+            callback(null, new Date().valueOf()+path.extname(file.originalname))
+        }
+    }),
+})
 
 router.get('/admin_list',adminController.admin_list);
 router.post('/admin_list',adminController.admin_list);
@@ -14,7 +27,6 @@ router.post('/board_manage',adminController.board_managePost);
 router.get('/board_modify',adminController.board_modify);
 router.get('/community',adminController.community);
 router.get('/curriculum_list',adminController.curriculum_list);
-router.get('/interview_manage',adminController.interview_manage);
 
 router.get('/mainvideo_list',adminController.mainvideo_list);
 router.get('/mainvideo_upload',adminController.mainvideo_upload);
@@ -26,7 +38,11 @@ router.get('/popup_list',adminController.popup_list);
 router.get('/popup_modify',adminController.popup_modify);
 router.post('/popup_modify',adminController.popup_modifyPost);
 router.get('/popup_make',adminController.popup_make);
-router.post('/popup_make',adminController.popup_makePost);
+router.post('/popup_make',upload.single('img'),adminController.popup_makePost);
+
+router.get('/interview_manage',adminController.interview_manage);
+router.get('/interview_manage_write',adminController.interview_manage_write);
+router.post('/interview_manage_write',adminController.interview_manage_writePost);
 
 router.get('/employment_status',adminController.employment_statuses);
 router.get('/employment_status_modify',adminController.employment_status_modify);
@@ -35,7 +51,7 @@ router.get('/employment_status_write',adminController.employment_status_write);
 router.post('/employment_status_write',adminController.employment_statusPost);
 router.get('/setting',adminController.setting);
 router.get('/apply_list',adminController.apply_list);
-router.get('/consulting_list',adminController.consulting_list);
+router.get('/apply',adminController.apply);
 router.get('/notice',adminController.notice);
 router.get('/portfolio',adminController.portfolio);
 

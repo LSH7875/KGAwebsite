@@ -161,6 +161,12 @@ td {
     padding: 5px 10px;
     text-align: center;
 }
+td input{
+    width:600px;
+}
+#con{
+    height:250px;
+}
 
 button{
     margin-top: 10px;

@@ -15,7 +15,7 @@
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
-            <a href="/admin/consulting_list">상담신청</a>
+            <a href="/admin/apply">상담신청</a>
         </div>
     </div>
     <div id="sub_con">
@@ -28,7 +28,6 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="#">▶ 상담신청</a></li>
             <li><a href="#">▶ 지원하기</a></li>
             <li><a href="#">▶ 자주묻는질문</a></li>
         </ul>
@@ -44,10 +43,12 @@
                     <tr>
                         <th><input type="checkbox" name="number"> 번호</th>
                         <th>제목</th>
-                        <th>보임/숨김</th>
                         <th>작성자</th>
-                        <th>날짜</th>
-                        <th>조회수</th>
+                        <th>나이</th>
+                        <th>이메일</th>
+                        <th>휴대폰번호</th>
+                        <th>지원동기</th>
+                        <th>이미지</th>
                         <th>첨부파일</th>
                         <th>수정</th>
                         <th>삭제</th>
@@ -55,6 +56,8 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>{{apply.}}</td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
