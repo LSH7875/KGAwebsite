@@ -61,7 +61,7 @@
     {% for popup in pop %}
     <div class="modal" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px; position:absolute; z-index: 9999">
         <button onclick=btn_() id="test" style="position:absolute; right:0; border:0; background-color: #fff;">X</button>
-        <a href="{{popup.URL}}" style="border:0;"><img src="/강아지1.jpg" alt="" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px;"></a>
+        <a href="{{popup.URL}}" style="border:0;"><img src="/{{popup.image_file}}" alt="" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px;"></a>
         <!-- <input type="checkbox" placeholder="하루동안 열지 않기">  -->
     </div>
     {% endfor %}
@@ -119,7 +119,6 @@
                         {% for popup in popup %}
                         {{popup.popup_width}}
                         {% endfor %}
-
             </div>
         </div>
         <div id="curriculum">
@@ -286,11 +285,10 @@
         </div>
         <ul id="talk_btn">
             <li id="floating_btn" class="on2"><a id="a" href="javascript:fold_btn();">+</a></li>
-            <li id="btn_question" class="on2"><a href="javascript:do_chat();">문의하기</a></li>
-            <li id="btn_apply" class="on2"><a href="#">지원하기</a></li>
-            <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>
+            <li id="btn_question" class="on2"><a href="javascript:do_chat();">문의</a></li>
+            <li id="btn_apply" class="on2"><a href="#">지원</a></li>
+            <iframe src="/chatting" frameborder="0" id="chat" style="display:none;"></iframe>
         </ul>
-
         <!-- <a href="javascript:do_chat();" id="talk_btn">
             문의하기
             <iframe src="/chatting/chatting.html" frameborder="0" id="chat" style="display:none;"></iframe>

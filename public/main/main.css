@@ -837,6 +837,7 @@
  */
 
 #floating_btn{
+    line-height: 55px;
     width: 60px;
     height: 60px;
     border-radius:30px;
@@ -852,6 +853,7 @@
 }
 
 #btn_question{
+    line-height: 55px;
     width: 60px;
     height: 60px;
     border-radius:30px;
@@ -864,6 +866,7 @@
 }
 
 #btn_apply{
+    line-height: 55px;
     width: 60px;
     height: 60px;
     border-radius:30px;

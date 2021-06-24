@@ -15,7 +15,7 @@
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
-            <a href="/admin/consulting_list">상담신청</a>
+            <a href="/admin/apply">상담신청</a>
         </div>
     </div>
     <div id="sub_con">
@@ -81,6 +81,7 @@
                         <th>게시판이름</th>
                         <th>읽기권한</th>
                         <th>쓰기권한</th>
+                        <th>폼형태</th>
                         <th>첨부파일</th>
                         <th>보임/숨김</th>
                         <th>수정</th>
@@ -91,10 +92,10 @@
                     {% for bm in board_manage %}
                     <form action="/admin/board_manage" method="POST" >
                     <tr>
-                        <td>{{bm.id}}</td>
+                        <td>{{bm.id}} <input type="text" name="id" value="{{bm.id}}" style="display:none;"></input> </td>
                         <td>
                             <select name="group">
-                                <option value>{{bm.group}}</option>
+                                <option value={{bm.group}}>{{bm.group}}</option>
                                 <option value="1">학교소개</option>
                                 <option value="2">취업정보</option>
                                 <option value="3">커뮤니티</option>
@@ -102,9 +103,10 @@
                                 <option value="5">상담신청</option>
                             </select>
                         </td>
-                        <td><input type="text" placeholder="{{bm.board_title}}"></td>
+                        <td><input type="text" placeholder="{{bm.board_title}}" name="title"></td>
                         <td>
                             <select name="read_authority">
+                                <option value={{bm.read_authority}}>{{bm.read_authority}}</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -114,6 +116,7 @@
                         </td>
                         <td>
                             <select name="write_authority">
+                                <option value={{bm.write_authority}}>{{bm.write_authority}}</option>
                                 <option value="-1">-1</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -123,7 +126,16 @@
                             </select>
                         </td>
                         <td>
-                            <select name="file">
+                            <select name="form">
+                                <option value="{{bm.form}}">{{bm.form}}</option>
+                                <option value="1">게시판</option>
+                                <option value="2">단일</option>
+                                <option value="3">갤러리</option>
+                                <option value="4">표</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="files">
                                 <option value="0">0개</option>
                                 <option value="1">1개</option>
                                 <option value="2">2개</option>

@@ -15,7 +15,7 @@
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
-            <a href="/admin/consulting_list">상담신청</a>
+            <a href="/admin/apply">상담신청</a>
         </div>
     </div>
     <div id="sub_con">
@@ -53,14 +53,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for interview in interviews %}
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{interview.id}}</td>
+                        <td>{{interview.title}}</td>
+                        <td>{{interview.nickname}}</td>
+                        <td>{{interview.contents}}</td>
                         <td><button>수정</button></td>
                         <td><button>삭제</button></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
             <button onclick="location.href='/admin/interview_manage_write'">글쓰기</button>

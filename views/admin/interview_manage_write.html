@@ -15,7 +15,7 @@
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
-            <a href="/admin/consulting_list">상담신청</a>
+            <a href="/admin/apply">상담신청</a>
         </div>
     </div>
     <div id="sub_con">
@@ -37,33 +37,44 @@
         <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
         <div>
             <div>
-
             </div>
         </div>
-        <div id="contents">
+        <form action="/admin/interview_manage_write" method="POST" id="contents">
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
-                        <th>제목</th>
-                        <th>닉네임</th>
-                        <th>내용</th>
-                        <th>수정</th>
-                        <th>삭제</th>
+                        <th colspan="3">취업인터뷰 글쓰기</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
+                        <td>제목</td>
+                        <td class="left">
+                            <input type="date" name="title">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>닉네임</td>
+                        <td class="left">
+                            <input type="text" name="nickname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>내용</td>
+                        <td class="left">
+                            <input type="text" name="contents" id="con">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>파일첨부</td>
+                        <td class="left">
+                            <input type="file" name="file">
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+            <button>저장하기</button>
+        </form>
     </div>
 </body>
 </html>
