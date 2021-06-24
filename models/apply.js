@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('interview', {
+  return sequelize.define('apply', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -8,19 +8,27 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     title: {
-      type: DataTypes.STRING(1000),
+      type: DataTypes.STRING(100),
       allowNull: false
     },
-    nickname: {
+    name: {
       type: DataTypes.STRING(10),
       allowNull: false
     },
-    hits: {
+    age: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
+      allowNull: false
     },
-    contents: {
+    email: {
+      type: DataTypes.STRING(50),
+      allowNull: false
+    },
+    phone: {
+      type: DataTypes.STRING(11),
+      allowNull: true,
+      defaultValue: ""
+    },
+    motive: {
       type: DataTypes.STRING(1000),
       allowNull: false
     },
@@ -34,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'interview',
+    tableName: 'apply',
     timestamps: false,
     indexes: [
       {

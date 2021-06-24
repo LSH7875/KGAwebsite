@@ -77,7 +77,7 @@ let employment_status_modifyPost=async(req,res)=>{
     },{
         where: {id:req.body.id}
     })
-    res.redirect('/admin/employment_status_list');
+    res.redirect('/admin/employment_status');
 }
 
 let employment_statusPost=async(req,res)=>{
@@ -128,8 +128,21 @@ let board_manager=async(req,res)=>{
 }
 
 let board_managePost=async(req,res)=>{
+    let bm = await board_manage.findAll();
+    let {user_id} = req.cookies
     if( req.body.btn == "modify"){
-        let bm = await board_manage.findAll({
+        await board_manage.update({
+            group:req.body.group,
+            board_uri:0,
+            board_title:req.body.title,
+            preview:0,
+            read_authority:req.body.read_authority,
+            write_authority:req.body.write_authority,
+            form:req.body.form,
+            file:req.body.files,
+            show_hide:req.body.show_hide,
+            curr_id:0
+        },{
             where: {
                 id: req.body.id
             }
@@ -145,10 +158,6 @@ let board_managePost=async(req,res)=>{
         })
         res.redirect('/admin/board_manage')
     }
-    let {user_id} = req.cookies
-    res.render('./admin/board_manage',{
-        user_id, board_manage:bm
-    })
 }
 
 let board_modify=async(req,res)=>{
@@ -172,12 +181,32 @@ let curriculum_list=(req,res)=>{
     })
     }
 
-let interview_manage=(req,res)=>{
+let interview_manage=async(req,res)=>{
     let {user_id} = req.cookies
+    let im = await board.findAll({
+        where:{board_number:7}
+    })
     res.render('./admin/interview_manage',{
-        user_id
+        user_id, interviews:im
     })
     }
+let interview_manage_write=(req,res)=>{
+    res.render('./admin/interview_manage_write')
+}
+let interview_manage_writePost=async(req,res)=>{
+    let {user_id} = req.cookies
+    console.log(user_id);
+    await board.create({
+        user_id: user_id,
+        board_number:7,
+        title: req.body.title,
+        nickname: req.body.nickname,
+        contents: req.body.contents
+    },{
+        where:{board_number:7}
+    })
+    res.redirect('./admin/interview_manage')
+}
 
 let mainvideo_list=async(req,res)=>{
     let {user_id} = req.cookies
@@ -297,6 +326,7 @@ let popup_make=(req,res)=>{
     }
 
 let popup_makePost=async(req,res)=>{
+    let userimage = req.file == undefined ? '' :req.file.filename;
     await popup.create({
         show_hide: req.body.group,
         popup_width: req.body.width,
@@ -305,11 +335,12 @@ let popup_makePost=async(req,res)=>{
         popup_top: req.body.from_top,
         popup_type:req.body.popup_type,
         title: req.body.title,
-        image_file: req.body.img,
+        image_file: userimage,
         URL: req.body.url,
         link_type: req.body.link,
         hide_term: req.body.term
     })
+    console.log(userimage)
     res.redirect('/admin/popup_list')
     }
 
@@ -327,22 +358,23 @@ let apply_list=(req,res)=>{
     })
     }
 
-let consulting_list=(req,res)=>{
+let apply=async(req,res)=>{
     let {user_id} = req.cookies
-    res.render('./admin/consulting_list',{
-        user_id
+    let apply = await board.findAll({
+        where:{board_number:16}
+    })
+    res.render('./admin/apply',{
+        user_id, applies: apply
     })
     }
 
 let notice=async(req,res)=>{
-    let notice_admin = await board.findAll({
-        where:{
-            board_number:10
-        }
+    let notice= await board.findAll({
+        where:{board_number:10}
     });
     let {user_id} = req.cookies
     res.render('./admin/notice',{
-        user_id, notice:notice_admin
+        user_id, notices:notice
     })
     }
 
@@ -368,4 +400,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,consulting_list,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
