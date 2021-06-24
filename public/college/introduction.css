@@ -1,5 +1,40 @@
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 .kyngil_introduce_img{
-    margin-top:20px; 
-    margin-bottom:50px;
-    background:url("http://www.kiweb.or.kr/images/college/img_01_01.jpg")
+    margin:0 auto;
+    width:800px;
+    height:100px;
+    background-image:url("http://www.kiweb.or.kr/images/college/img_01_01.jpg");
+    background-repeat:no-repeat;
+    background-size: contain;
+}
+
+.kyungil_introduce{
+    padding:50px;
+    text-align: left;
+    line-height: 1.4em;
+    letter-spacing:0.3em;
+    padding-left: 220px;
+    padding-right: 200px;
+    font-family: 'MaruBuri-Regular';
+}
+
+.right_txt{
+    margin-top: 40px;
+    text-align: right;
+    line-height: 1.4em;
+    letter-spacing:0.3em;
+    font-family: 'MaruBuri-Regular';
+}
+
+.right_txt>span{
+    font-weight:bold;
+    color:rgb(0,100,255);
 }

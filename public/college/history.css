@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#content{
+    box-sizing: border-box;
+    padding-top: 100px;
+    padding-left:100px;
+    
+}
+.history_image{
+    width:200px;
+    height:1800px;
+    float:left;
+    background-image: url("http://localhost:3000/kyungil_logo.png");
+    background-repeat: no-repeat;
+    border-right: 2px solid rgb(0,100,255);
+    
+}
+
+.history>ul>li{
+    text-align: left;
+    text-indent: 2em;
+    line-height: 50px;
+    color:rgb(0,100,255);
+    font-weight: bold;
+    font-size: 2em;
+    font-family: 'MaruBuri-Regular';
+    letter-spacing:0.1em;
+    
+}
+
+.history>ul>li>span{
+    text-decoration: underline;
+}
+.history>ul>li>ul>li{
+    font-size:0.5em;
+    color:black;
+    text-decoration:none;
+    font-family: 'MaruBuri-Regular';
+    letter-spacing:0.3em;
+    line-height: 30px;
+
+}
+.history>ul>li>ul{
+    margin-top:20px;
+    margin-bottom:50px;
+}
