@@ -19,27 +19,28 @@ window.alert("페이지가 없습니다");
     {% for item in title %}
     <tr>
         <td>{{item.id}}</td>
-        <td><a href="/{{group}}/{{board}}/view?id={{item.id}}">{{item.title}}</a></td>
+        <td><a href="/router/{{group}}/{{board}}/view?id={{item.id}}">{{item.title}}</a></td>
         <td>{{item.nickname}}</td>
         <td>{{item.date}}</td>
         <td>{{item.hits}}</td>
     </tr>
     {% endfor %}
 </table>
-<a href="/{{group}}/{{board}}/write">글쓰기</a>
+<a href="router/{{group}}/{{board}}/write">글쓰기</a>
 <div class="page">
     <button class="down_page">&lt</button>
         <ul class="pagenation">
-        <li><a href="/{{group}}/{{board}}?page=1">1</a></li>
-        <li><a href="/{{group}}/{{board}}?page=2">2</a></li>
-        <li><a href="/{{group}}/{{board}}?page=3">3</a></li>
-        <li><a href="/{{group}}/{{board}}?page=4">4</a></li>
-        <li><a href="/{{group}}/{{board}}?page=5">5</a></li>
-        <li><a href="/{{group}}/{{board}}?page=6">6</a></li>
-        <li><a href="/{{group}}/{{board}}?page=7">7</a></li>
-        <li><a href="/{{group}}/{{board}}?page=8">8</a></li>
-        <li><a href="/{{group}}/{{board}}?page=9">9</a></li>
-        <li><a href="/{{group}}/{{board}}?page=10">10</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=1">1</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=1">1</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=2">2</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=3">3</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=4">4</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=5">5</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=6">6</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=7">7</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=8">8</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=9">9</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=10">10</a></li>
     </ul>
     <button class="up_page">&gt</button>
 </div>

@@ -1,40 +1,39 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('interview', {
+  return sequelize.define('cur_cardinal', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    title: {
-      type: DataTypes.STRING(1000),
-      allowNull: false
-    },
-    nickname: {
-      type: DataTypes.STRING(10),
-      allowNull: false
-    },
-    hits: {
+    curr_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0
     },
-    contents: {
-      type: DataTypes.STRING(1000),
-      allowNull: false
+    start_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('curdate')
     },
-    image: {
-      type: DataTypes.STRING(1000),
+    end_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('curdate')
+    },
+    location: {
+      type: DataTypes.TEXT,
       allowNull: true
     },
-    file: {
-      type: DataTypes.STRING(1000),
-      allowNull: true
+    limit_people: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 30
     }
   }, {
     sequelize,
-    tableName: 'interview',
+    tableName: 'cur_cardinal',
     timestamps: false,
     indexes: [
       {

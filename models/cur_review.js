@@ -1,35 +1,23 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('employment_status', {
+  return sequelize.define('cur_review', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    employedDate: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    major: {
-      type: DataTypes.STRING(1000),
-      allowNull: false
-    },
-    number: {
+    curr_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    name: {
-      type: DataTypes.STRING(1000),
-      allowNull: false
-    },
-    companyName: {
-      type: DataTypes.STRING(1000),
+    review_id: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'employment_status',
+    tableName: 'cur_review',
     timestamps: false,
     indexes: [
       {
@@ -38,6 +26,20 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
+        ]
+      },
+      {
+        name: "FK__curriculum",
+        using: "BTREE",
+        fields: [
+          { name: "curr_id" },
+        ]
+      },
+      {
+        name: "FK__board",
+        using: "BTREE",
+        fields: [
+          { name: "review_id" },
         ]
       },
     ]
