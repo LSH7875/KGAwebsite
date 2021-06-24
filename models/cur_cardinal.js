@@ -1,31 +1,39 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('faq_curriculum', {
+  return sequelize.define('cur_cardinal', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    cur_id: {
+    curr_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'curriculum',
-        key: 'id'
-      }
+      defaultValue: 0
     },
-    faq_id: {
+    start_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('curdate')
+    },
+    end_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.fn('curdate')
+    },
+    location: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    limit_people: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'faq',
-        key: 'id'
-      }
+      defaultValue: 30
     }
   }, {
     sequelize,
-    tableName: 'faq_curriculum',
+    tableName: 'cur_cardinal',
     timestamps: false,
     indexes: [
       {
@@ -34,20 +42,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "id" },
-        ]
-      },
-      {
-        name: "join curid",
-        using: "BTREE",
-        fields: [
-          { name: "cur_id" },
-        ]
-      },
-      {
-        name: "join faqid",
-        using: "BTREE",
-        fields: [
-          { name: "faq_id" },
         ]
       },
     ]

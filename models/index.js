@@ -31,6 +31,9 @@ db.form = models.form;
 db.employment_status = models.employment_status;
 db.interview = models.interview;
 db.recuruit = models.recuruit;
+db.cur_cardinal = models.cur_cardinal;
+db.consultant = models.consultant;
+db.faq = models.faq;
 
 
 module.exports = db;

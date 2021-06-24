@@ -7,9 +7,6 @@ const templete=require('../../middleware/templete');
 
 // router.get('/', templete,curriculumController.curriculum);
 // router.get('/curriculum', collegeController.curriculum);
-router.get('/block',templete,curriculumController.block);
-router.get('/gameArchi',templete,curriculumController.gameArchi);
-router.get('/programing',templete,curriculumController.programing);
-router.get('/vrar',templete,curriculumController.vrar);
+router.get('/:curr',templete,curriculumController.curr);
 router.get('/', templete,curriculumController.curriculum2);
 module.exports = router;

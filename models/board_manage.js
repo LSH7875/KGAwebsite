@@ -50,9 +50,9 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     },
     show_hide: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: "block"
+      defaultValue: 1
     },
     curr_id: {
       type: DataTypes.INTEGER,

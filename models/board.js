@@ -46,9 +46,9 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     },
     show_hide: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: "block"
+      defaultValue: 0
     },
     file1: {
       type: DataTypes.STRING(255),
@@ -56,8 +56,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     cur_num: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
+      allowNull: false
     },
     file3: {
       type: DataTypes.STRING(255),

@@ -59,7 +59,7 @@ let write_post = async(req,res)=>{
     
     // console.log('writepost_nickname',nickname)//여기까진 성공
     postWrite(user_id,ddd.id,title,contents,userimage);
-    res.redirect(`/${group}/${board}/`);
+    res.redirect(`/router/${group}/${board}/`);
 }
 ////여기까지 성공
 let modify = async(req,res)=>{
@@ -88,7 +88,7 @@ let modify_post =async(req,res)=>{
         where:{board_uri:board}
     })
     postWrite(user_id,ddd.id,title,contents,userimage,'modify',id)
-    res.redirect(`/${group}/${board}`);
+    res.redirect(`/router/${group}/${board}`);
 }
 
 let list = async(req,res)=>{
@@ -127,7 +127,7 @@ let list = async(req,res)=>{
             console.log('aaif문 들어옴')
             msg="페이지가 없습니다.";
             console.log('리다이렉트 먹나?')
-            res.redirect(`/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
+            res.redirect(`/router/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
         }else{
         if(req.query.msg){
             console.log('msg값 바꾸는 과정');

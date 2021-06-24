@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/sub/sub_sub_page(block).css">
+    <script type="text/javascript" src="/sub/sub_sub_page(block).js"></script>
+
+</head>
+<body>
+
+    <div id="wrap">
+        <div class="frame_out a"></div>
+        <div class="frame_out b"></div>
+        <div class="frame_out c"></div>
+        <div id="frame"><img src="/{{rst.main_image}}"></div>
+        <div id="a_line" class="scroll_a"></div>
+        <div id="frame_in"></div>
+       <div id="header">
+           <div id="nav_bar">
+               <div id="logo">KGA</div>
+               <ul id="nav_ul">
+                   <li class="nav_a" onclick="move_curriculum('.scroll_a');">{{curr}}</li>
+                   <li class="nav_b" onclick="move_curriculum('.scroll_b');">Intro</li>
+                   <li class="nav_c" onclick="move_curriculum('.scroll_c');">Curriculum</li>
+                   <li class="nav_d" onclick="move_curriculum('.scroll_d');">Course Review</li>
+                   <li class="nav_e" onclick="move_curriculum('.scroll_e');">FAQ</li>
+                   <li class="nav_f" onclick="move_curriculum('.scroll_f');">Apply</li>
+                   <!-- 각각 엘리먼트 누르면 해당 영역으로 이동하도록-->
+               </ul>
+           </div>
+       </div>
+       <div id="contents">
+           <div id="class_intro">
+               <div class="inform_con">
+                   <h3 class="inform_sub Sub ">{{curr}}</h3>
+                   <div class="inform_text one">
+                    </div>
+                    <div class="inform_text two">
+                    </div>
+                    <div class=" inform_middle three">Curriculum</div>
+                    <div class="inform_middle four">Riview</div>
+                    <div class="inform_middle five">FAQ</div>
+                    <div class="inform_middle six">Apply</div>
+               </div>
+           </div>
+           <div id="curr_detail">
+               <div id="b_line" class="scroll_b"></div>
+               <h1>과정 소개</h1>
+               <ul>
+                   <li>교육과정명 : {{result.detail_name}}</li>
+                   <li>교육 일정 : 개강일로부터 {{result.period}}개월</li>
+                   <li>개강 / 종강일 : {{rst.start_date}} ~ {{rst.end_date}}</li>
+                   <li>교육 장소 : {{rst.location}}}</li>
+                   <li>강의 정원 : {{rst.limit_people}}명 (선착순 조기마감 주의)</li>
+                   <li>수강료 : 정부 전액 지원(1인 {{result.tuition}}원)</li>
+                   <li>자격요건 : {{result.qualification}}</li>
+               </ul>
+           </div>
+           <div id="class_support">
+               <div>
+                   취업 책임제도
+               </div> 
+               <div class="strength">
+                <br/>
+                <br/>   
+                <h1>과정 특장점</h1>
+                <br/>
+                <br/>
+                <a>
+
+
+                </a>
+                <div class="consultant">
+                    <h1>Consultant</h1>
+                    <img src="/{{cst[0].picture}}"> 
+                    <div class="professor">
+                    <div class="pro_left">
+                        <h1>{{cst[0].professor_name}}</h1>
+                        <a>
+                        </a>
+                    </div>
+                    <div class="pro_right">
+                        <h1>{{cst[1].professor_name}}</h1>
+                        <a>
+                        </a>
+                    </div>
+
+
+                    </div>
+
+                </div>
+
+               </div>
+               <div class="supply"> 훈련비 전액무료, 훈련수당 최대 300만원 지급</div>
+           </div>
+           <div id="curr_table">
+            <img src="/{{result.syllabus}}">
+           </div>
+           <div id="c_line" class="scroll_c"></div>
+           <div id="d_line" class="scroll_d"></div>
+           <div id="class_review">
+               <h1>수강후기</h1>
+               <div class="line"></div>
+               <ul>
+                   {% for item in rstReview %}
+                   <li><h3>{{item.name}}</h3><br/>
+                       <a>{{item.contents}}
+                       </a>
+                   </li>
+                   {% endfor %}
+                </ul>
+                <!-- <div id="bottom"></div> -->
+           </div>
+           <div id="e_line" class="scroll_e"></div>
+           <div id="FAQ">
+               <div id="FAQ_sub">FAQ</div>
+               {% for sss in faq %}
+               <div class="Q">Q.<br/><br/><br/><br/>
+                <h1>{{faq.question}}</h1>
+                    <br/><br/><br/><br/><br/><br/>
+                </div>
+               <div class="A">A. <br/><br/><br/>
+                <a>{{sss.answer}}
+                </a><br/><br/>
+                </div>
+                {% endfor %}
+               <div class="vertical_line"></div>
+           </div>
+           <div id="f_line" class="scroll_f"></div>
+           <div id="apply">
+               <button><a href="#">지원하기</a></button>
+           </div>
+       </div>
+       <div id="main_nav">
+           <img src="/화살표.png">
+           <ul class="main_nav_bar">
+               <li>학교소개</li>
+               <li>교육과정</li>
+               <li>취업정보</li>
+               <li>커뮤니티</li>
+           </ul>
+       </div>
+    </div>
+    <script type = "text/javascript">
+        console.log('javascript먹는지');
+        let professor1=document.querySelector('.pro_left>a');
+        let professor2=document.querySelector('.pro_right>a');
+        c="{{cst[0].professor_info}}"
+        d="{{cst[1].professor_info}}"
+        changetxt(professor1,c);
+        changetxt(professor2,d);
+        let inform_text1=document.querySelector('.inform_text.one');
+        let inform_text2=document.querySelector('.inform_text.two');
+        a ="{{result.side_info1}}"
+        b ="{{result.side_info2}}"
+        changetxt(inform_text1,a);
+        changetxt(inform_text2,b)
+
+        let strength=document.querySelector('.strength>a');
+        f="{{result.character}}"
+        changetxt(strength,f);
+
+        function changetxt(one,two){
+            one.innerHTML = two.replace(/\//gi,"<br>");
+        }
+    </script>
+</body>
+</html>
