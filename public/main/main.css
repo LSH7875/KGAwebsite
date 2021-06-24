@@ -124,7 +124,7 @@
 .nav_join>a{
     background: none;
     display: inline-block;
-    width: 90px !important;
+    width: 100px !important;
     height: 22px;
     font-size: 20px !important;
     color: #ededed;
@@ -141,6 +141,7 @@
     background: #fff;
     color: black !important;
     cursor: pointer;
+    width: 100px;
 }
 
 /*---------------------nav_bar 보이기---------------------- */
