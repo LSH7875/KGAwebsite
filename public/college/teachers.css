@@ -1,0 +1,76 @@
+.teacher_img{
+    margin:0 auto;
+    width:800px;
+    height:200px;
+    background-image:url("http://www.kiweb.or.kr/images/college/img_03_01.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.teacherimg{
+    margin:0 auto;
+    width:800px;
+    height:400px;
+    box-sizing: border-box;
+}
+
+.img1{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_parkbyungjun.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.img2{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_yooseongjun.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.img3{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_yanghyunseok.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.img4{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_yeojongrak.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.img5{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_seohyeokjun.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.img6{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_leejaehwan.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.img7{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_kimkiwon.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.img8{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_jungjikhan.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.img9{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_ohjunhwan.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.img10{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_yangjuhyun.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.img11{
+    background-image:url("http://www.kiweb.or.kr/images/college/profile_kimjaeyeon.jpg");
+    background-repeat:no-repeat;
+    background-size:contain;
+    margin-bottom: 50px;
+}
