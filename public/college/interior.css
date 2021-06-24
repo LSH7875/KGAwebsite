@@ -1,0 +1,122 @@
+#section{
+    margin:0 auto;
+    margin-bottom:50px;
+    width:1100px;
+    
+    background:lightcoral;
+    
+}
+h1{
+    text-align: left;
+    text-indent: 50px;
+    margin-bottom:50px;
+}
+
+.motion_sec{
+    width:800px;
+    height:500px;
+    position:absolute;
+    background:black;
+    left:50%;
+    transform: translateX(-50%);   
+}
+
+.interrior_text{
+    width:800px;
+    height:500px;
+    color:white;
+    opacity:0;    
+    box-sizing: border-box;
+    padding:100px;
+    padding-top:150px;
+    
+    font-size: 20px;
+}    
+
+.interrior_text:hover{
+    opacity:1;
+    background:rgba(0,0,0,0.5);
+    
+}
+
+.interrior_text:hover >span{
+    color:rgb(0,100,255);
+    font-weight: bold;
+    font-size:25px;
+    line-height:100px;
+}
+
+
+
+.sec1{
+    background-image:url("/gochung.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.sec2{
+    background-image:url("/데스크.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sec3{
+    background-image: url("/홍보용2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sec4{
+    background-image: url("/10wjd.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sec5{
+    background-image: url("/상담실.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sec6{
+    background-image: url("/programing.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#block{
+    /* opacity:1; */
+    animation-name:fadein;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadein{
+    0%{opacity:0}
+    100%{opacity:1}
+}
+
+#nonblock{
+    /* opacity:0; */
+    animation-name:fadeout;
+    animation-duration:1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeout{
+    0%{opacity:1}
+    100%{opacity:0}
+}
+
+#left_btn{
+    position:absolute;
+    top:600px;
+    left:400px;
+    font-size: 50px;
+}
+
+#right_btn{
+    position:absolute;
+    top:600px;
+    right:400px;
+    font-size: 50px;
+}

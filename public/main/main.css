@@ -87,7 +87,7 @@
     float: right;
     text-align: center;
     display: flex;
-    margin-top: 20px;
+    margin-top: 15px;
     /* background: violet; */
 }
 
@@ -97,7 +97,6 @@
     float: left;    
     margin: 0px 12px;
     text-align: center;
-    /* background: violet; */
 }
 
  #nav_main_list>li>a{
@@ -107,7 +106,6 @@
     border-right: 1px solid white; 
     font-size: 22px;
     font-family: "LotteMartDream";
-    /* background: violet; */
 }
 
 .nav_sub_list{
@@ -151,7 +149,6 @@
     z-index: 10;
     /* transition: .25s ease-in-out; */
     font-family: "LotteMartDream";
-
     overflow: visible !important;
 }
 #nav_main_list > .curriculum_main:hover .curriculum_sub{
