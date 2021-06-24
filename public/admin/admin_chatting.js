@@ -1,7 +1,7 @@
 "use strict"
 
 const socket = io();
-// const {user}=require('../../models/index') ;
+
 const nickname = document.querySelector('#nickname');
 const chatting_list = document.querySelector('.chatting_list');
 const msg = document.querySelector('#msg');
@@ -12,14 +12,12 @@ const content = document.querySelector('.content')
 btn.addEventListener("click",()=>{
     const param = {
         name: nickname.value,
-        msg: msg.value         
+        msg: msg.value 
     }
     socket.emit("chatting",param)
 })
 
 socket.on("chatting",(data)=>{ 
-    // let aaa = await user.findOne({where:{user_id:req.cookies.id}})
-    // console.log(aaa.user_grade)
     console.log(socket.id);
     console.log(data)
     const { name, msg, time } = data;
@@ -39,7 +37,7 @@ function li_model(name, msg, time){
         if(li.className == "sent"){
             const dom = ` <span class="profile">
             <span class="user">${this.name}</span>
-            <img src="/user.png" alt="">
+            <img src="/경일이.png" alt="">
             </span>
             <span class="message">${this.msg}</span>              
             <span class="time">${this.time}</span>`;
@@ -47,12 +45,13 @@ function li_model(name, msg, time){
         } else{
             const dom = ` <span class="profile">
             <span class="user">${this.name}</span>
-            <img src="/경일이.png" alt="">
+            <img src="/user.png" alt="">
             </span>
             <span class="message">${this.msg}</span>              
             <span class="time">${this.time}</span>`;
             li.innerHTML = dom;
         }
+        
         chatting_list.appendChild(li)
     }
 }

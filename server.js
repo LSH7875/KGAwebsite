@@ -50,6 +50,10 @@ app.use('/',router);
 
 io.sockets.on('connection',(socket)=>{
     socket.on('chatting',(data)=>{
+        console.log(socket.id);
+        console.log(socket.id);
+        console.log(socket.id);
+        
         const { name, msg } = data;
         io.emit("chatting",{
             name,
