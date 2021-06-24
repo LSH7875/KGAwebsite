@@ -176,7 +176,7 @@ INSERT INTO `recuruit` (`id`, `job_date`, `major`, `cardinal`, `name`, `company`
 	(7, '2021-06-23', '게임 기획', 24, '임재성', '올엠');
 /*!40000 ALTER TABLE `recuruit` ENABLE KEYS */;
 
--- 테이블 데이터 kga.user:~3 rows (대략적) 내보내기
+-- 테이블 데이터 kga.user:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `user_id`, `user_pw`, `user_name`, `user_email`, `user_phone`, `user_day`, `user_grade`, `user_sex`, `user_birth`, `ad_agree`, `nickname`, `social`, `profile`, `curr_id`) VALUES
 	(1, 'jYkPXB0o8NJUVo9HBpOkiY5y-g4i-ipOy2WBdChc0kM', NULL, '이승희', 'nara7875@naver.com', '01049477875', '2021-06-14 04:56:50', 1, NULL, NULL, NULL, '이승희', 'naver', 'basic_profile.jpg', NULL),
