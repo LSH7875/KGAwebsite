@@ -68,7 +68,7 @@
     height:70px;
     background: rgb(0,100,255);
     margin: 0 auto;
-    z-index: 1;
+    z-index: 100;
     padding: 10px;
     display: flex;
     justify-content: space-evenly;
@@ -128,7 +128,7 @@
     float: left;    
     margin: 0px 12px;
     text-align: center;
-    overflow-y:hidden;
+    overflow-y: hidden;
 }
 
  #nav_main_list>li>a{
@@ -138,7 +138,7 @@
     border-right: 1px solid white; 
     font-size: 22px;
     font-family: "LotteMartDream";
-    overflow-y:hidden;
+    overflow-y: hidden;
 }
 
 .nav_sub_list{
@@ -212,12 +212,12 @@
     margin-top:70px;
     width:1200px;
     height:150px;
-    background-color:rgb(206, 173, 206);
+    /* background-color:rgb(206, 173, 206); */
 }
 
 #content{
     margin:0 auto;
     margin-top:50px;
     width:1200px;
-    background:lightgreen;
+    /* background:lightgreen; */
 }
