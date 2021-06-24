@@ -4,7 +4,7 @@ const {curriculum, consultant, cur_cardinal,board, faq}=require('../../models/in
 let curriculum2 = (req,res)=>{
     let {nickname}=req.cookies;
     let {navi,login}=req;
-    res.render('./curriculum/class_intro',{
+    res.render('./curriculum/6gak',{
         nickname,navi,login,
     })
 }

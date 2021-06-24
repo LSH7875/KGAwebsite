@@ -1,22 +1,27 @@
-{% extends '../layout1.html' %}
-
-{% block css %}
-    <link rel="stylesheet" href="/sub/class_intro.css">
-{% endblock %}
-
-{% block content %}
-    <!-- <div class="hide"></div> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Document </title>
+    <link rel="stylesheet" href="/sub/6gak.css">
+    <!-- <link rel="stylesheet" href="/main/main_copy.css"> -->
+    <link rel="stylesheet" href="/sub/666666.css">
+</head>
+<body>    
+    <div class="hide"></div>
     <div id="cover">
         <div id="hexagon">
-            <img src="http://localhost:3000/육각2.png">
+            <img src="/육각2.png">
         </div>
-
-        <div class="class A" onclick="slideOn()">Game Artwork</div>
-        <div class="class B" onclick="slideOn()">Block Chain</div>
-        <div class="class C" onclick="slideOn()">Game Architecture</div>
-        <div class="class D" onclick="slideOn()">Game Programing</div>
-        <div class="class E" onclick="slideOn()">Pro Gamer</div>
-        <div class="class F" onclick="slideOn()">VR / AR</div>
+        <!-- onclick="slideOn() -->
+        <div class="class A" >Game Artwork</div>
+        <div class="class B" >Block Chain</div>
+        <div class="class C" >Game Architecture</div>
+        <div class="class D" >Game Programing</div>
+        <div class="class E" >Pro Gamer</div>
+        <div class="class F" >VR / AR</div>
     </div>
 
     <div class="curr_content">
@@ -77,7 +82,32 @@
             <button class="detail">과정자세히보기</button>
         </div>
     </div>
-        
-    <script type="text/javascript" src="/sub/class_intro.js"></script>
+
+    <div id="main_nav">
+        <a href="/"><img id="nav_logo" src="/KGA_LOGO_WHITE.png"></a>
+        <ul id="nav_main_list">
+            
+            {% for item in navi %} 
+            <li class="nav_bar intro_main"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
+                <ul class="nav_sub_list intro_sub">
+                    {%for mmm in item.board %}
+                    <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+            {% if login==1%}
+            <span>{{nickname}}님환영해요</span>
+            <li class="nav_join"><a href="/mypage">마이페이지</a></li>
+            <li class="nav_join"><a href="/user/logout">로그아웃</a></li>
+            {% else %}
+            <li class="nav_join"><a href="/user/login">로그인</a></li>
+            <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
+            {% endif %}
+        </ul>
+        </div>
+
+    <script type="text/javascript" src="/sub/6gak.js"></script>
     <!-- <script type="text/javascript" src="/육각형 만들기.js"></script> -->
-{% endblock %}
+</body>
+</html>
