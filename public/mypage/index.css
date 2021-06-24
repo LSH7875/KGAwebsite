@@ -1,6 +1,39 @@
+*{margin:0; padding:0;}
+ul,li{
+    list-style: none;
+    margin:0; padding:0;
+}
 #mypage_btn{
     display:flex;
     justify-content: space-between;
+}
+
+#user_info{
+    width:1200px;
+    height:300px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px -2px rgb(0, 0, 0,.2) ;
+    background-color: #eee;
+    overflow-y: hidden;
+    margin-bottom:30px;
+    padding:20px;
+}
+
+#user_profile{
+    width:200px;
+    height:200px;
+    margin-top:10px;
+    box-sizing: border-box;
+    border-radius: 200px;
+    background:rgb(164, 147, 194);
+    float:left;
+}
+
+#user_infos{
+    text-align: left;
+    padding-left: 80px;
+    padding-top:20px;
 }
 
 .pw_check{
@@ -15,20 +48,29 @@
 
 #mypage_btn>li{
     box-sizing: border-box;
-    padding:18px;
+    /* padding:18px; */
     width:30%;
     height:80px;
-    background:rgb(0,100,255);
-    overflow-y: hidden;
+    background:rgb(239, 245, 255);
+    border-radius: 16px;
+    /* overflow-y: hidden; */
+    box-shadow: 5px 5px 5px -2px rgb(0, 0, 0,.2) ;
+    line-height: 80px;
 }
-#mypage_btn>li:nth-child(2){
-    margin-left:3%;
-    margin-right:3%;
-}
+
 #mypage_con{
     margin-top:25px;
     width:100%;
 
     height:800px;
     background-color:aquamarine;
+}
+
+h1{
+    font-size:20px;
+}
+
+h2{
+    text-align:left;
+    text-indent: 20px;
 }
