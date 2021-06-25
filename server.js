@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const {user}=require('./models/index') ;
 const {port}= process.env || 3000;
 const socket = require('socket.io');
 const http = require('http')
@@ -14,6 +15,7 @@ const cookieParser= require('cookie-parser');
 const moment = require('moment');
 const favicon = require('serve-favicon')
 const path = require('path');
+
 
 
 app.use(favicon(path.join(__dirname,'public/images','favicon.ico')))
@@ -53,7 +55,7 @@ io.sockets.on('connection',(socket)=>{
         console.log(socket.id);
         console.log(socket.id);
         console.log(socket.id);
-        
+
         const { name, msg } = data;
         io.emit("chatting",{
             name,
@@ -62,6 +64,40 @@ io.sockets.on('connection',(socket)=>{
         })
     })
 })
+
+// io.sockets.on('connection',(socket)=>{
+//         socket.on('setting',async(data)=>{
+//             let admin_arr = [];
+//             let user_arr = [];
+//             let cookie = socket.handshake.headers.cookie;
+//             console.log(cookie);
+//             let id = cookie.split(";")[1].split("=")[1]
+//             console.log(socket.id);
+//             let aaa = await user.findOne({where:{user_id:id}})
+//             console.log(aaa.user_grade)
+//             let level = aaa.user_grade;
+//             if (level == 4){
+//                 admin_arr.push(socket.id)
+//                 console.log(socket.id)
+//                 socket.emit('setting',(data)=>{
+//                     socket.to(admin_arr).emit('setting',{userlist:user_arr})
+//                 })
+//                 console.log(admin_arr)
+//                 console.log(user_arr)
+//             } else{
+//                 user_arr.push(socket.id)
+//                 console.log(socket.id)
+//                 console.log(admin_arr)
+//                 console.log(user_arr)
+//             }
+//             const { name, msg } = data;
+//             io.emit("chatting",{
+//                 name,
+//                 msg,
+//                 time: moment(new Date()).format("h:ss A")
+//             })
+//         })
+// })
 
 server.listen(3000,()=>{
     console.log(`server 3000 start`)
