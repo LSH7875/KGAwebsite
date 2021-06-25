@@ -56,6 +56,8 @@ router.get('/employment_status_modify',adminController.employment_status_modify)
 router.post('/employment_status_modify',adminController.employment_status_modifyPost);
 router.get('/employment_status_write',adminController.employment_status_write);
 router.post('/employment_status_write',adminController.employment_statusPost);
+
+router.get('/review',adminController.review)
 router.get('/setting',adminController.setting);
 router.get('/apply_list',adminController.apply_list);
 router.get('/apply',adminController.apply);

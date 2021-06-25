@@ -54,17 +54,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for notice in notices %}
+                    {% for review in reviews %}
                     <tr>
-                        <td>{{notice.id}}</td>
-                        <td>{{notice.title}}</td>
-                        <td>{{notice.show_hide}}</td>
-                        <td>{{notice.nickname}}</td>
+                        <td>{{review.id}}</td>
+                        <td>{{review.title}}</td>
+                        <td>{{review.show_hide}}</td>
+                        <td>{{review.nickname}}</td>
                         <td></td>
-                        <td>{{notice.hits}}</td>
-                        <td>{{notice.date}}</td>
-                        <td>{{notice.file1}}</td>
-                        <td><button>수정</button></td>
+                        <td>{{review.hits}}</td>
+                        <td>{{review.date}}</td>
+                        <td>{{review.file1}}</td>
+                        <td><button>조회</button></td>
                         <td><button>삭제</button></td>
                     </tr>
                     {% endfor %}
