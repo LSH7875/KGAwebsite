@@ -9,10 +9,16 @@
 <body>
 
     <form action="/mypage/modify_pw" method="post">
-        <p><lable for ="pw">비밀번호</lable></p>
-        <input type = "password" id = "pw" name="user_pw">
-        <p>비밀번호 확인</p>
-        <input type = "password" class="pw_chk">
+        <table>
+            <tr>
+                <td><p><lable for ="pw">비밀번호</lable></p></td>
+                <td><input type = "password" id = "pw" name="user_pw"></td>
+            </tr>
+            <tr>
+                <td><p>비밀번호 확인</p></td>
+                <td><input type = "password" class="pw_chk"></td>
+            </tr>
+        </table>
         <input id = "submit_btn" type = "submit" value="완료">
     </form>    
 </body>

@@ -42,7 +42,7 @@ mypage_btn.addEventListener('click',async()=>{
     .then(text=>{
         console.log(text);
         console.log(typeof text);
-        mypage_con.innerHTML=`<br><br><br>${text}`;
+        mypage_con.innerHTML=`${text}`;
         var newScript =document.createElement("script");
         newScript.src= "http://localhost:3000/mypage/pw_chk.js"
         mypage_con.appendChild(newScript);
@@ -89,14 +89,28 @@ chk_pw_btn.addEventListener('click',async()=>{
         if(json.check==true){
             pw_check.style.display="none";
             popup_flag=false;
+            mypage_con.innerHTML=`<form action="/mypage/modify_pw" id ="form_pw_change" method="post">
+            <h1>회원정보수정-비밀번호 변경</h1>
+            <table>
+                <tr>
+                    <td><p><lable for ="pw">비밀번호</lable></p></td>
+                    <td><input type = "password" id = "pw" name="user_pw"></td>
+                </tr>
+                <tr>
+                    <td><p>비밀번호 확인</p></td>
+                    <td><input type = "password" class="pw_chk"></td>
+                </tr>
+            </table>
+            <input id = "submit_btn" type = "submit" value="완료">
+        </form>`;
             //mypage_con.innerHTML="됐다!";
-            mypage_con.innerHTML=`<form action="/mypage/modify_pw" method="post">
-            <p><lable for ="pw">비밀번호</lable></p>
-            <input type = "password" id = "pw" name="user_pw">
-            <p>비밀번호 확인</p>
-            <input type = "password" class="pw_chk">
-            <input id = "modi_submit_btn" disabled="true" type = "submit" value="완료">
-        </form>    `;
+        //     mypage_con.innerHTML=`<form action="/mypage/modify_pw" method="post">
+        //     <p><lable for ="pw">비밀번호</lable></p>
+        //     <input type = "password" id = "pw" name="user_pw">
+        //     <p>비밀번호 확인</p>
+        //     <input type = "password" class="pw_chk">
+        //     <input id = "modi_submit_btn" disabled="true" type = "submit" value="완료">
+        // </form>    `;
             newScript = document.createElement('script');
             newScript.setAttribute('type','text/javascript');
             newScript.src = "http://localhost:3000/mypage/modify_pw.js"
