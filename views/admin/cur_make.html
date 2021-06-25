@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/cur_modify.css">
+</head>
+<body>
+    <div id="header">
+        <img src="/경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/curriculum_list">교육과정</a>
+            <a href="/admin/interview_manage">취업정보</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/consulting_list">상담신청</a>
+
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자: {{user_id}}<br/>
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="/admin/curriculum_list">▶ 교육과정</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div id="con_header"><img src="/관리자이미지.png"><div>교육과정 등록하기</div></div>
+        <button onclick="location.href='/admin/popup_list'">게시판생성관리목록</button>
+        <form action="/admin/cur_make" method="POST" id="board_modify">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3">교육과정 등록하기</th> <input style="display: none; "type="text" name="id" value="{{popup.id}}">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>과정구분</td>
+                        <td class="left">
+                            <select name="cur_title">
+                                <option value="블록체인">블록체인</option>
+                                <option value="게임기획">게임기획</option>
+                                <option value="게임프로그래머">게임프로그래머</option>
+                                <option value="VR/AR">VR/AR</option>
+                                <option value="게임원화">게임원화</option>
+                                <option value="프로게이머 코칭">프로게이머 코칭</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>교육과정명</td>
+                        <td class="left"><input type="text" name="detail_name" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>강의 경로</td>
+                        <td class="left"><input type="text" name="cur_uri" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>메인이미지</td>
+                        <td class="left">
+                            <input type="file" name="main_img" value="" accept=".jpg, .jpeg, .png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>과정 특징</td>
+                        <td class="left">
+                            <textarea name="character" rows="10" cols="100"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>강의계획서</td>
+                        <td class="left">
+                            <input type="file" id="img_file" accept=".jpg, .jpeg, .png" name="syllabus" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>side_info1</td>
+                        <td class="left">
+                            <textarea name="side_info1" rows="10" cols="100"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>side_info2</td>
+                        <td class="left">
+                            <textarea name="side_info2" rows="10" cols="100"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>기간</td>
+                        <td class="left">
+                            <input type="number" name="period" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>수강료</td>
+                        <td class="left">
+                            <input type="text" name="tuition" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>지원자격</td>
+                        <td class="left">
+                            <input type="text" name="qualification" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>교수1</td>
+                        <td class="left">
+                            <input type="number" name="professor1" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>교수2</td>
+                        <td class="left">
+                            <input type="number" name="professor2" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FAQ1</td>
+                        <td class="left">
+                            <input type="number" name="faq1" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FAQ2</td>
+                        <td class="left">
+                            <input type="number" name="faq2" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FAQ3</td>
+                        <td class="left">
+                            <input type="number" name="faq3" value="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button>교육과정 등록</button>
+        </form>
+    </div>
+</body>
+</html>

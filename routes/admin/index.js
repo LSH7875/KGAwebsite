@@ -26,7 +26,12 @@ router.get('/board_manage',adminController.board_manager);
 router.post('/board_manage',adminController.board_managePost);
 router.get('/board_modify',adminController.board_modify);
 router.get('/community',adminController.community);
+
 router.get('/curriculum_list',adminController.curriculum_list);
+router.get('/cur_make',adminController.cur_make);
+router.post('/cur_make',adminController.cur_makePost);
+router.get('/cur_modify',adminController.cur_modify);
+router.post('/cur_modify',adminController.cur_modifyPost);
 
 router.get('/mainvideo_list',adminController.mainvideo_list);
 router.get('/mainvideo_upload',adminController.mainvideo_upload);

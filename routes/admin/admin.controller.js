@@ -1,4 +1,4 @@
-const {user,popup,mainvideo,board,board_manage,employment_status}=require('../../models/index') ;
+const {user,popup,mainvideo,board,board_manage,employment_status,curriculum}=require('../../models/index') ;
 let express=require('express');
 let app = express();
 require('dotenv').config();
@@ -177,13 +177,91 @@ let community=(req,res)=>{
     })
     }
     
-let curriculum_list=(req,res)=>{
+let curriculum_list=async(req,res)=>{
+    let cur = await curriculum.findAll();
     let {user_id} = req.cookies
     res.render('./admin/curriculum_list',{
-        user_id
+        user_id,curriculum:cur
     })
     }
-
+let cur_make=async(req,res)=>{
+    let {user_id} = req.cookies
+    res.render('./admin/cur_make',{
+        user_id,
+    })
+}
+let cur_makePost=async(req,res)=>{
+    let {user_id} = req.cookies
+    await curriculum.create({
+        cur_title:req.body.cur_title,
+        detail_name:req.body.detail_name,
+        cur_uri:req.body.cur_uri,
+        main_image:req.body.main_img,
+        character:req.body.character,
+        syllabus:req.body.syllabus,
+        side_info1:req.body.side_info1,
+        side_info2:req.body.side_info2,
+        period:req.body.period,
+        tuition:req.body.tuition,
+        qualification:req.body.qualification,
+        // professor1:req.body.professor1,
+        // professor2:req.body.professor2,
+        // faq1:req.body.faq1,
+        // faq2:req.body.faq2,
+        // faq3:req.body.faq3
+    })
+    res.render('./admin/cur_make',{
+        user_id,
+    })
+}
+let cur_modify=async(req,res)=>{
+    let {user_id} = req.cookies
+    let cur = await curriculum.findAll({
+        where:{id:req.query.id}
+    })
+    res.render('./admin/cur_modify',{
+        user_id,curriculum:cur
+    })
+}
+let cur_modifyPost=async(req,res)=>{
+    // let {user_id} = req.cookies
+    // let cur = await curriculum.findAll({
+    //     where:{id:req.body.id}
+    // })
+    if(req.body.btn == "modify"){
+        await curriculum.update({
+            cur_title:req.body.cur_title,
+            detail_name:req.body.detail_name,
+            cur_uri:req.body.cur_uri,
+            main_image:req.body.main_img,
+            character:req.body.character,
+            syllabus:req.body.syllabus,
+            side_info1:req.body.side_info1,
+            side_info2:req.body.side_info2,
+            period:req.body.period,
+            tuition:req.body.tuition,
+            qualification:req.body.qualification,
+            // professor1:req.body.professor1,
+            // professor2:req.body.professor2,
+            // faq1:req.body.faq1,
+            // faq2:req.body.faq2,
+            // faq3:req.body.faq3
+        },{
+            where: {id:req.body.id}
+        })
+        // res.render('./admin/cur_modify',{
+        //     user_id,curriculum:cur
+        // })
+    } else{
+        await curriculum.destroy({
+            where: {
+                id: req.body.id
+            }
+        })
+        res.redirect('/admin/curriculum_list')
+    }
+}
+   
 let interview_manage=async(req,res)=>{
     let {user_id} = req.cookies
     let im = await board.findAll({
@@ -403,4 +481,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
