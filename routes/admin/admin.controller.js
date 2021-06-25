@@ -1,10 +1,10 @@
-const {user,popup,mainvideo,board,board_manage,employment_status,curriculum}=require('../../models/index') ;
+const {user,popup,mainvideo,board,board_manage,recuruit,curriculum,apply}=require('../../models/index') ;
 let express=require('express');
 let app = express();
 require('dotenv').config();
 const crypto = require('crypto');
 let token = require('../../jwt');
-const bodyParser=require('body-parser');
+const bodyParser=require('body-parser')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -51,7 +51,7 @@ let employment_status_write=(req,res)=>{
 }
 
 let employment_statuses=async(req,res)=>{
-    let es = await employment_status.findAll();
+    let es = await recuruit.findAll();
     res.render('./admin/employment_status',{
         employ:es
     })
@@ -60,7 +60,7 @@ let employment_status_modify=async(req,res)=>{
     let {user_id} = req.cookies
     if(req.query.btn == "modify"){
         console.log(req.query.number);
-        let es = await employment_status.findAll({
+        let es = await recuruit.findAll({
             where: {
                 id:req.query.number
             }
@@ -69,7 +69,7 @@ let employment_status_modify=async(req,res)=>{
             employ:es, user_id
         })
     } else {
-        await employment_status.destroy({
+        await recuruit.destroy({
             where: {
                 id:req.query.number
             }
@@ -81,7 +81,7 @@ let employment_status_modify=async(req,res)=>{
 let employment_status_modifyPost=async(req,res)=>{
     console.log(req.body.id)
 
-    await employment_status.update({
+    await recuruit.update({
         employedDate:req.body.employed_date,
         major:req.body.major,
         number:req.body.number,
@@ -94,7 +94,7 @@ let employment_status_modifyPost=async(req,res)=>{
 }
 
 let employment_statusPost=async(req,res)=>{
-    await employment_status.create({
+    await recuruit.create({
         employedDate:req.body.employed_date,
         major:req.body.major,
         number:req.body.number,
@@ -442,22 +442,29 @@ let setting=(req,res)=>{
     })
     }
 
-let apply_list=(req,res)=>{
+let applies=async(req,res)=>{
     let {user_id} = req.cookies
-    res.render('./admin/apply_list',{
-        user_id
-    })
-    }
-
-let apply=async(req,res)=>{
-    let {user_id} = req.cookies
-    let apply = await board.findAll({
-        where:{board_number:16}
-    })
+    let a = await apply.findAll();
     res.render('./admin/apply',{
-        user_id, applies: apply
+        user_id, applies:a
     })
+}
+let apply_view=async(req,res)=>{
+    let {user_id} = req.cookies
+    if(req.query.btn == "view"){
+        let a = await apply.findAll({
+            where:{id:req.query.id}
+        });
+        res.render('./admin/apply_view',{
+            user_id, applies:a
+        })
+    } else {
+        await apply.destroy({
+            where:{id:req.query.id}
+        })
+        res.redirect('/admin/apply')
     }
+}
 
 let notice=async(req,res)=>{
     let notice= await board.findAll({
@@ -542,4 +549,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {apply_view,notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,applies,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

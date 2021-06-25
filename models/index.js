@@ -34,6 +34,7 @@ db.recuruit = models.recuruit;
 db.cur_cardinal = models.cur_cardinal;
 db.consultant = models.consultant;
 db.faq = models.faq;
+db.apply = models.apply;
 
 
 module.exports = db;

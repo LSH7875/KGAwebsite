@@ -65,8 +65,8 @@ router.post('/notice_modify',upload.single('img'),adminController.notice_modifyP
 
 router.get('/review',adminController.review);
 router.get('/setting',adminController.setting);
-router.get('/apply_list',adminController.apply_list);
-router.get('/apply',adminController.apply);
+router.get('/apply',adminController.applies);
+router.get('/apply_view',adminController.apply_view)
 router.get('/portfolio',adminController.portfolio);
 
 
