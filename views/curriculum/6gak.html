@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Document </title>
+    <link rel="stylesheet" href="/sub/6gak.css">
+    <!-- <link rel="stylesheet" href="/main/main_copy.css"> -->
+    <link rel="stylesheet" href="/sub/666666.css">
+</head>
+<body>    
+    <div class="hide"></div>
+    <div id="cover">
+        <div id="hexagon">
+            <img src="/육각2.png">
+        </div>
+        <!-- onclick="slideOn() -->
+        <div class="class_all A" >Game Artwork</div>
+        <div class="class_all B" >Block Chain</div>
+        <div class="class_all C" >Game Architecture</div>
+        <div class="class_all D" >Game Programing</div>
+        <div class="class_all E" >Pro Gamer</div>
+        <div class="class_all F" >VR / AR</div>
+    </div>
+
+    <div class="curr_content">
+        <!-- onclick="slideOff()" -->
+        <div class="curri">
+            <div class="back">X</div>
+            <h1>게임 원화 정규반</h1>
+            교육기간 : 별도문의<br/>
+            교육시간 : 12:00~21:00<br/>
+            교육수당 : 별도문의<br/>
+            <button class="apply">지원하기</button>
+            <button class="detail">과정자세히보기</button>
+        </div>
+        <div class="curri ">
+            <div class="back">X</div>
+            <h1>블록체인 기반 핀테크 및
+                <br/> 응용SW개발자 양성과정</h1>
+            교육기간 : 별도문의<br/>
+            교육시간 : 12:00~21:00<br/>
+            교육수당 : 별도문의<br/>
+            <button class="apply">지원하기</button>
+            <button class="detail">과정자세히보기</button>
+        </div>
+        <div class="curri ">
+            <div class="back" >X</div>
+            <h1>게임 기획자 양성과정</h1>
+            교육기간 : ~5개월<br/>
+            교육시간 : 09:00~18:00<br/>
+            교육수당 : 100% 전액국비지원<br/>
+            <button class="apply">지원하기</button>
+            <button class="detail">과정자세히보기</button>
+        </div>
+        <div class="curri ">
+            <div class="back" >X</div>
+            <h1>Unity 3D 게임 프로그래머<br/>
+                 양성과정</h1>
+            교육기간 : 별도문의<br/>
+            교육시간 : 09:00~18:00(종일반)<br/>
+            교육수당 : 100% 전액국비지원<br/>
+            <button class="apply">지원하기</button>
+            <button class="detail">과정자세히보기</button>
+        </div>
+        <div class="curri ">
+            <div class="back">X</div>
+            <h1>프로게이머 정규반</h1>
+            교육기간 : 별도문의<br/>
+            교육시간 : 12:00~21:00<br/>
+            교육수당 : 별도문의<br/>
+            <button class="apply">지원하기</button>
+            <button class="detail">과정자세히보기</button>
+        </div>
+        <div class="curri">
+            <div class="back">X</div>
+            <h1>(증강현실) 가상증강현실 응용SW개발자 양성과정</h1>
+            교육기간 : 별도문의<br/>
+            교육시간 : 12:00~21:00<br/>
+            교육수당 : 별도문의<br/>
+            <button class="apply">지원하기</button>
+            <button class="detail">과정자세히보기</button>
+        </div>
+    </div>
+
+    <div id="main_nav">
+        <a href="/"><img id="nav_logo" src="/KGA_LOGO_WHITE.png"></a>
+        <ul id="nav_main_list">
+            
+            {% for item in navi %} 
+            <li class="nav_bar intro_main"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
+                <ul class="nav_sub_list intro_sub">
+                    {%for mmm in item.board %}
+                    <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+            {% if login==1%}
+            <span>{{nickname}}님환영해요</span>
+            <li class="nav_join"><a href="/mypage">마이페이지</a></li>
+            <li class="nav_join"><a href="/user/logout">로그아웃</a></li>
+            {% else %}
+            <li class="nav_join"><a href="/user/login">로그인</a></li>
+            <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
+            {% endif %}
+        </ul>
+        </div>
+
+    <script type="text/javascript" src="/sub/6gak.js"></script>
+    <!-- <script type="text/javascript" src="/육각형 만들기.js"></script> -->
+</body>
+</html>
