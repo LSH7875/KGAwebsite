@@ -85,7 +85,7 @@
     </div>
 
     <div id="main_nav">
-        <a href="/"><img id="nav_logo" src="/KGA_LOGO_WHITE.png"></a>
+        <a href="/"><img id="nav_logo" src="/KGApng_big.png"></a>
         <ul id="nav_main_list">
             
             {% for item in navi %} 
@@ -98,14 +98,14 @@
             </li>
             {% endfor %}
             {% if login==1%}
-            <span>{{nickname}}님환영해요</span>
+            <span>{{nickname}}님환영해요</span></ul>
             <li class="nav_join"><a href="/mypage">마이페이지</a></li>
             <li class="nav_join"><a href="/user/logout">로그아웃</a></li>
             {% else %}
             <li class="nav_join"><a href="/user/login">로그인</a></li>
             <li class="nav_join"><a href="/user/signAgree">회원가입</a></li>
             {% endif %}
-        </ul>
+        
         </div>
 
     <script type="text/javascript" src="/sub/6gak.js"></script>
