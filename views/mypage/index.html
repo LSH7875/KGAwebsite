@@ -31,8 +31,17 @@ window.alert("비밀번호를 성공적으로 변경했습니다.")
     <input type = "password" class= "chk_pw">
     <button class="chk_pw_btn">확인</button>
 </div>
+<div id ="user_info">
+    <h2>나의 정보</h2>
+    <div id="user_profile"></div>
+    <div id="user_infos">
+        id:<h2>{{user_name}}</h2>
+        닉네임:<h2>{{nickname}}</h2>
+        인증여부:<p id = "certification"></p>
+    </div>
+        
+</div>
 <ul id ="mypage_btn">
-    <h1 >{{user_id}}</h1>
     <li>
         <h1>내정보수정</h1>
     </li>
@@ -44,7 +53,6 @@ window.alert("비밀번호를 성공적으로 변경했습니다.")
         <h1>프로필 수정</h1>
     </li>
 </ul>
-
 
 <div id="mypage_con">
 

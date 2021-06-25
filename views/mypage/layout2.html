@@ -17,17 +17,17 @@
             <ul id="nav_main_list">
                 
                 {% for item in navi %} 
-                <li class="nav_bar intro_main"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
+                <li class="nav_bar intro_main"><a href="/router/{{item.board_uri}}"> {{item.group_name}} </a>
                     <ul class="nav_sub_list intro_sub">
                         {%for mmm in item.board %}
-                        <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+                        <li><a href="/router/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
                 {% endfor %}
                 {% if login==1%}
                 <span>{{nickname}}님환영해요</span>
-                <li class="nav_join"><a href="/user/mypage">마이페이지</a></li>
+                <li class="nav_join"><a href="/mypage">마이페이지</a></li>
                 <li class="nav_join"><a href="/user/logout">로그아웃</a></li>
                 {% else %}
                 <li class="nav_join"><a href="/user/login">로그인</a></li>
