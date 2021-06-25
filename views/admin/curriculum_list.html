@@ -28,7 +28,7 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="#">▶ 교육과정</a></li>
+            <li><a href="/admin/curriculum_list">▶ 교육과정</a></li>
         </ul>
     </div>
     <div id="main_con">
@@ -41,27 +41,29 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" name="number"> 번호</th>
+                        <th>과정구분</th>
                         <th>이미지</th>
                         <th>세부내용</th>
-                        <th>과정구분</th>
                         <th>진행여부</th>
                         <th>수정</th>
-                        <th>삭제</th>
                     </tr>
                 </thead>
+                {% for cur in curriculum %}
+                <form action="/admin/cur_modify" method="get">
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{cur.id}}</td><input style="display: none; "type="text" name="id" value="{{cur.id}}">
+                        <td>{{cur.cur_title}}</td>
+                        <td>{{cur.main_image}}</td>
+                        <td>{{cur.detail_name}}</td>
                         <td></td>
                         <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
                     </tr>
                 </tbody>
+                </form>
+                {% endfor %}
             </table>
-            <button id="curriculum_make">새 과정 등록하기</button>
+            <button id="curriculum_make" onclick="location.href='/admin/cur_make'">새 과정 등록하기</button>
         </div>
     </div>
 </body>
