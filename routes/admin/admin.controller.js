@@ -12,6 +12,16 @@ app.use(bodyParser.urlencoded({extended:false}));
 function cryptoPw(pw){
     return crypto.createHmac('sha256',Buffer.from(toString(process.env.salt))).update(pw).digest('base64').replace('==','').replace('=',''); 
 }
+let review=async(req,res)=>{
+    let review= await board.findAll({
+        where:{board_number:11}
+    });
+    let {user_id} = req.cookies
+    res.render('./admin/review',{
+        user_id, reviews:review
+    })
+}
+
 let admin_chatting=(req,res)=>{
     res.render('./admin/admin_chatting')    
 }
@@ -458,7 +468,58 @@ let notice=async(req,res)=>{
         user_id, notices:notice
     })
     }
+let notice_make=(req,res)=>{
+    let {user_id} = req.cookies
+    res.render('./admin/notice_make',{
+        user_id
+    })
+}
+let notice_makePost=async(req,res)=>{
+    await board.create({
+       title:req.body.title,
+       nickname:req.body.nickname,
+       contents:req.body.content,
+       file1:req.body.img,
+       show_hide:req.body.show_hide,
+       board_number:10
+    })
+    res.redirect('/admin/notice')
+}
 
+let notice_modify=async(req,res)=>{
+    console.log(req.query.btn);
+    let {user_id} = req.cookies
+    if(req.query.btn == "modify"){
+        let notice = await board.findAll({
+            where: {
+                board_number:10,
+                id:req.query.id
+            }
+        })
+        res.render('./admin/notice_modify',{
+            notice:notice,user_id
+        })
+    } else {
+        await board.destroy({
+            where: {
+                id:req.query.id
+            }
+        })
+        res.redirect('/admin/notice');
+    }
+}
+
+let notice_modifyPost=async(req,res)=>{
+    await board.update({
+       title:req.body.title,
+       nickname:req.body.nickname,
+       contents:req.body.content,
+       file1:req.body.img,
+       show_hide:req.body.show_hide,
+       board_number:10
+    })
+    res.redirect('/admin/notice')
+}
 let portfolio=(req,res)=>{
     let {user_id} = req.cookies
     res.render('./admin/portfolio',{
@@ -481,4 +542,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

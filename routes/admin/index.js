@@ -56,10 +56,17 @@ router.get('/employment_status_modify',adminController.employment_status_modify)
 router.post('/employment_status_modify',adminController.employment_status_modifyPost);
 router.get('/employment_status_write',adminController.employment_status_write);
 router.post('/employment_status_write',adminController.employment_statusPost);
+
+router.get('/notice',adminController.notice);
+router.get('/notice_make',adminController.notice_make)
+router.post('/notice_make',upload.single('img'),adminController.notice_makePost);
+router.get('/notice_modify',adminController.notice_modify)
+router.post('/notice_modify',upload.single('img'),adminController.notice_modifyPost);
+
+router.get('/review',adminController.review);
 router.get('/setting',adminController.setting);
 router.get('/apply_list',adminController.apply_list);
 router.get('/apply',adminController.apply);
-router.get('/notice',adminController.notice);
 router.get('/portfolio',adminController.portfolio);
 
 
