@@ -28,15 +28,12 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="#">▶ 공지사항</a></li>
-            <li><a href="#">▶ 수강후기</a></li>
+            <li><a href="/admin/notice">▶ 공지사항</a></li>
+            <li><a href="/admin/review">▶ 수강후기</a></li>
         </ul>
     </div>
     <div id="main_con">
         <div id="con_header"><img src="/관리자이미지.png"><div>공지사항</div></div>
-        <div>
-            <button>선택삭제</button>
-        </div>
         <div id="contents">
             <table>
                 <thead>
@@ -55,8 +52,9 @@
                 </thead>
                 <tbody>
                     {% for notice in notices %}
+                    <form action="/admin/notice_modify" method="GET">
                     <tr>
-                        <td>{{notice.id}}</td>
+                        <td>{{notice.id}}</td><input type="text" style="display:none;" name="id" value="{{notice.id}}">
                         <td>{{notice.title}}</td>
                         <td>{{notice.show_hide}}</td>
                         <td>{{notice.nickname}}</td>
@@ -64,13 +62,14 @@
                         <td>{{notice.hits}}</td>
                         <td>{{notice.date}}</td>
                         <td>{{notice.file1}}</td>
-                        <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
+                        <td><button name="btn" value="modify">수정</button></td>
+                        <td><button name="btn" value="delete">삭제</button></td>
                     </tr>
+                    </form>
                     {% endfor %}
                 </tbody>
             </table>
-            <button  id="write">글쓰기</button>
+            <button  id="write"  onclick="location.href='/admin/notice_make'">글쓰기</button>
         </div>
     </div>
 </body>

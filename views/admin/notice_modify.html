@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/notice_make.css">
+</head>
+<body>
+    <div id="header">
+        <img src="/경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/curriculum_list">교육과정</a>
+            <a href="/admin/interview_manage">취업정보</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/consulting_list">상담신청</a>
+
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자: {{user_id}}<br/>
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="/admin/notice">▶ 공지사항</a></li>
+            <li><a href="/admin/review">▶ 수강후기</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div id="con_header"><img src="/관리자이미지.png"><div>공지사항 만들기</div></div>
+        <button onclick="location.href='/admin/notice'">공지사항목록</button>
+        <form action="/admin/notice_modify" method="POST" id="board_modify">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3">공지사항 만들기</th> <input style="display: none; "type="text" name="id" value="{{popup.id}}">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>제목</td>
+                        <td class="left"><input type="text" name="title" value="" class="title"></td>
+                    </tr>
+                    <tr>
+                        <td>작성자</td>
+                        <td class="left"><input type="text" name="nickname" value="최고관리자" class="admin"></td>
+                    </tr>
+                    <tr>
+                        <td>내용</td>
+                        <td class="left">
+                            <textarea name="content" rows="20" cols="100"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>첨부파일</td>
+                        <td class="left">
+                            <input type="file" name="img" value="" accept=".jpg, .jpeg, .png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>첨부파일</td>
+                        <td class="left">
+                            <input type="radio" name="show_hide" value="none">숨김
+                            <input type="radio" name="show_hide" value="block">보임
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button>공지사항 등록</button>
+        </form>
+    </div>
+</body>
+</html>
