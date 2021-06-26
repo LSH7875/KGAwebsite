@@ -3,10 +3,10 @@ const {board,board_manage,group}=require('../models/index');
 module.exports = async(req,res,next)=>{
     let sss=[];
     let boardvalue=await board_manage.findAll({
-        where:{'show_hide':1}
+        where:{'show_hide':"block"}
     });
     let groupvalue = await group.findAll({
-        where:{'show_hide':1}
+        where:{'show_hide':"block"}
     });
     let newarr3=[];
     for(i=0;i<5;i++){

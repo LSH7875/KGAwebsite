@@ -239,6 +239,7 @@ let cur_modifyPost=async(req,res)=>{
     //     where:{id:req.body.id}
     // })
     if(req.body.btn == "modify"){
+        console.log(req.body.side_info1.toString())
         await curriculum.update({
             cur_title:req.body.cur_title,
             detail_name:req.body.detail_name,
@@ -246,7 +247,7 @@ let cur_modifyPost=async(req,res)=>{
             main_image:req.body.main_img,
             character:req.body.character,
             syllabus:req.body.syllabus,
-            side_info1:req.body.side_info1,
+            side_info1:req.body.side_info1.toString(),
             side_info2:req.body.side_info2,
             period:req.body.period,
             tuition:req.body.tuition,
@@ -259,9 +260,7 @@ let cur_modifyPost=async(req,res)=>{
         },{
             where: {id:req.body.id}
         })
-        // res.render('./admin/cur_modify',{
-        //     user_id,curriculum:cur
-        // })
+        res.redirect('/admin/curriculum_list')
     } else{
         await curriculum.destroy({
             where: {
@@ -316,11 +315,13 @@ let mainvideo_upload=(req,res)=>{
 
 
 let mainvideo_uploadPost=async(req,res)=>{
+    let uservideo = req.file == undefined ? '' :req.file.filename;
     await mainvideo.create({
         main_image: req.body.img,
         video: req.body.video,
         show_hide: req.body.show_hide,
     })
+    console.log(uservideo)
     res.redirect('/admin/mainvideo_list');
     }
 
