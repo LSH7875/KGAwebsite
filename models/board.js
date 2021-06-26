@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     user_id: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: true
     },
     board_number: {
       type: DataTypes.INTEGER,
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     nickname2: {
       type: DataTypes.STRING(50),
-      allowNull: false
+      allowNull: true
     },
     date: {
       type: DataTypes.DATE,
@@ -46,9 +46,9 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     },
     show_hide: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(10),
       allowNull: false,
-      defaultValue: 0
+      defaultValue: "block"
     },
     file1: {
       type: DataTypes.STRING(255),

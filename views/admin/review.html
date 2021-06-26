@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/admin/interview_manage.css">
+    <link rel="stylesheet" href="/admin/notice.css">
 </head>
 <body>
     <div id="header">
@@ -28,17 +28,14 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="/admin/interview_manage">▶ 취업자인터뷰</a></li>
-            <li><a href="/admin/employment_status">▶ 취업현황</a></li>
-            <li><a href="#">▶ 포트폴리오</a></li>
+            <li><a href="/admin/notice">▶ 공지사항</a></li>
+            <li><a href="/admin/review">▶ 수강후기</a></li>
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
+        <div id="con_header"><img src="/관리자이미지.png"><div>수강후기</div></div>
         <div>
-            <div>
-
-            </div>
+            <button>선택삭제</button>
         </div>
         <div id="contents">
             <table>
@@ -46,26 +43,34 @@
                     <tr>
                         <th><input type="checkbox" name="number"> 번호</th>
                         <th>제목</th>
-                        <th>닉네임</th>
-                        <th>내용</th>
+                        <th>보임/숨김</th>
+                        <th>작성자</th>
+                        <th>최고관리자</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
+                        <th>첨부파일</th>
                         <th>수정</th>
                         <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for interview in interviews %}
+                    {% for review in reviews %}
                     <tr>
-                        <td>{{interview.id}}</td>
-                        <td>{{interview.title}}</td>
-                        <td>{{interview.nickname}}</td>
-                        <td>{{interview.contents}}</td>
-                        <td><button>수정</button></td>
+                        <td>{{review.id}}</td>
+                        <td>{{review.title}}</td>
+                        <td>{{review.show_hide}}</td>
+                        <td>{{review.nickname}}</td>
+                        <td></td>
+                        <td>{{review.hits}}</td>
+                        <td>{{review.date}}</td>
+                        <td>{{review.file1}}</td>
+                        <td><button>조회</button></td>
                         <td><button>삭제</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <button onclick="location.href='/admin/interview_manage_write'">글쓰기</button>
+            <button  id="write">글쓰기</button>
         </div>
     </div>
 </body>

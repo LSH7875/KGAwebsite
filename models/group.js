@@ -16,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     show_hide: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(10),
       allowNull: false,
-      defaultValue: 1
+      defaultValue: "block"
     }
   }, {
     sequelize,

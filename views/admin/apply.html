@@ -15,7 +15,7 @@
             <a href="/admin/curriculum_list">교육과정</a>
             <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
-            <a href="/admin/apply">상담신청</a>
+            <a href="/admin/admin_chatting">상담신청</a>
         </div>
     </div>
     <div id="sub_con">
@@ -34,44 +34,40 @@
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>상담게시판 LIST</div></div>
-        <div>
-            <button>선택삭제</button>
-        </div>
+        <div id="con_header"><img src="/관리자이미지.png"><div>지원자 리스트</div></div>
         <div id="contents">
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="number"> 번호</th>
+                        <th>번호</th>
+                        <th>신청과정</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>나이</th>
                         <th>이메일</th>
                         <th>휴대폰번호</th>
-                        <th>지원동기</th>
-                        <th>이미지</th>
-                        <th>첨부파일</th>
-                        <th>수정</th>
+                        <th>보기</th>
                         <th>삭제</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button>수정</button></td>
-                        <td><button>삭제</button></td>
-                    </tr>
-                </tbody>
+                {% for apply in applies %}
+                <form action="/admin/apply_view" method="get">
+                    <tbody>
+                        <tr>
+                            <td>{{apply.id}}</td> <input type="text" name="id" value="{{apply.id}}" style="display: none;">
+                            <td>{{apply.cur_title}}</td>
+                            <td>{{apply.title}}</td>
+                            <td>{{apply.name}}</td>
+                            <td>{{apply.age}}</td>
+                            <td>{{apply.email}}</td>
+                            <td>{{apply.phone}}</td>
+                            <td><button name="btn" value="view">자세히보기</button></td>
+                            <td><button name="btn" value="delete">삭제</button></td>
+                        </tr>
+                    </tbody>
+                </form>
+                {% endfor %}
             </table>
-            <button id="curriculum_make">글쓰기</button>
         </div>
     </div>
 </body>
