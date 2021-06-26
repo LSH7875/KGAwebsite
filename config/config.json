@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "jh951128",
+    "password": "root",
 
     "database": "kga",
     "host": "127.0.0.1",
