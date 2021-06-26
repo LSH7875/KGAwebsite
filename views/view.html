@@ -1,35 +1,59 @@
 {% extends 'layout1.html' %}
 
+
+{% block css %}
+<link rel="stylesheet" href="/CRUD/view.css">
+{% endblock %}
+
 {% block content %}
 
 <div>
     <div class = "popup">
-        정말로 삭제하시겠습니까?
-        <a href="/router/{{group}}/{{board}}/delete?id={{id}}">네</a>
-        <a class = "not_del">아니요</a>
+        정말로 삭제하시겠습니까?<br>
+        <a class= "btn" href="/router/{{group}}/{{board}}/delete?id={{id}}">네</a>
+        <a class = "not_del btn">아니요</a>
     </div>
+    <div id="view">
+        <div class= "title"><h2>{{title}}</h2></div>
+        <div class="date">게시일 {{date}}</div>
+        <div class="hit">조회수 {{hit}}</div>
+        <div class="nickname">글쓴이 {{nickname}}</div>
+        {% if file1 %}
+        <div class="contents"><img src="http://localhost:3000/{{file1}}"></div>
+        </div>
+        {% endif %}
+        <div class="text11"></div>
+        <script type = "text/javascript">
+            const context = document.querySelector('.text11');   
+            a='{{contents}}';
+            a=a.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ");
+            console.log(a);
+            context.innerHTML=a;
+            console.log(context);
+        </script>
+        
+            <a href="/router/{{group}}}/{{board}}" class="list btn">목록으로</a>
+            {% if authority==1 %}
+            <a class="modify btn" href="/router/{{group}}/{{board}}/modify?id={{id}}">수정하기</a>
+            <div class="delete btn" value="0">삭제하기</div>
+            {% endif %}
 
-    <div class= "title"><h2>{{title}}</h2></div>
-    <div class="date">{{date}}</div>
-    <div class="hit">{{hit}}</div>
-    <div class="nickname">{{nickname}}</div>
-    <div class="text11"></div>
-    <script type = "text/javascript">
-    const context = document.querySelector('.text11');   
-    a='{{contents}}';
-    a=a.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ");
-    console.log(a);
-    context.innerHTML=a;
-    console.log(context);
-    </script>
-    {% if file1 %}
-    <div class="contents"><img src="http://localhost:3000/{{file1}}"></div>
-    {% endif %}
-    <a href="/router/{{group}}}/{{board}}">목록으로</a>
-    {% if authority==1 %}
-    <button>수정하기</button>
-    <button class="delete" value="0">삭제하기</button>
-    {% endif %}
 </div>
+{% endblock %}
 
+{% block script %}
+<script type = "text/javascript">
+let delete_btn = document.querySelector('.delete');
+let popup = document.querySelector('.popup');
+let not_del=document.querySelector('.not_del')
+
+delete_btn.addEventListener('click',()=>{
+    popup.style.display="block";
+})
+
+not_del.addEventListener('click',()=>{
+    popup.style.display="none";}
+)
+
+</script>
 {% endblock %}

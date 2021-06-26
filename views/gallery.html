@@ -2,19 +2,9 @@
 {% block css %}
 <style>
     
-    .gallery_table>li{
-        box-sizing: border-box;
-        width:33%;
-        height:300px;
-        background:purple;
-        display:inline-block;
-    }
-
-    .gallery_img{
-        width:80%;
-        height:200px;
-    }
+   
 </style>
+<link rel="stylesheet" href="/CRUD/gallery.css">
 {% endblock %}
 
 
@@ -30,7 +20,7 @@ window.alert("{{msg}}");
     {% for item in title %}
     
     <li>
-        <a href="/{{group}}/{{board}}/view?id={{item.id}}">
+        <a href="/router/{{group}}/{{board}}/view?id={{item.id}}">
             <div class="gallery_img" style=" margin: 0 auto; margin-top: 20px; box-sizing: border-box; background-image:url('http://localhost:3000/{{item.file1}}')"></div>
             <div class="subject"><p>{{item.title}}</p></div>
         </a>
@@ -39,20 +29,22 @@ window.alert("{{msg}}");
     {% endfor %}
 </ul>
 <div class="page">
-    <button class="down_page">&lt</button>
-        <ul class="pagenation">
-        <li><a href="/{{group}}/{{board}}?page=1">1</a></li>
-        <li><a href="/{{group}}/{{board}}?page=2">2</a></li>
-        <li><a href="/{{group}}/{{board}}?page=3">3</a></li>
-        <li><a href="/{{group}}/{{board}}?page=4">4</a></li>
-        <li><a href="/{{group}}/{{board}}?page=5">5</a></li>
-        <li><a href="/{{group}}/{{board}}?page=6">6</a></li>
-        <li><a href="/{{group}}/{{board}}?page=7">7</a></li>
-        <li><a href="/{{group}}/{{board}}?page=8">8</a></li>
-        <li><a href="/{{group}}/{{board}}?page=9">9</a></li>
-        <li><a href="/{{group}}/{{board}}?page=10">10</a></li>
+    <a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
+    <ul class="pagenation">
+        <a class="down_page">&lt</a>
+        <li><a href="/router/{{group}}/{{board}}?page=1">1</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=3">2</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=4">3</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=5">4</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=6">5</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=2">6</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=7">7</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=8">8</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=9">9</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=10">10</a></li>
+        <a class="up_page">&gt</a>
     </ul>
-    <button class="up_page">&gt</button>
+    
 </div>
 <script type ="text/javascript">
 let page_up = document.querySelector('.up_page');
