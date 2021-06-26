@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     cur_num: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     file3: {
       type: DataTypes.STRING(255),

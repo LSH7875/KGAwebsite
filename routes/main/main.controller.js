@@ -10,6 +10,29 @@ const path = require('path');
 //let bbb ={board,user,board_manage}
 // ccc = {user_id,contents,title,nickname};
 
+
+const {recuruit} = require('../../models/index');
+
+let recuruits = async(req,res)=>{
+    let {navi,login} = req;
+    let {nickname} = req.cookies;
+    let page = req.query.page || 1;
+    console.log(recuruit);
+    let rst = await recuruit.findAll({
+        // order:[['id','DESC']],
+        // limit:10,
+        // offset:10*(page-1)
+    })
+    .then(aa=>{
+        res.render('./job/recuruit',{job:aa,nickname,navi,login,})
+    })
+   
+}
+
+
+
+
+
 let main = async(req,res)=>{
     console.log('main들어옴')
     let pop = await popup.findAll();
@@ -426,4 +449,4 @@ let onlygroup = async(req,res)=>{
 //list,modify,delete
 
 
-module.exports = {main,viewer, write, write_post, modify_post, list, modify, delete_board,onlygroup}
+module.exports = {recuruits,main,viewer, write, write_post, modify_post, list, modify, delete_board,onlygroup}

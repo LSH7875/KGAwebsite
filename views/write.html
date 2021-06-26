@@ -1,5 +1,10 @@
 {% extends 'layout1.html' %}
 
+{% block css %}
+<link rel="stylesheet" href="/CRUD/write.css">
+{% endblock %}
+
+
 {% block content %}
 
 
@@ -39,7 +44,7 @@
             </tr>
             </table>
             
-            <input type="submit" value="제출하기" onclick="submitContents(this)" />
+            <input type="submit" value="제출하기" id="write_subtmit_btn" onclick="submitContents(this)" />
 
                 </form>
                 <script type="text/javascript" src="/../se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>

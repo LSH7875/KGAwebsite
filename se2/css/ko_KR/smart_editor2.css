@@ -18,7 +18,7 @@ body,#smart_editor2,#smart_editor2 p,#smart_editor2 h1,#smart_editor2 h2,#smart_
 #smart_editor2 .se2_header{margin:10px 0 29px 0}
 #smart_editor2 .se2_bi{float:left;width:93px;height:20px;margin:0;padding:0;background:url("../../img/ko_KR/btn_set.png?160622") -343px -358px no-repeat;font-size:0;line-height:0;text-indent:-10000px;vertical-align:middle}
 #smart_editor2 .se2_allhelp{display:inline-block;width:18px;height:18px;padding:0;background:url("../../img/ko_KR/btn_set.png?160622") -437px -358px no-repeat;font-size:0;line-height:0;text-indent:-10000px;vertical-align:middle}
-#smart_editor2 #smart_editor2_content{position:relative;border:1px solid #b5b5b5}
+#smart_editor2 #smart_editor2_content{position:relative;border:1px solid rgb(239, 245, 255)}
 #smart_editor2 .se2_tool{overflow:visible;position:relative;z-index:25}
 /* EDITINGAREA */
 #smart_editor2 .se2_input_area{position:relative;z-index:22;height:400px;margin:0;padding:0;*zoom:1}
@@ -70,8 +70,8 @@ body,#smart_editor2,#smart_editor2 p,#smart_editor2 h1,#smart_editor2 h2,#smart_
 #smart_editor2 .se2_alert_btns button + button{margin-left:10px}
 #smart_editor2 .se2_alert_btns .se2_confirm{background-position:-369px -434px}
 #smart_editor2 .se2_alert_btns .se2_cancel{background-position:-419px -434px}
-/* TEXT_TOOLBAR */
-#smart_editor2 .se2_text_tool{position:relative;clear:both;z-index:30;padding:4px 0 4px 3px;background:#f4f4f4 url("../../img/bg_text_tool.gif") 0 0 repeat-x;border-bottom:1px solid #b5b5b5;*zoom:1}
+/* TEXT_TOOLBAR *//*툴바 74고침*/
+#smart_editor2 .se2_text_tool{position:relative;clear:both;z-index:30;padding:4px 0 4px 3px; background:rgb(239, 245, 255) url("../../img/bg_text_tool.gif") 0 0 repeat-x;border-bottom:1px solid #b5b5b5;*zoom:1}
 #smart_editor2 .se2_text_tool:after{content:"";display:block;clear:both}
 #smart_editor2 .se2_text_tool ul{float:left;display:inline;margin-right:3px;padding-left:1px;white-space:nowrap}
 #smart_editor2 .se2_text_tool li{_display:inline;float:left;position:relative;z-index:30}
