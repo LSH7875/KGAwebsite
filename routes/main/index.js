@@ -27,8 +27,8 @@ router.use(ignoreFavicon);
 router.get("/practice",templete,practice);
 router.get("/router/job/recruit",templete,mainController.recuruits);
 /*apply부분*/
-router.get("/router/consulting/apply",templete,consultingController.apply);
-router.get("/router/consulting/apply",consultingController.applyPost);
+router.get("/router/consulting/apply",templete,consultingController.applys);
+router.post("/router/consulting/apply",templete,consultingController.applyPost);
 
 router.get("/router/:group/:board/view",templete, readChk ,mainController.viewer);
 router.get("/router/:group/:board/write",templete,writeChk,mainController.write);

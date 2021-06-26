@@ -11,8 +11,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    title: {
-      type: DataTypes.STRING(100),
+    sex: {
+      type: DataTypes.STRING(10),
       allowNull: false
     },
     name: {
@@ -34,6 +34,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     motive: {
       type: DataTypes.STRING(1000),
+      allowNull: false
+    },
+    privacy: {
+      type: DataTypes.STRING(10),
       allowNull: false
     },
     image: {
