@@ -12,6 +12,11 @@
   }
 /* ============================================================ */
 
+#wrap{
+width: 1800px;
+box-sizing: border-box;
+transform: scale(1);
+}
 
 #cover{
     width: 700px;
