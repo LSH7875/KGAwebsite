@@ -26,17 +26,22 @@ router.get('/board_manage',adminController.board_manager);
 router.post('/board_manage',adminController.board_managePost);
 router.get('/board_modify',adminController.board_modify);
 router.get('/community',adminController.community);
+
 router.get('/curriculum_list',adminController.curriculum_list);
+router.get('/cur_make',adminController.cur_make);
+router.post('/cur_make',adminController.cur_makePost);
+router.get('/cur_modify',adminController.cur_modify);
+router.post('/cur_modify',adminController.cur_modifyPost);
 
 router.get('/mainvideo_list',adminController.mainvideo_list);
 router.get('/mainvideo_upload',adminController.mainvideo_upload);
-router.post('/mainvideo_upload',adminController.mainvideo_uploadPost);
+router.post('/mainvideo_upload',upload.single('video'),adminController.mainvideo_uploadPost);
 router.get('/mainvideo_modify',adminController.mainvideo_modify);
-router.post('/mainvideo_modify',adminController.mainvideo_modifyPost);
+router.post('/mainvideo_modify',upload.single('video'),adminController.mainvideo_modifyPost);
 
 router.get('/popup_list',adminController.popup_list);
 router.get('/popup_modify',adminController.popup_modify);
-router.post('/popup_modify',adminController.popup_modifyPost);
+router.post('/popup_modify',upload.single('img'),adminController.popup_modifyPost);
 router.get('/popup_make',adminController.popup_make);
 router.post('/popup_make',upload.single('img'),adminController.popup_makePost);
 
@@ -51,10 +56,17 @@ router.get('/employment_status_modify',adminController.employment_status_modify)
 router.post('/employment_status_modify',adminController.employment_status_modifyPost);
 router.get('/employment_status_write',adminController.employment_status_write);
 router.post('/employment_status_write',adminController.employment_statusPost);
-router.get('/setting',adminController.setting);
-router.get('/apply_list',adminController.apply_list);
-router.get('/apply',adminController.apply);
+
 router.get('/notice',adminController.notice);
+router.get('/notice_make',adminController.notice_make)
+router.post('/notice_make',upload.single('img'),adminController.notice_makePost);
+router.get('/notice_modify',adminController.notice_modify)
+router.post('/notice_modify',upload.single('img'),adminController.notice_modifyPost);
+
+router.get('/review',adminController.review);
+router.get('/setting',adminController.setting);
+router.get('/apply',adminController.applies);
+router.get('/apply_view',adminController.apply_view)
 router.get('/portfolio',adminController.portfolio);
 
 

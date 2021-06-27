@@ -1,5 +1,11 @@
 {% extends 'layout1.html' %}
 
+
+
+{% block css %}
+<link rel="stylesheet" href="/CRUD/list.css">
+{% endblock %}
+
 {% block content %}
 {% if msg !=0 %}
 <script type = "text/javascript">
@@ -8,7 +14,8 @@ console.log("{{msg}}");
 window.alert("페이지가 없습니다");
 </script>
 {% endif %}
-<table>
+
+<table class="board">
     <tr>
         <th>번호</th>
         <th>제목</th>
@@ -26,9 +33,10 @@ window.alert("페이지가 없습니다");
     </tr>
     {% endfor %}
 </table>
-<a href="/router/{{group}}/{{board}}/write">글쓰기</a>
+
 <div class="page">
-    <button class="down_page">&lt</button>
+    <a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
+    <a class="down_page">&lt</a>
         <ul class="pagenation">
         <li><a href="/router/{{group}}/{{board}}?page=1">1</a></li>
         <li><a href="/router/{{group}}/{{board}}?page=2">2</a></li>
@@ -41,9 +49,9 @@ window.alert("페이지가 없습니다");
         <li><a href="/router/{{group}}/{{board}}?page=9">9</a></li>
         <li><a href="/router/{{group}}/{{board}}?page=10">10</a></li>
     </ul>
-    <button class="up_page">&gt</button>
+    <a class="up_page">&gt</a>
 </div>
-<form action="./" method="get">
+<form action="/router/{{group}}/{{board}}" method="get">
 <select name = "keyfield" id = "keyfield">
     <option value= "total">전체</option>
     <option value= "title">제목</option>
@@ -51,9 +59,9 @@ window.alert("페이지가 없습니다");
     <option value= "user_id">아이디</option>
     <option value= "contents">내용</option>
 </select>
-<input type="text" name = "keystring">
+<input type="text" id="keystring" name = "keystring">
 
-<input type = "submit" value="검색">
+<input type = "submit" id = "find_btn" value="검색">
 </form>
 <script type ="text/javascript">
 let page_up = document.querySelector('.up_page');
@@ -61,7 +69,7 @@ let page_down = document.querySelector('.down_page');
 let page = document.querySelectorAll('.pagenation>li');
 let page_flag=0;
 let page_num=1;
-
+conosle.log('이거짱이다')
 page_down.addEventListener('click',()=>{
 
     if(page_flag==0){return 0;}

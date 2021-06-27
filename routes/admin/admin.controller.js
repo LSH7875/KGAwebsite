@@ -1,10 +1,10 @@
-const {user,popup,mainvideo,board,board_manage,employment_status}=require('../../models/index') ;
+const {user,popup,mainvideo,board,board_manage,recuruit,curriculum,apply}=require('../../models/index') ;
 let express=require('express');
 let app = express();
 require('dotenv').config();
 const crypto = require('crypto');
 let token = require('../../jwt');
-const bodyParser=require('body-parser');
+const bodyParser=require('body-parser')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -12,6 +12,16 @@ app.use(bodyParser.urlencoded({extended:false}));
 function cryptoPw(pw){
     return crypto.createHmac('sha256',Buffer.from(toString(process.env.salt))).update(pw).digest('base64').replace('==','').replace('=',''); 
 }
+let review=async(req,res)=>{
+    let review= await board.findAll({
+        where:{board_number:11}
+    });
+    let {user_id} = req.cookies
+    res.render('./admin/review',{
+        user_id, reviews:review
+    })
+}
+
 let admin_chatting=(req,res)=>{
     res.render('./admin/admin_chatting')    
 }
@@ -41,7 +51,7 @@ let employment_status_write=(req,res)=>{
 }
 
 let employment_statuses=async(req,res)=>{
-    let es = await employment_status.findAll();
+    let es = await recuruit.findAll();
     res.render('./admin/employment_status',{
         employ:es
     })
@@ -50,7 +60,7 @@ let employment_status_modify=async(req,res)=>{
     let {user_id} = req.cookies
     if(req.query.btn == "modify"){
         console.log(req.query.number);
-        let es = await employment_status.findAll({
+        let es = await recuruit.findAll({
             where: {
                 id:req.query.number
             }
@@ -59,7 +69,7 @@ let employment_status_modify=async(req,res)=>{
             employ:es, user_id
         })
     } else {
-        await employment_status.destroy({
+        await recuruit.destroy({
             where: {
                 id:req.query.number
             }
@@ -71,7 +81,7 @@ let employment_status_modify=async(req,res)=>{
 let employment_status_modifyPost=async(req,res)=>{
     console.log(req.body.id)
 
-    await employment_status.update({
+    await recuruit.update({
         employedDate:req.body.employed_date,
         major:req.body.major,
         number:req.body.number,
@@ -84,7 +94,7 @@ let employment_status_modifyPost=async(req,res)=>{
 }
 
 let employment_statusPost=async(req,res)=>{
-    await employment_status.create({
+    await recuruit.create({
         employedDate:req.body.employed_date,
         major:req.body.major,
         number:req.body.number,
@@ -177,13 +187,90 @@ let community=(req,res)=>{
     })
     }
     
-let curriculum_list=(req,res)=>{
+let curriculum_list=async(req,res)=>{
+    let cur = await curriculum.findAll();
     let {user_id} = req.cookies
     res.render('./admin/curriculum_list',{
-        user_id
+        user_id,curriculum:cur
     })
     }
-
+let cur_make=async(req,res)=>{
+    let {user_id} = req.cookies
+    res.render('./admin/cur_make',{
+        user_id,
+    })
+}
+let cur_makePost=async(req,res)=>{
+    let {user_id} = req.cookies
+    await curriculum.create({
+        cur_title:req.body.cur_title,
+        detail_name:req.body.detail_name,
+        cur_uri:req.body.cur_uri,
+        main_image:req.body.main_img,
+        character:req.body.character,
+        syllabus:req.body.syllabus,
+        side_info1:req.body.side_info1,
+        side_info2:req.body.side_info2,
+        period:req.body.period,
+        tuition:req.body.tuition,
+        qualification:req.body.qualification,
+        // professor1:req.body.professor1,
+        // professor2:req.body.professor2,
+        // faq1:req.body.faq1,
+        // faq2:req.body.faq2,
+        // faq3:req.body.faq3
+    })
+    res.render('./admin/cur_make',{
+        user_id,
+    })
+}
+let cur_modify=async(req,res)=>{
+    let {user_id} = req.cookies
+    let cur = await curriculum.findAll({
+        where:{id:req.query.id}
+    })
+    res.render('./admin/cur_modify',{
+        user_id,curriculum:cur
+    })
+}
+let cur_modifyPost=async(req,res)=>{
+    // let {user_id} = req.cookies
+    // let cur = await curriculum.findAll({
+    //     where:{id:req.body.id}
+    // })
+    if(req.body.btn == "modify"){
+        console.log(req.body.side_info1.toString())
+        await curriculum.update({
+            cur_title:req.body.cur_title,
+            detail_name:req.body.detail_name,
+            cur_uri:req.body.cur_uri,
+            main_image:req.body.main_img,
+            character:req.body.character,
+            syllabus:req.body.syllabus,
+            side_info1:req.body.side_info1.toString(),
+            side_info2:req.body.side_info2,
+            period:req.body.period,
+            tuition:req.body.tuition,
+            qualification:req.body.qualification,
+            // professor1:req.body.professor1,
+            // professor2:req.body.professor2,
+            // faq1:req.body.faq1,
+            // faq2:req.body.faq2,
+            // faq3:req.body.faq3
+        },{
+            where: {id:req.body.id}
+        })
+        res.redirect('/admin/curriculum_list')
+    } else{
+        await curriculum.destroy({
+            where: {
+                id: req.body.id
+            }
+        })
+        res.redirect('/admin/curriculum_list')
+    }
+}
+   
 let interview_manage=async(req,res)=>{
     let {user_id} = req.cookies
     let im = await board.findAll({
@@ -228,11 +315,13 @@ let mainvideo_upload=(req,res)=>{
 
 
 let mainvideo_uploadPost=async(req,res)=>{
+    let uservideo = req.file == undefined ? '' :req.file.filename;
     await mainvideo.create({
         main_image: req.body.img,
         video: req.body.video,
         show_hide: req.body.show_hide,
     })
+    console.log(uservideo)
     res.redirect('/admin/mainvideo_list');
     }
 
@@ -354,22 +443,29 @@ let setting=(req,res)=>{
     })
     }
 
-let apply_list=(req,res)=>{
+let applies=async(req,res)=>{
     let {user_id} = req.cookies
-    res.render('./admin/apply_list',{
-        user_id
-    })
-    }
-
-let apply=async(req,res)=>{
-    let {user_id} = req.cookies
-    let apply = await board.findAll({
-        where:{board_number:16}
-    })
+    let a = await apply.findAll();
     res.render('./admin/apply',{
-        user_id, applies: apply
+        user_id, applies:a
     })
+}
+let apply_view=async(req,res)=>{
+    let {user_id} = req.cookies
+    if(req.query.btn == "view"){
+        let a = await apply.findAll({
+            where:{id:req.query.id}
+        });
+        res.render('./admin/apply_view',{
+            user_id, applies:a
+        })
+    } else {
+        await apply.destroy({
+            where:{id:req.query.id}
+        })
+        res.redirect('/admin/apply')
     }
+}
 
 let notice=async(req,res)=>{
     let notice= await board.findAll({
@@ -380,7 +476,58 @@ let notice=async(req,res)=>{
         user_id, notices:notice
     })
     }
+let notice_make=(req,res)=>{
+    let {user_id} = req.cookies
+    res.render('./admin/notice_make',{
+        user_id
+    })
+}
+let notice_makePost=async(req,res)=>{
+    await board.create({
+       title:req.body.title,
+       nickname:req.body.nickname,
+       contents:req.body.content,
+       file1:req.body.img,
+       show_hide:req.body.show_hide,
+       board_number:10
+    })
+    res.redirect('/admin/notice')
+}
 
+let notice_modify=async(req,res)=>{
+    console.log(req.query.btn);
+    let {user_id} = req.cookies
+    if(req.query.btn == "modify"){
+        let notice = await board.findAll({
+            where: {
+                board_number:10,
+                id:req.query.id
+            }
+        })
+        res.render('./admin/notice_modify',{
+            notice:notice,user_id
+        })
+    } else {
+        await board.destroy({
+            where: {
+                id:req.query.id
+            }
+        })
+        res.redirect('/admin/notice');
+    }
+}
+
+let notice_modifyPost=async(req,res)=>{
+    await board.update({
+       title:req.body.title,
+       nickname:req.body.nickname,
+       contents:req.body.content,
+       file1:req.body.img,
+       show_hide:req.body.show_hide,
+       board_number:10
+    })
+    res.redirect('/admin/notice')
+}
 let portfolio=(req,res)=>{
     let {user_id} = req.cookies
     res.render('./admin/portfolio',{
@@ -403,4 +550,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,apply_list,apply,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {apply_view,notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,applies,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

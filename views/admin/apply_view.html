@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/notice_make.css">
+</head>
+<body>
+    <div id="header">
+        <img src="/경일직업능력개발원.PNG">
+        <div id="navi">
+            <a href="/admin/admin_list">Administrator</a>
+            <a href="/admin/curriculum_list">교육과정</a>
+            <a href="/admin/interview_manage">취업정보</a>
+            <a href="/admin/notice">커뮤니티</a>
+            <a href="/admin/admin_chatting">상담신청</a>
+
+        </div>
+    </div>
+    <div id="sub_con">
+        <div id="admin_info">
+            <b>[관리자모드]</b>
+            <div>
+                최고관리자: {{user_id}}<br/>
+                <button>로그아웃</button>
+            </div>
+        </div>
+        <ul id="submenu">
+            <b>좌측메뉴</b>
+            <li><a href="/admin/notice">▶ 공지사항</a></li>
+            <li><a href="/admin/review">▶ 수강후기</a></li>
+        </ul>
+    </div>
+    <div id="main_con">
+        <div id="con_header"><img src="/관리자이미지.png"><div>지원자 자세히보기</div></div>
+        <button onclick="location.href='/admin/apply'">지원자 리스트</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3">지원자 자세히보기</th> <input style="display: none; "type="text" name="id" value="{{popup.id}}">
+                    </tr>
+                </thead>
+                {% for apply in applies %}
+                <tbody>
+                    <tr>
+                        <td>신청과정</td>
+                        <td>{{apply.cur_title}}</td>
+                    </tr>
+                    <tr>
+                        <td>제목</td>
+                        <td>{{apply.title}}</td>
+                    </tr>
+                    <tr>
+                        <td>작성자</td>
+                        <td>{{apply.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>나이</td>
+                        <td>{{apply.age}}</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td>
+                        <td>{{apply.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>핸드폰번호</td>
+                        <td>{{apply.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>지원동기</td>
+                        <td>{{apply.motive}}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+    </div>
+</body>
+</html>

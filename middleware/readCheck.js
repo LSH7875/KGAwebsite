@@ -15,13 +15,7 @@ module.exports = async(req,res,next)=>{
     let {user_id} = req.cookies;
     let {board} = req.params; 
 
-    let usergrade=await userFindUsingid(user_id)
-        .then(aa=>{
-            user_grade = aa.user_grade ||-1;
-            console.log('읽기등급');
-            console.log(user_grade);
-        }) 
-
+    
     let boardgrade=await boaradFindUsinguri(board)
         .then(bb=>{
             
@@ -31,11 +25,22 @@ module.exports = async(req,res,next)=>{
             console.log(bb.read_authority);
         })    
 
-    if(user_grade >= board_readgrade) next();
-
+    if(board_readgrade==-1){next();}
     else{
-        res.json('잘못되었습니다.');
-        //res.status(401).send("unauthenticated");
+
+        let usergrade=await userFindUsingid(user_id)
+            .then(aa=>{
+                user_grade = aa.user_grade ||-1;
+                console.log('읽기등급');
+                console.log(user_grade);
+            }) 
+
+        if(user_grade >= board_readgrade) next();
+
+        else{
+            res.json('잘못되었습니다.');
+            //res.status(401).send("unauthenticated");
+        }
     }
 }
 

@@ -5,6 +5,7 @@ const readChk = require('../../middleware/readCheck');
 const writeChk = require('../../middleware/writeCheck');
 const practice = require('../../practice');
 const templete = require('../../middleware/templete');
+const consultingController=require('../consulting/consultingController');
 const path = require('path');
 const multer = require('multer');
 
@@ -24,6 +25,11 @@ router.get('/favicon.ico',(req,res,next)=>{
   })
 router.use(ignoreFavicon);
 router.get("/practice",templete,practice);
+router.get("/router/job/recruit",templete,mainController.recuruits);
+/*apply부분*/
+router.get("/router/consulting/apply",templete,consultingController.applys);
+router.post("/router/consulting/apply",templete,consultingController.applyPost);
+
 router.get("/router/:group/:board/view",templete, readChk ,mainController.viewer);
 router.get("/router/:group/:board/write",templete,writeChk,mainController.write);
 router.post("/router/:group/:board/write",templete,upload.single('img'),mainController.write_post);

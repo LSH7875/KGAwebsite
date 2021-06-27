@@ -1,0 +1,135 @@
+.popup{
+    display:none;
+}
+
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0%;
+    padding: 0%;
+    font-size:16px;
+    overflow-x: hidden;
+    font-family: 'LotteMartDream';
+    
+}
+
+
+.btn:hover{
+    background-color:rgb(0,100,255);
+}
+
+
+.btn{
+    margin-bottom:4px;
+    text-align: center;
+    display:inline-block;
+    line-height: 30px;
+    width:100px;
+    height:30px;
+    color:white;
+    background-color:rgb(209, 226, 253);
+    border-radius: 4px;
+    box-shadow:3px 3px 3px -2px grey; 
+}
+.title{
+    height:50px;
+    background:rgb(209, 226, 253);
+    width:785px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.date{
+    text-align: right;
+    margin-top: 20px;
+    margin-right:30px;
+}
+.nickname{
+    margin-top: 20px;
+    text-align: right;
+    margin-right:30px;
+}
+
+.hit{
+    text-align: right;
+    margin-right:30px;
+}
+
+#content{
+    width:800px;
+    margin:0 auto;
+    border:1px solid rgb(209, 226, 253);
+    /* background-color: bisque; */
+    padding:10px;
+    border-radius: 4px;
+    /* padding-top:10px; */
+
+}
+.text11{
+    margin:0 auto;
+    margin-top:30px;
+    text-align: left;
+    width:755px;
+    border:1px solid rgb(209, 226, 253);
+    margin-bottom:30px;
+    padding:20px;
+    padding-top:40px;
+    padding-bottom:40px;
+    border-radius: 4px;
+    
+}
+
+.list{
+    border-radius:4px;
+    display:inline-block;
+    height:30px;
+    text-align: center;
+    width:100px;
+    background:rgb(209, 226, 253);
+    color:white;
+    line-height: 30px;
+    /* box-shadow: 4px 4px 4px -2px grey; */
+    margin:4px;
+}
+
+#view{
+    text-align: left;
+    width:800px;
+    /* height:800px; */
+    margin:0 auto;
+    background:white;
+    /* border:1px solid rgb(209, 226, 253); */
+    padding:10px;
+    
+}
+
+
+.list:hover{
+    background:rgb(0,100,255);
+
+}
+
+.contents{
+    margin:0 auto;
+    width:800px;
+    overflow-x:hidden;
+}
+
+.contents>img{
+    margin-top: 20px;
+    width:100%; 
+}
+
+.popup{
+    box-sizing: border-box;
+    padding:50px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+    border:1px solid rgb(0,100,255);
+    width:500px;
+    height:200px;
+    background-color:rgb(239, 245, 255);
+}
