@@ -5,15 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/KGAwebsite/public/CRUD/list.css">
 </head>
 <body>
+    <div id="image"></div>
+    <div id="review">
+        수강후기
+    </div>
     <table>
         <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>등록일</th>
-            <th>조회수</th>
+            <th class="no">번호</th>
+            <th class="sub">제목</th>
+            <th class="writer">작성자</th>
+            <th class="date">등록일</th>
+            <th class="hits">조회수</th>
         </tr>
         {% for item in title %}
         <tr><td>{{item.id}}</td>
@@ -24,7 +29,13 @@
         </tr>
         {% endfor %}
     </table>
-    <a href="/community/review/write">글쓰기</a>
-    검색<input type="search">
+    <div class="writing">
+        <a href="/community/review/write">글쓰기</a>
+        <br/>
+        <br/>
+        <br/>
+        검색 :<input type="search">
+    </div>
+
 </body>
 </html>
