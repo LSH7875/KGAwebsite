@@ -128,6 +128,7 @@ tr:last-child>td{
 .down_page, .up_page{
     display:inline-block;
     line-height:80px;
+    cursor: pointer;
 }
 
 #keyfield,#keystring{
@@ -142,4 +143,9 @@ tr:last-child>td{
 #find_btn{
     width:50px;
     height:30px;
+}
+
+
+#search_box{
+    margin:0 auto;
 }

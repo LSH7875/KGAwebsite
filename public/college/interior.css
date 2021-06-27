@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+  }
+
+*{font-family: 'LotteMartDream';
+    line-height: 1.6em;
+}
+
+
+
+
+
 #section{
     margin:0 auto;
     margin-bottom:50px;

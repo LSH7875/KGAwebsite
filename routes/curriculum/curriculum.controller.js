@@ -59,8 +59,10 @@ let curr= async(req,res)=>{
     })
 }
 
+let curriculum1 = (req,res)=>{
+    res.redirect('/router/curriculum');
+}
 
 
 
-
-module.exports = {curriculum2,curr,};
+module.exports = {curriculum2,curr,curriculum1,};

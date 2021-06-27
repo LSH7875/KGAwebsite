@@ -13,21 +13,21 @@ const path = require('path');
 
 const {recuruit} = require('../../models/index');
 
-let recuruits = async(req,res)=>{
-    let {navi,login} = req;
-    let {nickname} = req.cookies;
-    let page = req.query.page || 1;
-    console.log(recuruit);
-    let rst = await recuruit.findAll({
-        // order:[['id','DESC']],
-        // limit:10,
-        // offset:10*(page-1)
-    })
-    .then(aa=>{
-        res.render('./job/recuruit',{job:aa,nickname,navi,login,})
-    })
+// let recuruits = async(req,res)=>{
+//     let {navi,login} = req;
+//     let {nickname} = req.cookies;
+//     let page = req.query.page || 1;
+//     console.log(recuruit);
+//     let rst = await recuruit.findAll({
+//         // order:[['id','DESC']],
+//         // limit:10,
+//         // offset:10*(page-1)
+//     })
+//     .then(aa=>{
+//         res.render('./job/recuruit',{job:aa,nickname,navi,login,})
+//     })
    
-}
+// }
 
 
 
@@ -125,14 +125,20 @@ let list = async(req,res)=>{
         where:{board_uri:board}
     })
 
-    console.log('result2');
-    console.log(result2);
+    // console.log('result2');
+    // console.log(result2);
     
     await listfn(board,page,keyfield,keystring)
     .then(async(aa) =>{
         console.log('page',page);
         let msg=0;
         if(page==1){
+            if(req.query.msg){
+            console.log('msg값 바꾸는 과정');
+            msg=req.query.msg;
+            console.log('msg',msg)
+            }
+            // 페이지 1일 때 예외사항임
             console.log('리스트에서 페이지 1인거 들어옴 aa의 폼은?')
             console.log(result2.form);
             console.log('page1일때 msg')
@@ -142,33 +148,40 @@ let list = async(req,res)=>{
                     msg,nickname,login,navi,title:aa,group,board,
             })}
             else if(result2.form==3){
+                console.log('갤러리일때')
                 res.render('./gallery',{
                     msg,nickname,login,navi,title:aa,group,board,
                 })
             }
         }else if(aa.length==0){
+            // 페이지 1이 아니고 페이지가 아예 없을 때
             console.log('aaif문 들어옴')
+            console.log('page',page);
             msg="페이지가 없습니다.";
             console.log('리다이렉트 먹나?')
             res.redirect(`/router/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
         }else{
+            // 페이지 1도 아니고 페이지도 있을 때
         if(req.query.msg){
             console.log('msg값 바꾸는 과정');
             msg=req.query.msg;
+            console.log('msg',msg)
         }
         // console.log(aa.length);
         console.log('렌더한다');
         console.log('이제 띄울 시간이다. sg어떠냐')
         console.log(msg);
         if(result2.form==1){
+            console.log('페이지1아니고 페이지 있고 리스트일때')
             res.render('./list',{
                 msg,nickname,login,navi,title:aa,group,board,
-        })}else if(result2.form==3){
-            console.log('/////////갤러러의 msg/////////');
-            console.log(msg)
+            })
+        }else if(result2.form==3){
+            console.log('페이지 1 아니고 페이지 있고 갤러리일때')
             res.render('./gallery',{
                 msg,nickname,login,navi,title:aa,group,board,
-        })}
+            })
+        }
         }
     })
 }
@@ -446,7 +459,7 @@ let onlygroup = async(req,res)=>{
     // res.send(bb.datavalues.board_uri)};
 }
 
-//list,modify,delete
+//list,modify,delete,recuruits
 
 
-module.exports = {recuruits,main,viewer, write, write_post, modify_post, list, modify, delete_board,onlygroup}
+module.exports = {main,viewer, write, write_post, modify_post, list, modify, delete_board,onlygroup}

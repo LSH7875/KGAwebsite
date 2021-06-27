@@ -4,6 +4,11 @@
 {% endblock %}
 
 {% block content %}
+{% if msg !=0 %}
+<script type = "text/javascript">
+window.alert("{{msg}}");
+</script>
+{% endif %}
 <table>
     <tr>
         <th>취업일자</th>
@@ -25,19 +30,30 @@
 <div class="page">
     <a class="down_page">&lt</a>
         <ul class="pagenation">
-            <li><a href="/router/job/recuruit?page=1">1</a></li>
-            <li><a href="/router/job/recuruit?page=2">2</a></li>
-            <li><a href="/router/job/recuruit?page=3">3</a></li>
-            <li><a href="/router/job/recuruit?page=4">4</a></li>
-            <li><a href="/router/job/recuruit?page=5">5</a></li>
-            <li><a href="/router/job/recuruit?page=6">6</a></li>
-            <li><a href="/router/job/recuruit?page=7">7</a></li>
-            <li><a href="/router/job/recuruit?page=8">8</a></li>
-            <li><a href="/router/job/recuruit?page=9">9</a></li>
-            <li><a href="/router/job/recuruit?page=10">10</a></li>
+            <li><a href="/router/job/recruit?page=1">1</a></li>
+            <li><a href="/router/job/recruit?page=2">2</a></li>
+            <li><a href="/router/job/recruit?page=3">3</a></li>
+            <li><a href="/router/job/recruit?page=4">4</a></li>
+            <li><a href="/router/job/recruit?page=5">5</a></li>
+            <li><a href="/router/job/recruit?page=6">6</a></li>
+            <li><a href="/router/job/recruit?page=7">7</a></li>
+            <li><a href="/router/job/recruit?page=8">8</a></li>
+            <li><a href="/router/job/recruit?page=9">9</a></li>
+            <li><a href="/router/job/recruit?page=10">10</a></li>
         </ul>
     <a class="up_page">&gt</a>
 </div>
+<form id="search_box" action="/router/{{group}}/{{board}}" method="get">
+    <select name = "keyfield" id = "keyfield">
+        <option value= "total">전체</option>
+        <option value= "major">과정명</option>
+        <option value= "job_date">취업년도</option>
+        <option value= "company">회사명</option>
+    </select>
+    <input type="text" id="keystring" name = "keystring">
+    
+    <input type = "submit" id = "find_btn" value="검색">
+</form>
 
 <script type ="text/javascript">
     let page_up = document.querySelector('.up_page');
@@ -50,12 +66,12 @@
     
         if(page_flag==0){return 0;}
         else{
-            let h2 = document.querySelector('h2');
+            
             page_flag--;
             let i=1;
             page.forEach(e=>{
                 aa =parseInt(page_flag*10+i);+"</a>";
-                e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+                e.innerHTML =`<a href="/router/job/recruit?page=${aa}">${aa}`;
                 i++;
             })
         }
@@ -66,7 +82,7 @@
         let i=1;
         page.forEach(e=>{
             aa =parseInt(page_flag*10+i);+"</a>";
-            e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+            e.innerHTML =`<a href="/router/job/recruit?page=${aa}">${aa}`;
             i++;
         })
     })
