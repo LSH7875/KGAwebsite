@@ -30,7 +30,7 @@
         <ul id="submenu">
             <b>좌측메뉴</b>
             <li><a href="/admin/admin_list">▶ 관리자리스트</a></li>
-            <li><a href="/admin/setting">▶ 사이트 환경설정</a></li>
+            <li><a href="/admin/user_list">▶ 사용자리스트</a></li>
             <li><a href="/admin/board_manage">▶ 게시판 생성관리</a></li>
             <li><a href="#">▶ 게시판 그룹관리</a></li>
             <li><a href="/admin/popup_list">▶ 팝업관리</a></li>
@@ -38,8 +38,8 @@
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>사용자 리스트</div></div>
-        <div>
+        <div id="con_header"><img src="/관리자이미지.png"><div>회원등급 수정</div></div>
+        <form action="#" name="">
             <div id="search">
                 검색조건
                 <select name="search_option" id="search_option">
@@ -48,11 +48,11 @@
                     <option value="닉네임">닉네임</option>
                     <option value="Email">E-mail</option>
                 </select>
-                <input type="text" placeholder=" 검색어를 입력해주세요 ">
+                <input type="text" placeholder=" 검색어를 입력해주세요 " name="searchinfo">
                 <button>검색</button>
             </div>
             <button>선택항목삭제</button>
-        </div>
+        </form>
         <div id="contents">
             <table>
                 <thead>
