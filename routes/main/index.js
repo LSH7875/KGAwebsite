@@ -25,7 +25,7 @@ router.get('/favicon.ico',(req,res,next)=>{
   })
 router.use(ignoreFavicon);
 router.get("/practice",templete,practice);
-router.get("/router/job/recruit",templete,mainController.recuruits);
+// router.get("/router/job/recruit",templete,mainController.recuruits);
 /*apply부분*/
 router.get("/router/consulting/apply",templete,consultingController.apply);
 router.get("/router/consulting/apply",consultingController.applyPost);

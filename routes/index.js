@@ -20,9 +20,9 @@ router.use(ignoreFavicon);
 router.use('/mypage',mypageRouter);
 router.use('/user',userRouter);
 router.use('/admin',adminRouter);
-router.use('/college',collegeRouter);
-router.use('/curriculum',curriculumRouter);
-router.use('/job',jobRouter);
+router.use('/router/college',collegeRouter);
+router.use('/router/curriculum',curriculumRouter);
+router.use('/router/job',jobRouter);
 router.get('/chatting',(rew,res)=>{
   res.render('chatting/chatting')
 })
