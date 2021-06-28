@@ -6,9 +6,14 @@
 }
 
 
+#user_infos>h2{
+    line-height: 50px;
+}
 
-
-*{margin:0; padding:0; font-size:16px; font-family: 'LotteMartDream';}
+form{
+    font-size:16px;
+}
+*{margin:0; padding:0;  font-family: 'LotteMartDream';}
 ul,li{
     list-style: none;
     margin:0; padding:0;
@@ -36,8 +41,11 @@ ul,li{
     margin-top:10px;
     box-sizing: border-box;
     border-radius: 200px;
-    background:rgb(164, 147, 194);
+    /* background:rgb(164, 147, 194); */
     float:left;
+    background-position-x: 50%;
+    background-position-y: 50%;
+
 }
 
 #user_infos{
@@ -67,6 +75,7 @@ h3{
     margin:0 auto;
     margin-top:20px;
     font-size: 16px;
+    border:none;
 }
 
 .pw_check{
@@ -93,6 +102,8 @@ h3{
     /* overflow-y: hidden; */
     box-shadow: 5px 5px 5px -2px rgb(0, 0, 0,.2) ;
     line-height: 80px;
+    margin-bottom: 5px;
+    margin-right:5px;
 }
 
 #mypage_con{
@@ -100,7 +111,6 @@ h3{
     width:100%;
 
     height:800px;
-    background-color:aquamarine;
 }
 
 h1{
@@ -161,6 +171,13 @@ input{
     border-radius: 4px;
     border:1px solid rgb(239, 245, 255);
     font-size: 16px;
+}
+
+#img{
+    width:500px !important;
+    margin:0 auto !important;
+    margin-top:500px;
+    border:1px solid rgb(239, 245, 255);
 }
 
 #phone,.phone2,.phone3{

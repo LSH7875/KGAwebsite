@@ -23,7 +23,7 @@ mypage_button[1].addEventListener('click',()=>{
     console.log('비밀번호변경눌림');
     popup_flag=(popup_flag==true)? false : true;
     console.log('삼항연산자 지남');
-    mypage_con.innerHTML=popup_flag;
+
     if(popup_flag==true){pw_check.style.display="block";}
     else{pw_check.style.display="none";}
 })
