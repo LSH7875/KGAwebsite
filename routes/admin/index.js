@@ -19,6 +19,8 @@ router.get('/admin_list',adminController.admin_list);
 router.post('/admin_list',adminController.admin_list);
 router.get('/admin_list_modify',adminController.admin_list_modify);
 router.post('/admin_list_modify',adminController.admin_list_modifyPost);
+router.get('/user_list',adminController.userList);
+router.post('/user_list',adminController.userListPost);
 router.get('/admin_login',adminController.admin_login);
 router.post('/admin_login',adminController.admin_loginPost);
 

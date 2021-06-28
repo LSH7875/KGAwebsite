@@ -51,7 +51,7 @@ window.alert("페이지가 없습니다");
     </ul>
     <a class="up_page">&gt</a>
 </div>
-<form action="/router/{{group}}/{{board}}" method="get">
+<form id= "search_box" action="/router/{{group}}/{{board}}" method="get">
 <select name = "keyfield" id = "keyfield">
     <option value= "total">전체</option>
     <option value= "title">제목</option>
@@ -69,35 +69,31 @@ let page_down = document.querySelector('.down_page');
 let page = document.querySelectorAll('.pagenation>li');
 let page_flag=0;
 let page_num=1;
-conosle.log('이거짱이다')
+console.log('이거짱이다')
 page_down.addEventListener('click',()=>{
 
     if(page_flag==0){return 0;}
     else{
-        let h2 = document.querySelector('h2');
+        // let h2 = document.querySelector('h1');
         page_flag--;
         let i=1;
         page.forEach(e=>{
             aa =parseInt(page_flag*10+i);+"</a>";
-            e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+            e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}">${aa}`;
             i++;
+            console.log(aa);
         })
     }
 })
-// window.addEventListener('DOMContenetLoaded',init);
-// function init(){
-//     for(i=1;i>=10;i++){
-//         page[i].innerHTML = "<a href=./"+h2.value+"?page="+i+">"+i+"</a>";
-//     }
-// }
-// init();
+
 page_up.addEventListener('click',()=>{
     page_flag++;
     let i=1;
     page.forEach(e=>{
         aa =parseInt(page_flag*10+i);+"</a>";
-        e.innerHTML ="<a href=./"+h2.value+"?page="+aa+">"+aa;
+        e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}">${aa}`;
         i++;
+        console.log(aa);
     })
 })
 

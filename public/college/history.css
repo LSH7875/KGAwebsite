@@ -1,10 +1,12 @@
 @font-face {
-    font-family: 'MaruBuri-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
-    font-weight: normal;
+    font-family: 'LotteMartDream';
     font-style: normal;
-}
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+  }
 
+*{font-family: 'LotteMartDream';
+}
 
 #content{
     box-sizing: border-box;
@@ -29,7 +31,6 @@
     color:rgb(0,100,255);
     font-weight: bold;
     font-size: 2em;
-    font-family: 'MaruBuri-Regular';
     letter-spacing:0.1em;
     
 }
@@ -41,8 +42,7 @@
     font-size:0.5em;
     color:black;
     text-decoration:none;
-    font-family: 'MaruBuri-Regular';
-    letter-spacing:0.3em;
+    /* letter-spacing:0.3em; */
     line-height: 30px;
 
 }
