@@ -13,17 +13,16 @@
 
 
 
-#section{
+#content> #section{
     margin:0 auto;
     margin-bottom:50px;
     width:1100px;
-    
     background:lightcoral;
     
 }
-h1{
+#content>h1{
     text-align: left;
-    text-indent: 50px;
+    text-indent: 200px;
     margin-bottom:50px;
 }
 

@@ -14,10 +14,10 @@
             <ul id="nav_main_list">
                 
                 {% for item in navi %} 
-                <li class="nav_bar intro_main"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
+                <li class="nav_bar intro_main"><a href="/router/{{item.board_uri}}"> {{item.group_name}} </a>
                     <ul class="nav_sub_list intro_sub">
                         {%for mmm in item.board %}
-                        <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+                        <li><a href="/router/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
