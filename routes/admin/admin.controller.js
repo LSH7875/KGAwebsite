@@ -106,11 +106,11 @@ let employment_status_modifyPost=async(req,res)=>{
     console.log(req.body.id)
 
     await recuruit.update({
-        employedDate:req.body.employed_date,
+        job_date:req.body.employed_date,
         major:req.body.major,
         number:req.body.number,
         name: req.body.nickname,
-        companyName:req.body.company
+        company:req.body.company
     },{
         where: {id:req.body.id}
     })
@@ -119,11 +119,11 @@ let employment_status_modifyPost=async(req,res)=>{
 
 let employment_statusPost=async(req,res)=>{
     await recuruit.create({
-        employedDate:req.body.employed_date,
+        job_date:req.body.employed_date,
         major:req.body.major,
         number:req.body.number,
         name: req.body.nickname,
-        companyName:req.body.company
+        company:req.body.company
     })
     res.render('./admin/employment_status')
 }
