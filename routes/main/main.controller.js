@@ -63,7 +63,8 @@ let write = async(req,res)=>{
         modify:0,
         group:req.params.group,
         board_uri:req.params.board,
-        board_name:ddd.board_title
+        board_name:ddd.board_title,
+        board:req.params.board
     });
 }
 //멀터실험
@@ -124,7 +125,7 @@ let list = async(req,res)=>{
     let result2=await board_manage.findOne({
         where:{board_uri:board}
     })
-
+    board_name=result2.board_title;
     // console.log('result2');
     // console.log(result2);
     
@@ -145,12 +146,12 @@ let list = async(req,res)=>{
             console.log(msg);
             if(result2.form==1){
                 res.render('./list',{
-                    msg,nickname,login,navi,title:aa,group,board,
+                    msg,nickname,login,navi,title:aa,group,board,board_name,
             })}
             else if(result2.form==3){
                 console.log('갤러리일때')
                 res.render('./gallery',{
-                    msg,nickname,login,navi,title:aa,group,board,
+                    msg,nickname,login,navi,title:aa,group,board,board_name,
                 })
             }
         }else if(aa.length==0){
@@ -174,12 +175,12 @@ let list = async(req,res)=>{
         if(result2.form==1){
             console.log('페이지1아니고 페이지 있고 리스트일때')
             res.render('./list',{
-                msg,nickname,login,navi,title:aa,group,board,
+                msg,nickname,login,navi,title:aa,group,board,board_name,
             })
         }else if(result2.form==3){
             console.log('페이지 1 아니고 페이지 있고 갤러리일때')
             res.render('./gallery',{
-                msg,nickname,login,navi,title:aa,group,board,
+                msg,nickname,login,navi,title:aa,group,board,board_name,
             })
         }
         }

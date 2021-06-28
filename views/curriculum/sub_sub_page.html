@@ -15,7 +15,7 @@
         <div class="frame_out a"></div>
         <div class="frame_out b"></div>
         <div class="frame_out c"></div>
-        <div id="frame"><img src="/{{rst.main_image}}"></div>
+        <div id="frame"><img src="/{{result.main_image}}"></div>
         <div id="a_line" class="scroll_a"></div>
         <div id="frame_in"></div>
        <div id="header">
@@ -68,6 +68,7 @@
                 <br/>   
                 <h1>과정 특장점</h1>
                 <br/>
+                <div class="character"></div>
                 <br/>
                 <a>
 
@@ -146,6 +147,13 @@
     </div>
     <script type = "text/javascript">
         console.log('javascript먹는지');
+
+        let character=document.querySelector('.character');
+        let tt=String(`{{result.character}}`);
+        console.log(tt);
+        // character.innerHTML = tt.replace(/\//gi,"<br>");
+        changetxt(character,tt)
+        
         let professor1=document.querySelector('.pro_left>a');
         let professor2=document.querySelector('.pro_right>a');
         c="{{cst[0].professor_info}}"

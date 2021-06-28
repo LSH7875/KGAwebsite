@@ -2,18 +2,39 @@ const {user,board}=require('../../models/index');
 const crypto = require('crypto');
 require('dotenv').config();
 
-let index = (req,res)=>{
+let index = async(req,res)=>{
     let section="";
-    let {nickname}=req.cookies;
+    let {nickname,user_id}=req.cookies;
     let {navi,login}=req;
+    let userinfo = await user.findOne({
+        where:{user_id,}
+    })
+    console.log('profile');
+    let {profile}=userinfo;
+    console.log(profile);
+
+    let authority;
+
+    if(userinfo.user_grade<=1){
+        authority="승인받지 못했습니다. 수강생이나 직원인 경우 학원 관리자에게 연락 바랍니다."
+    }else if(userinfo.user_grade==2){
+        authority="경일아카데미 수강생 인증되었습니다."
+    }else if(userinfo.user_grade==3){
+        authority = "경일아카데미 직원 인증되었습니다. "
+    }else if(userinfo.user_grade==4){
+        authority = "관리자입니다."
+    }else{
+        authority = "오류입니다. 관리자에게 연락 바랍니다."
+    }
+
     if(req.query.section){
         console.log('section 파트 들어옴')
         let section = req.query.section;
         console.log(section);
-        res.render('./mypage/index',{navi,section,login,nickname,})
+        res.render('./mypage/index',{navi,section,login,nickname,profile,user_id,nickname,authority,})
     }else{
         console.log('section 안들어감')
-        res.render('./mypage/index',{navi,section,login,nickname,});
+        res.render('./mypage/index',{navi,section,login,nickname,profile,user_id,nickname,authority,});
     }
 }
 

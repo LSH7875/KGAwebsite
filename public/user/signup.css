@@ -1,19 +1,95 @@
 *{
     font-family: "LotteMartDream";
 }
-h1{
-    background: violet;
-    height: 150px;
-
+.hidden{
+    height: 10px;
+}
+#content{
+    width: 100%;
 }
 
+h1{
+    width: 100%;
+    background: rgba(0, 102, 255, 0.137);
+    height: 180px;
+    line-height: 180px;
+}
+
+
+p{
+    display: inline-block;
+    height: 40px;
+    margin-top: 20px;
+}
+
+input{
+    display: inline-block;
+    height: 50px;
+    width: 550px;
+}
+#phone{
+    height: 50px;
+    width: 80px;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+.phone_flex{
+    line-height: 10px;
+}
+.user_sex{
+    width: 50px;
+}
+.user_birth{
+    width: 330px;
+}
+.phone2 , .phone3{
+    width: 205px;
+    box-sizing: border-box;
+}
+
+.birth_flex{
+    display: flex;
+}
 .signup_form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 1000px;
+    width: 600px;
     margin: 0 auto;
+    padding: 2%;
+    font-size: 30px;
+    text-align: center;
+    box-sizing: border-box;
 }
-p{
-    height: 30px;
+
+.birth_num{
+    width: 600px;
+    display: inline-block;
+    text-align: left;
+}
+
+.birth_left{
+    width: 600px;
+    text-align: left;
+}
+
+.submit_btn{
+    background: rgb(0,100,255);
+    color: white;
+    font-family: "LotteMartDream";
+    font-size: 26px;
+    border: none;
+    margin-bottom: 100px;
+    height: 60px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 550px;
+    margin-left: 20px;
+}
+
+.submit_btn:hover{
+    border: 2px solid rgb(0,100,255);
+    background: white;
+    color: rgb(0,100,255);
+    transition: .25s ease-in-out;
 }

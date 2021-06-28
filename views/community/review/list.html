@@ -19,13 +19,14 @@
         </tr>
         {% for item in title %}
         <tr><td>{{item.id}}</td>
-            <td><a href="./view?idx={{item.id}}">{{item.subject}}</a></td>
+            <td><a href="/router/community/reveiw/view?idx={{item.id}}">{{item.subject}}</a></td>
             <td>{{item.nickname}}</td>
             <td>{{item.date}}</td>
             <td>{{item.hit}}</td>
         </tr>
         {% endfor %}
     </table>
+<<<<<<< HEAD
     <div class="writing">
         <a href="/community/review/write">글쓰기</a>
         <br/>
@@ -34,5 +35,9 @@
         검색 :<input type="search">
     </div>
 
+=======
+    <a href="/router/community/review/write">글쓰기</a>
+    검색<input type="search">
+>>>>>>> 9da5665613a7a11c60afb754891a482413f3fb6d
 </body>
 </html>
