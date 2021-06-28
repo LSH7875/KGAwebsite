@@ -17,7 +17,7 @@ let job = async(req,res)=>{
         console.log('aa들어옴');
         console.log(aa);
         if(page ==1){
-            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,})
+            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,board:'recruit',group:'job',board_name:'취업현황'})
         }else if(page!=1 && aa.length==0){
             msg="페이지가 없습니다.";
             res.redirect(`/router/job/recruit?page=${page-1}&msg=${msg}`)
