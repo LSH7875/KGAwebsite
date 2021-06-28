@@ -121,7 +121,9 @@ let list = async(req,res)=>{
     let {nickname}=req.cookies
     let {board,group} = req.params;
     let page = req.query.page || 1;
-    let {keyfield,keystring}=req.query;
+    // let {keyfield,keystring}=req.query;
+    let keyfield = req.query.keyfield || "total";
+    let keystring = req.query.keystring || "";
     let result2=await board_manage.findOne({
         where:{board_uri:board}
     })
@@ -146,12 +148,12 @@ let list = async(req,res)=>{
             console.log(msg);
             if(result2.form==1){
                 res.render('./list',{
-                    msg,nickname,login,navi,title:aa,group,board,board_name,
+                    msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,
             })}
             else if(result2.form==3){
                 console.log('갤러리일때')
                 res.render('./gallery',{
-                    msg,nickname,login,navi,title:aa,group,board,board_name,
+                    msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,
                 })
             }
         }else if(aa.length==0){
@@ -160,7 +162,7 @@ let list = async(req,res)=>{
             console.log('page',page);
             msg="페이지가 없습니다.";
             console.log('리다이렉트 먹나?')
-            res.redirect(`/router/${group}/${board}/?page=${(page-1)}&msg=${msg}`)
+            res.redirect(`/router/${group}/${board}/?page=${(page-1)}&msg=${msg}&keyfield=${keyfield}&keystring=${keystring}`)
         }else{
             // 페이지 1도 아니고 페이지도 있을 때
         if(req.query.msg){
@@ -175,12 +177,12 @@ let list = async(req,res)=>{
         if(result2.form==1){
             console.log('페이지1아니고 페이지 있고 리스트일때')
             res.render('./list',{
-                msg,nickname,login,navi,title:aa,group,board,board_name,
+                msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,
             })
         }else if(result2.form==3){
             console.log('페이지 1 아니고 페이지 있고 갤러리일때')
             res.render('./gallery',{
-                msg,nickname,login,navi,title:aa,group,board,board_name,
+                msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,
             })
         }
         }

@@ -28,22 +28,24 @@ window.alert("{{msg}}");
     {% endfor %}
 </table>
 <div class="page">
-    <a class="down_page">&lt</a>
+    
         <ul class="pagenation">
-            <li><a href="/router/job/recruit?page=1">1</a></li>
-            <li><a href="/router/job/recruit?page=2">2</a></li>
-            <li><a href="/router/job/recruit?page=3">3</a></li>
-            <li><a href="/router/job/recruit?page=4">4</a></li>
-            <li><a href="/router/job/recruit?page=5">5</a></li>
-            <li><a href="/router/job/recruit?page=6">6</a></li>
-            <li><a href="/router/job/recruit?page=7">7</a></li>
-            <li><a href="/router/job/recruit?page=8">8</a></li>
-            <li><a href="/router/job/recruit?page=9">9</a></li>
-            <li><a href="/router/job/recruit?page=10">10</a></li>
+            <a class="down_page">&lt</a>
+            <li><a href="/router/job/recruit?page=1&keyfield={{keyfield}}&keystring={{keystring}}">1</a></li>
+            <li><a href="/router/job/recruit?page=2&keyfield={{keyfield}}&keystring={{keystring}}">2</a></li>
+            <li><a href="/router/job/recruit?page=3&keyfield={{keyfield}}&keystring={{keystring}}">3</a></li>
+            <li><a href="/router/job/recruit?page=4&keyfield={{keyfield}}&keystring={{keystring}}">4</a></li>
+            <li><a href="/router/job/recruit?page=5&keyfield={{keyfield}}&keystring={{keystring}}">5</a></li>
+            <li><a href="/router/job/recruit?page=6&keyfield={{keyfield}}&keystring={{keystring}}">6</a></li>
+            <li><a href="/router/job/recruit?page=7&keyfield={{keyfield}}&keystring={{keystring}}">7</a></li>
+            <li><a href="/router/job/recruit?page=8&keyfield={{keyfield}}&keystring={{keystring}}">8</a></li>
+            <li><a href="/router/job/recruit?page=9&keyfield={{keyfield}}&keystring={{keystring}}">9</a></li>
+            <li><a href="/router/job/recruit?page=10&keyfield={{keyfield}}&keystring={{keystring}}">10</a></li>
+            <a class="up_page">&gt</a>
         </ul>
-    <a class="up_page">&gt</a>
+    
 </div>
-<form id="search_box" action="/router/{{group}}/{{board}}" method="get">
+<form id="search_box" action="/router/job/recruit" method="get">
     <select name = "keyfield" id = "keyfield">
         <option value= "total">전체</option>
         <option value= "major">과정명</option>
@@ -86,6 +88,14 @@ window.alert("{{msg}}");
             i++;
         })
     })
-    
+    let page_a = document.querySelectorAll('.pagenation>li>a');
+    page_a.forEach(e=>{
+        // console.log(e.innerHTML==);
+        if(e.innerHTML == '{{page}}'){
+            e.parentElement.style.background =   "rgb(0,100,255)";
+            e.style.color = "white";
+        }
+    })
+
     </script>
 {% endblock %}

@@ -9,24 +9,27 @@ let job = async(req,res)=>{
     console.log('page');
     console.log(page);
     console.log(recuruit);
-    
-    let {keyfield,keystring}=req.query;
+    let keyfield = req.query.keyfield || 'total';
+    let keystring = req.query.keystring || '';
+    // let {keyfield,keystring}=req.query;
     await galleryList(page,keyfield,keystring)
     .then(aa=>{
         let msg=0;
-        console.log('aa들어옴');
-        console.log(aa);
         if(page ==1){
-            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,board:'recruit',group:'job',board_name:'취업현황'})
-        }else if(page!=1 && aa.length==0){
+            if(req.query.msg){
+                console.log('msg바꾸는 과정');
+                msg=req.query.msg;
+                }
+            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,board:'recruit',group:'job',board_name:'취업현황',keyfield,keystring,page,})
+        }else if(aa.length==0){
             msg="페이지가 없습니다.";
-            res.redirect(`/router/job/recruit?page=${page-1}&msg=${msg}`)
+            res.redirect(`/router/job/recruit?page=${page-1}&msg=${msg}&keyfield=${keyfield}&keystring=${keystring}`)
         }else{
             if(req.query.msg){
             console.log('msg바꾸는 과정');
             msg=req.query.msg;
             }
-            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,group:'job',board_name:'취업현황'})
+            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,group:'job',board_name:'취업현황',keyfield,keystring,page,})
     }})
     
 }
