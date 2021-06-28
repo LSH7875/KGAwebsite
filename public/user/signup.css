@@ -1,130 +1,95 @@
-#con{
-    width: 1200px;
-    height: 510px;
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
+*{
+    font-family: "LotteMartDream";
+}
+.hidden{
+    height: 10px;
+}
+#content{
+    width: 100%;
 }
 
 h1{
-    padding-top: 10%;
-    font-size: 50px;
-    font-family: "LotteMartDream";
+    width: 100%;
+    background: rgba(0, 102, 255, 0.137);
+    height: 180px;
+    line-height: 180px;
 }
 
-form{
-    width: 450px;
-    height: 500px;
-    position: relative;
-    padding: 5%;
-    box-sizing: border-box;
-    border: 1px solid black;
-}
-
-#user_id, .user_pw{
-    height: 50px;
-    font-size: 24px;
-    margin: 26px 0px;
-    text-align: center;
-    padding: 2px;
-    box-sizing: border-box;
-    font-family: "MaruBuri-Regular";
-}
 
 p{
-    font-size: 32px;
-    font-family: "LotteMartDream";
-    font-weight: bold;
+    display: inline-block;
+    height: 40px;
+    margin-top: 20px;
 }
 
-#login{
-    width: 314px;
+input{
+    display: inline-block;
     height: 50px;
-    border-radius: 5px;
-    font-size: 28px;
-    font-weight: bold;
-    font-family:"LotteMartDream";
-    margin-top: 46px;
-    background: white;
-    color: rgb(0,100,255);
-    border: 1px solid rgb(0,100,255);
+    width: 550px;
+}
+#phone{
+    height: 50px;
+    width: 80px;
+    font-size: 24px;
+    box-sizing: border-box;
+}
+.phone_flex{
+    line-height: 10px;
+}
+.user_sex{
+    width: 50px;
+}
+.user_birth{
+    width: 330px;
+}
+.phone2 , .phone3{
+    width: 205px;
+    box-sizing: border-box;
 }
 
-#API{
-    width: 450px;
-    height: 500px;
-    border: 1px solid black;
-    border-left: none;
-    box-sizing: border-box;
+.birth_flex{
+    display: flex;
+}
+.signup_form{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-top: 3%;
-}
-
-.right{
-    font-family: "LotteMartDream";
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    padding:4%;
+    align-items: flex-start;
+    width: 600px;
+    margin: 0 auto;
+    padding: 2%;
+    font-size: 30px;
+    text-align: center;
     box-sizing: border-box;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    overflow-y: hidden;
 }
 
-.kakao{
-    background: #e4cf0e;
-    width: 314px;
-    height: 60px;
-    font-weight: bold;
+.birth_num{
+    width: 600px;
+    display: inline-block;
+    text-align: left;
 }
-.kakao:hover{
-    background: white;
-    color: #e4cf0e;
-    border: 2px solid #e4cf0e;
-    transition: .15s ease-in-out;
+
+.birth_left{
+    width: 600px;
+    text-align: left;
 }
-.naver{
-    background: #03c75a;
-    width: 314px;
-    height: 60px;
-    font-weight: bold;
-}
-.naver:hover{
-    background: white;
-    color: #03c75a;
-    border: 2px solid #03c75a;
-    transition: .15s ease-in-out;
-}
-.join{
+
+.submit_btn{
     background: rgb(0,100,255);
-    width: 314px;
-    height: 54px;
-    font-size: 28px;
-    font-weight: bold;
-    font-family:"LotteMartDream";
-    padding: 3%;
+    color: white;
+    font-family: "LotteMartDream";
+    font-size: 26px;
+    border: none;
+    margin-bottom: 100px;
+    height: 60px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 550px;
+    margin-left: 20px;
 }
 
-#API>a>h3{
-    height: 30px;
-}
-
-.join:hover{
+.submit_btn:hover{
+    border: 2px solid rgb(0,100,255);
     background: white;
     color: rgb(0,100,255);
-    border: 1px solid rgb(0,100,255);
     transition: .25s ease-in-out;
-}
-
-#login:hover {
-    background: rgb(0,100,255);
-    color: white;
-    border: none;
-    transition: .25s ease-in-out;
-    cursor: pointer;
 }

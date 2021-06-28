@@ -145,7 +145,7 @@ transform: scale(1);
     width: 500px;
     height: 700px;
     position: absolute;
-    left: 130%;
+    left: 90%;
     top: 25%;
     display: none;
     transform: translateX(80px);

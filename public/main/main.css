@@ -101,11 +101,13 @@
 
  #nav_main_list>li>a{
     width: 120px;
+    height: 30px;
     display: inline-block;
     color: white;
     border-right: 1px solid white; 
     font-size: 22px;
     font-family: "LotteMartDream";
+    overflow-y: hidden;
 }
 
 .nav_sub_list{
