@@ -1,0 +1,130 @@
+#con{
+    width: 1200px;
+    height: 510px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    padding-top: 10%;
+    font-size: 50px;
+    font-family: "LotteMartDream";
+}
+
+form{
+    width: 450px;
+    height: 500px;
+    position: relative;
+    padding: 5%;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+#user_id, .user_pw{
+    height: 50px;
+    font-size: 24px;
+    margin: 26px 0px;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+    font-family: "MaruBuri-Regular";
+}
+
+p{
+    font-size: 32px;
+    font-family: "LotteMartDream";
+    font-weight: bold;
+}
+
+#login{
+    width: 314px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 28px;
+    font-weight: bold;
+    font-family:"LotteMartDream";
+    margin-top: 46px;
+    background: white;
+    color: rgb(0,100,255);
+    border: 1px solid rgb(0,100,255);
+}
+
+#API{
+    width: 450px;
+    height: 500px;
+    border: 1px solid black;
+    border-left: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 3%;
+}
+
+.right{
+    font-family: "LotteMartDream";
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    padding:4%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    overflow-y: hidden;
+}
+
+.kakao{
+    background: #e4cf0e;
+    width: 314px;
+    height: 60px;
+    font-weight: bold;
+}
+.kakao:hover{
+    background: white;
+    color: #e4cf0e;
+    border: 2px solid #e4cf0e;
+    transition: .15s ease-in-out;
+}
+.naver{
+    background: #03c75a;
+    width: 314px;
+    height: 60px;
+    font-weight: bold;
+}
+.naver:hover{
+    background: white;
+    color: #03c75a;
+    border: 2px solid #03c75a;
+    transition: .15s ease-in-out;
+}
+.join{
+    background: rgb(0,100,255);
+    width: 314px;
+    height: 54px;
+    font-size: 28px;
+    font-weight: bold;
+    font-family:"LotteMartDream";
+    padding: 3%;
+}
+
+#API>a>h3{
+    height: 30px;
+}
+
+.join:hover{
+    background: white;
+    color: rgb(0,100,255);
+    border: 1px solid rgb(0,100,255);
+    transition: .25s ease-in-out;
+}
+
+#login:hover {
+    background: rgb(0,100,255);
+    color: white;
+    border: none;
+    transition: .25s ease-in-out;
+    cursor: pointer;
+}
