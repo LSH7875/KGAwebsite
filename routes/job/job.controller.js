@@ -26,7 +26,7 @@ let job = async(req,res)=>{
             console.log('msg바꾸는 과정');
             msg=req.query.msg;
             }
-            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,})
+            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,group:'job',board_name:'취업현황'})
     }})
     
 }
