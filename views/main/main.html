@@ -25,6 +25,18 @@
             display: none;
         }
     </style>
+<!-------------------------------팝업용 자바스크립트---------------------------------------->
+    <script language="Javascript" type="text/javascript">
+         function setCookie( name, value, expirehours ) {
+          var todayDate = new Date();
+          todayDate.setHours( todayDate.getHours() + expirehours );
+          document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+         }
+         function closeWin() {
+          if(document.getElementById("pop_today").checked){
+           setCookie( "ncookie", "done" , 24 );
+          }}
+        </script>
 <!-------------------------------채팅용 자바스크립트---------------------------------------->
     <script type="text/javascript">
         function do_chat(){
@@ -60,10 +72,9 @@
 <body>
 <!--빨간줄 무시해주세요!!! html이 원래 쓰는 방식에서 벗어난거긴 한데 작동은 됨!!! 교수님이 빨간줄 무시하라고 하심!!!!!!!!!!!-->
     {% for popup in pop %}
-    <div class="modal" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px; position:absolute; z-index: 9999">
-        <button onclick=btn_() id="test" style="position:absolute; right:0; border:0; background-color: #fff;">X</button>
+    <div class="modal" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px; position:absolute; z-index: 9999;">
         <a href="{{popup.URL}}" style="border:0;"><img src="/{{popup.image_file}}" alt="" style= "width:{{popup.popup_width}}px; height: {{popup.popup_heigth}}px; top:{{popup.popup_top}}px; left:{{popup.popup_left}}px;"></a>
-        <!-- <input type="checkbox" placeholder="하루동안 열지 않기">  -->
+        <p style="width:{{popup.popup_width}}px; height:30px; background-color:black; color:#fff; padding:0 10px;"><input type="checkbox" id="pop_today">1일동안 열지않기</p><button onclick=btn_() id="test" style="width:60px; height:20px; position:absolute; right:5px; bottom:5px; border:1px solid #fff; background-color:black; color: #fff; cursor: pointer;">close</button>
     </div>
     {% endfor %}
 <!--빨간줄 무시해주세요!!! html이 원래 쓰는 방식에서 벗어난거긴 한데 작동은 됨!!! 교수님이 빨간줄 무시하라고 하심!!!!!!!!!!!-->
@@ -325,7 +336,7 @@
                 }
             }
             // btn.addEventListener('click',btn_())
-            // modalbtn.click();
+            modalbtn.click();
 
 //상담 및 문의하기 버튼 자바스크립트
         const f_btn = document.getElementById('floating_btn');

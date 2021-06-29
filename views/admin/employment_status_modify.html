@@ -30,12 +30,11 @@
             <b>좌측메뉴</b>
             <li><a href="/admin/interview_manage">▶ 취업자인터뷰</a></li>
             <li><a href="/admin/employment_status">▶ 취업현황</a></li>
-            <li><a href="#">▶ 포트폴리오</a></li>
         </ul>
     </div>
     {% for es in employ %}
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>취업현황 글쓰기</div></div>
+        <div id="con_header"><img src="/관리자이미지.png"><div>취업현황 수정하기</div></div>
         <form action="/admin/employment_status_modify" method="POST" id="board_modify">
             <table>
                 <thead>

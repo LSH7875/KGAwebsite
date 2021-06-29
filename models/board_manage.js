@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     board_uri: {
       type: DataTypes.STRING(200),
-      allowNull: false
+      allowNull: true
     },
     board_title: {
       type: DataTypes.STRING(200),
