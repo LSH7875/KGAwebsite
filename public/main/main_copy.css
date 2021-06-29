@@ -211,6 +211,17 @@
     height: 230px;
     color: white;
     text-align: center;
+    overflow-y: hidden;
+}
+
+
+
+#sub_sub_title{
+    box-sizing: border-box;
+    text-align: left;
+    margin:0 auto;
+    width:1000px;
+    /* padding-left:120px; */
 }
 #footer>img{
     width: 80px;
