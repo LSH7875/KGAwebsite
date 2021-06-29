@@ -52,6 +52,10 @@ ul li{
     text-align: center;
 }
 
+#admin_info div button{
+    margin-top: 25px;
+}
+
 #admin_info div{
     width:240px;
     height: 100px;

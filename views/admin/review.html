@@ -23,7 +23,7 @@
             <b>[관리자모드]</b>
             <div>
                 최고관리자: {{user_id}}<br/>
-                <button>로그아웃</button>
+                <button onclick="location.href='/admin/admin_logout'">로그아웃</button>
             </div>
         </div>
         <ul id="submenu">
@@ -55,18 +55,20 @@
                 </thead>
                 <tbody>
                     {% for review in reviews %}
-                    <tr>
-                        <td>{{review.id}}</td>
-                        <td>{{review.title}}</td>
-                        <td>{{review.show_hide}}</td>
-                        <td>{{review.nickname}}</td>
-                        <td></td>
-                        <td>{{review.hits}}</td>
-                        <td>{{review.date}}</td>
-                        <td>{{review.file1}}</td>
-                        <td><button>조회</button></td>
-                        <td><button>삭제</button></td>
-                    </tr>
+                    <form action="/admin/review_view" method="get">
+                        <tr>
+                            <td>{{review.id}}</td><input type="text" name="id" value="{{review.id}}" style="display:none;">
+                            <td>{{review.title}}</td>
+                            <td>{{review.show_hide}}</td>
+                            <td>{{review.nickname}}</td>
+                            <td></td>
+                            <td>{{review.hits}}</td>
+                            <td>{{review.date}}</td>
+                            <td>{{review.file1}}</td>
+                            <td><button name="btn" value="view">조회</button></td>
+                            <td><button name="btn" value="delete">삭제</button></td>
+                        </tr>
+                    </form>
                     {% endfor %}
                 </tbody>
             </table>
