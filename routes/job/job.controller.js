@@ -20,7 +20,7 @@ let job = async(req,res)=>{
                 console.log('msg바꾸는 과정');
                 msg=req.query.msg;
                 }
-            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,board:'recruit',group:'job',board_name:'취업현황',keyfield,keystring,page,})
+            res.render('./job/recuruit',{index:aa.index,msg,job:aa.rst,nickname,navi,login,board:'recruit',group:'job',board_name:'취업현황',keyfield,keystring,page,})
         }else if(aa.length==0){
             msg="페이지가 없습니다.";
             res.redirect(`/router/job/recruit?page=${page-1}&msg=${msg}&keyfield=${keyfield}&keystring=${keystring}`)
@@ -29,7 +29,7 @@ let job = async(req,res)=>{
             console.log('msg바꾸는 과정');
             msg=req.query.msg;
             }
-            res.render('./job/recuruit',{msg,job:aa,nickname,navi,login,group:'job',board_name:'취업현황',keyfield,keystring,page,})
+            res.render('./job/recuruit',{index:aa.index,msg,job:aa.rst,nickname,navi,login,group:'job',board_name:'취업현황',keyfield,keystring,page,})
     }})
     
 }
@@ -38,6 +38,7 @@ async function galleryList(page,keyfield,keystring){
     console.log('갤러리 들어옴')
     let num = page;
     let rst;
+    let index;
     if(keyfield=='total'){
         console.log('total찍힌데 들어옴')
         rst = await recuruit.findAll({
@@ -54,13 +55,30 @@ async function galleryList(page,keyfield,keystring){
         order:[['id','DESC']],
         limit:12,
         offset:12*(page-1)
-    })
+    });
+        index = await recuruit.findAll({
+            attributes:['id'],
+            where:{
+                [Op.or]:[
+                    {
+                        major:{[Op.like]:`%${keystring}%`}
+                    },{                        
+                        job_date:{[Op.like]:`%${keystring}%`}
+                    },{
+                        company:{[Op.like]:`%${keystring}%`}
+                    },
+                ]},
+        })
     }else if(keyfield=='major'){
             rst = await recuruit.findAll({
                 where:{major:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(page-1)
+            })
+            index=await recuruit.findAll({
+                attributes:['id'],
+                where:{major:`%${keystring}%`}
             })
 
     }else if(keyfield=='job_date'){
@@ -69,23 +87,36 @@ async function galleryList(page,keyfield,keystring){
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(page-1)
+            });
+            index = await recuruit.findAll({
+                attributes:['id'],
+                where:{job_date:`%${keystring}%`}
             })
     }else if(keyfield=='company'){
             rst = await recuruit.findAll({
-                where:{company:{[Op.like]:`%${keystring}%`}
-                        },
+                where:{company:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(page-1)
+            });
+            index = await recuruit.findAll({
+                attributes:['id'],
+                where:{company:`%${keystring}%`}
             })
     }else{
         rst = await recuruit.findAll({
             order:[['id','DESC']],
             limit:12,
-            offset:12*(page-1)       })
+            offset:12*(page-1)       
+        });
+        index = await recuruit.findAll({
+            attributes:['id'],
+        })
+            
     }
+    index=index.length;
     console.log('rst임')
     console.log(rst);
-    return rst;
+    return aa={rst,index};
 }
 module.exports = {job,}
