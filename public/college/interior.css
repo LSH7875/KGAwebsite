@@ -16,11 +16,18 @@
 #content> #section{
     margin:0 auto;
     margin-bottom:50px;
-    width:1100px;
+    width:1200px;
     background:lightcoral;
+    
+    
+}
+
+#content{
+    height:600px;
     
 }
 #content>h1{
+    
     text-align: left;
     text-indent: 200px;
     margin-bottom:50px;
@@ -122,15 +129,33 @@
 }
 
 #left_btn{
+    overflow-y: hidden;
     position:absolute;
     top:600px;
     left:400px;
     font-size: 50px;
+    width:40px;
+    height:80px;
+    border-radius:4px;
+    border:2px solid rgb(209, 226, 253);
+    line-height:85px;
 }
 
 #right_btn{
+    overflow-y: hidden;
     position:absolute;
     top:600px;
     right:400px;
     font-size: 50px;
+    line-height:85px;
+    width:40px;
+    height:80px;
+    border-radius:4px;
+    border:2px solid rgb(209, 226, 253);
+}
+
+#right_btn:hover ,#left_btn:hover{
+    border:2px solid rgb(0,100,255);
+    background:rgb(0,100,255);
+    color:white;
 }
