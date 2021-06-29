@@ -56,6 +56,7 @@ ul,li{
 }
 #chat_head p{
     font-size: 15px;
+    padding: 15px;
     color:black;
 }
 .content{
