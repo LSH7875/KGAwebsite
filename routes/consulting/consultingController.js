@@ -16,7 +16,7 @@ let applyPost=async (req,res)=>{
         motive:req.body.motive,
         privacy:req.body.privacy
     })
-    res.redirect('./consulting/apply');
+    res.send("<script>alert('지원이 완료되었습니다.');location.href='/router/consulting/apply';</script>");
 
 }
 module.exports={applys,applyPost,}

@@ -300,7 +300,7 @@ async function listfn(name,page,keyfield,keystring){
     if(keyfield=='total'){
         console.log
         rst = await board.findAll({
-            where:{board_number:boardId,
+            where:{board_number:boardId,show_hide:'block',
                     [Op.or]:[
                         {
                         user_id:{[Op.like]:`%${keystring}%`}
@@ -320,7 +320,7 @@ async function listfn(name,page,keyfield,keystring){
     //토탈이 안 되어 있을 때
         if(keyfield=='user_id'){
             rst = await board.findAll({
-                where:{board_number:boardId, user_id:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block',user_id:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -328,7 +328,7 @@ async function listfn(name,page,keyfield,keystring){
         }
         else if(keyfield=='title'){
             rst = await board.findAll({
-                where:{board_number:boardId, title:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block', title:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -336,7 +336,7 @@ async function listfn(name,page,keyfield,keystring){
         }
         else if(keyfield=='nickname'){
             rst = await board.findAll({
-                where:{board_number:boardId, nickname:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block', nickname:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -344,7 +344,7 @@ async function listfn(name,page,keyfield,keystring){
         }
         else if(keyfield=='contents'){
             rst = await board.findAll({
-                where:{board_number:boardId, contents:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block', contents:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -352,7 +352,7 @@ async function listfn(name,page,keyfield,keystring){
         }else{
             console.log('아무것도 선택 안되었을때 보통 처음임')
             rst = await board.findAll({
-                where:{board_number:boardId},
+                where:{board_number:boardId, show_hide:'block'},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)

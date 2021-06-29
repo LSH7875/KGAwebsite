@@ -29,7 +29,7 @@
         <ul id="submenu">
             <b>좌측메뉴</b>
             <li><a href="/admin/admin_chatting">▶ 실시간 상담</a></li>
-            <li><a href="/admin/apply">▶ 지원하기</a></li>
+            <li><a href="/admin/apply">▶ 지원자</a></li>
             <li><a href="#">▶ 자주묻는질문</a></li>
         </ul>
     </div>
@@ -41,11 +41,11 @@
                     <tr>
                         <th>번호</th>
                         <th>신청과정</th>
-                        <th>제목</th>
                         <th>작성자</th>
                         <th>나이</th>
                         <th>이메일</th>
                         <th>휴대폰번호</th>
+                        <th>개인정보동의</th>
                         <th>보기</th>
                         <th>삭제</th>
                     </tr>
@@ -56,11 +56,11 @@
                         <tr>
                             <td>{{apply.id}}</td> <input type="text" name="id" value="{{apply.id}}" style="display: none;">
                             <td>{{apply.cur_title}}</td>
-                            <td>{{apply.title}}</td>
                             <td>{{apply.name}}</td>
                             <td>{{apply.age}}</td>
                             <td>{{apply.email}}</td>
                             <td>{{apply.phone}}</td>
+                            <td>{{apply.privacy}}</td>
                             <td><button name="btn" value="view">자세히보기</button></td>
                             <td><button name="btn" value="delete">삭제</button></td>
                         </tr>
