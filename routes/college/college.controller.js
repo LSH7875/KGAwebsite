@@ -1,4 +1,5 @@
 require('dotenv').config();
+const nunjucks = require('nunjucks');
 
 let group="college"
 
@@ -37,6 +38,7 @@ let interior=(req,res)=>{
 
 let location = (req,res)=>{
     const map_key = process.env.kakao_js_key
+    console.log(process.env.kakao_js_key);
     let {navi,login}=req;
     let {nickname}=req.cookies
     res.render('./college/location.html',{
