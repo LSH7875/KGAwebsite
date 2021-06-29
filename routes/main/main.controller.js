@@ -218,12 +218,14 @@ let viewer = async(req,res)=>{
         authority=1;
     }
     hits++;
-
+    let boardRst = await board_manage.findOne({
+        where:{id:viewRst.board_number}
+    })
     await board.update({hits,},{where:{id,}});
     console.log('viewer의 file1');
     console.log(file1);
     res.render('./view',{
-        nickname,login,navi,id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,file1,
+        nickname,login,navi,id,group,board:board2,user_id,title,date,contents,nickname2,hits,authority,file1,board_name:boardRst.board_title,hits,
     })
 
     
