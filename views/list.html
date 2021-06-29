@@ -34,6 +34,15 @@ window.alert("페이지가 없습니다");
     {% endfor %}
 </table>
 <a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
+{% if isLogin ==1 %} 
+<script type = "text/javascript">
+    let write_btn_click = document.querySelector('.write');
+    write_btn_click.addEventListener('click',()=>{
+        window.alert("로그인이 필요합니다.")
+    })
+
+</script>
+{% endif %}
 <div class="page">
     
     <a class="down_page">&lt</a>
@@ -97,7 +106,7 @@ page_up.addEventListener('click',()=>{
         console.log(aa);
     })
 })
-let page_a = document.querySelectorAll('.pagenation>li>a');
+
 page_a.forEach(e=>{
     // console.log(e.innerHTML==);
     if(e.innerHTML == '{{page}}'){
