@@ -27,20 +27,29 @@ window.alert("{{msg}}");
     
     {% endfor %}
 </ul>
+<a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
+{% if isLogin ==1 %} 
+<script type = "text/javascript">
+    let write_btn_click = document.querySelector('.write');
+    write_btn_click.addEventListener('click',()=>{
+        window.alert("로그인이 필요합니다.")
+    })
+
+</script>
+{% endif %}
 <div class="page">
-    <a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
     <ul class="pagenation">
         <a class="down_page">&lt</a>
-        <li><a href="/router/{{group}}/{{board}}?page=1">1</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=3">2</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=4">3</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=5">4</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=6">5</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=2">6</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=7">7</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=8">8</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=9">9</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=10">10</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=1&keyfield={{keyfield}}&keystring={{keystring}}">1</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=2&keyfield={{keyfield}}&keystring={{keystring}}">2</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=3&keyfield={{keyfield}}&keystring={{keystring}}">3</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=4&keyfield={{keyfield}}&keystring={{keystring}}">4</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=5&keyfield={{keyfield}}&keystring={{keystring}}">5</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=6&keyfield={{keyfield}}&keystring={{keystring}}">6</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=7&keyfield={{keyfield}}&keystring={{keystring}}">7</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=8&keyfield={{keyfield}}&keystring={{keystring}}">8</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=9&keyfield={{keyfield}}&keystring={{keystring}}">9</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=10&keyfield={{keyfield}}&keystring={{keystring}}">10</a></li>
         <a class="up_page">&gt</a>
     </ul>
     <form id="search_box" action="/router/{{group}}/{{board}}" method="get">
@@ -73,7 +82,7 @@ page_down.addEventListener('click',()=>{
         let i=1;
         page.forEach(e=>{
             aa =parseInt(page_flag*10+i);+"</a>";
-            e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}">${aa}`;
+            e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
             i++;
             console.log(aa);
         })
@@ -85,11 +94,20 @@ page_up.addEventListener('click',()=>{
     let i=1;
     page.forEach(e=>{
         aa =parseInt(page_flag*10+i);+"</a>";
-        e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}">${aa}`;
+        e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
         i++;
         console.log(aa);
     })
 })
+let page_a = document.querySelectorAll('.pagenation>li>a');
+page_a.forEach(e=>{
+    // console.log(e.innerHTML==);
+    if(e.innerHTML == '{{page}}'){
+        e.parentElement.style.background =   "rgb(0,100,255)";
+        e.style.color = "white";
+    }
+})
+
 
 </script>
 {% endblock %}

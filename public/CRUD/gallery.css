@@ -66,26 +66,39 @@
 
 .page{
     margin-top:50px;
-    
-    padding-right:190px;
+
 }
-.pagenation>li{
-    /* display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap; */
+.page>ul>li{
+    display: inline-block;
+    margin-left:20px;
+    width:30px;
+    height:30px;
+    border:1px solid rgb(209, 226, 253);
+    line-height: 30px;
+    border-radius: 4px;
+}
+
+.page>ul>li:hover{
+    border:1px solid rgb(0, 100, 255);
+
+}
+
+.down_page, .up_page{
     display:inline-block;
-    margin:20px;
+    line-height:30px;
+    cursor: pointer;
+    width:30px;
+    height:30px;
+    border:1px solid rgb(209, 226, 253);
+    line-height: 30px;
+    border-radius: 4px;
 }
 
 .page>.write:hover{
     background-color:rgb(0,100,255);
 }
-
-.down_page, .up_page{
-    display:inline-block;
-    line-height:55px;
+.up_page{
     margin-left:20px;
-    margin-right:20px;
 }
 
 /********검색부분**********/
@@ -106,4 +119,5 @@
 
 #search_box{
     margin:0 auto;
+    margin-top:50px;
 }

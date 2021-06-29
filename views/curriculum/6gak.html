@@ -33,8 +33,8 @@
             교육기간 : 별도문의<br/>
             교육시간 : 12:00~21:00<br/>
             교육수당 : 별도문의<br/>
-            <button class="apply">지원하기</button>
-            <button class="detail">과정자세히보기</button>
+            <button class="apply" onclick="location.href='/router/consulting/apply'">지원하기</button>
+            <button class="detail" onclick="location.href='/router/curriculum/gamedrawing'">과정자세히보기</button>
         </div>
         <div class="curri ">
             <div class="back">X</div>
@@ -43,8 +43,8 @@
             교육기간 : 별도문의<br/>
             교육시간 : 12:00~21:00<br/>
             교육수당 : 별도문의<br/>
-            <button class="apply">지원하기</button>
-            <button class="detail">과정자세히보기</button>
+            <button class="apply" onclick="location.href='/router/consulting/apply'">지원하기</button>
+            <button class="detail" onclick="location.href='/router/curriculum/blockchain'">과정자세히보기</button>
         </div>
         <div class="curri ">
             <div class="back" >X</div>
@@ -52,8 +52,8 @@
             교육기간 : ~5개월<br/>
             교육시간 : 09:00~18:00<br/>
             교육수당 : 100% 전액국비지원<br/>
-            <button class="apply">지원하기</button>
-            <button class="detail">과정자세히보기</button>
+            <button class="apply" onclick="location.href='/router/consulting/apply'">지원하기</button>
+            <button class="detail" onclick="location.href='/router/curriculum/gameArchitect'">과정자세히보기</button>
         </div>
         <div class="curri ">
             <div class="back" >X</div>
@@ -62,8 +62,8 @@
             교육기간 : 별도문의<br/>
             교육시간 : 09:00~18:00(종일반)<br/>
             교육수당 : 100% 전액국비지원<br/>
-            <button class="apply">지원하기</button>
-            <button class="detail">과정자세히보기</button>
+            <button class="apply" onclick="location.href='/router/consulting/apply'">지원하기</button>
+            <button class="detail" onclick="location.href='/router/curriculum/programing'">과정자세히보기</button>
         </div>
         <div class="curri ">
             <div class="back">X</div>
@@ -71,8 +71,8 @@
             교육기간 : 별도문의<br/>
             교육시간 : 12:00~21:00<br/>
             교육수당 : 별도문의<br/>
-            <button class="apply">지원하기</button>
-            <button class="detail">과정자세히보기</button>
+            <button class="apply" onclick="location.href='/router/consulting/apply'">지원하기</button>
+            <button class="detail" onclick="location.href='/router/curriculum/progamerCoaching'">과정자세히보기</button>
         </div>
         <div class="curri">
             <div class="back">X</div>
@@ -80,8 +80,8 @@
             교육기간 : 별도문의<br/>
             교육시간 : 12:00~21:00<br/>
             교육수당 : 별도문의<br/>
-            <button class="apply">지원하기</button>
-            <button class="detail">과정자세히보기</button>
+            <button class="apply" onclick="location.href='/router/consulting/apply'">지원하기</button>
+            <button class="detail" onclick="location.href='/router/curriculum/vrar'">과정자세히보기</button>
         </div>
     </div>
     </div>
@@ -91,10 +91,10 @@
         <ul id="nav_main_list">
             
             {% for item in navi %} 
-            <li class="nav_bar intro_main"><a href="/{{item.board_uri}}"> {{item.group_name}} </a>
+            <li class="nav_bar intro_main"><a href="/router/{{item.board_uri}}"> {{item.group_name}} </a>
                 <ul class="nav_sub_list intro_sub">
                     {%for mmm in item.board %}
-                    <li><a href="/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
+                    <li><a href="/router/{{item.board_uri}}/{{mmm.board_uri}}">{{mmm.board_title}}</a></li>
                     {% endfor %}
                 </ul>
             </li>

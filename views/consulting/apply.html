@@ -1,6 +1,6 @@
 <!-- 지현님 여기다가 만드시면 되요~~~~~~ -->
 
-{% extends '../college/layout1.html' %}
+{% extends '../layout1.html' %}
 {% block css %}
 <link rel="stylesheet" href="/consulting/apply.css">
 {% endblock %} 
@@ -8,7 +8,7 @@
 {% block content %}
 <div id="apply_wrap">
     <div>
-        <form action="/consulting/apply" method="POST" id="board_modify" enctype="multipart/form-data">
+        <form action="/router/consulting/apply" method="POST" id="board_modify" >
             <table>
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <td class="width80">이메일*</td>
-                        <td class="left"><input type="email">
+                        <td class="left"><input type="email" name="email">
                     </tr>
                     <tr>
                         <td class="width80">전화번호*</td>
