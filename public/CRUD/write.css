@@ -34,7 +34,7 @@ tr:first-child>td{
     border-bottom:1px solid #efefef;
 }
 
-tr:nth-child(2){
+.writing{
     height:700px;
 }
 
@@ -87,4 +87,19 @@ input{
 
 #write_subtmit_btn:hover{
     background-color:rgb(0,100,255);
+}
+
+/*******만약 수강후기부분이 있다면**********/
+.curriculum{
+    height:50px !important;
+}
+
+#cur_num{
+    height:30px;
+    width:300px;
+    float:left;
+    margin-left:2px;
+    background-color: white;
+    border:1px solid grey;
+    border-radius: 4px;;
 }

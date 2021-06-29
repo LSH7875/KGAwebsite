@@ -21,14 +21,25 @@
                 </td>
                 <td>
                     {% if modify == 1 %}
-                    수정입니다
                     <input type="text" name = "title" id="title" value = "{{title}}">
                     {% else %}
                     <input type="text" name = "title" id="title">
                     {% endif %}
                 </td>
             </tr>
-            <tr>
+            {% if review ==1 %} 
+                <tr class="curriculum">
+                    <td class="curriculum_title">수강과정</td>
+                    <td class="curriculum_contents"> 
+                        <select name="cur_num" id="cur_num">
+                            {% for item in curriculum %}
+                                <option value="{{item.id}}">{{item.cur_title}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+            {% endif %}
+            <tr class="writing">
                 <td>
                     내용
                 </td>
