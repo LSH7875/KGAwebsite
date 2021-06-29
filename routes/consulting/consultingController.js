@@ -3,7 +3,7 @@ const {apply,board}=require('../../models/index');
 let applys=(req,res)=>{
     let {navi,login} = req;
     let {nickname}=req.cookies;
-    res.render('./consulting/apply',{navi,login,nickname,})
+    res.render('./consulting/apply',{navi,login,nickname,board_name:"지원하기",group:"consulting"})
 }
 let applyPost=async (req,res)=>{
     await apply.create({

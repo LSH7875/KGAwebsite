@@ -9,7 +9,7 @@ module.exports = async(req,res,next)=>{
         where:{'show_hide':"block"}
     });
     let newarr3=[];
-    for(i=0;i<5;i++){
+    for(i=0;i<groupvalue.length;i++){
         sss[i]=groupvalue[i].dataValues;
         newarr3.push(groupvalue[i].dataValues);
         let newarr=[];

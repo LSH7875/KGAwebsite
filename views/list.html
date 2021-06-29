@@ -33,21 +33,30 @@ window.alert("페이지가 없습니다");
     </tr>
     {% endfor %}
 </table>
+<a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
+{% if isLogin ==1 %} 
+<script type = "text/javascript">
+    let write_btn_click = document.querySelector('.write');
+    write_btn_click.addEventListener('click',()=>{
+        window.alert("로그인이 필요합니다.")
+    })
 
+</script>
+{% endif %}
 <div class="page">
-    <a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
+    
     <a class="down_page">&lt</a>
         <ul class="pagenation">
-        <li><a href="/router/{{group}}/{{board}}?page=1">1</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=2">2</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=3">3</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=4">4</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=5">5</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=6">6</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=7">7</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=8">8</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=9">9</a></li>
-        <li><a href="/router/{{group}}/{{board}}?page=10">10</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=1&keyfield={{keyfield}}&keystring={{keystring}}">1</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=2&keyfield={{keyfield}}&keystring={{keystring}}">2</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=3&keyfield={{keyfield}}&keystring={{keystring}}">3</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=4&keyfield={{keyfield}}&keystring={{keystring}}">4</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=5&keyfield={{keyfield}}&keystring={{keystring}}">5</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=6&keyfield={{keyfield}}&keystring={{keystring}}">6</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=7&keyfield={{keyfield}}&keystring={{keystring}}">7</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=8&keyfield={{keyfield}}&keystring={{keystring}}">8</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=9&keyfield={{keyfield}}&keystring={{keystring}}">9</a></li>
+        <li><a href="/router/{{group}}/{{board}}?page=10&keyfield={{keyfield}}&keystring={{keystring}}">10</a></li>
     </ul>
     <a class="up_page">&gt</a>
 </div>
@@ -67,6 +76,7 @@ window.alert("페이지가 없습니다");
 let page_up = document.querySelector('.up_page');
 let page_down = document.querySelector('.down_page');
 let page = document.querySelectorAll('.pagenation>li');
+let page_a = document.querySelectorAll('.pagenation>li>a');
 let page_flag=0;
 let page_num=1;
 console.log('이거짱이다')
@@ -79,7 +89,7 @@ page_down.addEventListener('click',()=>{
         let i=1;
         page.forEach(e=>{
             aa =parseInt(page_flag*10+i);+"</a>";
-            e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}">${aa}`;
+            e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
             i++;
             console.log(aa);
         })
@@ -91,10 +101,18 @@ page_up.addEventListener('click',()=>{
     let i=1;
     page.forEach(e=>{
         aa =parseInt(page_flag*10+i);+"</a>";
-        e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}">${aa}`;
+        e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
         i++;
         console.log(aa);
     })
+})
+
+page_a.forEach(e=>{
+    // console.log(e.innerHTML==);
+    if(e.innerHTML == '{{page}}'){
+        e.parentElement.style.background =   "rgb(0,100,255)";
+        e.style.color = "white";
+    }
 })
 
 
