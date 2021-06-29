@@ -3,6 +3,7 @@ const crypto = require('crypto');
 require('dotenv').config();
 
 let index = async(req,res)=>{
+    let local=0;
     let section="";
     let {nickname,user_id}=req.cookies;
     let {navi,login}=req;
@@ -14,6 +15,8 @@ let index = async(req,res)=>{
     console.log(profile);
 
     let authority;
+
+    if(userinfo.social == 'local') local=1;
 
     if(userinfo.user_grade<=1){
         authority="승인받지 못했습니다. 수강생이나 직원인 경우 학원 관리자에게 연락 바랍니다."
@@ -31,10 +34,10 @@ let index = async(req,res)=>{
         console.log('section 파트 들어옴')
         let section = req.query.section;
         console.log(section);
-        res.render('./mypage/index',{navi,section,login,nickname,profile,user_id,nickname,authority,})
+        res.render('./mypage/index',{local,navi,section,login,nickname,profile,user_id,nickname,authority,})
     }else{
         console.log('section 안들어감')
-        res.render('./mypage/index',{navi,section,login,nickname,profile,user_id,nickname,authority,});
+        res.render('./mypage/index',{local,navi,section,login,nickname,profile,user_id,nickname,authority,});
     }
 }
 

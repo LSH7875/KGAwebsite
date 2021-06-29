@@ -52,6 +52,8 @@ app.use('/',router);
 
 io.sockets.on('connection',(socket)=>{
     socket.on('chatting',(data)=>{
+        let dd = new Date();
+        dd= dd.toLocaleTimeString().substring(0,8)
         console.log(socket.id);
         console.log(socket.id);
         console.log(socket.id);
@@ -60,7 +62,7 @@ io.sockets.on('connection',(socket)=>{
         io.emit("chatting",{
             name,
             msg,
-            time: moment(new Date()).format("h:ss A")
+            time: dd
         })
     })
 })

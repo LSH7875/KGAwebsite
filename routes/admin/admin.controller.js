@@ -429,9 +429,10 @@ let mainvideo_upload=(req,res)=>{
 
 let mainvideo_uploadPost=async(req,res)=>{
     let uservideo = req.file == undefined ? '' :req.file.filename;
+    let img = '';
     await mainvideo.create({
-        main_image: req.body.img,
-        video: req.body.video,
+        main_image: img,
+        video: uservideo,
         show_hide: req.body.show_hide,
     })
     console.log(uservideo)
@@ -462,9 +463,11 @@ let mainvideo_modify=async(req,res)=>{
     }
 
 let mainvideo_modifyPost=async(req,res)=>{
+    let uservideo = req.file == undefined ? '' :req.file.filename;
+    let img ='';
     await mainvideo.update({
-        main_image: req.body.img,
-        video: req.body.video,
+        main_image: img,
+        video: uservideo,
         show_hide: req.body.show_hide,
     },{
         where: {
