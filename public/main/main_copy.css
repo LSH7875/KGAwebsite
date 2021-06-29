@@ -204,38 +204,13 @@
     font-family: "LotteMartDream";
     overflow: visible !important;
 }
-/* ---------------홍보 PR----------------- */
+/*================== footer======================== */
 
-
-#sub_title{
-    margin:0 auto;
-    margin-top:70px;
-    width:1200px;
-    height:150px;
-    /* background-color:rgb(206, 173, 206); */
-}
-
-#content{
-    margin:0 auto;
-    margin-top:50px;
-    width:1200px;
-    /* background:lightgreen; */
-}
-
-
-
-/****sub*********/
-
-#sub_title{
-    margin:0 auto;
-    width:100%;
-    background:rgb(239, 245, 255);
-    vertical-align: center;
-    margin-top:70px;
-    height:180px;
-    border-radius: 16px;
+#footer{
+    background: gray;
+    height: 230px;
+    color: white;
     text-align: center;
-    color:black;
     overflow-y: hidden;
 }
 
@@ -247,18 +222,21 @@
     margin:0 auto;
     width:1000px;
     /* padding-left:120px; */
-    
-    
 }
-#sub_sub_title>h1{
-    display: inline-block !important;
-    line-height: 260px !important;
-    
-}
-
-#sub_sub_title>h2{
-    margin-left:20px  !important;
-    display: inline-block !important;
-    line-height: 240px  !important;
+#footer>img{
+    width: 80px;
+    height: auto;
+    display: inline-block;
+    margin: 10px 60px;
 }
 
+#footer>ul>li{
+    display: inline-block;
+}
+
+#footer>ul>li>a{
+    display: inline-block;
+    width: 130px;
+    color: #fff;
+    margin-top: 18px;
+}
