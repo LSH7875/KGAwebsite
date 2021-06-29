@@ -104,15 +104,15 @@ ul,li{
 }
 
 .message {
-    width: 180px;
-    height:30px;
+    width: 200px;
+    height:55px;
     border: 1px solid #333;
     border-radius: 5px;
-    padding:1px;
     font-size: 12px;
-    margin: 0 5px;
+    margin: 5px 5px;
     display: inline-block;
-
+    padding: 3%;
+    box-sizing: border-box;
 }
 .time{
     font-size: 10px;
