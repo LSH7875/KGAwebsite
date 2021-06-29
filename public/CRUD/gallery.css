@@ -97,7 +97,9 @@
 .page>.write:hover{
     background-color:rgb(0,100,255);
 }
-
+.up_page{
+    margin-left:20px;
+}
 
 /********검색부분**********/
 
