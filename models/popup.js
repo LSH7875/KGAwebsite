@@ -8,8 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     show_hide: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.STRING(10),
+      allowNull: false,
+      defaultValue: "block"
     },
     popup_width: {
       type: DataTypes.INTEGER,
@@ -27,10 +28,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    popup_type: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     title: {
       type: DataTypes.STRING(100),
       allowNull: false
@@ -41,14 +38,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     URL: {
       type: DataTypes.STRING(1000),
-      allowNull: false
-    },
-    link_type: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    hide_term: {
-      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {

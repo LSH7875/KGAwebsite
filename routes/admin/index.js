@@ -28,6 +28,10 @@ router.get('/admin_logout',adminController.admin_logout)
 router.get('/board_manage',adminController.board_manager);
 router.post('/board_manage',adminController.board_managePost);
 router.get('/board_modify',adminController.board_modify);
+router.post('/board_make',adminController.board_make);
+router.get('/board_group',adminController.board_group);
+router.post('/board_group',adminController.board_groupPost);
+router.post('/group_make',adminController.group_make);
 router.get('/community',adminController.community);
 
 router.get('/curriculum_list',adminController.curriculum_list);
