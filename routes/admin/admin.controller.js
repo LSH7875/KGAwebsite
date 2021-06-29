@@ -108,7 +108,7 @@ let employment_status_modifyPost=async(req,res)=>{
     await recuruit.update({
         job_date:req.body.employed_date,
         major:req.body.major,
-        number:req.body.number,
+        cardinal:req.body.number,
         name: req.body.nickname,
         company:req.body.company
     },{
@@ -121,7 +121,7 @@ let employment_statusPost=async(req,res)=>{
     await recuruit.create({
         job_date:req.body.employed_date,
         major:req.body.major,
-        number:req.body.number,
+        cardinal:req.body.number,
         name: req.body.nickname,
         company:req.body.company
     })
@@ -319,7 +319,7 @@ let interview_manage_writePost=async(req,res)=>{
     },{
         where:{board_number:7}
     })
-    res.redirect('./admin/interview_manage')
+    res.redirect('/admin/interview_manage')
 }
 
 let mainvideo_list=async(req,res)=>{
