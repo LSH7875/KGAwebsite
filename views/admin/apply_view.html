@@ -29,8 +29,9 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="/admin/notice">▶ 공지사항</a></li>
-            <li><a href="/admin/review">▶ 수강후기</a></li>
+            <li><a href="/admin/admin_chatting">▶ 실시간 상담</a></li>
+            <li><a href="/admin/apply">▶ 지원자</a></li>
+            <li><a href="#">▶ 자주묻는질문</a></li>
         </ul>
     </div>
     <div id="main_con">
@@ -47,10 +48,6 @@
                     <tr>
                         <td>신청과정</td>
                         <td>{{apply.cur_title}}</td>
-                    </tr>
-                    <tr>
-                        <td>제목</td>
-                        <td>{{apply.title}}</td>
                     </tr>
                     <tr>
                         <td>작성자</td>
@@ -71,6 +68,10 @@
                     <tr>
                         <td>지원동기</td>
                         <td>{{apply.motive}}</td>
+                    </tr>
+                    <tr>
+                        <td>개인정보동의</td>
+                        <td>{{apply.privacy}}</td>
                     </tr>
                 </tbody>
                 {% endfor %}
