@@ -182,15 +182,15 @@ let list = async(req,res)=>{
             console.log(msg);
             if(result2.form==1){
                 res.render('./list',{
-                    msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,isLogin,
+                    index:aa.index,msg,nickname,login,navi,title:aa.rst,group,board,board_name,keyfield,keystring,page,isLogin,
             })}
             else if(result2.form==3){
                 console.log('갤러리일때')
                 res.render('./gallery',{
-                    msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,isLogin,
+                    index:aa.index,msg,nickname,login,navi,title:aa.rst,group,board,board_name,keyfield,keystring,page,isLogin,
                 })
             }
-        }else if(aa.length==0){
+        }else if(aa.rst.length==0){
             // 페이지 1이 아니고 페이지가 아예 없을 때
             console.log('aaif문 들어옴')
             console.log('page',page);
@@ -211,12 +211,12 @@ let list = async(req,res)=>{
         if(result2.form==1){
             console.log('페이지1아니고 페이지 있고 리스트일때')
             res.render('./list',{
-                msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,isLogin,
+                index:aa.index,msg,nickname,login,navi,title:aa.rst,group,board,board_name,keyfield,keystring,page,isLogin,
             })
         }else if(result2.form==3){
             console.log('페이지 1 아니고 페이지 있고 갤러리일때')
             res.render('./gallery',{
-                msg,nickname,login,navi,title:aa,group,board,board_name,keyfield,keystring,page,isLogin,
+                index:aa.index,msg,nickname,login,navi,title:aa.rst,group,board,board_name,keyfield,keystring,page,isLogin,
             })
         }
         }
@@ -293,8 +293,7 @@ async function listfn(name,page,keyfield,keystring){
         where:{board_uri:name}
     })
     let rst;
-    // console.log('result값까지 구함...',result);
-    // console.log(result.id);
+    let index;
     boardId = result.id;
 ////토탈이 되어 있을 때....
     if(keyfield=='total'){
@@ -316,6 +315,21 @@ async function listfn(name,page,keyfield,keystring){
             limit:12,
             offset:12*(num-1)
         })
+        index = await board.findAll({
+            attribute:['id'],
+            where:{board_number:boardId,show_hide:'block',
+                    [Op.or]:[
+                        {
+                        user_id:{[Op.like]:`%${keystring}%`}
+                        },{                        
+                        title:{[Op.like]:`%${keystring}%`}
+                        },{
+                        nickname:{[Op.like]:`%${keystring}%`}
+                        },{
+                        contents:{[Op.like]:`%${keystring}%`}
+                        }
+                        ]},
+        })
     }else{
     //토탈이 안 되어 있을 때
         if(keyfield=='user_id'){
@@ -325,6 +339,10 @@ async function listfn(name,page,keyfield,keystring){
                 limit:12,
                 offset:12*(num-1)
             })
+            index = await board.findAll({
+                attribute:['id'],
+                where:{board_number:boardId, show_hide:'block',user_id:`%${keystring}%`},
+            })
         }
         else if(keyfield=='title'){
             rst = await board.findAll({
@@ -332,6 +350,10 @@ async function listfn(name,page,keyfield,keystring){
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
+            })
+            index=await board.findAll({
+                attribute:['id'],
+                where:{board_number:boardId, show_hide:'block', title:`%${keystring}%`},
             })
         }
         else if(keyfield=='nickname'){
@@ -341,6 +363,10 @@ async function listfn(name,page,keyfield,keystring){
                 limit:12,
                 offset:12*(num-1)
             })
+            index=await board.findAll({
+                attribute:['id'],
+                where:{board_number:boardId, show_hide:'block', nickname:`%${keystring}%`},
+            })
         }
         else if(keyfield=='contents'){
             rst = await board.findAll({
@@ -348,6 +374,10 @@ async function listfn(name,page,keyfield,keystring){
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
+            })
+            index=await board.findAll({
+                attribute:['id'],
+                where:{board_number:boardId, show_hide:'block', contents:`%${keystring}%`},
             })
         }else{
             console.log('아무것도 선택 안되었을때 보통 처음임')
@@ -357,14 +387,20 @@ async function listfn(name,page,keyfield,keystring){
                 limit:12,
                 offset:12*(num-1)
             }) 
+            index=await board.findAll({
+                attribute:['id'],
+                where:{board_number:boardId, show_hide:'block'},
+            })
         }
     }
-    // console.log('이것이 rst이다');
-    // console.log(rst);
-    // console.log('어디로 가는가');
+ 
     rst.forEach(e=>{
         changeDate(e);
     })
+    for(i=0;i<rst.length;i++){
+        rst[i].dataValues.file3 = parseInt(index.length)-(page-1)*12-i;
+        console.log(rst[i].dataValues.file3);
+    }
     // rst.forEach((e)=>{
     //     let cc=e.dataValues.date;
     //     let year = cc.getFullYear();
@@ -376,7 +412,9 @@ async function listfn(name,page,keyfield,keystring){
     //     console.log(cc);
     //     e.dataValues.date=cc;
     // })
-    return rst;
+    index=index.length;
+    console.log('index:',index);
+    return aa={rst,index};
 }
 
 function changeDate(e){
@@ -390,6 +428,11 @@ function changeDate(e){
         console.log(cc);
         e.dataValues.date=cc;
 }
+
+function changeid(e,page){
+    
+}
+
 
 async function userFindUsingid(user_id){///promise 객체임니다...
     console.log('userFindUsingid들어옴')
