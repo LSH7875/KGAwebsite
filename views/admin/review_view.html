@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/admin/interview_manage.css">
+    <link rel="stylesheet" href="/admin/notice_make.css">
 </head>
 <body>
     <div id="header">
@@ -16,6 +16,7 @@
             <a href="/admin/interview_manage">취업정보</a>
             <a href="/admin/notice">커뮤니티</a>
             <a href="/admin/admin_chatting">상담신청</a>
+
         </div>
     </div>
     <div id="sub_con">
@@ -28,53 +29,41 @@
         </div>
         <ul id="submenu">
             <b>좌측메뉴</b>
-            <li><a href="/admin/interview_manage">▶ 취업자인터뷰</a></li>
-            <li><a href="/admin/employment_status">▶ 취업현황</a></li>
-            <li><a href="#">▶ 포트폴리오</a></li>
+            <li><a href="/admin/admin_chatting">▶ 실시간 상담</a></li>
+            <li><a href="/admin/apply">▶ 지원자</a></li>
+            <li><a href="#">▶ 자주묻는질문</a></li>
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>관리자 리스트</div></div>
-        <div>
-            <div>
-            </div>
-        </div>
-        <form action="/admin/interview_manage_write" method="POST" id="contents">
+        <div id="con_header"><img src="/관리자이미지.png"><div>리뷰 자세히보기</div></div>
+        <button onclick="location.href='/admin/apply'">수강후기</button>
             <table>
                 <thead>
                     <tr>
-                        <th colspan="3">취업인터뷰 글쓰기</th>
+                        <th colspan="3">지원자 자세히보기</th> <input style="display: none; "type="text" name="id" value="{{popup.id}}">
                     </tr>
                 </thead>
+                {% for review in reviews %}
                 <tbody>
                     <tr>
-                        <td>제목</td>
-                        <td class="left">
-                            <input type="date" name="title">
-                        </td>
+                        <td>신청과정</td>
+                        <td>{{review.title}}</td>
                     </tr>
                     <tr>
-                        <td>닉네임</td>
-                        <td class="left">
-                            <input type="text" name="nickname">
-                        </td>
+                        <td>작성자</td>
+                        <td>{{review.nickname}}</td>
                     </tr>
                     <tr>
                         <td>내용</td>
-                        <td class="left">
-                            <input type="text" name="contents" id="con">
-                        </td>
+                        <td>{{review.contents}}</td>
                     </tr>
                     <tr>
-                        <td>파일첨부</td>
-                        <td class="left">
-                            <input type="file" name="file">
-                        </td>
+                        <td>보임/숨김</td>
+                        <td>{{review.show_hide}}</td>
                     </tr>
                 </tbody>
+                {% endfor %}
             </table>
-            <button>저장하기</button>
-        </form>
     </div>
 </body>
 </html>

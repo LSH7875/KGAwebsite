@@ -23,6 +23,7 @@ router.get('/user_list',adminController.userList);
 router.post('/user_list',adminController.userListPost);
 router.get('/admin_login',adminController.admin_login);
 router.post('/admin_login',adminController.admin_loginPost);
+router.get('/admin_logout',adminController.admin_logout)
 
 router.get('/board_manage',adminController.board_manager);
 router.post('/board_manage',adminController.board_managePost);
@@ -66,6 +67,10 @@ router.get('/notice_modify',adminController.notice_modify)
 router.post('/notice_modify',upload.single('img'),adminController.notice_modifyPost);
 
 router.get('/review',adminController.review);
+router.get('/review_view',adminController.review_view)
+router.post('/review_view',adminController.review_viewPost)
+
+
 router.get('/setting',adminController.setting);
 router.get('/apply',adminController.applies);
 router.get('/apply_view',adminController.apply_view)

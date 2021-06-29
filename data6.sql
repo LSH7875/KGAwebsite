@@ -163,7 +163,10 @@ INSERT INTO `user` (`id`, `user_id`, `user_pw`, `user_name`, `user_email`, `user
 	(1, 'jYkPXB0o8NJUVo9HBpOkiY5y-g4i-ipOy2WBdChc0kM', NULL, '이승희', 'nara7875@naver.com', '01049477875', '2021-06-14 04:56:50', 1, NULL, NULL, NULL, '이승희', 'naver', 'basic_profile.jpg', NULL),
 	(2, 'ddd', 'lmrP3E6lOdwnVsLQ1wxbOX4GC8nGjvorBV2z7aOk/fU', 'SSS', 'dddd@naver.com', '01011111111', '2021-06-14 08:11:40', 1, 1, 111111, 1, 'DDD', 'local', 'basic_profile.jpg', NULL),
 	(3, 'AAA', 'dE1ubhgHmGKibi8NOAQrCYWqfycaNvKI1a5/2jVmdeg', 'AAA', 'AAA@NAVER.COM', '0101111111', '2021-06-14 08:12:18', 1, 1, 111111, 1, 'AAA', 'local', 'basic_profile.jpg', NULL),
-	(4, 'sss', 'EW5+AnmFodoosI7tCtrS78pMBlxgvphJpMYreZODInQ', 'sss', 'sss@naver.com', '01011111111', '2021-06-23 02:25:27', 4, 1, 111111, 1, 'sss', 'local', '1624416155696.JPG', NULL);
+	(4, 'sss', 'EW5+AnmFodoosI7tCtrS78pMBlxgvphJpMYreZODInQ', 'sss', 'sss@naver.com', '01011111111', '2021-06-23 02:25:27', 4, 1, 111111, 1, 'sss', 'local', '1624416155696.JPG', NULL),
+	(5,'wlgus2134','aiZEmGAtq4PBkD2iHugrMSxMlQfpqxEKUEypuDGCA1Y','강지현','kjwise1128@gmail.com','01086433076','2021-06-29 09:44:16',4,2,951128,1,'져니','local','basic_profile.jpg',Null),
+	(6,'epqlf44','Qw7PljGL7qMh83S74En+M4KBcFjRHTZy/mKd1T8FbZY','구문영','zzzz@naver.com','01000000000','2021-06-29 09:44:16',4,2,111111,1,'구문영','local','basic_profile.jpg',Null);
+
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -24,7 +24,7 @@
             <b>[관리자모드]</b>
             <div>
                 최고관리자: {{user_id}}<br/>
-                <button>로그아웃</button>
+                <button onclick="location.href='/admin/admin_logout'">로그아웃</button>
             </div>
         </div>
         <ul id="submenu">
@@ -63,12 +63,6 @@
                     <tr>
                         <td>강의 경로</td>
                         <td class="left"><input type="text" name="cur_uri" value=""></td>
-                    </tr>
-                    <tr>
-                        <td>메인이미지</td>
-                        <td class="left">
-                            <input type="file" name="main_img" value="" accept=".jpg, .jpeg, .png">
-                        </td>
                     </tr>
                     <tr>
                         <td>과정 특징</td>
