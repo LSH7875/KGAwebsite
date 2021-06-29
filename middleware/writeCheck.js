@@ -8,7 +8,6 @@ module.exports = async(req,res,next)=>{
     let board_writegrade;    
     let {user_id} =req.cookies;
     let {board} =req.params; 
-
     let usergrade=await userFindUsingid(user_id)
         .then(aa=>{
             console.log('aa');
@@ -16,7 +15,6 @@ module.exports = async(req,res,next)=>{
             user_grade = aa.user_grade ||-1;
             console.log('user_grade');
             console.log(user_grade);
-            
         }) 
 
     let boardgrade=await boaradFindUsinguri(board)
@@ -29,7 +27,7 @@ module.exports = async(req,res,next)=>{
         console.log('write체크끝남'); 
         next();
     }else{
-        res.send('등급 조절 필요');
+        res.send('등급 조절 필요합니다.');
         //res.status(401).send("unauthenticated");
     }
 }
