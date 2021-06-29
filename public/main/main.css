@@ -673,6 +673,14 @@
     animation: shake1 1s infinite;
 }
 
+.writing_comment{
+    font-family: "MaruBuri-Regular";
+    font-weight: bold;
+    position: relative;
+    right:67%;
+    top: 28%;
+}
+
 #student_write> button{
     width: 160px;
     height: 50px;
