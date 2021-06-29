@@ -45,6 +45,46 @@ let review=async(req,res)=>{
         user_id, reviews:review
     })
 }
+let review_view=async(req,res)=>{
+    let {user_id} = req.cookies
+    if(req.query.btn == "view"){
+        let review= await board.findAll({
+            where:{
+                [Op.and]: [{board_number:11}, {id:req.query.id}]
+            }
+        });
+        res.render('./admin/review_view',{
+            user_id, reviews:review
+        })
+    } else{
+        await board.destroy({
+            where: {
+                [Op.and]: [{board_number:11}, {id:req.query.id}]
+            }
+        })
+        res.redirect('./admin/review');
+    }
+}
+
+let review_viewPost=async(req,res)=>{
+    if(req.query.btn == "view"){
+        let review= await board.findAll({
+            where:{
+                [Op.and]: [{board_number:11}, {id:req.query.id}]
+            }
+        });
+        res.render('./admin/review_view',{
+            user_id, reviews:review
+        })
+    } else{
+        await board.destroy({
+            where: {
+                [Op.and]: [{board_number:11}, {id:req.query.id}]
+            }
+        })
+        res.redirect('./admin/review');
+    }
+}
 
 let admin_chatting=(req,res)=>{
     res.render('./admin/admin_chatting')    
@@ -156,6 +196,17 @@ let admin_loginPost = async(req,res)=>{
     }
 }
 
+let admin_logout=(req,res)=>{
+    length1=res.cookies;
+    out=Object.keys(req.cookies);
+
+    for(i=0;i<out.length;i++){
+        res.clearCookie(out[i]);
+    }
+    
+    res.redirect('/admin/admin_login');
+}
+
 let board_manager=async(req,res)=>{
     let bm = await board_manage.findAll();
     let {user_id} = req.cookies
@@ -230,7 +281,6 @@ let cur_makePost=async(req,res)=>{
         cur_title:req.body.cur_title,
         detail_name:req.body.detail_name,
         cur_uri:req.body.cur_uri,
-        main_image:req.body.main_img,
         character:req.body.character,
         syllabus:req.body.syllabus,
         side_info1:req.body.side_info1,
@@ -574,4 +624,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {userListPost,userList,apply_view,notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,applies,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {review_view,review_viewPost,admin_logout,userListPost,userList,apply_view,notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,applies,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

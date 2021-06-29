@@ -25,7 +25,7 @@
                 최고관리자
                 {{user_id}}<br/>
                 <span style="display:none"><input type="text" name = "id" value = "{{user.id}}"></span>
-                <button>로그아웃</button>
+                <button onclick="location.href='/admin/admin_logout'">로그아웃</button>
             </div>
         </div>
         <ul id="submenu">
@@ -33,7 +33,7 @@
             <li><a href="/admin/admin_list">▶ 관리자리스트</a></li>
             <li><a href="/admin/user_list">▶ 사용자리스트</a></li>
             <li><a href="/admin/board_manage">▶ 게시판 생성관리</a></li>
-            <li><a href="#">▶ 게시판 그룹관리</a></li>
+            <li><a href="/admin/board_group">▶ 게시판 그룹관리</a></li>
             <li><a href="/admin/popup_list">▶ 팝업관리</a></li>
             <li><a href="/admin/mainvideo_list">▶ 메인동영상</a></li>
         </ul>

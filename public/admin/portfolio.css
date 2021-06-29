@@ -64,6 +64,10 @@ button{
     background-color:rgb(255, 255, 255);
 }
 
+#admin_info div button{
+    margin-top: 25px;
+}
+
 #submenu{
     width: 210px;
     height: 70px;
