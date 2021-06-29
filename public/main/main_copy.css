@@ -109,6 +109,7 @@
         height:176px;
     }
 }
+
 #nav_logo{
     float: left;
     width: 84px;
@@ -132,7 +133,7 @@
     overflow-y: hidden;
 }
 
- #nav_main_list>li>a{
+#nav_main_list>li>a{
     width: 120px;
     display: inline-block;
     color: white;
@@ -221,6 +222,9 @@
     height: 230px;
     color: white;
     text-align: center;
+
+    clear: both;
+
     overflow-y: hidden;
 }
 
@@ -233,6 +237,7 @@
     height:150px;
     background-color:rgb(239, 245, 255);
     margin-bottom:50px;
+
 }
 
 

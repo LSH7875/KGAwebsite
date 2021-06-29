@@ -12,6 +12,7 @@ window.alert("{{msg}}");
 <h1>LOG IN</h1>
 
 <div id="con">
+    <div id="box">
     <form action="/user/login" method="post" >
         <p><label for="user_id">id</label></p>
         <input type="text" name = "user_id" id="user_id" placeholder="아이디를 입력하세요">
@@ -21,10 +22,11 @@ window.alert("{{msg}}");
         <input type="submit" value = "LOG IN" id="login">
     </form>
     <div id="API">
-        <a href="/user/auth/kakao" class="kakao right"><h3>KAKAO</h3> 아이디로 로그인</a>
-        <a href="/user/auth/naver" class="naver right"><h3>NAVER</h3> 아이디로 로그인</a>
+        <a href="/user/auth/kakao" class="kakao right"><img src="/kakao_login_large_narrow.png"></a>
+        <a href="/user/auth/naver" class="naver right"><img src="/btnG_완성형.png"></a>
         <a href="/user/signAgree" class="join right">JOIN</a>
     </div>
+</div>
 </div>
 
 {% endblock %}

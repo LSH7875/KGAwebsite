@@ -18,7 +18,9 @@ form{
     position: relative;
     padding: 5%;
     box-sizing: border-box;
-    border: 1px solid black;
+    border: none;
+    border-radius: 8px;
+    background: rgba(0, 102, 255, 0.137);
 }
 
 #user_id, .user_pw{
@@ -29,6 +31,8 @@ form{
     padding: 2px;
     box-sizing: border-box;
     font-family: "MaruBuri-Regular";
+    border-radius: 5px;
+    border: 1px solid #ededed;
 }
 
 p{
@@ -53,14 +57,16 @@ p{
 #API{
     width: 450px;
     height: 500px;
-    border: 1px solid black;
-    border-left: none;
+    border: 2px solid rgba(0, 102, 255);
+    border-radius: 8px;
+    /* border-left: none; */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     padding-top: 3%;
+    box-sizing: border-box;
 }
 
 .right{
@@ -68,7 +74,7 @@ p{
     font-size: 24px;
     display: flex;
     justify-content: center;
-    padding:4%;
+
     box-sizing: border-box;
     border: none;
     border-radius: 4px;
@@ -77,15 +83,20 @@ p{
 }
 
 .kakao{
-    background: #e4cf0e;
+    background: #fee500;
     width: 314px;
     height: 60px;
-    font-weight: bold;
+    font-weight: bold; 
+
+}
+.kakao>img{
+    width: 260px;
+    height: 60px;
 }
 .kakao:hover{
-    background: white;
+    /* background: white;
     color: #e4cf0e;
-    border: 2px solid #e4cf0e;
+    border: 2px solid #e4cf0e; */
     transition: .15s ease-in-out;
 }
 .naver{
@@ -94,10 +105,14 @@ p{
     height: 60px;
     font-weight: bold;
 }
+.naver>img{
+    width: 290px;
+    height: 60px;
+}
 .naver:hover{
-    background: white;
+    /* background: white;
     color: #03c75a;
-    border: 2px solid #03c75a;
+    border: 2px solid #03c75a; */
     transition: .15s ease-in-out;
 }
 .join{
