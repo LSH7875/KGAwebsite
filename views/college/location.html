@@ -8,10 +8,7 @@
 {% block content %}
 
 <div id="map" style="width:100%;height:800px;"></div>
-<p>
-    <button onclick="resizeMap()">지도 크기 바꾸기</button> 
-    <button onclick="relayout()">relayout 호출하기</button>
-</p>
+
 <script type="text/javascript" src ='//dapi.kakao.com/v2/maps/sdk.js?appkey={{map_key}}&libraries=services'></script>
 <script>
     var container = document.getElementById('map');
