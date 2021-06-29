@@ -35,7 +35,7 @@ let curr= async(req,res)=>{
 
     // 제대로 작동함
     let rstReview = await board.findAll({
-        where:{cur_num:result.id},
+        where:{cur_num:result.id, show_hide:'block'},
         order:[['id','DESC']],
         limit:6
     })

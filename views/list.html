@@ -33,15 +33,17 @@ window.alert("페이지가 없습니다");
     </tr>
     {% endfor %}
 </table>
-<a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
-{% if isLogin ==1 %} 
+{% if isLogin ==0 %} 
+<a class="write">글쓰기</a>
+
 <script type = "text/javascript">
     let write_btn_click = document.querySelector('.write');
     write_btn_click.addEventListener('click',()=>{
         window.alert("로그인이 필요합니다.")
     })
-
 </script>
+{% else %}
+<a class="write" href="/router/{{group}}/{{board}}/write">글쓰기</a>
 {% endif %}
 <div class="page">
     

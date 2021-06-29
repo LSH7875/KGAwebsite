@@ -1,5 +1,5 @@
 const { idChk } = require("../user/user.controller");
-const {board,user,board_manage,popup,group} = require('../../models/index');
+const {board,user,board_manage,popup,group,curriculum,} = require('../../models/index');
 const {Op} = require('sequelize');
 const path = require('path');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
@@ -50,11 +50,21 @@ let write = async(req,res)=>{
     let {navi,login}=req;
     let {nickname}=req.cookies
     let sss= req.params.board;
-    // let ccc= bbb[sss];  
+    let review =0;
+    let option =await curriculum.findAll({
+        attributes:['id','cur_title']
+    });
+    // let ccc= bbb[sss]; 
+    console.log('sss:',sss); 
     let ddd= await board_manage.findOne({
                                 where:{board_uri:sss}
                             })
+    if(ddd.id==11){
+        review =1;
+    }
+    console.log('ddd');
     console.log(ddd);
+    console.log('ddd끝남');
     console.log('navi');
     console.log(req.navi);
     console.log('-------navi---------')
@@ -64,13 +74,16 @@ let write = async(req,res)=>{
         group:req.params.group,
         board_uri:req.params.board,
         board_name:ddd.board_title,
-        board:req.params.board
+        board:req.params.board,
+        review,
+        curriculum:option
     });
 }
 //멀터실험
 let write_post = async(req,res)=>{
     let {group,board}=req.params;
     let sss= req.params.board;
+    let cur_num = req.body.cur_num || 0;
     // let ccc= bbb[sss];  
     let ddd= await board_manage.findOne({
                                 where:{board_uri:sss}
@@ -78,40 +91,57 @@ let write_post = async(req,res)=>{
     let {title,contents} =req.body;
     let {user_id} = req.cookies;
     let userimage = req.file == undefined ? '' :req.file.filename;
+    contents=contents.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ");
     console.log('userimage');
     console.log(userimage);
     
     // console.log('writepost_nickname',nickname)//여기까진 성공
-    postWrite(user_id,ddd.id,title,contents,userimage);
+    postWrite(user_id,ddd.id,title,contents,cur_num,userimage);
     res.redirect(`/router/${group}/${board}/`);
 }
 ////여기까지 성공
 let modify = async(req,res)=>{
     let {navi,login}=req;
-    let {nickname}=req.cookies
+    let {nickname}=req.cookies;
     let modnum = req.query.id;
     let {group,board} = req.params;
+    let review =0;
+    let option =await curriculum.findAll({
+        attributes:['id','cur_title']
+    });
+    let ddd= await board_manage.findOne({
+        where:{board_uri:board}
+    })
+    if(ddd.id==11){
+        review =1;
+    }
     await getModify(modnum)
     .then(aaa=>{
         console.log('res');
         console.log(aaa.title);
-        res.render('./write',{nickname,login,navi,id:modnum,modify:1,title:aaa.title,contents:aaa.contents,group,board_uri:board
+        res.render('./write',{review, board_name:ddd.board_title, curriculum:option, nickname, login, navi, id:modnum, modify:1, title:aaa.title, contents:aaa.contents, group, board_uri:board
     })
     }
     )
 }
- 
 
 let modify_post =async(req,res)=>{
     let {title,contents,id}=req.body;
-    console.log(id);//req.body.id는 총데이터의 글번호=board.id
+    contents=contents.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ");
+    console.log('contents///////////');
+    console.log(contents);
+    console.log('contents end//////////')
+    
+    console.log('id');//req.body.id는 총데이터의 글번호=board.id
     let {user_id} = req.cookies;
     let {board,group} = req.params;
+    let cur_num = req.body.cur_num || 0;
     let userimage = req.file == undefined ? '' :req.file.filename;
     let ddd= await board_manage.findOne({
         where:{board_uri:board}
     })
-    postWrite(user_id,ddd.id,title,contents,userimage,'modify',id)
+    cur_num=req.body.cur_num || 0;
+    postWrite(user_id,ddd.id,title,contents,cur_num,userimage,'modify',id)
     res.redirect(`/router/${group}/${board}`);
 }
 
@@ -121,19 +151,17 @@ let list = async(req,res)=>{
     let {nickname}=req.cookies
     let {board,group} = req.params;
     let page = req.query.page || 1;
-
     let isLogin = 0;
-    // let {keyfield,keystring}=req.query;
+    if(req.cookies.user_id){
+        isLogin=1;}
+    
+        // let {keyfield,keystring}=req.query;
     let keyfield = req.query.keyfield || "total";
     let keystring = req.query.keystring || "";
     let result2=await board_manage.findOne({
         where:{board_uri:board}
     })
     board_name=result2.board_title;
-
-    if(req.cookies.userid!="undefined"){
-        isLogin=1;
-    }
     // console.log('result2');
     // console.log(result2);
     
@@ -196,7 +224,6 @@ let list = async(req,res)=>{
 }
 
     
-
 
 
 
@@ -273,7 +300,7 @@ async function listfn(name,page,keyfield,keystring){
     if(keyfield=='total'){
         console.log
         rst = await board.findAll({
-            where:{board_number:boardId,
+            where:{board_number:boardId,show_hide:'block',
                     [Op.or]:[
                         {
                         user_id:{[Op.like]:`%${keystring}%`}
@@ -293,7 +320,7 @@ async function listfn(name,page,keyfield,keystring){
     //토탈이 안 되어 있을 때
         if(keyfield=='user_id'){
             rst = await board.findAll({
-                where:{board_number:boardId, user_id:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block',user_id:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -301,7 +328,7 @@ async function listfn(name,page,keyfield,keystring){
         }
         else if(keyfield=='title'){
             rst = await board.findAll({
-                where:{board_number:boardId, title:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block', title:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -309,7 +336,7 @@ async function listfn(name,page,keyfield,keystring){
         }
         else if(keyfield=='nickname'){
             rst = await board.findAll({
-                where:{board_number:boardId, nickname:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block', nickname:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -317,7 +344,7 @@ async function listfn(name,page,keyfield,keystring){
         }
         else if(keyfield=='contents'){
             rst = await board.findAll({
-                where:{board_number:boardId, contents:`%${keystring}%`},
+                where:{board_number:boardId, show_hide:'block', contents:`%${keystring}%`},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -325,7 +352,7 @@ async function listfn(name,page,keyfield,keystring){
         }else{
             console.log('아무것도 선택 안되었을때 보통 처음임')
             rst = await board.findAll({
-                where:{board_number:boardId},
+                where:{board_number:boardId, show_hide:'block'},
                 order:[['id','DESC']],
                 limit:12,
                 offset:12*(num-1)
@@ -419,18 +446,18 @@ async function getModify(boardid){
     console.log('findBoardCon',findBoardCon);
     return {title,contents,nickname}=findBoardCon; 
 }
-async function postWrite(uid,boardnum,title,contents,userimage,mod,boardid,){
+async function postWrite(uid,boardnum,title,contents,cur_num,userimage,mod,boardid,){
     let userId;
     
     console.log('///////////////함수의 userimage');
     console.log(userimage);
     if(mod)
-    {   
+    {   //수정이라면
         console.log('mod실행됨');
-        await board.update( {contents,title,file1:userimage},{where:{id:boardid} })
+        await board.update( {contents,title,file1:userimage,cur_num,},{where:{id:boardid} })
         console.log('mod실행되나요')
     } 
-    else{
+    else{//수정이 아니라면
         console.log('postWrite fn 들어옴');
         let nickname2 = await userFindUsingid(uid)
         .then(async(res)=>{
@@ -438,7 +465,7 @@ async function postWrite(uid,boardnum,title,contents,userimage,mod,boardid,){
             console.log('postWriteNickname',nickname2)
             let nickname = JSON.stringify(nickname2).replace("\"",'').replace("\"",'');
             let boardCreate = await board.create({
-                user_id:uid,board_number:boardnum,title,nickname,nickname2,contents,file1:userimage})
+                cur_num,user_id:uid,board_number:boardnum,title,nickname,nickname2,contents,file1:userimage})
         })        }
         console.log('닉네임 가져오냐');
         // res.redirect(`/${group}/${board}`);
