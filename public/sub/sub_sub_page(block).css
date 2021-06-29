@@ -129,7 +129,7 @@
     overflow: hidden;
 } */
 
-#nav_bar{
+/* #nav_bar{
     position: fixed;
     top: 0px;
     width: 1500px;
@@ -140,24 +140,23 @@
     font-size: 18px;
     box-sizing: border-box;
     cursor: pointer;
-}
+} */
 #logo{
-    display: inline-block;
+    /* display: inline-block;
     /* height: 5px; */
     position: relative;
     left: -10%;
 }
-#nav_bar>ul{
+/* #nav_bar>ul{
     display: inline-block;
     height: 20px;
 }
 #nav_bar>ul>li{
-    /* display: inline-block; */
+
     float: left;
     border-left: 1px solid white;
     padding: 0px 24px;
-}
-
+}  */
 
 /* ===================오른쪽 서브 텍스트 부분===================== */
 
@@ -637,4 +636,82 @@
         transform: translateX(12px);
         opacity: 1;
     }
+}
+
+
+/* ============================네비바=============================== */
+
+
+.arrow{
+    width: 200px;
+    text-align: left;
+    margin-left: -50px;
+}
+
+#main_nav{
+    display: inline-block;
+    position: fixed;
+    width: 200px;
+    top: 4%;
+    right: 0%;
+    cursor: pointer;
+    /* background: rgba(0, 32, 80, 0.459); */
+    /* background: rgb(0, 100, 255); */
+    background: rgba(0, 52, 131, 0.719);
+    text-align: center;
+    line-height: 150%;
+    font-family: "LotteMartDream";
+    height: 830px;
+    z-index: 50;
+    color: #ededed;
+}
+#nav_logo{
+    width: 100px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+/* #nav_logo>img{
+    width: 300px;
+} */
+
+.nav_sub_list>li>a{
+    color: #ededed;
+    font-size: 14px;
+    /* color: rgba(0, 32, 80, 0.65); */
+    color: #ededed;
+}
+
+
+.nav_bar > a{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 6%;
+    border-top: 1px solid rgba(0, 32, 80, 0.65);
+    border-bottom: 1px solid rgba(0, 32, 80, 0.65)e;
+    font-size: 18px;
+    /* color: black; */
+    color: #ededed;
+}
+
+/* .nav_join{
+    width: 200px;
+    height: 50px;    
+    background: rgba(0, 0, 255, 0.287);
+} */
+
+.nav_join> a {
+    display: inline-block;
+    font-weight: bold;
+    /* color: rgb(0,100,255); */
+    /* color: #001e8d; */
+    color: #ededed;
+    width: 200px;
+    height: 26px;
+    font-size: 20px;
+    margin: 8px 0px;
+    box-sizing: border-box;
+}
+
+.nav_join> a:hover , .nav_bar > a:hover , .nav_sub_list>li>a:hover{
+    color: rgb(0,100,255);
 }
