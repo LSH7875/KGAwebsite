@@ -9,8 +9,6 @@
 {% block content %}
 {% if msg !=0 %}
 <script type = "text/javascript">
-console.log('msg');
-console.log("{{msg}}");
 window.alert("페이지가 없습니다");
 </script>
 {% endif %}
@@ -81,7 +79,6 @@ let page = document.querySelectorAll('.pagenation>li');
 let page_a = document.querySelectorAll('.pagenation>li>a');
 let page_flag=0;
 let page_num=1;
-console.log('이거짱이다')
 
 
 
@@ -96,7 +93,6 @@ page_down.addEventListener('click',()=>{
             aa =parseInt(page_flag*10+i);+"</a>";
             e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
             i++;
-            console.log(aa);
         })
     }
 })
@@ -108,21 +104,15 @@ page_up.addEventListener('click',()=>{
         aa =parseInt(page_flag*10+i);+"</a>";
         e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
         i++;
-        console.log(aa);
     })
 })
 
-page_a.forEach(e=>{
-    // console.log(e.innerHTML==);
-    
-})
 
 window.addEventListener('DOMContentLoaded',()=>{
     page_router=`{{index}}`;
     page_limit=parseInt(parseInt(page_router)/12)+1;
     page_a.forEach(e=>{
         if(e.innerHTML >parseInt(page_limit)){
-            console.log(e.parentElement);
             e.parentElement.style="display:none;";
             page_up.style.display="none";
         }else{

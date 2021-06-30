@@ -43,12 +43,9 @@ function clickBtn(){
     const target = event.target;
     
     for(let i=0; i<classBtn.length; i++){
-        // console.log('classBtn[i]=', classBtn[i], 'target=',target)
         if(classBtn[i]==target){
-            //console.log(classBtn[i]==target)
             classDetail[i].classList.add("show_detail");
             classDetail[i].classList.add("on");
-            //console.log(classDetail[i])
         }else{
             classDetail[i].classList.remove("show_detail");
             classDetail[i].classList.remove("on");

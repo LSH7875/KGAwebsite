@@ -94,7 +94,6 @@ window.alert("{{msg}}");
         page_limit=parseInt(parseInt(page_router)/12)+1;
         page_a.forEach(e=>{
             if(e.innerHTML >parseInt(page_limit)){
-                console.log(e.parentElement);
                 e.parentElement.style="display:none;";
                 page_up.style.display="none";
             }else{

@@ -2,22 +2,16 @@ const {recuruit} = require('../../models/index');
 const {Op} = require('sequelize');
 
 let job = async(req,res)=>{
-    console.log('job들어옴')
     let {navi,login} = req;
     let {nickname} = req.cookies;
     let page = req.query.page || 1;
-    console.log('page');
-    console.log(page);
-    console.log(recuruit);
     let keyfield = req.query.keyfield || 'total';
     let keystring = req.query.keystring || '';
-    // let {keyfield,keystring}=req.query;
     await galleryList(page,keyfield,keystring)
     .then(aa=>{
         let msg=0;
         if(page ==1){
             if(req.query.msg){
-                console.log('msg바꾸는 과정');
                 msg=req.query.msg;
                 }
             res.render('./job/recuruit',{index:aa.index,msg,job:aa.rst,nickname,navi,login,board:'recruit',group:'job',board_name:'취업현황',keyfield,keystring,page,})
@@ -26,7 +20,6 @@ let job = async(req,res)=>{
             res.redirect(`/router/job/recruit?page=${page-1}&msg=${msg}&keyfield=${keyfield}&keystring=${keystring}`)
         }else{
             if(req.query.msg){
-            console.log('msg바꾸는 과정');
             msg=req.query.msg;
             }
             res.render('./job/recuruit',{index:aa.index,msg,job:aa.rst,nickname,navi,login,group:'job',board_name:'취업현황',keyfield,keystring,page,})
@@ -35,12 +28,10 @@ let job = async(req,res)=>{
 }
 
 async function galleryList(page,keyfield,keystring){
-    console.log('갤러리 들어옴')
     let num = page;
     let rst;
     let index;
     if(keyfield=='total'){
-        console.log('total찍힌데 들어옴')
         rst = await recuruit.findAll({
             where:{
                 [Op.or]:[
@@ -115,8 +106,6 @@ async function galleryList(page,keyfield,keystring){
             
     }
     index=index.length;
-    console.log('rst임')
-    console.log(rst);
     return aa={rst,index};
 }
 module.exports = {job,}

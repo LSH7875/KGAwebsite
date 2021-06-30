@@ -12,9 +12,7 @@ function scroll_check(){
         mainNav.style.height = "80px";
         mainNav.style.overflow = "hidden";
         navUl.style.height = "50px";
-        // navUl.style.overflow = "hidden";
         navLi.style.height = "50px";
-        // navLi.style.overflow = "hidden";
         navA.forEach(e=>{
             e.style.height ="25px";
             e.style.overflow = "hidden";
@@ -50,7 +48,6 @@ function scroll_on(){
     mainNav.style.height = "250px";
     mainNav.style.overflow = "visible";
     navUl.style.height = "250px";
-    sub.style.height = "250px";
 }
 
 //네비바 파란 배경 fix일 때 마우스 떼면 다시 접히게
@@ -64,7 +61,6 @@ mainNav.addEventListener('mouseleave', ReturnBg)
     
 function set_cookie(name){
     let date = new Date().getTime();
-    console.log(date);
     let limit_date = parseInt(parseInt(date)+1000*60*60*24);
     document.cookie =  `popup=${limit_date}`;
 }
@@ -82,7 +78,6 @@ function popup_check(){
         let cookie_time;
         aaa.forEach(e=>{
             if(e.split('=')[0].trim()=="popup"){
-            console.log(e.split("=")[1]);
             cookie_time= e.split("=")[1];}
         })
         

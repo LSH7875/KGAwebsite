@@ -18,8 +18,6 @@ btn.addEventListener("click",()=>{
 })
 
 socket.on("chatting",(data)=>{ 
-    console.log(socket.id);
-    console.log(data)
     const { name, msg, time } = data;
     const item = new li_model(name, msg, time);
     item.makeLi()

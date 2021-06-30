@@ -74,7 +74,7 @@ let page_down = document.querySelector('.down_page');
 let page = document.querySelectorAll('.pagenation>li');
 let page_flag=0;
 let page_num=1;
-console.log('이거짱이다')
+
 page_down.addEventListener('click',()=>{
     if(page_flag==0){return 0;}
     else{
@@ -85,7 +85,6 @@ page_down.addEventListener('click',()=>{
             aa =parseInt(page_flag*10+i);+"</a>";
             e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
             i++;
-            console.log(aa);
         })
     }
 })
@@ -97,7 +96,6 @@ page_up.addEventListener('click',()=>{
         aa =parseInt(page_flag*10+i);+"</a>";
         e.innerHTML =`<a href="/router/{{group}}/{{board}}?page=${aa}&keyfield={{keyfield}}&keystring={{keystring}}">${aa}`;
         i++;
-        console.log(aa);
     })
 })
 let page_a = document.querySelectorAll('.pagenation>li>a');
@@ -106,7 +104,6 @@ window.addEventListener('DOMContentLoaded',()=>{
     page_limit=parseInt(parseInt(page_router)/12)+1;
     page_a.forEach(e=>{
         if(e.innerHTML >parseInt(page_limit)){
-            console.log(e.parentElement);
             e.parentElement.style="display:none;";
             page_up.style.display="none";
         }else{

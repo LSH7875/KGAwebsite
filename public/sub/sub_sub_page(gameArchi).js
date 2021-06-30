@@ -9,7 +9,6 @@ function addScroll(){
     let six = document.querySelector('.six');
     let sub = document.querySelector('.Sub');
     let scroll = document.documentElement.scrollTop;
-    // console.log(document.documentElement.scrollTop);
     if(scroll<1600){
         sub.style.display = "block";
         one.style.display = "block";
@@ -57,7 +56,6 @@ function move_curriculum(q){
     let showDiv = document.querySelector(q);
     let divId = showDiv.id;
     let divElement = '#'+divId;
-    console.log(divElement);
     let hi = document.querySelector(divElement);
     hi.scrollIntoView(true);
     hi.scrollIntoView({behavior: "smooth"});

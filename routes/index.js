@@ -6,7 +6,6 @@ const mypageRouter= require('./mypage');
 const collegeRouter = require('./college');
 const curriculumRouter = require('./curriculum');
 const jobRouter = require('./job');
-// const communityRouter = require('./community');
 const userRouter= require('./user')
 
 
@@ -26,7 +25,6 @@ router.use('/router/job',jobRouter);
 router.get('/chatting',(rew,res)=>{
   res.render('chatting/chatting')
 })
-// router.use('/community',communityRouter);
 router.use('/',mainRouter);
 
 
