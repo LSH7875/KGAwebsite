@@ -59,3 +59,46 @@ mainNav.addEventListener('mouseleave', ReturnBg)
         mainNav.style.height = "70px"
         mainNav.style.transition = ".25s ease-in-out"
     }
+
+/////팝업 쿠키관련 자바스크립트 내용
+    
+function set_cookie(name){
+    let date = new Date().getTime();
+    console.log(date);
+    let limit_date = parseInt(parseInt(date)+1000*60*60*24);
+    document.cookie =  `popup=${limit_date}`;
+}
+
+let pop = document.querySelector('#pop_today');
+pop.addEventListener('click',async()=>{
+    set_cookie();
+    modal.style.display="none";
+})
+
+function popup_check(){
+
+    if(document.cookie){
+        aaa=document.cookie.split(';');
+        let cookie_time;
+        aaa.forEach(e=>{
+            if(e.split('=')[0].trim()=="popup"){
+            console.log(e.split("=")[1]);
+            cookie_time= e.split("=")[1];}
+        })
+        
+        current_time=new Date().getTime();
+        if(current_time>cookie_time){
+            document.cookie.popup.value="";
+            modal.style.display="block";
+        }else if(current_time<cookie_time){
+            modal.style.display="none";
+        }else{
+            modal.style.display="block";
+        }
+    }else{
+        modal.style.display="block";
+    }
+}
+window.onload=()=>{
+    popup_check();
+}
