@@ -52,7 +52,8 @@ function addScroll(){
 }
 
 //메뉴바 눌렀을 때 해당 항목으로 이동--------------------------------
-   
+
+
 function move_curriculum(q){
     let showDiv = document.querySelector(q);
     let divId = showDiv.id;
