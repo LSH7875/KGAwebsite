@@ -7,7 +7,7 @@
 
 #box{
     box-sizing: border-box;
-    width: 900px;
+    width: 1100px;
     display: flex;
 }
 h1{
