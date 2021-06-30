@@ -76,7 +76,6 @@ let page_flag=0;
 let page_num=1;
 console.log('이거짱이다')
 page_down.addEventListener('click',()=>{
-
     if(page_flag==0){return 0;}
     else{
         // let h2 = document.querySelector('h1');
@@ -102,13 +101,25 @@ page_up.addEventListener('click',()=>{
     })
 })
 let page_a = document.querySelectorAll('.pagenation>li>a');
-page_a.forEach(e=>{
-    // console.log(e.innerHTML==);
-    if(e.innerHTML == '{{page}}'){
-        e.parentElement.style.background =   "rgb(0,100,255)";
-        e.style.color = "white";
-    }
+window.addEventListener('DOMContentLoaded',()=>{
+    page_router=`{{index}}`;
+    page_limit=parseInt(parseInt(page_router)/12)+1;
+    page_a.forEach(e=>{
+        if(e.innerHTML >parseInt(page_limit)){
+            console.log(e.parentElement);
+            e.parentElement.style="display:none;";
+            page_up.style.display="none";
+        }else{
+            e.parentElement.style="display:inline-block;";
+            page_up.style.display="inline-block";
+            if(e.innerHTML == '{{page}}'){
+                e.parentElement.style.background = "rgb(0,100,255)";
+                e.style.color = "white";
+            }
+        }
+    })
 })
+
 
 
 </script>

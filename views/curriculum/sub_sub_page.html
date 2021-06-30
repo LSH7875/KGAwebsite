@@ -40,14 +40,14 @@
                     </div>
                     <script type = "text/javascript">
                         let one= document.querySelector('.one');
-                        oneText = "{{result.dataValues.side_info1}}";
+                        oneText = `{{result.dataValues.side_info1}}`;
                         one.innerHTML = oneText.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ").replace(/\//gi,"<br>");                 two.innerHTML = twoText.replace(/\&#39;/gi,"'").replace(/\//gi,"<br/>").replace(/\&/gi,"<br>").replace(/\//gi,"<br>");
                     </script>
                     <div class="inform_text two">
                     </div>
                     <script type = "text/javascript">
                         let two= document.querySelector('.two');
-                        twoText = "{{result.dataValues.side_info2}}";
+                        twoText = `{{result.dataValues.side_info2}}`;
                         two.innerHTML= oneText.replace(/\&lt;/gi,"<").replace(/\&gt;/gi,">").replace(/\&quot;/gi,'"').replace(/\&amp;/gi,"&").replace(/\&nbsp;/gi," ").replace(/\//gi,"<br>");                 two.innerHTML = twoText.replace(/\&#39;/gi,"'").replace(/\//gi,"<br/>").replace(/\&/gi,"<br>");
                         </script>
                     <div class=" inform_middle three">Curriculum</div>
@@ -106,8 +106,8 @@
                             
                             <script type = "text/javascript">
                                 let info = document.querySelectorAll('.consultant_info> a');
-                                info_txt0 ="{{cst[0].dataValues.professor_info}}";
-                                info_txt1 ="{{cst[1].dataValues.professor_info}}"; 
+                                info_txt0 =`{{cst[0].dataValues.professor_info}}`;
+                                info_txt1 =`{{cst[1].dataValues.professor_info}}`; 
                                 info[0].innerHTML = info_txt0.replace(/\&amp;/gi,"<br>");
                                 info[1].innerHTML = info_txt1.replace(/\&amp;/gi,"<br>");
                                                             

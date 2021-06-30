@@ -46,26 +46,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>게시판 타이틀</td>
-                        <td>
-                            <input type="text" class="board_title" placeholder=" 게시판 타이틀을 입력해주세요 ">
-                        </td>
-                        <td rowspan="2"><button id="make_table">테이블 만들기</button></td>
-                    </tr>
-                    <tr>
-                        <td>그룹명</td>
-                        <td>
-                            <select name="group" id="group">
-                                <option value="0">-------</option>
-                                <option value="1">학교소개</option>
-                                <option value="2">취업정보</option>
-                                <option value="3">커뮤니티</option>
-                                <option value="4">교육과정</option>
-                                <option value="5">상담신청</option>
-                            </select>
-                        </td>
-                    </tr>
+                    <form action="/admin/board_make" method="post">
+                        <tr>
+                            <td>게시판 타이틀</td>
+                            <td>
+                                <input type="text" class="board_title" placeholder=" 게시판 타이틀을 입력해주세요 " name="board_title">
+                            </td>
+                            <td rowspan="2"><button id="make_table">테이블 만들기</button></td>
+                        </tr>
+                        <tr>
+                            <td>그룹명</td>
+                            <td>
+                                <select name="group" id="group">
+                                    <option value="0">-------</option>
+                                    <option value="1">학교소개</option>
+                                    <option value="2">취업정보</option>
+                                    <option value="3">커뮤니티</option>
+                                    <option value="4">교육과정</option>
+                                    <option value="5">상담신청</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </form>
                     
                 </tbody>
                 

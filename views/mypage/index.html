@@ -41,6 +41,7 @@ window.alert("비밀번호를 성공적으로 변경했습니다.")
     </div>
         
 </div>
+{% if local %}
 <ul id ="mypage_btn">
     <li>
         <h1>내정보수정</h1>
@@ -53,7 +54,15 @@ window.alert("비밀번호를 성공적으로 변경했습니다.")
         <h1>프로필 수정</h1>
     </li>
 </ul>
-
+{% else %}
+<ul id ="mypage_btn1">
+    <li>
+        <h1>내정보수정</h1>
+    </li>
+    <li>
+        <h1>프로필 수정</h1>
+    </li>
+{% endif %}
 <div id="mypage_con">
 
 </div>
@@ -61,6 +70,10 @@ window.alert("비밀번호를 성공적으로 변경했습니다.")
 {% endblock %}
 
 {% block script %}
+{% if local %}
 <script type = "text/javascript" src="/mypage/index.js"></script>
+{% else %}
+<script type = "text/javascript" src="/mypage/index copy.js"></script>
+{% endif %}
 {% endblock %}
 

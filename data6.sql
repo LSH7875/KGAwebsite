@@ -169,6 +169,9 @@ INSERT INTO `user` (`id`, `user_id`, `user_pw`, `user_name`, `user_email`, `user
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
+INSERT INTO `popup`(`id`,`show_hide`,`popup_width`,`popup_height`,`popup_left`,`popup_top`,`title`,`image_file`,`URL`) VALUES
+	(1,'block',500,500,300,300,'popup','1624981938396.png','https://twitter.com/7uTXD9TGCkKu2wP');
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

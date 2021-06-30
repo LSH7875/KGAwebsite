@@ -39,7 +39,7 @@
     <div id="main_con">
         <div id="con_header"><img src="/관리자이미지.png"><div>메인비디오 업로드</div></div>
         <button onclick="location.href='/admin/mainvideo_list'">게시판생성관리목록</button>
-        <form action="/admin/mainvideo_upload" method="POST" id="board_modify">
+        <form action="/admin/mainvideo_upload" method="POST" id="board_modify" enctype = "multipart/form-data">
             <table>
                 <thead>
                     <tr>
@@ -69,7 +69,6 @@
                         <td class="left">
                             <input type="file" class="inputbox" id="video_file" accept="video/mp4,video/mkv,video/x-m4v,video/*" name="video">
                             <p>Select an video from your machine to read the contents of the file without using a server</p>
-                            <div id="holder"></div>
                         </td>
                     </tr>
                 </tbody>
