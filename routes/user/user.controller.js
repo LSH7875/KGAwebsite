@@ -116,7 +116,6 @@ let logout = (req,res)=>{
     
     // res.clearCookie('AccessToken');
     // res.redirect(`/${link}/?msg=로그아웃되었습니다.`);
-    // res.redirect('back');
     res.redirect('/');
 }
 
