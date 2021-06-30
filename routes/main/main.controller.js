@@ -205,7 +205,7 @@ let delete_board = async(req,res)=>{
     let {group,board} = req.params;
     await postDelete(boardId)
     .then(async(aa)=>{
-        res.redirect(`/${group}/${board}`);
+        res.redirect(`/router/${group}/${board}`);
     });
 }
 
