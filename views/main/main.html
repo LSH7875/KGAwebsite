@@ -92,7 +92,7 @@
                 </ul>
             </div>
             <div class="dark"></div>
-            <video src="./main_video.mp4" autoplay loop muted>지원되지 않는 브라우저입니다</video>
+            <video src="{{video}}" autoplay loop muted>지원되지 않는 브라우저입니다</video>
         </div>
         <div id="PR_section">
             <div id="PR_intro"><h1> Kyungil Game Academy</h1></div>
@@ -204,24 +204,18 @@
             <div id="pf">
             <p>수강생 포트폴리오</p></div>
             <ul>
+                {% for item in portfolio %}
                 <li>
-                    <img src="/포폴1.jpg" width="300px"height="180px">
-                    <a class="pf_sub">
-                    제    목 : 게임프로그래밍 2D팀<br/>포트폴리오 모모도라 모작<br/></a>
-                    <a class="pf_con"> 이    름 : Joy Room<br/>
-                    조회수 : 82
+                    <a href="/router/job/portfolio/view?id={{item.id}}"style="width:300px; height:180px; overflow:hidden;">
+                        <img src="/{{item.file1}}" width="300px"height="180px" style ="overflow:hidden;">
                     </a>
+                        <a class="pf_sub">
+                        제    목 : {{item.title}}<br/></a>
+                        <a class="pf_con"> 이    름 : {{item.nickname}}<br/>
+                        조회수 : {{item.hits}}
+                        </a>
                 </li>
-                <li><img src="/포폴2.jpg"width="300px"
-                    height="180px"></li>
-                <li><img src="/포폴3.jpg"width="300px"
-                    height="180px"></li>
-                <li><img src="/포폴4.png"width="300px"
-                    height="180px"></li>
-                <li><img src="/포폴5.png"width="300px"
-                    height="180px"></li>
-                <li><img src="/포폴6.jpg"width="300px"
-                    height="180px"></li>
+                {% endfor %}
             </ul>
             <div class="pf_overview">
             <button onclick="location.href='/router/job/portpolio'">전체보기</button></div>

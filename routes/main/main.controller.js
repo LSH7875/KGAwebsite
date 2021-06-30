@@ -1,5 +1,5 @@
 const { idChk } = require("../user/user.controller");
-const {board,user,board_manage,popup,group,curriculum,} = require('../../models/index');
+const {board,user,board_manage,popup,group,curriculum,mainvideo,} = require('../../models/index');
 const {Op} = require('sequelize');
 const path = require('path');
 //const {postWrite,getModify,view,postDelete,listfn,userFindUsingid}=require('../../function');
@@ -38,8 +38,22 @@ let main = async(req,res)=>{
     let pop = await popup.findAll();
     let {login,navi}=req;
     let {nickname}=req.cookies;
+
+    let video = await mainvideo.findAll({
+        where:{show_hide:'block'},
+        order:[['id','DESC']],
+        limit:1,
+    })
+
+    video1=video.video || "./main_video.mp4";
+
+    let portfolio= await board.findAll({
+        where:{board_number:'9',show_hide:'block'},
+        order:[['id','DESC']],
+        limit:6,
+    })
     res.render('./main/main.html',{
-        pop:pop,navi,login,nickname,
+        pop:pop,navi,login,nickname,portfolio:portfolio,video:video1
     });
     
 }
