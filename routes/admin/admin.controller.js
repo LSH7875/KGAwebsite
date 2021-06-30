@@ -8,7 +8,7 @@ let token = require('../../jwt');
 const bodyParser=require('body-parser')
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 function cryptoPw(pw){
     return crypto.createHmac('sha256',Buffer.from(toString(process.env.salt))).update(pw).digest('base64').replace('==','').replace('=',''); 
@@ -392,11 +392,35 @@ let interview_manage=async(req,res)=>{
     res.render('./admin/interview_manage',{
         user_id, interviews:im
     })
+}
+
+let interview_managePost=async(req,res)=>{
+    console.log(req.body.id)
+    let {user_id} = req.cookies
+    if(req.body.btn == "modify"){
+        let interview = await board.findAll({
+            where: {
+                id:req.body.id,
+            }
+        })
+        res.render('./admin/interview_modify',{
+            interviews:interview, user_id
+        })
+    } else {
+        await board.destroy({
+            where: {
+                id:req.body.id
+            }
+        })
+        res.redirect('/admin/interview_manage');
     }
+}
+
 let interview_manage_write=(req,res)=>{
     res.render('./admin/interview_manage_write')
 }
 let interview_manage_writePost=async(req,res)=>{
+    let userimg = req.file == undefined ? '' :req.file.filename;
     let {user_id} = req.cookies
     console.log(user_id);
     await board.create({
@@ -404,11 +428,23 @@ let interview_manage_writePost=async(req,res)=>{
         board_number:7,
         title: req.body.title,
         nickname: req.body.nickname,
-        contents: req.body.contents
+        contents: req.body.content,
+        file1:userimg
     },{
         where:{board_number:7}
     })
     res.redirect('/admin/interview_manage')
+}
+
+let interview_modify=async(req,res)=>{
+    let userimg = req.file == undefined ? '' :req.file.filename;
+    await board.update({
+        title: req.body.title,
+        nickname: req.body.nickname,
+        contents: req.body.content,
+        file1:userimg
+    },{where:{id:req.body.id}})
+    res.redirect('/admin/interview_manage');
 }
 
 let mainvideo_list=async(req,res)=>{
@@ -593,11 +629,12 @@ let notice_make=(req,res)=>{
     })
 }
 let notice_makePost=async(req,res)=>{
+    let userimage = req.file == undefined ? '' :req.file.filename;
     await board.create({
        title:req.body.title,
        nickname:req.body.nickname,
        contents:req.body.content,
-       file1:req.body.img,
+       file1:userimage,
        show_hide:req.body.show_hide,
        board_number:10
     })
@@ -609,13 +646,12 @@ let notice_modify=async(req,res)=>{
     let {user_id} = req.cookies
     if(req.query.btn == "modify"){
         let notice = await board.findAll({
-            where: {
-                board_number:10,
-                id:req.query.id
+            where:{
+                [Op.and]: [{board_number:10}, {id:req.query.id}]
             }
         })
         res.render('./admin/notice_modify',{
-            notice:notice,user_id
+            notices:notice,user_id
         })
     } else {
         await board.destroy({
@@ -628,13 +664,18 @@ let notice_modify=async(req,res)=>{
 }
 
 let notice_modifyPost=async(req,res)=>{
+    let userimage = req.file == undefined ? '' :req.file.filename;
     await board.update({
        title:req.body.title,
        nickname:req.body.nickname,
        contents:req.body.content,
-       file1:req.body.img,
+       file1:userimage,
        show_hide:req.body.show_hide,
        board_number:10
+    },{
+        where:{
+            id:req.body.id
+        }
     })
     res.redirect('/admin/notice')
 }
@@ -660,4 +701,4 @@ let admin_list_modifyPost=async(req,res)=>{
     res.redirect('/admin/admin_list');
 }
 
-module.exports = {group_make,board_groupPost,board_group,board_make,review_view,review_viewPost,admin_logout,userListPost,userList,apply_view,notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,applies,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};
+module.exports = {interview_modify,interview_managePost,group_make,board_groupPost,board_group,board_make,review_view,review_viewPost,admin_logout,userListPost,userList,apply_view,notice_modify,notice_modifyPost,notice_makePost,notice_make,review,cur_modifyPost,cur_makePost,cur_modify,cur_make,admin_chatting,interview_manage_write,interview_manage_writePost,employment_status_modify,employment_status_modifyPost,admin_list,admin_login,board_manager,board_modify,community,curriculum_list,interview_manage,mainvideo_list,mainvideo_upload,popup_list,popup_make,setting,applies,notice,portfolio,admin_list_modify,admin_loginPost,admin_list_modifyPost,popup_makePost,popup_modify,popup_modifyPost,mainvideo_uploadPost,mainvideo_modify,mainvideo_modifyPost,board_managePost,employment_statuses,employment_status_write,employment_statusPost};

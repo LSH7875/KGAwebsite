@@ -34,29 +34,29 @@
         </ul>
     </div>
     <div id="main_con">
-        <div id="con_header"><img src="/관리자이미지.png"><div>공지사항 수정하기</div></div>
-        <button onclick="location.href='/admin/notice'">공지사항목록</button>
-        <form action="/admin/notice_modify" method="POST" id="board_modify">
+        <div id="con_header"><img src="/관리자이미지.png"><div>취업자인터뷰 수정하기</div></div>
+        <button onclick="location.href='/admin/interview_manage'">취업자인터뷰 목록</button>
+        <form action="/admin/interview_modify" method="POST" id="board_modify">
             <table>
-                {% for notice in notices %}
+                {% for interview in interviews %}
                 <thead>
                     <tr>
-                        <th colspan="3">공지사항 수정하기</th> 
+                        <th colspan="3">취업자 인터뷰 수정하기</th> 
                     </tr>
                 </thead>
                 <tbody>
                         <tr>
-                            <td>제목</td><input style="display: none; "type="text" name="id" value="{{notice.id}}">
-                            <td class="left"><input type="text" name="title" class="title" value="{{notice.title}}"></td>
+                            <td>제목</td><input style="display: none; "type="text" name="id" value="{{interview.id}}">
+                            <td class="left"><input type="text" name="title" class="title" value="{{interview.title}}"></td>
                         </tr>
                         <tr>
-                            <td>작성자</td>
-                            <td class="left"><input type="text" name="nickname" value="최고관리자" class="admin"></td>
+                            <td>닉네임</td>
+                            <td class="left"><input type="text" name="nickname" value="{{interview.nickname}}" class="admin"></td>
                         </tr>
                         <tr>
                             <td>내용</td>
                             <td class="left">
-                                <textarea name="content" rows="20" cols="100">{{notice.contents}}</textarea>
+                                <textarea name="content" rows="20" cols="100">{{interview.contents}}</textarea>
                             </td>
                         </tr>
                         <tr>
@@ -65,17 +65,10 @@
                                 <input type="file" name="img" value="" accept=".jpg, .jpeg, .png">
                             </td>
                         </tr>
-                        <tr>
-                            <td>첨부파일</td>
-                            <td class="left">
-                                <input type="radio" name="show_hide" value="none">숨김
-                                <input type="radio" name="show_hide" value="block">보임
-                            </td>
-                        </tr>
                 </tbody>
                 {% endfor %}
             </table>
-            <button>공지사항 수정</button>
+            <button>취업자인터뷰 수정</button>
         </form>
     </div>
 </body>

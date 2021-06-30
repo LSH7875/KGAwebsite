@@ -53,8 +53,10 @@ router.get('/popup_make',adminController.popup_make);
 router.post('/popup_make',upload.single('img'),adminController.popup_makePost);
 
 router.get('/interview_manage',adminController.interview_manage);
+router.post('/interview_manage',adminController.interview_managePost);
 router.get('/interview_manage_write',adminController.interview_manage_write);
-router.post('/interview_manage_write',adminController.interview_manage_writePost);
+router.post('/interview_manage_write',upload.single('img'),adminController.interview_manage_writePost);
+router.post('/interview_modify',upload.single('img'),adminController.interview_modify);
 
 router.get('/admin_chatting',adminController.admin_chatting)
 

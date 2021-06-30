@@ -164,10 +164,15 @@ td {
     height:20px;
     padding: 5px 10px;
     text-align: center;
+    border-bottom: 1px solid rgb(200, 200, 200);
 }
 td input{
     width:600px;
 }
+.left{
+    border-left:1px solid rgb(200, 200, 200);
+}
+
 #con{
     height:250px;
 }
