@@ -550,7 +550,7 @@ let onlygroup = async(req,res)=>{
     console.log(cc);
     console.log('res주소');
     console.log(`/${groupName}/${cc}`);
-    res.redirect(`/${groupName}/${cc}`);
+    res.redirect(`/router/${groupName}/${cc}`);
     // res.send(bb.datavalues.board_uri)};
 }
 
