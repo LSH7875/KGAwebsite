@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div id="map" style="width:100%;height:800px;"></div>
+<div id="map" style="width:800px;height:600px;"></div>
 
 <script type="text/javascript" src ='//dapi.kakao.com/v2/maps/sdk.js?appkey={{map_key}}&libraries=services'></script>
 <script>
@@ -31,8 +31,8 @@
         marker.setMap(map);
 
         function resizeMap() {
-            container.style.width = '650px';
-            container.style.height = '650px'; 
+            container.style.width = '500px';
+            container.style.height = '500px'; 
         }
 
         function relayout() {    
@@ -44,6 +44,12 @@
         }
 
 </script>
-    
+    <ul class="location_info">
+        <h3>상세주소</h3>
+        <li>서울특별시 강동구 천호대로 995 금복빌딩 3,4층 경일게임아카데미(지하철 5,8호선 1번출구 10m이내)</li>
+        <li>Tel. 02-479-4050 / Fax. 02-479-4056</li>
+        <li>Email. kigsnet@naver.com</li>
+        <li>지하철 5,8호선 1번 출구로 올라오셔서 10m이내 금복빌딩 3층으로 올라오시면 됩니다.</li>
+    </ul>
 
 {% endblock %}
