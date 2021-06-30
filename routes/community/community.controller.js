@@ -10,7 +10,7 @@ let review_write_post = async(req,res)=>{
     let {user_id} = req.cookies;
     let {nickname}= await userFindUsingid(user_id);
     postWrite(user_id,3,title,contents,nickname);
-    res.redirect('router/community/review');
+    res.redirect('/router/community/review');
 }
 
 let review_modify = (req,res)=>{
