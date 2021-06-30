@@ -44,9 +44,12 @@ let main = async(req,res)=>{
         order:[['id','DESC']],
         limit:1,
     })
+    console.log('//////////////video/////////');
+    console.log(video[0].dataValues.video);
+    video1=video[0].dataValues.video || "./main_video.mp4";
 
-    video1=video.video || "./main_video.mp4";
-
+    console.log('////////////////video////////////' ,video1)
+    
     let portfolio= await board.findAll({
         where:{board_number:'9',show_hide:'block'},
         order:[['id','DESC']],

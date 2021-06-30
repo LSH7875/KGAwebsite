@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     {% for interview in interviews %}
-                    <form action="/admin/interview_manage" method="post" enctype = "multipart/form-data"  accept-charset="UTF-8">
+                    <form action="/admin/interview_manage" method="post">
                         <tr>
                             <td>{{interview.id}}</td><input type="text" name="id" style="display:none;" value="{{interview.id}}">
                             <td>{{interview.title}}</td>

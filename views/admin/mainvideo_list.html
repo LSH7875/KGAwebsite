@@ -61,7 +61,9 @@
                     <input type="text" style="display:none;" name="id" value="{{mainvideo.id}}">
                     <button name="btn" value="modify">EDIT</button>
                     <button name="btn" value="delete">DEL</button><br>
-                    <img src="#"><br>
+                    <video autoplay controls loop muted width="300px;" style="margin-top:40px;">
+                        <source src="/{{mainvideo.video}}" type="video/mp4">
+                    </video>
                 </li>
             </ul>
             </form>
