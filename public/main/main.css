@@ -108,6 +108,7 @@
     font-size: 22px;
     font-family: "LotteMartDream";
     overflow-y: hidden;
+    line-height: 34px;
 }
 
 .nav_sub_list{
@@ -135,6 +136,8 @@
     /* overflow-y:hidden; */
     /* transition: .2s ease-in-out; */
     padding: 3px !important;
+    line-height: 35px;
+
 }
 
 .nav_join>a:hover{

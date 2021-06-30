@@ -29,6 +29,27 @@
     background: rgb(0, 100, 255);
 }
 
+#nav_ul{
+    color: white;
+    position: fixed;
+    top: 35px;
+    z-index: 100;
+    width: 1200px;
+    display: flex;
+    height: 120px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "MaruBuri-Regular";
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+#nav_ul>li{
+    margin-left: 30px;
+}
+
+
+
+
 #b_line{
     position: absolute;
     top: -230px;
@@ -37,6 +58,7 @@
     background: white;
     z-index: 4;
 }
+
 #a_line{
     position: absolute;
     top: 0px;
@@ -115,8 +137,8 @@
 }
 #frame>img{
     position: fixed;
-    top: 15%;
-    left: 15%;
+    top: 20%;
+    left: 13%;
 
 }
 
@@ -474,7 +496,8 @@
 
 .Q{
     margin-top:100px;
-    margin-right:200px;
+    margin-right:100px;
+    margin-left: 100px;
     float:left;
     width: 450px;
     height:230px;
