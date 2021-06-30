@@ -37,17 +37,19 @@ let mainNav = document.querySelector('#main_nav');
 let navUl = document.querySelector('#nav_main_list');
 let navLi = document.querySelector("#nav_main_list>li");
 let sub = document.querySelectorAll(".nav_sub_list");
-
+let navA_a = document.querySelectorAll(".nav_bar>a");
 navA.forEach(e=>{e.addEventListener('mouseover', scroll_on);
 });
-
 // 네비바 서브 메뉴들 파란 배경에 내려오게 하는 코드
 function scroll_on(){
-    console.log(navA);
     navA.forEach(e=>{e.style.height = "250px"})
     mainNav.style.height = "250px";
     mainNav.style.overflow = "visible";
     navUl.style.height = "250px";
+    sub.style.height = "250px";
+    mainNav.style="overflow-y:hidden"
+    navA.style="overflow-y:hidden"
+    navA_a.style="overflow-y:hidden"
 }
 
 //네비바 파란 배경 fix일 때 마우스 떼면 다시 접히게
@@ -55,6 +57,8 @@ mainNav.addEventListener('mouseleave', ReturnBg)
     function ReturnBg(){
         mainNav.style.height = "70px"
         mainNav.style.transition = ".25s ease-in-out"
+        navA.style="overflow-y:hidden"
+        navA_a.style="overflow-y:hidden"
     }
 
 /////팝업 쿠키관련 자바스크립트 내용
@@ -97,3 +101,9 @@ function popup_check(){
 window.onload=()=>{
     popup_check();
 }
+
+let test=document.querySelector('#test');
+
+test.addEventListener('click',()=>{
+    modal.style.display="none"; 
+})

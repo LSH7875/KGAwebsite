@@ -16,12 +16,7 @@ let main = async(req,res)=>{
         order:[['id','DESC']],
         limit:1,
     })
-    console.log('//////////////video/////////');
-    console.log(video[0].dataValues.video);
-    video1=video[0].dataValues.video || "./main_video.mp4";
-
-    console.log('////////////////video////////////' ,video1)
-    
+    let video1 = video[0].dataValues.video || "./main_video.mp4";    
     let portfolio= await board.findAll({
         where:{board_number:'9',show_hide:'block'},
         order:[['id','DESC']],
@@ -237,7 +232,6 @@ async function listfn(name,page,keyfield,keystring){
     boardId = result.id;
 ////토탈이 되어 있을 때....
     if(keyfield=='total'){
-        console.log
         rst = await board.findAll({
             where:{board_number:boardId,show_hide:'block',
                     [Op.or]:[
@@ -420,7 +414,6 @@ async function postWrite(uid,boardnum,title,contents,cur_num,userimage,mod,board
             let boardCreate = await board.create({
                 cur_num,user_id:uid,board_number:boardnum,title,nickname,nickname2,contents,file1:userimage})
         })        }
-        console.log('닉네임 가져오냐');
 }
 
 let onlygroup = async(req,res)=>{
