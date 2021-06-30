@@ -1,4 +1,0 @@
-INSERT INTO `kga`.`form` (`id`, `form_name`) VALUES ('1', '게시판');
-INSERT INTO `kga`.`form` (`id`, `form_name`) VALUES ('2', '단일');
-INSERT INTO `kga`.`form` (`id`, `form_name`) VALUES ('3', '갤러리');
-INSERT INTO `kga`.`form` (`id`, `form_name`) VALUES ('4', '표');
