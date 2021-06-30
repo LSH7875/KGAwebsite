@@ -17,4 +17,3 @@ submit_chk.addEventListner('click',async()=>{
     mypage_con.innerHTML=`<br><br><br>${text}`
 })
 
-

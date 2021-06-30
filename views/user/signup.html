@@ -90,15 +90,10 @@
                     return res.json();
                 })
                 .then(json=>{
-                    console.log(json);
-                    console.log('야호야호');
-                    console.log(json.check);
                     if(json.check){
-                        console.log('없는거');
                         id_msg.style.color="green";
                         id_msg.innerHTML=`${id_value}는 사용할 수 있는 아이디입니다.`;
                     }else{
-                        console.log('있는거');
                         id_msg.style.color = "red";
                         id_msg.innerHTML = `이미 사용중인 아이디입니다.`;
                     }

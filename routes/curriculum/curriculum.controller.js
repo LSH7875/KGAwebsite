@@ -15,14 +15,9 @@ let curr= async(req,res)=>{
     let {navi,login}=req;
     let {curr}=req.params;
     
-    
     let result = await curriculum.findOne({
         where:{cur_uri:curr}
     })
-    console.log(result);
-    // let aa = await sequelize.query(`SELECT faq_id FROM faq_curriculum WHERE cur_id=${result.id}`);
-    // console.log(aa[0]);
-    // res.send(aa[0]);
 
     //가장 최근 거 보여주기
     let rst = await cur_cardinal.findOne({
@@ -46,14 +41,11 @@ let curr= async(req,res)=>{
         where:{
             [Op.or]:[{id: result.professor1} ,{id: result.professor2}]}
     })
-    console.log('faq전')
     let faqq= await faq.findAll({
         where:{
             [Op.or]:[{id:result.faq1},{id:result.faq2},{id:result.faq3}]
         }
     })
-    console.log('faq후')
-    console.log(faqq);
     res.render('./curriculum/sub_sub_page',{
         faq:faqq,nickname,navi,login,curr,result,rst,rstReview,cst,
     })

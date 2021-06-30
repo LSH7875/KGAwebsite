@@ -33,11 +33,8 @@ function cryptoPw(pw){
 let signupSuccess = async(req,res)=>{
     
     let {nickname,user_id, user_pw, user_name, user_email, user_birth, user_sex,phone,ad_agree,} = req.body;
-    let user_phone=phone[0]+phone[1]+phone[2];
-    console.log(req.body);
-    console.log(phone); 
+    let user_phone=phone[0]+phone[1]+phone[2]; 
     user_pw = cryptoPw(user_pw);
-    console.log(user_pw);
     try{
         let rst = await user.create({
             nickname, user_id, user_pw, user_name, user_email, user_birth, user_sex,user_phone,ad_agree
@@ -62,13 +59,7 @@ let login = (req,res)=>{
     }else{
         msg=0;
     }
-    console.log('여기서 오류난거 아님');
     res.render('./user/login',{msg,login,navi,nickname,});
-    console.log('msg값 몬넘겨줌....')
-    console.log('process.env.kakao.clientID');
-    console.log(process.env.kakao_clientID);
-    console.log('process.env.kakao_redirectUri');
-    console.log(process.env.kakao_redirectUri);
 }
 
 let loginPost = async(req,res)=>{
@@ -82,11 +73,9 @@ let loginPost = async(req,res)=>{
             where:{user_id,user_pw}
         });
         if (!result){
-            console.log('login fail');
+
             res.redirect('/user/login?flag=0');
         }else{
-
-            console.log('로그인성공');
             let ctoken = token(user_id);
             res.cookie('AccessToken',ctoken,{httponly:true, secure:true,})
             res.cookie('user_id',user_id);
@@ -101,12 +90,7 @@ let loginPost = async(req,res)=>{
 
 let logout = (req,res)=>{
     let backURL = req.header;
-    console.log('백유알아이----------')
-    console.log(backURL);
     length1=res.cookies;
-    console.log('이건쿠키------------')
-    console.log(req.cookies);
-    console.log(typeof req.cookies);
     bbb=Object.keys(req.cookies);
 
     
@@ -147,10 +131,6 @@ let kakaoLogin = (req,res)=>{
         const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code`;
         res.redirect(kakaoAuthURL);
     }
-//     const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.kakao_clientID}&redirect_uri=${process.env.kakao_redirectUri}&response_type=code`;
-//     console.log(kakaoAuthURL);
-//     res.redirect(kakaoAuthURL);
-// }
 
 
 ////가입 후 콜백
@@ -176,7 +156,7 @@ let kakaoCB = async(req,res)=>{
     //access토큰을 받아서 사용자 정보를 알기 위해 쓰는 코드
     let users;
     try{
-        console.log(kakaoToken);//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
+//access정보를 가지고 또 요청해야 정보를 가져올 수 있음.
         users = await axios({
             method:'get',
             url:'https://kapi.kakao.com/v2/user/me',
@@ -184,7 +164,7 @@ let kakaoCB = async(req,res)=>{
                 Authorization: `Bearer ${kakaoToken.data.access_token}`
             }//헤더에 내용을 보고 보내주겠다.
         })
-        console.log('//////user/////////');
+
         res.cookie('access_token',kakaoToken.data.access_token);
         res.cookie('token_type',kakaoToken.data.token_type);
         res.cookie('refresh_token',kakaoToken.data.refresh_token);
@@ -211,9 +191,7 @@ let kakaoCB = async(req,res)=>{
         }).then(res=>{
             return res.json()
         }).then (async(json)=>{
-            console.log(json);
             if(json.check){
-                console.log('회원정보없음');
                 signup2 = await user.create({
                 user_id:a ,user_email:c ,nickname:b, 
                 social:"kakao"
@@ -230,103 +208,7 @@ let kakaoCB = async(req,res)=>{
 }
         
      
-        
-        //req.session = {['kakao'] : user.data};
-        
-        
-
-
-// try{
-    //     console.log('cb들어옴');
-    //     let kakalog= await fetch('https://kauth.kakao.com/oauth/token',{
-    //         method:'POST',
-    //         headers: {
-    //             'content-type':'application/json'
-    //         },
-    //         data: JSON.stringify({
-    //             grant_type: 'authorization_code',
-    //             client_id: kakao.clientID,
-    //             client_secret: kakao.clientSecret,
-    //             redirectUri: kakao.redirectUri,
-    //             code:req.query.code,
-    //         })
-    //     })
-    //     .then(res=>{
-    //         return res.json();
-    //     })
-    //     .then(json=>{
-    //         console.log("kakao json받는가");
-    //         console.log(json);
-    //     })
-            
-    // }catch(e){console.log(e);}
-
-
-    // try{
-    //     console.log('user들어옴');
-    //     let token11=await fetch('https://kapi.kakao.com/v2/user/me',{
-    //         method:'get',
-    //         headers:{
-    //             'Authorization': `Bearer ${token.data.access_token}`
-    //         }
-    //     }).then(res=>{
-    //         return res.json();
-    //     }).then(json=>{
-    //         console.log(json);
-    //     })
-    // }catch(e){console.log(e);}
-
-    
-
-    // res.cookie('kakao',user.data,{httponly:true, secure:true,})
-    // res.redirect('/');
-
-
-    //안되는 코드...왜...
-    // try{
-        //     console.log('cb들어옴');
-        //     let kakalog= await fetch('https://kauth.kakao.com/oauth/token',{
-        //         method:'POST',
-        //         headers: {
-        //             'content-type':'application/json'
-        //         },
-        //         data: JSON.stringify({
-        //             grant_type: 'authorization_code',
-        //             client_id: kakao.clientID,
-        //             client_secret: kakao.clientSecret,
-        //             redirectUri: kakao.redirectUri,
-        //             code:req.query.code,
-        //         })
-        //     })
-        //     .then(res=>{
-        //         return res.json();
-        //     })
-        //     .then(json=>{
-        //         console.log("kakao json받는가");
-        //         console.log(json);
-        //     })
-                
-        // }catch(e){console.log(e);}
-    
-    
-        // try{
-        //     console.log('user들어옴');
-        //     let token11=await fetch('https://kapi.kakao.com/v2/user/me',{
-        //         method:'get',
-        //         headers:{
-        //             'Authorization': `Bearer ${token.data.access_token}`
-        //         }
-        //     }).then(res=>{
-        //         return res.json();
-        //     }).then(json=>{
-        //         console.log(json);
-        //     })
-        // }catch(e){console.log(e);}
-    
-        
-    
-        // res.cookie('kakao',user.data,{httponly:true, secure:true,})
-        // res.redirect('/');
+      
 
 ////////////네이버 로그인///////////////
 var client_id = process.env.naver_clientID;
@@ -336,13 +218,7 @@ var redirectURI = encodeURI(process.env.naver_RedirectURI);
 
 let naverLogin=  (req,res)=>{
     api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirectURI + '&state=' + state;
-    // res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});//res.end("<a href='"+ api_uri + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
     res.redirect(api_url);
-    console.log('cb보냄');
-    //res.send('hello')
-    // api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' +  + '&redirect_uri=' + 'http://localhost:3000/user/auth/naver/callback' + '&state=' + '111';
-    // res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-    // res.end("<a href='"+ api_url + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
 }
 
 
@@ -360,12 +236,9 @@ let naverCB=async(req,res)=>{
             method:"post",
             headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
         }).then(res=>{
-            console.log("res");
-            console.log(res);
+
             return res.json();
         }).then(json=>{
-            console.log("json");
-            console.log(json);
             res.cookie('access_token',json.access_token);
             res.cookie('refresh_token',json.refresh_token);
             res.cookie('token_type',json.token_type);
@@ -373,21 +246,7 @@ let naverCB=async(req,res)=>{
             YOUR_ACCESS_TOKEN=json.access_token;
             
         })
-    // }
-    //     var request = require('request');
-    // var options = {
-    //     url: api_url,
-    //     headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
-    //  };
-    // request.get(options, function (error, response, body) {
-    //   if (!error && response.statusCode == 200) {
-    //     res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-    //     res.end(body);
-    //   } else {
-    //     res.status(response.statusCode).end();
-    //     console.log('error = ' + response.statusCode);
-    //   }
-    // });
+    
 
     //받은 토큰으로 정보 요청
         try{
@@ -401,14 +260,12 @@ let naverCB=async(req,res)=>{
             }).then(res=>{
                 return res.json();
             }).then(json=>{
-                console.log(json.response);
-
                 user_id=json.response.id;
                 res.cookie('user_id',user_id);
                 user_email = json.response.email;
                 user_phone=json.response.mobile.toString().replace('-','').replace('-','');
                 user_name = json.response.name;
-                console.log('user_name은',user_name);
+
                 res.cookie('nickname',user_name);
                 //네이버는 이름을 던져준다.
             })
@@ -422,9 +279,7 @@ let naverCB=async(req,res)=>{
                 console.log
                 return res.json()
             }).then (async(json)=>{
-                console.log(json);
                 if (json.check){
-                    console.log('회원정보없음');
                     let signup1 = await user.create({
                     user_name,user_id,user_email,nickname:user_name,user_phone,
                     social:"naver"
@@ -438,23 +293,5 @@ let naverCB=async(req,res)=>{
         res.redirect('/');
     }catch(e){console.log(e)}
 }
-    // code = req.query.code;
-    // state = req.query.state;
-    // api_url = 'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id='
-    //  +  + '&client_secret=' +  + '&redirect_uri=' + 'http://localhost:3000/user/auth/naver/callback' + '&code=' + code + '&state=' + state;
-    // var request = require('request');
-    // var options = {
-    //     url: api_url,
-    //     headers: {'X-Naver-Client-Id':'S3d4WQn63MrFK49uL6rI', 'X-Naver-Client-Secret': 'P8Gwf4KUuj'}
-    //  };
-    // request.get(options, function (error, response, body) {
-    //   if (!error && response.statusCode == 200) {
-    //     res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-    //     res.end(body);
-    //   } else {
-    //     res.status(response.statusCode).end();
-    //     console.log('error = ' + response.statusCode);
-    //   }
-    // });
 
 module.exports = {signAgree, signup, login, loginPost, onchnageUser, signupSuccess, logout, idChk, naverLogin, kakaoLogin, kakaoCB, naverCB,};

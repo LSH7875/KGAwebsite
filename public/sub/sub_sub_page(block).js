@@ -9,7 +9,6 @@ function addScroll(){
     let six = document.querySelector('.six');
     let sub = document.querySelector('.Sub');
     let scroll = document.documentElement.scrollTop;
-    // console.log(document.documentElement.scrollTop);
     if(scroll<1600){
         sub.style.display = "block";
         one.style.display = "block";
@@ -76,16 +75,4 @@ const scrollAnimation = new IntersectionObserver(entries=>{
         }
     })
 })
-
-// let scroll_animation = document.querySelectorAll('.scroll_animation');
-
-// scroll_animation.forEach(ele=>{
-//     scrollAnimation.observe(ele);
-// })
-
-// const scroll_animation = new IntersectionObserver(entries=>{
-//     entries.forEach(entry=>{
-//         console.log(entry.intersectionRatio)
-//     })
-// })
 

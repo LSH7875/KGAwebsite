@@ -14,14 +14,14 @@ router.get('/auth/kakao/callback',userController.kakaoCB);
 router.get('/auth/kakao',userController.kakaoLogin);
 
 //로컬 가입
-router.get('/signAgree', templete,userController.signAgree);//1했음 2했음
+router.get('/signAgree', templete,userController.signAgree);
 router.post('/signup/idChk',userController.idChk);
-router.get('/signup',templete,userController.signup);//1했음 2했음
+router.get('/signup',templete,userController.signup);
 router.post('/signup',userController.signupSuccess);
 router.post('/onchnageUser',userController.onchnageUser);
 
 //로그인
-router.get('/login',templete,userController.login);//1햇음 
+router.get('/login',templete,userController.login);
 router.post('/login',userController.loginPost);
 router.get('/logout',userController.logout);
 router.get('/',userController.login);

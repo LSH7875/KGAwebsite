@@ -10,21 +10,15 @@ module.exports = async(req,res,next)=>{
     let {board} =req.params; 
     let usergrade=await userFindUsingid(user_id)
         .then(aa=>{
-            console.log('aa');
-            console.log(aa);
             user_grade = aa.user_grade ||-1;
-            console.log('user_grade');
-            console.log(user_grade);
         }) 
 
     let boardgrade=await boaradFindUsinguri(board)
         .then(bb=>{
-            console.log(bb);
             board_writegrade = bb.write_authority;
         })    
        
     if(user_grade >= board_writegrade){
-        console.log('write체크끝남'); 
         next();
     }else{
         res.send('등급 조절 필요합니다.');
@@ -34,11 +28,9 @@ module.exports = async(req,res,next)=>{
 
 
 async function userFindUsingid(user_id){///promise 객체임니다...
-    console.log('userFindUsingid들어옴')
     let userfind = await user.findOne({
         where:{user_id,}
     })
-    console.log('findusingid:',userfind)
     return userfind;
 }
 

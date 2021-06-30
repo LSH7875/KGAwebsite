@@ -6,13 +6,9 @@ let review_write=(req,res)=>{
 }
 
 let review_write_post = async(req,res)=>{
-    console.log('post누름');
-    console.log(req.body.title);
     let {title,contents} =req.body;
-    console.log(title);
     let {user_id} = req.cookies;
     let {nickname}= await userFindUsingid(user_id);
-    console.log('writepost_nickname',nickname)
     postWrite(user_id,3,title,contents,nickname);
     res.redirect('/community/review');
 }
@@ -78,7 +74,6 @@ async function userFindUsingid(user_id){
     let userfind = await user.findOne({
         where:{user_id,}
     })
-    console.log('findusingid:',userfind)
     return userfind;
 }
 
@@ -87,7 +82,6 @@ async function userFindUsingnick(nickname){
     let userfind = await user.findOne({
         where:{nickname,}
     })
-    console.log('닉네임가지고 찾는거')
     return userfind;
 }
 
@@ -132,11 +126,9 @@ async function postWrite(uid,boardnum,title,contents,name,mod,boardid){
     } 
     else{
         let nickname2 = await userFindUsingnick(name).nickname;
-        console.log('postWriteNickname',nickname2)
         let {nickname} = await userFindUsingnick(name);
         let boardCreate = await board.create({
             user_id:uid,board_number:boardnum,title,nickname,nickname2,contents})
     }  
 }
 module.exports = {review_write,review_write_post,review_modify,review_modify_post,review_list,review_delete,}
-//notice, review, kiStory, kiReporter, kiProfessor,};

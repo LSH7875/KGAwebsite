@@ -13,9 +13,7 @@ module.exports = (req,res,next)=>{
     let signature = getSignature(header,payload);
 
     if(sign == signature){
-        console.log('검증된 토큰');
         let {userid,exp}=JSON.parse(Buffer.from(payload,'base64'),toString());
-        console.log(userid);
         let nextexp = new Date().getTime();
 
         if(nextexp >=exp){
