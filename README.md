@@ -47,3 +47,10 @@
  - **./config/config.json**		
  	 
    	-database설정 바꾸기
+	
+	
+# 실행시키기
+`npm install`을 통해 package들을 설치합니다.
+`npm start`를 통해 서버를 작동시킵니다.
+'data6.sql'를 실행하여 mariaDB에 데이터를 넣어줍니다. 
+'http://localhost:3000' 페이지를 브라우저에서 엽니다. 
