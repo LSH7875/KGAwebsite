@@ -42,6 +42,7 @@
  - **.env file 생성하기** 
      
 	-port값 생성해야
+	
 ### 파일 설정 바꾸기 
  - **./config/config.json**		
  	 
